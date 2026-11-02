@@ -124,6 +124,7 @@ def apply_style(dark):
     )
     st.markdown(css, unsafe_allow_html=True)
     st.markdown(background, unsafe_allow_html=True)
+    st.markdown(COMPONENT_CSS, unsafe_allow_html=True)
 
 
 def hero():
@@ -142,3 +143,125 @@ def steps(current, upcoming=False):
         for i, label in enumerate(labels, start=1)
     )
     st.markdown(f'<div class="pp-steps">{pills}</div>', unsafe_allow_html=True)
+
+    # ================= Step 4: podium graphic and driver list =================
+import html
+
+TEAMS = {   # team id -> (display name, team colour)
+    "mercedes": ("Mercedes", "#27f4d2"),
+    "ferrari": ("Ferrari", "#e8002d"),
+    "red_bull": ("Red Bull", "#3671c6"),
+    "mclaren": ("McLaren", "#ff8000"),
+    "aston_martin": ("Aston Martin", "#229971"),
+    "alpine": ("Alpine", "#ff87bc"),
+    "williams": ("Williams", "#64c4ff"),
+    "rb": ("Racing Bulls", "#6692ff"),
+    "haas": ("Haas", "#b6babd"),
+    "audi": ("Audi", "#bb0a30"),
+    "cadillac": ("Cadillac", "#c9a227"),
+    "manor": ("Manor", "#7a1f2b"),
+}
+
+
+def team_info(team_id):
+    """Display name and colour for a team (grey if we don't know it)."""
+    return TEAMS.get(team_id, (team_id.replace("_", " ").title(), "#8a8a96"))
+
+
+COMPONENT_CSS = """<style>
+.pp-podium{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin:1.2rem 0 2rem}
+.pp-place{flex:1;max-width:230px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.pp-info{margin-bottom:10px;opacity:0;animation:pp-fade .5s ease-out forwards}
+.pp-name{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.6rem;line-height:1.1;color:var(--pp-text)}
+.pp-team{display:flex;align-items:center;justify-content:center;gap:6px;color:var(--pp-muted);font-size:.9rem;margin-top:2px}
+.pp-dot{width:10px;height:10px;border-radius:50%;flex:none}
+.pp-note{margin-top:6px;font-weight:600;font-size:1.05rem;color:var(--pp-text)}
+.pp-block{width:100%;border-top:6px solid;border-radius:8px 8px 0 0;display:flex;justify-content:center;padding-top:10px;box-sizing:border-box;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:2.6rem;transform-origin:bottom;transform:scaleY(0);animation:pp-rise .6s cubic-bezier(.2,.8,.2,1) forwards}
+.pp-block.p1{height:190px;background:#e10600;color:#fff}
+.pp-block.p2{height:140px;background:#b9bcc4;color:#15151e}
+.pp-block.p3{height:105px;background:#b5743c;color:#15151e}
+@keyframes pp-rise{to{transform:scaleY(1)}}
+@keyframes pp-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pp-tag{display:inline-block;padding:3px 10px;border-radius:999px;font-weight:600;font-size:.85rem;color:#fff}
+.pp-tag.hit{background:#15803d}
+.pp-tag.miss{background:#c40500}
+.pp-rows{display:flex;flex-direction:column;gap:8px;margin:.5rem 0 1.5rem}
+.pp-row{display:grid;grid-template-columns:2.2rem 6px 1fr auto;align-items:center;gap:14px;padding:12px 16px;background:var(--pp-panel);border:1px solid var(--pp-border);border-radius:12px}
+.pp-row.top{border-color:var(--pp-red)}
+.pp-pos{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.3rem;color:var(--pp-muted);text-align:center}
+.pp-row.top .pp-pos{color:var(--pp-red)}
+.pp-stripe{width:6px;height:34px;border-radius:3px}
+.pp-who{display:flex;flex-direction:column;min-width:0}
+.pp-who b{font-weight:600;color:var(--pp-text)}
+.pp-who small{color:var(--pp-muted);font-size:.85rem}
+.pp-pct{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.5rem;color:var(--pp-text)}
+.pp-score{text-align:center;margin:.5rem 0 1rem}
+.pp-score .big{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:4.5rem;line-height:1;color:var(--pp-red)}
+.pp-score .lbl{color:var(--pp-muted)}
+.pp-picks{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:1.5rem}
+.pp-pick{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--pp-panel);border:1px solid var(--pp-border);border-radius:999px;color:var(--pp-text);font-weight:600}
+@media (prefers-reduced-motion: reduce){.pp-block,.pp-info{animation:none;transform:none;opacity:1}}
+</style>"""
+
+
+def tag(hit):
+    """Green '✓ Predicted' or red '✗ Missed' label."""
+    label = "✓ Predicted" if hit else "✗ Missed"
+    return f'<div class="pp-tag {"hit" if hit else "miss"}">{label}</div>'
+
+
+def podium(places):
+    """places = [P1, P2, P3]; each a dict with 'name', 'team' and 'note'."""
+    layout = [(2, "p2", 0.15), (1, "p1", 0.30), (3, "p3", 0.0)]   # left, middle, right
+    parts = []
+    for pos, cls, delay in layout:
+        p = places[pos - 1]
+        team_name, color = team_info(p["team"])
+        parts.append(
+            '<div class="pp-place">'
+            f'<div class="pp-info" style="animation-delay:{delay + 0.45}s">'
+            f'<div class="pp-name">{html.escape(p["name"])}</div>'
+            f'<div class="pp-team"><div class="pp-dot" style="background:{color}"></div>{team_name}</div>'
+            f'<div class="pp-note">{p["note"]}</div></div>'
+            f'<div class="pp-block {cls}" style="border-top-color:{color};animation-delay:{delay}s">P{pos}</div>'
+            '</div>'
+        )
+    st.markdown(f'<div class="pp-podium">{"".join(parts)}</div>', unsafe_allow_html=True)
+
+
+def driver_rows(table, start=0, end=10):
+    """Styled rows: position, team stripe, driver, team, grid, podium chance."""
+    rows = []
+    for i, r in table.iloc[start:end].iterrows():
+        team_name, color = team_info(r["constructor"])
+        top = " top" if i < 3 else ""
+        rows.append(
+            f'<div class="pp-row{top}"><div class="pp-pos">{i + 1}</div>'
+            f'<div class="pp-stripe" style="background:{color}"></div>'
+            f'<div class="pp-who"><b>{html.escape(r["name"])}</b>'
+            f'<small>{team_name} · Grid {int(r["grid"])}</small></div>'
+            f'<div class="pp-pct">{r["podium_chance"]:.1f}%</div></div>'
+        )
+    st.markdown(f'<div class="pp-rows">{"".join(rows)}</div>', unsafe_allow_html=True)
+
+
+def score(correct):
+    st.markdown(
+        f'<div class="pp-score"><div class="big">{correct} / 3</div>'
+        '<div class="lbl">podium drivers predicted correctly</div></div>',
+        unsafe_allow_html=True,
+    )
+
+
+def picks(predicted, actual, team_of):
+    """The model's three picks as pills, each marked ✓ or ✗."""
+    pills = []
+    for name in predicted:
+        _, color = team_info(team_of[name])
+        hit = name in actual
+        pills.append(
+            f'<div class="pp-pick"><div class="pp-dot" style="background:{color}"></div>'
+            f'{html.escape(name)} <div class="pp-tag {"hit" if hit else "miss"}">'
+            f'{"✓" if hit else "✗"}</div></div>'
+        )
+    st.markdown(f'<div class="pp-picks">{"".join(pills)}</div>', unsafe_allow_html=True)
