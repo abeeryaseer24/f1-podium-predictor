@@ -5,7 +5,7 @@ import pandas as pd
 import requests
 
 BASE_URL = "https://api.jolpi.ca/ergast/f1"
-SEASONS = range(2016, 2026)   # 2016 to 2025 = 10 seasons
+SEASONS = range(2016, 2027)   # 2016 to 2026 (2026 = completed races so far)
 LIMIT = 100                   # rows per API call (the API's max)
 
 RAW_DIR = Path("data/raw")

@@ -4319,3 +4319,421 @@ season,round,race_name,circuit,date,driver,constructor,grid,finish_position,stat
 2025,24,Abu Dhabi Grand Prix,yas_marina,2025-12-07,lawson,rb,13,18,Lapped,0.0,13.0
 2025,24,Abu Dhabi Grand Prix,yas_marina,2025-12-07,gasly,alpine,19,19,Lapped,0.0,19.0
 2025,24,Abu Dhabi Grand Prix,yas_marina,2025-12-07,colapinto,alpine,20,20,Lapped,0.0,20.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,russell,mercedes,1,1,Finished,25.0,1.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,antonelli,mercedes,2,2,Finished,18.0,2.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,leclerc,ferrari,4,3,Finished,15.0,4.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,hamilton,ferrari,7,4,Finished,12.0,7.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,norris,mclaren,6,5,Finished,10.0,6.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,max_verstappen,red_bull,20,6,Finished,8.0,
+2026,1,Australian Grand Prix,albert_park,2026-03-08,bearman,haas,12,7,Lapped,6.0,12.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,arvid_lindblad,rb,9,8,Lapped,4.0,9.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,bortoleto,audi,10,9,Lapped,2.0,10.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,gasly,alpine,14,10,Lapped,1.0,14.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,ocon,haas,13,11,Lapped,0.0,13.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,albon,williams,15,12,Lapped,0.0,15.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,lawson,rb,8,13,Lapped,0.0,8.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,colapinto,alpine,16,14,Lapped,0.0,16.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,sainz,williams,21,15,Lapped,0.0,
+2026,1,Australian Grand Prix,albert_park,2026-03-08,perez,cadillac,18,16,Lapped,0.0,18.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,stroll,aston_martin,22,17,Lapped,0.0,
+2026,1,Australian Grand Prix,albert_park,2026-03-08,alonso,aston_martin,17,18,Retired,0.0,17.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,bottas,cadillac,19,19,Retired,0.0,19.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,hadjar,red_bull,3,20,Retired,0.0,3.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,piastri,mclaren,5,21,Did not start,0.0,5.0
+2026,1,Australian Grand Prix,albert_park,2026-03-08,hulkenberg,audi,11,22,Did not start,0.0,11.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,antonelli,mercedes,1,1,Finished,25.0,1.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,russell,mercedes,2,2,Finished,18.0,2.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,hamilton,ferrari,3,3,Finished,15.0,3.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,leclerc,ferrari,4,4,Finished,12.0,4.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,bearman,haas,10,5,Finished,10.0,10.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,gasly,alpine,7,6,Finished,8.0,7.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,lawson,rb,14,7,Finished,6.0,14.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,hadjar,red_bull,9,8,Finished,4.0,9.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,sainz,williams,17,9,Lapped,2.0,17.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,colapinto,alpine,12,10,Lapped,1.0,12.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,hulkenberg,audi,11,11,Lapped,0.0,11.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,arvid_lindblad,rb,15,12,Lapped,0.0,15.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,bottas,cadillac,19,13,Lapped,0.0,20.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,ocon,haas,13,14,Lapped,0.0,13.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,perez,cadillac,21,15,Lapped,0.0,22.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,max_verstappen,red_bull,8,16,Retired,0.0,8.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,alonso,aston_martin,18,17,Retired,0.0,19.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,stroll,aston_martin,20,18,Retired,0.0,21.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,piastri,mclaren,5,19,Did not start,0.0,5.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,norris,mclaren,6,20,Did not start,0.0,6.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,bortoleto,audi,16,21,Did not start,0.0,16.0
+2026,2,Chinese Grand Prix,shanghai,2026-03-15,albon,williams,22,22,Did not start,0.0,18.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,antonelli,mercedes,1,1,Finished,25.0,1.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,piastri,mclaren,3,2,Finished,18.0,3.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,leclerc,ferrari,4,3,Finished,15.0,4.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,russell,mercedes,2,4,Finished,12.0,2.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,norris,mclaren,5,5,Finished,10.0,5.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,hamilton,ferrari,6,6,Finished,8.0,6.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,gasly,alpine,7,7,Finished,6.0,7.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,max_verstappen,red_bull,11,8,Finished,4.0,11.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,lawson,rb,14,9,Finished,2.0,14.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,ocon,haas,12,10,Finished,1.0,12.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,hulkenberg,audi,13,11,Finished,0.0,13.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,hadjar,red_bull,8,12,Finished,0.0,8.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,bortoleto,audi,9,13,Finished,0.0,9.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,arvid_lindblad,rb,10,14,Finished,0.0,10.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,sainz,williams,16,15,Finished,0.0,16.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,colapinto,alpine,15,16,Finished,0.0,15.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,perez,cadillac,19,17,Finished,0.0,19.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,alonso,aston_martin,21,18,Lapped,0.0,21.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,bottas,cadillac,20,19,Lapped,0.0,20.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,albon,williams,17,20,Lapped,0.0,17.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,stroll,aston_martin,22,21,Retired,0.0,22.0
+2026,3,Japanese Grand Prix,suzuka,2026-03-29,bearman,haas,18,22,Retired,0.0,18.0
+2026,4,Miami Grand Prix,miami,2026-05-03,antonelli,mercedes,1,1,Finished,25.0,1.0
+2026,4,Miami Grand Prix,miami,2026-05-03,norris,mclaren,4,2,Finished,18.0,4.0
+2026,4,Miami Grand Prix,miami,2026-05-03,piastri,mclaren,7,3,Finished,15.0,7.0
+2026,4,Miami Grand Prix,miami,2026-05-03,russell,mercedes,5,4,Finished,12.0,5.0
+2026,4,Miami Grand Prix,miami,2026-05-03,max_verstappen,red_bull,2,5,Finished,10.0,2.0
+2026,4,Miami Grand Prix,miami,2026-05-03,hamilton,ferrari,6,6,Finished,8.0,6.0
+2026,4,Miami Grand Prix,miami,2026-05-03,colapinto,alpine,8,7,Finished,6.0,8.0
+2026,4,Miami Grand Prix,miami,2026-05-03,leclerc,ferrari,3,8,Finished,4.0,3.0
+2026,4,Miami Grand Prix,miami,2026-05-03,sainz,williams,13,9,Finished,2.0,13.0
+2026,4,Miami Grand Prix,miami,2026-05-03,albon,williams,15,10,Finished,1.0,15.0
+2026,4,Miami Grand Prix,miami,2026-05-03,bearman,haas,12,11,Lapped,0.0,12.0
+2026,4,Miami Grand Prix,miami,2026-05-03,bortoleto,audi,21,12,Lapped,0.0,21.0
+2026,4,Miami Grand Prix,miami,2026-05-03,ocon,haas,14,13,Lapped,0.0,14.0
+2026,4,Miami Grand Prix,miami,2026-05-03,arvid_lindblad,rb,16,14,Lapped,0.0,16.0
+2026,4,Miami Grand Prix,miami,2026-05-03,alonso,aston_martin,17,15,Lapped,0.0,17.0
+2026,4,Miami Grand Prix,miami,2026-05-03,perez,cadillac,20,16,Lapped,0.0,20.0
+2026,4,Miami Grand Prix,miami,2026-05-03,stroll,aston_martin,18,17,Lapped,0.0,18.0
+2026,4,Miami Grand Prix,miami,2026-05-03,bottas,cadillac,19,18,Lapped,0.0,19.0
+2026,4,Miami Grand Prix,miami,2026-05-03,hulkenberg,audi,10,19,Retired,0.0,10.0
+2026,4,Miami Grand Prix,miami,2026-05-03,lawson,rb,11,20,Retired,0.0,11.0
+2026,4,Miami Grand Prix,miami,2026-05-03,gasly,alpine,9,21,Retired,0.0,9.0
+2026,4,Miami Grand Prix,miami,2026-05-03,hadjar,red_bull,22,22,Retired,0.0,22.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,antonelli,mercedes,2,1,Finished,25.0,2.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,hamilton,ferrari,5,2,Finished,18.0,5.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,max_verstappen,red_bull,6,3,Finished,15.0,6.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,leclerc,ferrari,8,4,Finished,12.0,8.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,hadjar,red_bull,7,5,Lapped,10.0,7.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,colapinto,alpine,10,6,Lapped,8.0,10.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,lawson,rb,12,7,Lapped,6.0,12.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,gasly,alpine,14,8,Lapped,4.0,14.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,sainz,williams,15,9,Lapped,2.0,15.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,bearman,haas,16,10,Lapped,1.0,16.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,piastri,mclaren,4,11,Lapped,0.0,4.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,hulkenberg,audi,11,12,Lapped,0.0,11.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,bortoleto,audi,13,13,Lapped,0.0,13.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,ocon,haas,17,14,Lapped,0.0,17.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,stroll,aston_martin,22,15,Lapped,0.0,21.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,bottas,cadillac,21,16,Lapped,0.0,22.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,perez,cadillac,20,17,Retired,0.0,20.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,norris,mclaren,3,18,Retired,0.0,3.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,russell,mercedes,1,19,Retired,0.0,1.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,alonso,aston_martin,19,20,Retired,0.0,19.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,albon,williams,18,21,Retired,0.0,18.0
+2026,5,Canadian Grand Prix,villeneuve,2026-05-24,arvid_lindblad,rb,9,22,Did not start,0.0,9.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,antonelli,mercedes,1,1,Finished,25.0,1.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,hamilton,ferrari,3,2,Finished,18.0,3.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,hadjar,red_bull,5,3,Finished,15.0,5.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,piastri,mclaren,7,4,Finished,12.0,7.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,lawson,rb,10,5,Finished,10.0,10.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,arvid_lindblad,rb,15,6,Finished,8.0,15.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,gasly,alpine,9,7,Finished,6.0,9.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,albon,williams,11,8,Finished,4.0,11.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,ocon,haas,17,9,Finished,2.0,17.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,alonso,aston_martin,21,10,Finished,1.0,21.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,bortoleto,audi,16,11,Finished,0.0,16.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,russell,mercedes,6,12,Finished,0.0,6.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,hulkenberg,audi,13,13,Finished,0.0,13.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,colapinto,alpine,14,14,Finished,0.0,14.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,perez,cadillac,18,15,Finished,0.0,18.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,sainz,williams,12,16,Retired,0.0,12.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,leclerc,ferrari,4,17,Retired,0.0,4.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,stroll,aston_martin,22,18,Retired,0.0,22.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,norris,mclaren,8,19,Retired,0.0,8.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,bearman,haas,19,20,Retired,0.0,19.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,bottas,cadillac,20,21,Retired,0.0,20.0
+2026,6,Monaco Grand Prix,monaco,2026-06-07,max_verstappen,red_bull,2,22,Retired,0.0,2.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,hamilton,ferrari,2,1,Finished,25.0,2.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,russell,mercedes,1,2,Finished,18.0,1.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,norris,mclaren,4,3,Finished,15.0,4.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,max_verstappen,red_bull,5,4,Finished,12.0,5.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,piastri,mclaren,7,5,Finished,10.0,7.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,hadjar,red_bull,6,6,Lapped,8.0,6.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,gasly,alpine,14,7,Lapped,6.0,14.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,lawson,rb,8,8,Lapped,4.0,8.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,arvid_lindblad,rb,11,9,Lapped,2.0,11.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,colapinto,alpine,13,10,Lapped,1.0,13.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,bortoleto,audi,12,11,Lapped,0.0,12.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,sainz,williams,16,12,Lapped,0.0,16.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,ocon,haas,17,13,Lapped,0.0,17.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,perez,cadillac,19,14,Lapped,0.0,19.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,leclerc,ferrari,10,15,Retired,0.0,10.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,antonelli,mercedes,3,16,Retired,0.0,3.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,bearman,haas,15,17,Retired,0.0,15.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,albon,williams,18,18,Lapped,0.0,18.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,alonso,aston_martin,22,19,Retired,0.0,22.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,hulkenberg,audi,9,20,Retired,0.0,9.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,bottas,cadillac,20,21,Retired,0.0,20.0
+2026,7,Barcelona Grand Prix,catalunya,2026-06-14,stroll,aston_martin,21,22,Retired,0.0,21.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,russell,mercedes,1,1,Finished,25.0,1.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,max_verstappen,red_bull,5,2,Finished,18.0,5.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,antonelli,mercedes,4,3,Finished,15.0,4.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,piastri,mclaren,7,4,Finished,12.0,7.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,hamilton,ferrari,3,5,Finished,10.0,3.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,hadjar,red_bull,8,6,Finished,8.0,8.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,norris,mclaren,6,7,Finished,6.0,6.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,leclerc,ferrari,2,8,Finished,4.0,2.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,lawson,rb,9,9,Lapped,2.0,9.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,arvid_lindblad,rb,10,10,Lapped,1.0,10.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,bortoleto,audi,12,11,Lapped,0.0,12.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,hulkenberg,audi,14,12,Lapped,0.0,14.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,gasly,alpine,11,13,Lapped,0.0,11.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,bearman,haas,13,14,Lapped,0.0,13.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,colapinto,alpine,16,15,Lapped,0.0,16.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,ocon,haas,15,16,Lapped,0.0,15.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,albon,williams,18,17,Lapped,0.0,18.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,alonso,aston_martin,21,18,Lapped,0.0,21.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,stroll,aston_martin,22,19,Retired,0.0,22.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,sainz,williams,17,20,Retired,0.0,17.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,perez,cadillac,19,21,Retired,0.0,19.0
+2026,8,Austrian Grand Prix,red_bull_ring,2026-06-28,bottas,cadillac,20,22,Retired,0.0,20.0
+2026,9,British Grand Prix,silverstone,2026-07-05,leclerc,ferrari,2,1,Finished,25.0,2.0
+2026,9,British Grand Prix,silverstone,2026-07-05,russell,mercedes,4,2,Finished,18.0,4.0
+2026,9,British Grand Prix,silverstone,2026-07-05,hamilton,ferrari,3,3,Finished,15.0,3.0
+2026,9,British Grand Prix,silverstone,2026-07-05,norris,mclaren,6,4,Finished,12.0,6.0
+2026,9,British Grand Prix,silverstone,2026-07-05,hadjar,red_bull,5,5,Finished,10.0,5.0
+2026,9,British Grand Prix,silverstone,2026-07-05,lawson,rb,10,6,Finished,8.0,10.0
+2026,9,British Grand Prix,silverstone,2026-07-05,arvid_lindblad,rb,9,7,Finished,6.0,9.0
+2026,9,British Grand Prix,silverstone,2026-07-05,bortoleto,audi,11,8,Finished,4.0,11.0
+2026,9,British Grand Prix,silverstone,2026-07-05,colapinto,alpine,19,9,Finished,2.0,19.0
+2026,9,British Grand Prix,silverstone,2026-07-05,gasly,alpine,15,10,Finished,1.0,12.0
+2026,9,British Grand Prix,silverstone,2026-07-05,piastri,mclaren,8,11,Finished,0.0,8.0
+2026,9,British Grand Prix,silverstone,2026-07-05,bearman,haas,13,12,Finished,0.0,14.0
+2026,9,British Grand Prix,silverstone,2026-07-05,ocon,haas,17,13,Finished,0.0,17.0
+2026,9,British Grand Prix,silverstone,2026-07-05,perez,cadillac,20,14,Finished,0.0,20.0
+2026,9,British Grand Prix,silverstone,2026-07-05,antonelli,mercedes,1,15,Finished,0.0,1.0
+2026,9,British Grand Prix,silverstone,2026-07-05,bottas,cadillac,18,16,Finished,0.0,18.0
+2026,9,British Grand Prix,silverstone,2026-07-05,sainz,williams,14,17,Lapped,0.0,15.0
+2026,9,British Grand Prix,silverstone,2026-07-05,alonso,aston_martin,21,18,Lapped,0.0,22.0
+2026,9,British Grand Prix,silverstone,2026-07-05,stroll,aston_martin,22,19,Lapped,0.0,21.0
+2026,9,British Grand Prix,silverstone,2026-07-05,max_verstappen,red_bull,7,20,Retired,0.0,7.0
+2026,9,British Grand Prix,silverstone,2026-07-05,albon,williams,16,21,Retired,0.0,16.0
+2026,9,British Grand Prix,silverstone,2026-07-05,hulkenberg,audi,12,22,Retired,0.0,13.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,antonelli,mercedes,1,1,Finished,25.0,1.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,leclerc,ferrari,4,2,Finished,18.0,5.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,max_verstappen,red_bull,2,3,Finished,15.0,2.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,hamilton,ferrari,5,4,Finished,12.0,6.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,piastri,mclaren,6,5,Finished,10.0,7.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,hadjar,red_bull,21,6,Finished,8.0,10.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,norris,mclaren,13,7,Finished,6.0,3.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,bortoleto,audi,8,8,Finished,4.0,9.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,arvid_lindblad,rb,7,9,Finished,2.0,8.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,colapinto,alpine,11,10,Finished,1.0,13.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,gasly,alpine,10,11,Finished,0.0,12.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,lawson,rb,9,12,Finished,0.0,11.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,hulkenberg,audi,12,13,Finished,0.0,14.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,bearman,haas,14,14,Finished,0.0,16.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,albon,williams,15,15,Finished,0.0,17.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,sainz,williams,19,16,Finished,0.0,15.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,ocon,haas,16,17,Finished,0.0,18.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,bottas,cadillac,17,18,Lapped,0.0,19.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,alonso,aston_martin,22,19,Lapped,0.0,21.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,stroll,aston_martin,20,20,Retired,0.0,22.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,perez,cadillac,18,21,Retired,0.0,20.0
+2026,10,Belgian Grand Prix,spa,2026-07-19,russell,mercedes,3,22,Retired,0.0,4.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,norris,mclaren,1,1,Finished,25.0,1.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,max_verstappen,red_bull,4,2,Finished,18.0,6.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,antonelli,mercedes,7,3,Finished,15.0,4.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,leclerc,ferrari,2,4,Finished,12.0,3.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,hamilton,ferrari,5,5,Finished,10.0,2.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,hadjar,red_bull,8,6,Finished,8.0,8.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,russell,mercedes,6,7,Finished,6.0,7.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,lawson,rb,11,8,Lapped,4.0,11.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,hulkenberg,audi,10,9,Lapped,2.0,10.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,arvid_lindblad,rb,9,10,Lapped,1.0,9.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,bortoleto,audi,14,11,Lapped,0.0,14.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,gasly,alpine,12,12,Lapped,0.0,12.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,stroll,aston_martin,20,13,Lapped,0.0,20.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,alonso,aston_martin,16,14,Lapped,0.0,16.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,colapinto,alpine,13,15,Lapped,0.0,13.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,ocon,haas,15,16,Lapped,0.0,15.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,albon,williams,19,17,Lapped,0.0,19.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,sainz,williams,18,18,Lapped,0.0,18.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,bearman,haas,17,19,Lapped,0.0,17.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,piastri,mclaren,3,20,Retired,0.0,5.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,perez,cadillac,22,21,Retired,0.0,22.0
+2026,11,Hungarian Grand Prix,hungaroring,2026-07-26,bottas,cadillac,21,22,Retired,0.0,21.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,norris,mclaren,1,1,Finished,25.0,1.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,antonelli,mercedes,3,2,Finished,18.0,3.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,russell,mercedes,2,3,Finished,15.0,2.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,hamilton,ferrari,5,4,Finished,12.0,5.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,leclerc,ferrari,6,5,Finished,10.0,6.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,piastri,mclaren,4,6,Finished,8.0,4.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,lawson,red_bull,8,7,Finished,6.0,8.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,hulkenberg,audi,13,8,Lapped,4.0,13.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,alonso,aston_martin,18,9,Lapped,2.0,18.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,gasly,alpine,11,10,Lapped,1.0,11.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,tsunoda,rb,12,11,Lapped,0.0,12.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,arvid_lindblad,rb,10,12,Lapped,0.0,10.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,bortoleto,audi,9,13,Lapped,0.0,9.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,colapinto,alpine,14,14,Lapped,0.0,14.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,perez,cadillac,22,15,Lapped,0.0,22.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,sainz,williams,17,16,Lapped,0.0,17.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,albon,williams,16,17,Retired,0.0,16.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,bottas,cadillac,21,18,Retired,0.0,21.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,ocon,haas,15,19,Retired,0.0,15.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,stroll,aston_martin,19,20,Retired,0.0,19.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,bearman,haas,20,21,Retired,0.0,20.0
+2026,12,Dutch Grand Prix,zandvoort,2026-08-23,max_verstappen,red_bull,7,22,Retired,0.0,7.0
+2026,13,Italian Grand Prix,monza,2026-09-06,antonelli,mercedes,19,1,Finished,25.0,7.0
+2026,13,Italian Grand Prix,monza,2026-09-06,russell,mercedes,2,2,Finished,18.0,2.0
+2026,13,Italian Grand Prix,monza,2026-09-06,max_verstappen,red_bull,5,3,Finished,15.0,6.0
+2026,13,Italian Grand Prix,monza,2026-09-06,norris,mclaren,8,4,Finished,12.0,9.0
+2026,13,Italian Grand Prix,monza,2026-09-06,piastri,mclaren,6,5,Finished,10.0,3.0
+2026,13,Italian Grand Prix,monza,2026-09-06,hamilton,ferrari,4,6,Finished,8.0,5.0
+2026,13,Italian Grand Prix,monza,2026-09-06,gasly,alpine,1,7,Finished,6.0,1.0
+2026,13,Italian Grand Prix,monza,2026-09-06,arvid_lindblad,rb,9,8,Finished,4.0,10.0
+2026,13,Italian Grand Prix,monza,2026-09-06,colapinto,alpine,7,9,Finished,2.0,8.0
+2026,13,Italian Grand Prix,monza,2026-09-06,tsunoda,rb,15,10,Finished,1.0,17.0
+2026,13,Italian Grand Prix,monza,2026-09-06,bortoleto,audi,10,11,Finished,0.0,11.0
+2026,13,Italian Grand Prix,monza,2026-09-06,hulkenberg,audi,12,12,Finished,0.0,13.0
+2026,13,Italian Grand Prix,monza,2026-09-06,sainz,williams,13,13,Finished,0.0,15.0
+2026,13,Italian Grand Prix,monza,2026-09-06,lawson,red_bull,22,14,Finished,0.0,14.0
+2026,13,Italian Grand Prix,monza,2026-09-06,bearman,haas,11,15,Finished,0.0,12.0
+2026,13,Italian Grand Prix,monza,2026-09-06,ocon,haas,14,16,Lapped,0.0,16.0
+2026,13,Italian Grand Prix,monza,2026-09-06,albon,williams,20,17,Lapped,0.0,18.0
+2026,13,Italian Grand Prix,monza,2026-09-06,perez,cadillac,17,18,Lapped,0.0,20.0
+2026,13,Italian Grand Prix,monza,2026-09-06,bottas,cadillac,16,19,Lapped,0.0,19.0
+2026,13,Italian Grand Prix,monza,2026-09-06,stroll,aston_martin,18,20,Retired,0.0,22.0
+2026,13,Italian Grand Prix,monza,2026-09-06,alonso,aston_martin,21,21,Retired,0.0,21.0
+2026,13,Italian Grand Prix,monza,2026-09-06,leclerc,ferrari,3,22,Retired,0.0,4.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,antonelli,mercedes,2,1,Finished,25.0,2.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,max_verstappen,red_bull,3,2,Finished,18.0,3.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,norris,mclaren,1,3,Finished,15.0,1.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,leclerc,ferrari,5,4,Finished,12.0,5.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,russell,mercedes,6,5,Finished,10.0,6.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,lawson,red_bull,8,6,Finished,8.0,8.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,colapinto,alpine,9,7,Finished,6.0,9.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,piastri,mclaren,7,8,Finished,4.0,7.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,arvid_lindblad,rb,10,9,Lapped,2.0,10.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,hulkenberg,audi,11,10,Lapped,1.0,11.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,ocon,haas,13,11,Lapped,0.0,13.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,gasly,alpine,14,12,Lapped,0.0,14.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,bortoleto,audi,12,13,Lapped,0.0,12.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,tsunoda,rb,15,14,Lapped,0.0,15.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,albon,williams,16,15,Lapped,0.0,16.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,bearman,haas,22,16,Lapped,0.0,
+2026,14,Spanish Grand Prix,madring,2026-09-13,alonso,aston_martin,17,17,Lapped,0.0,18.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,bottas,cadillac,19,18,Lapped,0.0,20.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,sainz,williams,20,19,Retired,0.0,17.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,perez,cadillac,18,20,Retired,0.0,19.0
+2026,14,Spanish Grand Prix,madring,2026-09-13,stroll,aston_martin,21,21,Retired,0.0,
+2026,14,Spanish Grand Prix,madring,2026-09-13,hamilton,ferrari,4,22,Retired,0.0,4.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,russell,mercedes,1,1,Finished,25.0,1.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,max_verstappen,red_bull,8,2,Finished,18.0,8.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,hadjar,red_bull,4,3,Finished,15.0,4.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,leclerc,ferrari,2,4,Finished,12.0,2.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,antonelli,mercedes,16,5,Finished,10.0,16.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,hamilton,ferrari,6,6,Finished,8.0,6.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,arvid_lindblad,rb,15,7,Finished,6.0,15.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,ocon,haas,13,8,Finished,4.0,14.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,bearman,haas,10,9,Finished,2.0,11.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,sainz,williams,14,10,Finished,1.0,9.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,hulkenberg,audi,18,11,Finished,0.0,18.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,lawson,rb,11,12,Finished,0.0,12.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,piastri,mclaren,3,13,Finished,0.0,3.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,perez,cadillac,20,14,Finished,0.0,20.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,bortoleto,audi,17,15,Finished,0.0,17.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,bottas,cadillac,19,16,Retired,0.0,22.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,colapinto,alpine,9,17,Retired,0.0,10.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,gasly,alpine,7,18,Retired,0.0,7.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,norris,mclaren,5,19,Retired,0.0,5.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,albon,williams,12,20,Retired,0.0,13.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,alonso,aston_martin,21,21,Retired,0.0,19.0
+2026,15,Azerbaijan Grand Prix,baku,2026-09-26,stroll,aston_martin,22,22,Retired,0.0,21.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,max_verstappen,red_bull,1,1,Finished,25.0,1.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,antonelli,mercedes,3,2,Finished,18.0,4.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,hamilton,ferrari,2,3,Finished,15.0,2.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,leclerc,ferrari,4,4,Finished,12.0,5.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,hadjar,red_bull,8,5,Finished,10.0,3.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,piastri,mclaren,6,6,Finished,8.0,7.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,lawson,rb,11,7,Finished,6.0,11.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,alonso,aston_martin,12,8,Finished,4.0,12.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,norris,mclaren,5,9,Finished,2.0,6.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,arvid_lindblad,rb,22,10,Finished,1.0,16.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,hulkenberg,audi,15,11,Finished,0.0,17.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,stroll,aston_martin,14,12,Finished,0.0,14.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,colapinto,alpine,21,13,Finished,0.0,15.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,bearman,haas,16,14,Finished,0.0,18.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,ocon,haas,17,15,Finished,0.0,19.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,gasly,alpine,9,16,Finished,0.0,9.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,sainz,williams,13,17,Finished,0.0,13.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,bortoleto,audi,10,18,Finished,0.0,10.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,perez,cadillac,20,19,Finished,0.0,22.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,russell,mercedes,7,20,Retired,0.0,8.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,albon,williams,18,21,Retired,0.0,20.0
+2026,16,Bahrain Grand Prix in Malaysia,sepang,2026-10-04,bottas,cadillac,19,22,Retired,0.0,21.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,max_verstappen,red_bull,1,1,Finished,25.0,1.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,leclerc,ferrari,2,2,Finished,18.0,2.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,antonelli,mercedes,4,3,Finished,15.0,4.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,norris,mclaren,5,4,Finished,12.0,5.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,piastri,mclaren,6,5,Finished,10.0,7.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,hamilton,ferrari,3,6,Finished,8.0,3.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,lawson,rb,8,7,Finished,6.0,9.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,hulkenberg,audi,10,8,Finished,4.0,11.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,russell,mercedes,19,9,Finished,2.0,6.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,hadjar,red_bull,22,10,Finished,1.0,22.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,gasly,alpine,7,11,Lapped,0.0,8.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,bearman,haas,11,12,Lapped,0.0,12.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,ocon,haas,12,13,Lapped,0.0,13.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,sainz,williams,13,14,Lapped,0.0,14.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,arvid_lindblad,rb,9,15,Lapped,0.0,10.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,alonso,aston_martin,20,16,Lapped,0.0,17.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,perez,cadillac,17,17,Lapped,0.0,20.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,albon,williams,16,18,Retired,0.0,18.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,bottas,cadillac,18,19,Lapped,0.0,21.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,stroll,aston_martin,21,20,Retired,0.0,19.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,colapinto,alpine,15,21,Retired,0.0,16.0
+2026,17,Singapore Grand Prix,marina_bay,2026-10-11,bortoleto,audi,14,22,Retired,0.0,15.0
+2026,18,United States Grand Prix,americas,2026-10-25,antonelli,mercedes,1,1,Finished,25.0,1.0
+2026,18,United States Grand Prix,americas,2026-10-25,leclerc,ferrari,4,2,Finished,18.0,4.0
+2026,18,United States Grand Prix,americas,2026-10-25,max_verstappen,red_bull,2,3,Finished,15.0,2.0
+2026,18,United States Grand Prix,americas,2026-10-25,hamilton,ferrari,5,4,Finished,12.0,5.0
+2026,18,United States Grand Prix,americas,2026-10-25,norris,mclaren,8,5,Finished,10.0,8.0
+2026,18,United States Grand Prix,americas,2026-10-25,hadjar,red_bull,3,6,Finished,8.0,3.0
+2026,18,United States Grand Prix,americas,2026-10-25,piastri,mclaren,7,7,Finished,6.0,7.0
+2026,18,United States Grand Prix,americas,2026-10-25,russell,mercedes,6,8,Finished,4.0,6.0
+2026,18,United States Grand Prix,americas,2026-10-25,lawson,rb,9,9,Finished,2.0,10.0
+2026,18,United States Grand Prix,americas,2026-10-25,gasly,alpine,10,10,Finished,1.0,11.0
+2026,18,United States Grand Prix,americas,2026-10-25,hulkenberg,audi,11,11,Finished,0.0,12.0
+2026,18,United States Grand Prix,americas,2026-10-25,arvid_lindblad,rb,14,12,Lapped,0.0,9.0
+2026,18,United States Grand Prix,americas,2026-10-25,bortoleto,audi,21,13,Lapped,0.0,13.0
+2026,18,United States Grand Prix,americas,2026-10-25,ocon,haas,15,14,Lapped,0.0,17.0
+2026,18,United States Grand Prix,americas,2026-10-25,stroll,aston_martin,22,15,Lapped,0.0,18.0
+2026,18,United States Grand Prix,americas,2026-10-25,alonso,aston_martin,12,16,Lapped,0.0,15.0
+2026,18,United States Grand Prix,americas,2026-10-25,albon,williams,17,17,Lapped,0.0,20.0
+2026,18,United States Grand Prix,americas,2026-10-25,sainz,williams,16,18,Lapped,0.0,19.0
+2026,18,United States Grand Prix,americas,2026-10-25,perez,cadillac,18,19,Lapped,0.0,21.0
+2026,18,United States Grand Prix,americas,2026-10-25,bottas,cadillac,19,20,Retired,0.0,22.0
+2026,18,United States Grand Prix,americas,2026-10-25,colapinto,alpine,20,21,Retired,0.0,14.0
+2026,18,United States Grand Prix,americas,2026-10-25,bearman,haas,13,22,Retired,0.0,16.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,max_verstappen,red_bull,5,1,Finished,25.0,4.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,hamilton,ferrari,1,2,Finished,18.0,1.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,antonelli,mercedes,4,3,Finished,15.0,5.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,leclerc,ferrari,3,4,Finished,12.0,3.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,norris,mclaren,6,5,Finished,10.0,6.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,russell,mercedes,2,6,Finished,8.0,2.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,piastri,mclaren,12,7,Finished,6.0,12.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,colapinto,alpine,11,8,Finished,4.0,11.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,lawson,rb,22,9,Finished,2.0,8.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,gasly,alpine,9,10,Finished,1.0,9.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,bortoleto,audi,13,11,Finished,0.0,13.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,hadjar,red_bull,7,12,Finished,0.0,7.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,ryo_hirakawa,haas,18,13,Finished,0.0,18.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,albon,williams,16,14,Finished,0.0,16.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,sainz,williams,15,15,Finished,0.0,15.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,hulkenberg,audi,10,16,Finished,0.0,10.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,perez,cadillac,20,17,Finished,0.0,20.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,arvid_lindblad,rb,8,18,Retired,0.0,8.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,bearman,haas,14,19,Retired,0.0,14.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,bottas,cadillac,21,20,Retired,0.0,21.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,stroll,aston_martin,19,21,Retired,0.0,19.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,alonso,aston_martin,17,22,Retired,0.0,17.0

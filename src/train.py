@@ -47,6 +47,8 @@ def main():
     print("2025 test | grid baseline:   ", round(top3_hits(test, "grid_score"), 2))
     print("2025 test | ROC-AUC:", round(roc_auc_score(test["podium"], test["score"]), 3))
 
+       # Final model: retrain on every season (2016 to latest) before saving
+    model.fit(df[FEATURES], df["podium"])
     # Save the model
     Path("models").mkdir(exist_ok=True)
     joblib.dump({"model": model, "features": FEATURES}, "models/podium_model.joblib")

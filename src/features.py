@@ -8,7 +8,8 @@ TEAM_MAP = {
     "toro_rosso": "rb",
     "alphatauri": "rb",
     "renault": "alpine",
-    "alfa": "sauber",
+    "alfa": "audi",
+    "sauber": "audi",
 }
 
 
