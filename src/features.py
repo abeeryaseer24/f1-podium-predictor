@@ -88,18 +88,40 @@ def add_season_features(df):
     df["grid_gap_to_pole"] = df["grid"] - df.groupby(["season", "round"])["grid"].transform("min")
     df["team_rank_in_race"] = df.groupby(["season", "round"])["constructor_season_podium_rate"].rank(ascending=False)
     return df
+
+def add_gain_features(df):
+    # positive = moved up from the grid, negative = lost places
+    df["gain"] = df["grid"] - df["finish_position"]
+
+    # Driver: average gain over EARLIER races
+    df["driver_avg_gain"] = past_mean(df, ["driver"], "gain")
+
+    # Team: same idea, totalled per race first so teammates don't leak
+    race = df.groupby(["constructor", "season", "round"], as_index=False).agg(
+        gain_sum=("gain", "sum"), entries=("gain", "count")
+    ).sort_values(["season", "round"])
+    g = race.groupby("constructor")
+    prev_sum = g["gain_sum"].cumsum() - race["gain_sum"]
+    prev_ent = g["entries"].cumsum() - race["entries"]
+    race["constructor_avg_gain"] = prev_sum / prev_ent.replace(0, np.nan)
+
+    df = df.merge(
+        race[["constructor", "season", "round", "constructor_avg_gain"]],
+        on=["constructor", "season", "round"], how="left")
+    return df
 def main():
     df = load_and_clean()
     df = add_driver_features(df)
     df = add_team_features(df)
     df = add_season_features(df)
+    df = add_gain_features(df)
     df.to_csv("data/processed/features.csv", index=False)
 
     cols = ["grid", "quali_position", "driver_podium_rate", "driver_avg_finish",
             "driver_dnf_rate", "driver_races", "driver_circuit_podium_rate",
             "constructor_podium_rate", "constructor_circuit_podium_rate",
             "constructor_season_podium_rate", "driver_season_podium_rate",
-            "driver_season_avg_finish", "grid_gap_to_pole", "team_rank_in_race"]
+            "driver_season_avg_finish", "grid_gap_to_pole", "team_rank_in_race", "team_rank_in_race", "driver_avg_gain", "constructor_avg_gain"]
     print("Saved:", df.shape)
     print("DNF rate:", round(df["dnf"].mean() * 100, 1), "%")
     print(df[cols].isna().sum())
