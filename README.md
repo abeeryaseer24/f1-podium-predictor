@@ -2,7 +2,7 @@
 
 Pick a Formula 1 race and this tells you which three drivers it thinks will finish on the podium.
 
-**Try it live: [YOUR-APP-LINK](YOUR-APP-LINK)**
+**Try it live: https://f1-podium-predictor1.streamlit.app/**
 
 ![The app](reports/figures/app_screenshot.png)
 
