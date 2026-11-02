@@ -2,7 +2,17 @@
 
 Pick a Formula 1 race and this tells you which three drivers it thinks will finish on the podium.
 
-I wanted to see how far you can get predicting F1 results from historical data alone, so I trained a model on every race from 2016 up to the 2026 Mexico City Grand Prix. Short answer: further than I expected, but the starting grid turned out to be a very tough opponent.
+**Try it live: [YOUR-APP-LINK](YOUR-APP-LINK)**
+
+![The app](reports/figures/app_screenshot.png)
+
+I wanted to see how far you can get predicting F1 results from historical data alone, so I trained a model on every race from 2016 to the latest 2026 Grand Prix. Short answer: further than I expected, but the starting grid turned out to be a very tough opponent.
+
+## The app
+
+- **Past races:** pick any race since 2016, see the model's podium, then reveal what actually happened and how many it got right.
+- **Upcoming 2026 races:** see the model's prediction before the race. If qualifying has happened it uses the real grid, otherwise it estimates the grid from each driver's qualifying form this season.
+- Dark and light themes.
 
 ## How it works
 
@@ -34,6 +44,8 @@ The baseline is brutal. Just picking the front three on the grid gets about 2 of
 
 The real lesson: qualifying already tells you most of what matters on Sunday.
 
+After that test, the final model was retrained on every race available, so the past races in the app are ones it has already seen. The 2025 number above is the honest one.
+
 ## What the model pays attention to
 
 ![Feature importance](reports/figures/feature_importance.png)
@@ -42,14 +54,20 @@ Grid and qualifying position dominate, followed by current-season form. Ten year
 
 ![Podium rate by grid position](reports/figures/podium_by_grid.png)
 
-## Try it yourself
+## Run it yourself
 
 ```bash
 git clone https://github.com/abeeryaseer24/f1-podium-predictor.git
 cd f1-podium-predictor
 python -m venv .venv
 source .venv/Scripts/activate      # on Mac/Linux: source .venv/bin/activate
-pip install -r requirements.txt
+pip install -r requirements-dev.txt
+```
+
+Start the app:
+
+```bash
+streamlit run app.py
 ```
 
 Rebuild everything from scratch (downloads the data, builds features, trains the model):
@@ -60,35 +78,30 @@ python src/features.py
 python src/train.py
 ```
 
-The saved model is trained on every race up to 2026 round 19.
-
-**Predict a past race** and compare with what actually happened:
+Or use the command-line scripts:
 
 ```bash
-python src/predict.py --season 2025 --round 1
+python src/predict.py --season 2025 --round 1          # a past race
+python src/predict_next.py --season 2026 --round 20    # an upcoming race
 ```
-
-**Predict an upcoming race:**
-
-```bash
-python src/predict_next.py --season 2026 --round 20
-```
-
-If qualifying has happened, it uses the real grid. If not, it estimates the grid from each driver's average qualifying this season, which is rougher. Run it after Saturday for the version worth trusting.
 
 ## Project structure
 
 ```
-data/processed/    cleaned race data and features
-notebooks/         exploration and model comparison
+app.py               the Streamlit web app
+.streamlit/          app theme settings
+data/processed/      cleaned race data and features
+notebooks/           exploration and model comparison
 src/
-  data_loader.py   downloads results from the Jolpica-F1 API
-  features.py      builds the pre-race features
-  train.py         trains, tests and saves the final model
-  predict.py       predicts a past race
-  predict_next.py  predicts an upcoming race
-models/            the saved model
-reports/figures/   charts
+  data_loader.py     downloads results from the Jolpica-F1 API
+  features.py        builds the pre-race features
+  train.py           trains, tests and saves the final model
+  predictor.py       shared prediction engine (used by the app and scripts)
+  style.py           the app's design: colours, animations, podium
+  predict.py         predicts a past race
+  predict_next.py    predicts an upcoming race
+models/              the saved model
+reports/figures/     charts and screenshots
 ```
 
 ## Limitations
@@ -96,13 +109,14 @@ reports/figures/   charts
 - F1 is chaotic. Safety cars, first-lap crashes and strategy calls can't be predicted from history.
 - Each driver's podium chance is estimated separately, so the chances don't add up to exactly 3 drivers.
 - Qualifying order isn't always the final grid, because penalties get applied afterwards.
+- Renamed teams are merged (Force India → Aston Martin, Toro Rosso → Racing Bulls and so on), so older races show today's team names.
 - No weather, tyre or lap-time data yet.
 
 ## What's next
 
-- A small web app so anyone can pick a race and see the prediction
 - Weather and practice-session pace from FastF1
 - A model that predicts the full finishing order, not just the podium
+- Full driver names in the data
 
 ## Data
 
