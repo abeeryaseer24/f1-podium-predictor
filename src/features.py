@@ -65,15 +65,41 @@ def add_team_features(df):
         df = df.merge(race[keys + ["season", "round", name]],
                       on=keys + ["season", "round"], how="left")
     return df
+def add_season_features(df):
+    # Team: podiums per entry in EARLIER races of the same season
+    race = df.groupby(["constructor", "season", "round"], as_index=False).agg(
+        podiums=("podium", "sum"), entries=("podium", "count")
+    ).sort_values(["season", "round"])
+    g = race.groupby(["constructor", "season"])
+    prev_pod = g["podiums"].cumsum() - race["podiums"]
+    prev_ent = g["entries"].cumsum() - race["entries"]
+    race["constructor_season_podium_rate"] = prev_pod / prev_ent.replace(0, np.nan)
+    df = df.merge(
+        race[["constructor", "season", "round", "constructor_season_podium_rate"]],
+        on=["constructor", "season", "round"], how="left")
+
+    # Driver: season-to-date podium rate and average finish (earlier races only)
+    df["driver_season_podium_rate"] = df.groupby(["driver", "season"])["podium"].transform(
+        lambda s: s.shift(1).expanding().mean())
+    df["driver_season_avg_finish"] = df.groupby(["driver", "season"])["finish_position"].transform(
+        lambda s: s.shift(1).expanding().mean())
+
+    # Compare each driver with the rest of the SAME race
+    df["grid_gap_to_pole"] = df["grid"] - df.groupby(["season", "round"])["grid"].transform("min")
+    df["team_rank_in_race"] = df.groupby(["season", "round"])["constructor_season_podium_rate"].rank(ascending=False)
+    return df
 def main():
     df = load_and_clean()
     df = add_driver_features(df)
     df = add_team_features(df)
+    df = add_season_features(df)
     df.to_csv("data/processed/features.csv", index=False)
 
     cols = ["grid", "quali_position", "driver_podium_rate", "driver_avg_finish",
             "driver_dnf_rate", "driver_races", "driver_circuit_podium_rate",
-            "constructor_podium_rate", "constructor_circuit_podium_rate"]
+            "constructor_podium_rate", "constructor_circuit_podium_rate",
+            "constructor_season_podium_rate", "driver_season_podium_rate",
+            "driver_season_avg_finish", "grid_gap_to_pole", "team_rank_in_race"]
     print("Saved:", df.shape)
     print("DNF rate:", round(df["dnf"].mean() * 100, 1), "%")
     print(df[cols].isna().sum())
