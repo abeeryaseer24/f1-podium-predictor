@@ -1,0 +1,83 @@
+import pandas as pd
+import numpy as np
+
+# Same team, different names over the years -> one name
+TEAM_MAP = {
+    "force_india": "aston_martin",
+    "racing_point": "aston_martin",
+    "toro_rosso": "rb",
+    "alphatauri": "rb",
+    "renault": "alpine",
+    "alfa": "sauber",
+}
+
+
+def load_and_clean():
+    df = pd.read_csv("data/processed/results.csv")
+    df = df.sort_values(["season", "round"]).reset_index(drop=True)
+
+    df["constructor"] = df["constructor"].replace(TEAM_MAP)
+    df["podium"] = (df["finish_position"] <= 3).astype(int)
+
+    # DNF = anything that isn't "Finished", "+1 Lap", "+2 Laps" or "Lapped"
+    finished = (
+        df["status"].eq("Finished")
+        | df["status"].str.startswith("+")
+        | df["status"].eq("Lapped")
+    )
+    df["dnf"] = (~finished).astype(int)
+    # grid 0 = pit lane start, treat as the back of the grid
+    df["grid"] = df["grid"].replace(0, 20)
+    # the 11 missing qualifying values: fall back to the grid slot
+    df["quali_position"] = df["quali_position"].fillna(df["grid"])
+    return df
+def past_mean(df, keys, col):
+    """Average of `col` over each group's EARLIER races only.
+    shift(1) pushes everything down one row, so a race never sees itself."""
+    return df.groupby(keys)[col].transform(
+        lambda s: s.shift(1).expanding().mean()
+    )
+
+
+def add_driver_features(df):
+    df["driver_podium_rate"] = past_mean(df, ["driver"], "podium")
+    df["driver_avg_finish"] = past_mean(df, ["driver"], "finish_position")
+    df["driver_dnf_rate"] = past_mean(df, ["driver"], "dnf")
+    df["driver_races"] = df.groupby("driver").cumcount()
+    df["driver_circuit_podium_rate"] = past_mean(df, ["driver", "circuit"], "podium")
+    return df
+def add_team_features(df):
+    sets = [
+        ("constructor_podium_rate", ["constructor"]),
+        ("constructor_circuit_podium_rate", ["constructor", "circuit"]),
+    ]
+    for name, keys in sets:
+        # one row per team per race
+        race = df.groupby(keys + ["season", "round"], as_index=False).agg(
+            podiums=("podium", "sum"), entries=("podium", "count")
+        ).sort_values(["season", "round"])
+
+        # running total minus the current race = earlier races only
+        prev_pod = race.groupby(keys)["podiums"].cumsum() - race["podiums"]
+        prev_ent = race.groupby(keys)["entries"].cumsum() - race["entries"]
+        race[name] = prev_pod / prev_ent.replace(0, np.nan)
+
+        df = df.merge(race[keys + ["season", "round", name]],
+                      on=keys + ["season", "round"], how="left")
+    return df
+def main():
+    df = load_and_clean()
+    df = add_driver_features(df)
+    df = add_team_features(df)
+    df.to_csv("data/processed/features.csv", index=False)
+
+    cols = ["grid", "quali_position", "driver_podium_rate", "driver_avg_finish",
+            "driver_dnf_rate", "driver_races", "driver_circuit_podium_rate",
+            "constructor_podium_rate", "constructor_circuit_podium_rate"]
+    print("Saved:", df.shape)
+    print("DNF rate:", round(df["dnf"].mean() * 100, 1), "%")
+    print(df[cols].isna().sum())
+
+
+if __name__ == "__main__":
+    main()
