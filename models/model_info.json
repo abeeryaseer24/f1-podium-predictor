@@ -1,0 +1,32 @@
+{
+  "trained_at": "2026-11-03T12:22:22+00:00",
+  "trained_on_rows": 4738,
+  "last_race": {
+    "season": 2026,
+    "round": 19,
+    "race_name": "Mexico City Grand Prix"
+  },
+  "features": [
+    "grid",
+    "quali_position",
+    "driver_podium_rate",
+    "driver_avg_finish",
+    "driver_dnf_rate",
+    "driver_races",
+    "driver_circuit_podium_rate",
+    "constructor_podium_rate",
+    "constructor_circuit_podium_rate",
+    "constructor_season_podium_rate",
+    "driver_season_podium_rate",
+    "driver_season_avg_finish",
+    "grid_gap_to_pole",
+    "team_rank_in_race",
+    "driver_avg_gain",
+    "constructor_avg_gain"
+  ],
+  "test_2025": {
+    "model_top3_hits": 2.29,
+    "grid_top3_hits": 2.25,
+    "roc_auc": 0.949
+  }
+}

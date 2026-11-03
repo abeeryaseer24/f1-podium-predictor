@@ -1,3 +1,5 @@
+import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 import joblib
@@ -67,6 +69,26 @@ def main():
     Path("models").mkdir(exist_ok=True)
     joblib.dump({"model": model, "features": FEATURES}, "models/podium_model.joblib")
     print("Model saved to models/podium_model.joblib")
+
+        # Model card: when it was trained, on what, and how it scored on 2025
+    last = df.sort_values(["season", "round"]).iloc[-1]
+    info = {
+        "trained_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "trained_on_rows": int(len(df)),
+        "last_race": {
+            "season": int(last["season"]),
+            "round": int(last["round"]),
+            "race_name": last["race_name"],
+        },
+        "features": FEATURES,
+        "test_2025": {
+            "model_top3_hits": round(float(top3_hits(test, "score")), 2),
+            "grid_top3_hits": round(float(top3_hits(test, "grid_score")), 2),
+            "roc_auc": round(float(roc_auc_score(test["podium"], test["score"])), 3),
+        },
+    }
+    Path("models/model_info.json").write_text(json.dumps(info, indent=2))
+    print("Model info saved to models/model_info.json")
 
     # Feature importance chart for the README
     rf = model.named_steps["randomforestclassifier"]

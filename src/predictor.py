@@ -241,3 +241,9 @@ def season_summary(board):
             grid_avg=round(done["grid_hits"].mean(), 2),
         )
     return summary
+
+def model_info():
+    """The model card written by train.py (None if it doesn't exist yet)."""
+    if MODEL_INFO.exists():
+        return json.loads(MODEL_INFO.read_text())
+    return None

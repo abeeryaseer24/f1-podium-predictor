@@ -7,7 +7,7 @@ import streamlit as st
 # Let the app find the files inside src/
 sys.path.append(str(Path(__file__).parent / "src"))
 from predictor import (past_races, upcoming_races, predict_past, predict_upcoming,
-                       scoreboard, season_summary, clean_name)
+                       scoreboard, season_summary, clean_name, model_info)
 from style import (apply_style, hero, steps, podium, driver_rows, score, picks, tag,
                    stat_tiles, race_card, show_cards, empty_note)
 
@@ -39,6 +39,11 @@ def run_upcoming(season, rnd):
 @st.cache_data(ttl=600)
 def get_scoreboard(kind):
     return scoreboard(kind)
+
+
+@st.cache_data(ttl=600)
+def get_model_info():
+    return model_info()
 
 
 # ---------- remember which screen the user is on ----------
@@ -230,3 +235,13 @@ if page == "Scoreboard":
 else:
     screens = {"pick": screen_pick, "predict": screen_predict, "reveal": screen_reveal}
     screens[st.session_state.screen]()
+
+
+# ---------- footer: which model is running ----------
+info = get_model_info()
+if info:
+    last = info["last_race"]
+    trained = pd.to_datetime(info["trained_at"]).strftime("%d %b %Y")
+    st.write("")
+    st.caption(f"Model trained on {trained}, using every race up to the "
+               f"{last['race_name']} {last['season']} (round {last['round']}).")
