@@ -6,7 +6,7 @@ Pick a Formula 1 race and this tells you which three drivers it thinks will fini
 
 It's also a small live system: after every qualifying session it locks in a prediction for the race, after every race it checks the result, retrains itself and updates a public scoreboard. All of that runs automatically on GitHub Actions.
 
-**Try it live: []()**
+**Try it live: [f1-podium-predictor1.streamlit.app](https://f1-podium-predictor1.streamlit.app/)**
 
 ![The app](reports/figures/app_screenshot.png)
 
