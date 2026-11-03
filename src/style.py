@@ -125,6 +125,7 @@ def apply_style(dark):
     st.markdown(css, unsafe_allow_html=True)
     st.markdown(background, unsafe_allow_html=True)
     st.markdown(COMPONENT_CSS, unsafe_allow_html=True)
+    st.markdown(SCOREBOARD_CSS, unsafe_allow_html=True)
 
 
 def hero():
@@ -265,3 +266,90 @@ def picks(predicted, actual, team_of):
             f'{"✓" if hit else "✗"}</div></div>'
         )
     st.markdown(f'<div class="pp-picks">{"".join(pills)}</div>', unsafe_allow_html=True)
+
+    # ================= Scoreboard page =================
+SCOREBOARD_CSS = """<style>
+.pp-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:.5rem 0 .8rem}
+.pp-stat{background:var(--pp-panel);border:1px solid var(--pp-border);border-radius:14px;padding:16px 18px}
+.pp-stat .k{color:var(--pp-muted);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:.6px}
+.pp-stat .v{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:2.6rem;line-height:1.1;color:var(--pp-text)}
+.pp-stat .v.red{color:var(--pp-red)}
+.pp-stat .s{color:var(--pp-muted);font-size:.9rem}
+.pp-verdict{font-weight:600;margin:0 0 1.2rem;color:var(--pp-text)}
+.pp-race{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:14px 18px;background:var(--pp-panel);border:1px solid var(--pp-border);border-radius:14px;margin-bottom:10px}
+.pp-race .head{flex:1 1 220px;min-width:0}
+.pp-race .title{font-weight:600;color:var(--pp-text)}
+.pp-race .meta{color:var(--pp-muted);font-size:.85rem;margin-top:2px}
+.pp-race .chips{display:flex;flex-wrap:wrap;gap:8px;flex:2 1 320px}
+.pp-chip{display:flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;border:1px solid var(--pp-border);font-size:.9rem;font-weight:600;color:var(--pp-text)}
+.pp-chip small{color:var(--pp-muted);font-weight:500}
+.pp-chip.hit{border-color:#1fa855}
+.pp-chip.miss{border-color:#c40500}
+.pp-chip.hit .mk{color:#1fa855;font-weight:800}
+.pp-chip.miss .mk{color:#e10600;font-weight:800}
+.pp-race .scores{display:flex;gap:8px}
+.pp-sc{padding:6px 12px;border-radius:10px;background:var(--pp-panel2);font-weight:600;font-size:.9rem;color:var(--pp-text);white-space:nowrap}
+.pp-sc b{font-family:'Saira Condensed',sans-serif;font-size:1.25rem}
+.pp-sc.model b{color:var(--pp-red)}
+.pp-wait{padding:6px 12px;border-radius:10px;background:var(--pp-panel2);color:var(--pp-muted);font-weight:600;font-size:.9rem;white-space:nowrap}
+.pp-empty{padding:22px;border:1px dashed var(--pp-border);border-radius:14px;color:var(--pp-muted);text-align:center;margin:.5rem 0 1.5rem}
+</style>"""
+
+
+def stat_tiles(summary):
+    """Three summary tiles (model, grid, races) and a one-line verdict."""
+    races = summary.get("races", 0)
+    if not races:
+        return
+    diff = summary["model_hits"] - summary["grid_hits"]
+    plural = "s" if abs(diff) != 1 else ""
+    if diff > 0:
+        verdict = f"The model is ahead of the grid by {diff} podium driver{plural}."
+    elif diff < 0:
+        verdict = f"The grid is ahead of the model by {-diff} podium driver{plural}."
+    else:
+        verdict = "The model and the grid are level."
+    waiting = summary.get("waiting", 0)
+    tiles = [
+        ("Model", f'{summary["model_avg"]:.2f}',
+         f'per race · {summary["model_hits"]} of {3 * races} podium drivers', " red"),
+        ("Grid baseline", f'{summary["grid_avg"]:.2f}',
+         f'per race · {summary["grid_hits"]} of {3 * races}', ""),
+        ("Races scored", str(races),
+         f"{waiting} waiting for result" if waiting else "all results in", ""),
+    ]
+    tiles_html = "".join(
+        f'<div class="pp-stat"><div class="k">{k}</div><div class="v{c}">{v}</div>'
+        f'<div class="s">{s}</div></div>'
+        for k, v, s, c in tiles
+    )
+    st.markdown(f'<div class="pp-stats">{tiles_html}</div><p class="pp-verdict">{verdict}</p>',
+                unsafe_allow_html=True)
+
+
+def race_card(title, meta, picks, model_hits=None, grid_hits=None):
+    """One race on the scoreboard. picks = list of dicts: name, team, mark ('hit'/'miss'/None), extra."""
+    chips = []
+    for p in picks:
+        _, color = team_info(p["team"])
+        mark = {"hit": '<span class="mk">✓</span>', "miss": '<span class="mk">✗</span>'}.get(p["mark"], "")
+        cls = f' {p["mark"]}' if p["mark"] else ""
+        extra = f' <small>{p["extra"]}</small>' if p.get("extra") else ""
+        chips.append(f'<div class="pp-chip{cls}"><div class="pp-dot" style="background:{color}"></div>'
+                     f'{html.escape(p["name"])}{extra}{mark}</div>')
+    if model_hits is None:
+        right = '<div class="pp-wait">Waiting for result</div>'
+    else:
+        right = (f'<div class="pp-sc model">Model <b>{model_hits}/3</b></div>'
+                 f'<div class="pp-sc">Grid <b>{grid_hits}/3</b></div>')
+    return (f'<div class="pp-race"><div class="head"><div class="title">{html.escape(title)}</div>'
+            f'<div class="meta">{meta}</div></div><div class="chips">{"".join(chips)}</div>'
+            f'<div class="scores">{right}</div></div>')
+
+
+def show_cards(cards):
+    st.markdown("".join(cards), unsafe_allow_html=True)
+
+
+def empty_note(text):
+    st.markdown(f'<div class="pp-empty">{text}</div>', unsafe_allow_html=True)
