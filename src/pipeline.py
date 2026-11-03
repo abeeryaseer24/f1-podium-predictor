@@ -1,9 +1,10 @@
 """The whole live system in one run. GitHub Actions runs this every 3 hours.
 
-1. A race has finished and its results are online?   -> download data, rebuild features, retrain
+1. A race has finished and its results are online?   -> download, CHECK, rebuild features, retrain
 2. Next race's qualifying is done, prediction not saved? -> lock it in (log_prediction.py)
+3. Final safety checks on everything.
 
-Each step only acts when there is something new, so running this often is safe.
+If any step or check fails, the run stops with an error and nothing gets pushed.
 """
 import subprocess
 import sys
@@ -12,13 +13,14 @@ from datetime import datetime, timezone
 import pandas as pd
 import requests
 
+from checks import check_log_unchanged, check_results, run_all, snapshot_log
 from predictor import BASE_URL, RESULTS_CSV
 
 SEASON = 2026
 
 
 def run(script, *args):
-    """Run one of our scripts. If it fails, the whole pipeline stops (nothing gets pushed)."""
+    """Run one of our scripts. If it fails, the whole pipeline stops."""
     print(f"\n>>> python {script} {' '.join(args)}", flush=True)
     subprocess.run([sys.executable, script, *args], check=True)
 
@@ -52,18 +54,29 @@ def missing_results(season):
 def main():
     print(f"Pipeline run at {datetime.now(timezone.utc):%Y-%m-%d %H:%M} UTC")
 
-    # 1. New race results? Refresh everything and retrain.
+    # Remember how things were before this run, to compare afterwards
+    rows_before = len(pd.read_csv(RESULTS_CSV))
+    log_before = snapshot_log()
+
+    # 1. New race results? Download, check BEFORE using them, then rebuild and retrain.
     new = missing_results(SEASON)
     if new:
         print(f"New results for round(s) {new}: refreshing data and retraining.")
         run("src/data_loader.py")
+        print()
+        check_results(min_rows=rows_before)
         run("src/features.py")
         run("src/train.py")
     else:
         print("No new race results.")
 
-    # 2. Lock in the next race's prediction if qualifying is done (the script checks the rules).
+    # 2. Lock in the next race's prediction if qualifying is done.
     run("src/log_prediction.py", "--season", str(SEASON))
+
+    # 3. Final safety checks on everything.
+    print("\nFinal safety checks")
+    run_all(min_rows=rows_before)
+    check_log_unchanged(log_before)
 
     print("\nPipeline finished.")
 
