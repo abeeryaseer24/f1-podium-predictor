@@ -4,19 +4,49 @@
 
 Pick a Formula 1 race and this tells you which three drivers it thinks will finish on the podium.
 
-**Try it live: [https://f1-podium-predictor1.streamlit.app/](https://f1-podium-predictor1.streamlit.app/)**
+It's also a small live system: after every qualifying session it locks in a prediction for the race, after every race it checks the result, retrains itself and updates a public scoreboard. All of that runs automatically on GitHub Actions.
+
+**Try it live: []()**
 
 ![The app](reports/figures/app_screenshot.png)
 
-I wanted to see how far you can get predicting F1 results from historical data alone, so I trained a model on every race from 2016 to the latest 2026 Grand Prix. Short answer: further than I expected, but the starting grid turned out to be a very tough opponent.
-
 ## The app
 
-- **Past races:** pick any race since 2016, see the model's podium, then reveal what actually happened and how many it got right.
-- **Upcoming 2026 races:** see the model's prediction before the race. If qualifying has happened it uses the real grid, otherwise it estimates the grid from each driver's qualifying form this season.
-- Dark and light themes.
+- **Predict:** pick any race since 2016 and see the model's podium, then reveal what actually happened. For upcoming 2026 races it predicts before the race, using the real qualifying grid once it's available.
+- **Scoreboard:** every 2026 prediction locked in before its race, scored against the result and against a simple baseline (the front three on the grid), plus a full 2025 backtest.
+- Dark and light themes, works on phones.
 
-## How it works
+![The scoreboard](reports/figures/scoreboard_screenshot.png)
+
+## How it runs itself
+
+```mermaid
+flowchart LR
+    A[GitHub Actions<br/>every 3 hours] --> B{New race<br/>results online?}
+    B -- yes --> C[Download data] --> D[Safety checks] --> E[Rebuild features<br/>and retrain]
+    B -- no --> F
+    E --> F{Next race's<br/>qualifying done?}
+    F -- yes --> G[Lock in prediction]
+    F -- no --> H
+    G --> H[Final checks]
+    H --> I[Push to GitHub] --> J[Live app updates]
+```
+
+Every 3 hours, `src/pipeline.py` runs on GitHub's servers:
+
+1. **After a race:** if new results are online, it downloads them, checks them, rebuilds the features and retrains the model.
+2. **After qualifying:** if the next race's grid is out and its prediction isn't saved yet, it locks one in.
+3. **If anything changed,** it commits and pushes, and the live app picks up the new data.
+
+**Rules that keep the scoreboard honest:**
+
+- A prediction is only saved with the real qualifying grid, and only before the race starts.
+- Once saved, it is never changed. The pipeline checks on every run that earlier predictions are exactly as they were.
+- Every prediction records which model version made it (`models/model_info.json`).
+
+**Safety checks:** before new data is used, the pipeline checks that no rows were lost, no races or drivers are missing or duplicated, and every race has exactly one P1, P2 and P3. If any check fails, the run stops, nothing is pushed, and I get an email. The badge at the top shows whether the last run passed.
+
+## How the model works
 
 For every driver in a race, the model estimates their chance of finishing in the top 3. The three highest chances are the predicted podium.
 
@@ -46,7 +76,7 @@ The baseline is brutal. Just picking the front three on the grid gets about 2 of
 
 The real lesson: qualifying already tells you most of what matters on Sunday.
 
-After that test, the final model was retrained on every race available, so the past races in the app are ones it has already seen. The 2025 number above is the honest one.
+The 2025 backtest is in the app's Scoreboard, race by race. From round 20 of 2026, the Scoreboard also tracks predictions locked in before each race, which is the most honest test of all.
 
 ## What the model pays attention to
 
@@ -80,7 +110,15 @@ python src/features.py
 python src/train.py
 ```
 
-Or use the command-line scripts:
+Run the live pipeline or the checks by hand:
+
+```bash
+python src/pipeline.py                     # what GitHub Actions runs every 3 hours
+python src/log_prediction.py --dry-run     # preview the next race's prediction
+python src/checks.py                       # run all safety checks
+```
+
+Command-line predictions:
 
 ```bash
 python src/predict.py --season 2025 --round 1          # a past race
@@ -90,33 +128,38 @@ python src/predict_next.py --season 2026 --round 20    # an upcoming race
 ## Project structure
 
 ```
-app.py               the Streamlit web app
-.streamlit/          app theme settings
-data/processed/      cleaned race data and features
-notebooks/           exploration and model comparison
+app.py                  the Streamlit web app
+.streamlit/             app theme settings
+.github/workflows/      the GitHub Actions schedule (pipeline.yml)
+data/processed/         cleaned race data and features
+data/predictions/       locked 2026 predictions and the 2025 backtest
+notebooks/              exploration and model comparison
 src/
-  data_loader.py     downloads results from the Jolpica-F1 API
-  features.py        builds the pre-race features
-  train.py           trains, tests and saves the final model
-  predictor.py       shared prediction engine (used by the app and scripts)
-  style.py           the app's design: colours, animations, podium
-  predict.py         predicts a past race
-  predict_next.py    predicts an upcoming race
-models/              the saved model
-reports/figures/     charts and screenshots
+  data_loader.py        downloads results from the Jolpica-F1 API
+  features.py           builds the pre-race features
+  train.py              trains, tests and saves the model, the model card and the backtest
+  predictor.py          shared engine: predictions and the scoreboard
+  log_prediction.py     locks in the next race's prediction
+  pipeline.py           the automated live update
+  checks.py             safety and fairness checks
+  style.py              the app's design
+  predict.py            predicts a past race (command line)
+  predict_next.py       predicts an upcoming race (command line)
+models/                 the saved model and its model card (model_info.json)
+reports/figures/        charts and screenshots
 ```
 
 ## Limitations
 
 - F1 is chaotic. Safety cars, first-lap crashes and strategy calls can't be predicted from history.
 - Each driver's podium chance is estimated separately, so the chances don't add up to exactly 3 drivers.
-- Qualifying order isn't always the final grid, because penalties get applied afterwards.
+- The live scoreboard started late in 2026, so it only has a few races so far. It keeps growing from 2027.
 - Renamed teams are merged (Force India → Aston Martin, Toro Rosso → Racing Bulls and so on), so older races show today's team names.
 - No weather, tyre or lap-time data yet.
 
 ## What's next
 
-- Weather and practice-session pace from FastF1
+- Weather and practice-session pace from FastF1, to try to properly beat the grid
 - A model that predicts the full finishing order, not just the podium
 - Full driver names in the data
 
