@@ -159,3 +159,26 @@ def predict_upcoming(season, rnd):
         "predicted": race.head(3)["name"].tolist(),
         "real_quali": real_quali,
     }
+
+# ================= Live system helpers =================
+import json
+from datetime import datetime, timezone
+
+MODEL_INFO = ROOT / "models" / "model_info.json"
+
+
+def get_race_start(season, rnd):
+    """When the race starts, in UTC. Uses noon UTC if the calendar has no time yet."""
+    data = requests.get(f"{BASE_URL}/{season}/{rnd}.json", timeout=30).json()
+    race = data["MRData"]["RaceTable"]["Races"][0]
+    time = race.get("time", "12:00:00Z").replace("Z", "+00:00")
+    return datetime.fromisoformat(f"{race['date']}T{time}")
+
+
+def model_version():
+    """Which model made a prediction: the time it was trained.
+    (Step 4 adds model_info.json; until then we use the model file's save time.)"""
+    if MODEL_INFO.exists():
+        return json.loads(MODEL_INFO.read_text())["trained_at"]
+    saved = datetime.fromtimestamp(MODEL_FILE.stat().st_mtime, timezone.utc)
+    return saved.isoformat(timespec="seconds")
