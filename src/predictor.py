@@ -182,3 +182,62 @@ def model_version():
         return json.loads(MODEL_INFO.read_text())["trained_at"]
     saved = datetime.fromtimestamp(MODEL_FILE.stat().st_mtime, timezone.utc)
     return saved.isoformat(timespec="seconds")
+
+# ================= Scoreboard =================
+PREDICTIONS_DIR = ROOT / "data" / "predictions"
+SCOREBOARD_FILES = {
+    "live": PREDICTIONS_DIR / "predictions.csv",        # 2026, locked before each race
+    "backtest": PREDICTIONS_DIR / "backtest_2025.csv",  # 2025, model trained on 2016-2024
+}
+
+
+def scoreboard(kind):
+    """Every saved prediction next to the real result.
+    kind = "live" or "backtest". One row per race."""
+    file = SCOREBOARD_FILES[kind]
+    if not file.exists():
+        return pd.DataFrame()
+
+    preds = pd.read_csv(file)
+    results = pd.read_csv(RESULTS_CSV)
+    results["constructor"] = results["constructor"].replace(TEAM_MAP)
+
+    rows = []
+    for _, p in preds.iterrows():
+        row = p.to_dict()
+        row["predicted"] = [p["p1"], p["p2"], p["p3"]]
+        race = results[(results["season"] == p["season"]) & (results["round"] == p["round"])]
+
+        if race.empty:                      # no result yet
+            row.update(status="waiting", actual=[], actual_teams=[],
+                       model_hits=None, grid_hits=None)
+        else:
+            podium = race.sort_values("finish_position").head(3)
+            front_row = race[race["grid"] > 0].sort_values("grid").head(3)["driver"].tolist()
+            actual = podium["driver"].tolist()
+            row.update(
+                status="done",
+                actual=actual,
+                actual_teams=podium["constructor"].tolist(),
+                model_hits=len(set(row["predicted"]) & set(actual)),
+                grid_hits=len(set(front_row) & set(actual)),
+            )
+        rows.append(row)
+    return pd.DataFrame(rows)
+
+
+def season_summary(board):
+    """Totals and averages for the finished races: the model vs the grid."""
+    if board.empty:
+        return {"races": 0, "waiting": 0}
+    done = board[board["status"] == "done"]
+    races = len(done)
+    summary = {"races": races, "waiting": len(board) - races}
+    if races:
+        summary.update(
+            model_hits=int(done["model_hits"].sum()),
+            grid_hits=int(done["grid_hits"].sum()),
+            model_avg=round(done["model_hits"].mean(), 2),
+            grid_avg=round(done["grid_hits"].mean(), 2),
+        )
+    return summary

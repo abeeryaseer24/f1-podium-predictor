@@ -47,6 +47,20 @@ def main():
     print("2025 test | grid baseline:   ", round(top3_hits(test, "grid_score"), 2))
     print("2025 test | ROC-AUC:", round(roc_auc_score(test["podium"], test["score"]), 3))
 
+        # Save the 2025 backtest: the model above never saw any 2025 race
+    rows = []
+    for (season, rnd), race in test.groupby(["season", "round"]):
+        top3 = race.nlargest(3, "score")
+        row = {"season": season, "round": rnd, "race_name": race["race_name"].iloc[0]}
+        for i, (_, r) in enumerate(top3.iterrows(), start=1):
+            row[f"p{i}"] = r["driver"]
+            row[f"p{i}_team"] = r["constructor"]
+            row[f"p{i}_chance"] = round(r["score"] * 100, 1)
+        rows.append(row)
+    Path("data/predictions").mkdir(parents=True, exist_ok=True)
+    pd.DataFrame(rows).to_csv("data/predictions/backtest_2025.csv", index=False)
+    print("Backtest saved to data/predictions/backtest_2025.csv")
+
        # Final model: retrain on every season (2016 to latest) before saving
     model.fit(df[FEATURES], df["podium"])
     # Save the model
