@@ -4,3 +4,4 @@ seaborn
 xgboost
 jupyter
 ipykernel
+pyarrow==26.0.0

@@ -7,7 +7,7 @@ import sys
 
 import pandas as pd
 
-from predictor import FEATURES_CSV, RESULTS_CSV, SCOREBOARD_FILES, model_info
+from predictor import FEATURES_CSV, RACES_DIR, RESULTS_CSV, SCOREBOARD_FILES, model_info
 
 FIRST_SEASON = 2016
 
@@ -109,12 +109,33 @@ def check_log_unchanged(before):
           and old_part.equals(before.astype(str).reset_index(drop=True)),
           "earlier locked predictions are exactly as they were")
 
+# ---------- the prepared race files ----------
+
+def check_race_files():
+    print("Checking the prepared race files")
+    folders = [p for p in RACES_DIR.glob("*_*") if (p / "info.json").exists()]
+    if not folders:
+        print("  --  no race files yet")
+        return
+    needed = ["track.parquet", "positions.parquet", "laps.parquet",
+              "pits.parquet", "race_control.parquet", "weather.parquet"]
+    broken = [p.name for p in folders if not all((p / f).exists() for f in needed)]
+    check(not broken, f"every prepared race has all its files ({len(folders)} races)")
+    few_cars = [p.name for p in folders
+                if pd.read_parquet(p / "positions.parquet", columns=["driver_number"])
+                ["driver_number"].nunique() < 15]
+    check(not few_cars, "every prepared race has positions for at least 15 cars")
+    too_big = [p.name for p in folders if sum(f.stat().st_size for f in p.iterdir()) > 15e6]
+    check(not too_big, "every race folder is under 15 MB")
+
+
 
 def run_all(min_rows=0):
     check_results(min_rows)
     check_features()
     check_model()
     check_predictions()
+    check_race_files()
     print("All checks passed.")
 
 

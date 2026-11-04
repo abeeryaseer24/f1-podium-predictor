@@ -70,6 +70,9 @@ def main():
     else:
         print("No new race results.")
 
+    # Race files for the 3D pages: up to 3 missing races per run, newest first.
+    run("src/prepare_race.py", "--missing", "--limit", "3")
+   
     # 2. Lock in the next race's prediction if qualifying is done.
     run("src/log_prediction.py", "--season", str(SEASON))
 

@@ -16,6 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 RESULTS_CSV = ROOT / "data" / "processed" / "results.csv"
 FEATURES_CSV = ROOT / "data" / "processed" / "features.csv"
 MODEL_FILE = ROOT / "models" / "podium_model.joblib"
+RACES_DIR = ROOT / "data" / "races"
 BASE_URL = "https://api.jolpi.ca/ergast/f1"
 
 
