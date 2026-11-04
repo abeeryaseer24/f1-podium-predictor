@@ -1,5 +1,6 @@
 """Entry point: the top menu, the header, the theme switch and the footer.
-Every page lives in app_pages/. To add a page, add one st.Page line to PAGES."""
+Every page lives in app_pages/. To add a page, add one st.Page line to PAGES
+and one line to TAGLINES."""
 import sys
 from pathlib import Path
 
@@ -21,12 +22,25 @@ PAGES = {
         st.Page("app_pages/podium_predictor.py", title="Podium Predictor", default=True),
         st.Page("app_pages/scoreboard.py", title="Scoreboard"),
     ],
-        "Race": [
+    "Race": [
         st.Page("app_pages/ghost_lap_duel.py", title="Ghost Lap Duel"),
         st.Page("app_pages/circuit_explorer.py", title="Circuit Explorer"),
+        st.Page("app_pages/tyre_lab.py", title="Tyre Lab"),
     ],
 }
 page = st.navigation(PAGES, position="top")
+
+
+# ---------- one line under the title, for each page ----------
+
+TAGLINES = {
+    "Podium Predictor": "Pick a Formula 1 race and see who the model puts on the podium.",
+    "Scoreboard": "Every prediction, locked in before the race and scored after it.",
+    "Ghost Lap Duel": "Two drivers' fastest laps, head to head, all the way round.",
+    "Circuit Explorer": "Every circuit in its real shape and elevation. "
+                        "Hills are shown 4× higher so you can see them.",
+    "Tyre Lab": "How fast each tyre wears, measured from every clean racing lap.",
+}
 
 
 # ---------- header, with the theme switch on the right ----------
@@ -35,13 +49,6 @@ if "dark" not in st.session_state:
     st.session_state.dark = True
 
 title_col, switch_col = st.columns([5, 1], vertical_alignment="center")
-TAGLINES = {
-    "Podium Predictor": "Pick a Formula 1 race and see who the model puts on the podium.",
-    "Scoreboard": "Every prediction, locked in before the race and scored after it.",
-    "Ghost Lap Duel": "Two drivers' fastest laps, head to head, all the way round.",
-    "Circuit Explorer": "Every circuit in its real shape and elevation. "
-                        "Hills are shown 4× higher so you can see them.",
-}
 with title_col:
     hero(page.title, TAGLINES.get(page.title, ""))
 with switch_col:
