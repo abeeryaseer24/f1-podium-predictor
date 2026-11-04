@@ -28,7 +28,9 @@ PAGES = {
         st.Page("app_pages/circuit_explorer.py", title="Circuit Explorer"),
         st.Page("app_pages/tyre_lab.py", title="Tyre Lab"),
     ],
-    
+    "Games": [
+        st.Page("app_pages/race_engineer.py", title="Be the Race Engineer"),
+    ],
 }
 page = st.navigation(PAGES, position="top")
 
@@ -42,7 +44,8 @@ TAGLINES = {
     "Circuit Explorer": "Every circuit in its real shape and elevation. "
                         "Hills are shown 4× higher so you can see them.",
     "Tyre Lab": "How fast each tyre wears, measured from every clean racing lap.",
-        "Pit Wall": "Watch any race back, lap by lap, with every car on the real track.",
+    "Pit Wall": "Watch any race back, lap by lap, with every car on the real track.",
+    "Be the Race Engineer": "Make the pit calls for a real driver in a real race. Can you beat their team?",
 }
 
 
@@ -73,4 +76,4 @@ if info:
     trained = pd.to_datetime(info["trained_at"]).strftime("%d %b %Y")
     st.write("")
     st.caption(f"Model trained on {trained}, using every race up to the "
-               f"{last['race_name']} {last['season']} (round {last['round']}).")
+               f"{last['race_name']} {last['season']} (round {last['round']}).")

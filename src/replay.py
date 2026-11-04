@@ -44,16 +44,30 @@ def race_start(laps):
     return float(first["t_start"] - lap1_time)
 
 
-def car_progress(pos, ticks, tree):
-    """How far round the race one car is (in laps), once per second."""
-    xy = pos.drop_duplicates("t").set_index("t")[["x", "y"]].sort_index()
-    xy = xy.reindex(ticks).interpolate(limit_area="inside").ffill().bfill()
-    _, idx = tree.query(xy.to_numpy())
-    frac = idx / TRACK_POINTS                                 # 0..1 round the lap
-    prog = np.unwrap(frac * 2 * np.pi) / (2 * np.pi)          # keeps counting past 1, 2, 3...
-    if prog[0] > 0.5:                                         # the grid is just before the line
-        prog = prog - 1.0
-    return np.maximum.accumulate(prog)                        # never slide backwards
+def car_progress(pos, ticks, tree, lap_starts=None):
+    """How far round the race one car is (in laps), once per second.
+    Where on the lap comes from the car's real position readings; WHICH lap comes from the
+    official lap times, so a gap in the position data can never lose a lap. Gaps between
+    readings (OpenF1 sometimes has none for 20-30 s) are filled smoothly along the track."""
+    samples = pos.drop_duplicates("t").sort_values("t")
+    _, idx = tree.query(samples[["x", "y"]].to_numpy(dtype=float))
+    t_s = samples["t"].to_numpy(dtype=float)
+    frac = idx / TRACK_POINTS                                 # 0..1 round the lap, at each reading
+    starts = np.asarray([s for s in (lap_starts if lap_starts is not None else []) if np.isfinite(s)])
+    if len(starts) >= 2:
+        duration = starts[-1] - starts[-2]
+        est = np.interp(t_s, np.r_[starts, starts[-1] + duration],
+                        np.arange(len(starts) + 1, dtype=float))    # laps done, judged by the clock
+        est = np.where(t_s < starts[0], 0.0, est)
+        prog = frac + np.round(est - frac)                    # the lap from the clock, the spot from the position
+        good = np.abs(prog - est) < 0.25                      # drop readings that disagree with the clock
+        t_s, prog = t_s[good], prog[good]
+    else:
+        prog = np.unwrap(frac * 2 * np.pi) / (2 * np.pi)      # keeps counting past 1, 2, 3...
+        if len(prog) and prog[0] > 0.5:                       # the grid is just before the line
+            prog = prog - 1.0
+    prog = np.maximum.accumulate(prog)                        # never slide backwards
+    return np.interp(ticks, t_s, prog)
 
 
 def is_event(r):
@@ -119,6 +133,13 @@ def build_replay(folder):
         if p.empty:
             continue
         mine = laps[laps["driver_number"] == number].sort_values("lap_number")
+        if len(mine):                                      # OpenF1 sometimes skips a lap: fill the gap
+            mine = (mine.drop_duplicates("lap_number").set_index("lap_number")
+                    .reindex(range(1, int(mine["lap_number"].max()) + 1)))
+            mine["t_start"] = mine["t_start"].interpolate(limit_area="inside")
+            mine["tyre_age"] = mine["tyre_age"].interpolate(limit_area="inside")
+            mine["compound"] = mine["compound"].ffill()
+            mine = mine.rename_axis("lap_number").reset_index()
         last_lap = int(mine["lap_number"].max()) if len(mine) else 0
         last_end = (mine["t_start"] + mine["lap_duration"]).max()
         out = (round(float(last_end - base), 1)
@@ -129,7 +150,7 @@ def build_replay(folder):
             "code": d.get("code") or str(number),
             "name": (d.get("name") or "").title(),
             "colour": d.get("colour") or "#8a8a96",
-            "prog": np.round(car_progress(p, ticks, tree), 3).tolist(),
+            "prog": np.round(car_progress(p, ticks, tree, mine["t_start"].to_numpy(dtype=float)), 3).tolist(),
             "lapStarts": (mine["t_start"] - base).round(1).fillna(-1).tolist(),
             "compound": mine["compound"].fillna("").tolist(),
             "age": mine["tyre_age"].fillna(0).round().astype(int).tolist(),
@@ -142,4 +163,4 @@ def build_replay(folder):
     events, status = race_events(control, base, end)
     return {"race_name": info["race_name"], "season": info["season"], "laps": total_laps,
             "duration": int(len(ticks) - 1), "lapTimes": lap_times, "cars": cars,
-            "events": events, "status": status}
+            "events": events, "status": status}

@@ -15,6 +15,7 @@ Times are in seconds from the start of the race session.
 Usage:
   python src/prepare_race.py 2026 19               one race
   python src/prepare_race.py --missing --limit 3   up to 3 races that don't have files yet
+  python src/prepare_race.py 2026 11 --track-only  rebuild only the track shape of a prepared race
 """
 import argparse
 import json
@@ -121,6 +122,59 @@ def timed(rows, t0):
     return df.drop(columns=[c for c in ("date", "meeting_key", "session_key") if c in df.columns])
 
 
+def shape_ok(shape):
+    """A usable track line: enough points, no big jumps, and it closes into a loop."""
+    if len(shape) < 150:
+        return False
+    xy = shape[["x", "y"]].to_numpy(dtype=float)
+    step = (((xy[1:] - xy[:-1]) ** 2).sum(axis=1)) ** 0.5
+    close = (((xy[0] - xy[-1]) ** 2).sum()) ** 0.5
+    typical = float(pd.Series(step).median())
+    return typical > 20 and step.max() < max(1500, 8 * typical) and close < 1500
+
+
+def track_shape(key, laps):
+    """The circuit shape from one of the 5 fastest clean laps: the first whose location data
+    passes shape_ok (OpenF1 sometimes has gaps or repeated points on a lap)."""
+    clean = laps[laps["lap_duration"].notna()
+                 & ~laps["is_pit_out_lap"].fillna(False).astype(bool)]
+    last = None
+    for lap in clean.nsmallest(5, "lap_duration").itertuples():
+        window = {"session_key": key, "driver_number": int(lap.driver_number),
+                  "date>": fmt(lap.start), "date<": fmt(lap.end)}
+        shape = pd.DataFrame(get("location", window))
+        car = pd.DataFrame(get("car_data", window))
+        if shape.empty or car.empty:
+            continue
+        shape["date"], car["date"] = to_dt(shape["date"]), to_dt(car["date"])
+        shape = pd.merge_asof(shape.sort_values("date"),
+                              car.sort_values("date")[["date", "speed", "n_gear", "throttle", "brake"]],
+                              on="date", direction="nearest")
+        shape["s"] = (shape["date"] - shape["date"].iloc[0]).dt.total_seconds()
+        shape = shape[["s", "x", "y", "z", "speed", "n_gear", "throttle", "brake"]]
+        if shape_ok(shape):
+            return shape
+        last = shape
+    if last is None:
+        raise RuntimeError("No detailed data for the fastest laps yet.")
+    print("  Warning: no fast lap had clean location data; using the best one available.")
+    return last
+
+
+def refresh_track(season, rnd):
+    """Rebuild only track.parquet for a race that is already prepared (then redo its corners)."""
+    out = RACES_DIR / f"{season}_{rnd:02d}"
+    info = json.loads((out / "info.json").read_text())
+    key, t0 = info["openf1_session_key"], to_dt(pd.Series([info["session_start"]])).iloc[0]
+    laps = pd.read_parquet(out / "laps.parquet")
+    laps["start"] = t0 + pd.to_timedelta(laps["t_start"], unit="s")
+    laps["end"] = laps["start"] + pd.to_timedelta(laps["lap_duration"], unit="s")
+    shape = track_shape(key, laps)
+    shape.to_parquet(out / "track.parquet", index=False)
+    print(f"  Saved a new track shape for {out.name}: {len(shape)} points, "
+          f"{'good' if shape_ok(shape) else 'still not perfect'}")
+
+
 # ---------- preparing one race ----------
 
 def prepare(season, rnd):
@@ -173,22 +227,8 @@ def prepare(season, rnd):
     track_positions["t"] = track_positions["t"].astype("int32")
     track_positions[["x", "y", "z"]] = track_positions[["x", "y", "z"]].round().astype("int32")
 
-    # The circuit shape: the fastest lap, at full detail, with speed and gear
-    clean = laps[laps["lap_duration"].notna()
-                 & ~laps["is_pit_out_lap"].fillna(False).astype(bool)]
-    fastest = clean.nsmallest(1, "lap_duration").iloc[0]
-    window = {"session_key": key, "driver_number": int(fastest["driver_number"]),
-              "date>": fmt(fastest["start"]), "date<": fmt(fastest["end"])}
-    shape = pd.DataFrame(get("location", window))
-    car = pd.DataFrame(get("car_data", window))
-    if shape.empty or car.empty:
-        raise RuntimeError("No detailed data for the fastest lap yet.")
-    shape["date"], car["date"] = to_dt(shape["date"]), to_dt(car["date"])
-    shape = pd.merge_asof(shape.sort_values("date"),
-                          car.sort_values("date")[["date", "speed", "n_gear", "throttle", "brake"]],
-                          on="date", direction="nearest")
-    shape["s"] = (shape["date"] - shape["date"].iloc[0]).dt.total_seconds()
-    shape = shape[["s", "x", "y", "z", "speed", "n_gear", "throttle", "brake"]]
+    # The circuit shape: the fastest lap with good data, at full detail, with speed and gear
+    shape = track_shape(key, laps)
 
     # Practice lap times (FP2, or FP1 on sprint weekends)
     practice_name, practice_laps = None, pd.DataFrame()
@@ -259,6 +299,8 @@ def main():
                         help="prepare races that don't have files yet")
     parser.add_argument("--limit", type=int, default=3,
                         help="with --missing: at most this many races per run")
+    parser.add_argument("--track-only", action="store_true",
+                        help="with a season and round: rebuild only the track shape")
     args = parser.parse_args()
 
     if args.missing:
@@ -269,6 +311,8 @@ def main():
                 prepare(season, rnd)
             except Exception as error:           # not ready yet: try again next run
                 print(f"  Skipped {season} round {rnd}: {error}")
+    elif args.season and args.round and args.track_only:
+        refresh_track(args.season, args.round)
     elif args.season and args.round:
         prepare(args.season, args.round)
     else:
@@ -276,4 +320,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()

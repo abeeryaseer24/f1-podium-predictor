@@ -127,6 +127,13 @@ def check_race_files():
     check(not few_cars, "every prepared race has positions for at least 15 cars")
     too_big = [p.name for p in folders if sum(f.stat().st_size for f in p.iterdir()) > 15e6]
     check(not too_big, "every race folder is under 15 MB")
+    from prepare_race import shape_ok
+    broken_tracks = [p.name for p in folders if not shape_ok(pd.read_parquet(p / "track.parquet"))]
+    if broken_tracks:                                  # a warning, not a failure: the race still works
+        print(f"  !!  track shape looks broken for {', '.join(broken_tracks)}: "
+              f"run  python src/prepare_race.py <season> <round> --track-only")
+    else:
+        print("  ok  every track shape is clean")
 
 # ---------- the strategist (the no-future rule) ----------
 
