@@ -8,6 +8,7 @@ import streamlit as st
 from duel import fastest_laps, run_duel, session_key
 from tyres import analyse as analyse_tyres
 from replay import build_replay
+from strategy import replay_payload
 
 from predictor import (RACES_DIR, model_info, past_races, predict_past, predict_upcoming,
                        scoreboard, upcoming_races)
@@ -96,3 +97,9 @@ def get_tyres(folder):
 @st.cache_data(ttl=600)
 def get_replay(folder):
     return build_replay(folder)
+
+
+
+@st.cache_data(ttl=600)
+def get_strategy(folder):
+    return replay_payload(folder)

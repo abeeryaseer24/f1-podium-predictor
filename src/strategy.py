@@ -15,6 +15,7 @@ Usage:
   python src/strategy.py --missing --limit 10  races that don't have a strategy file yet
 """
 import argparse
+import json
 
 import numpy as np
 import pandas as pd
@@ -228,6 +229,40 @@ def summary(folder):
         for s in stops.itertuples())
     return {"stops": len(stops), "matched": int(matched), "pit_now_calls": len(pit_now)}
 
+def replay_payload(folder):
+    """Everything the Pit Wall needs from the strategist: each car's call and plans per lap,
+    plus the verdict (strategist vs the real teams). None if this race has no strategy yet."""
+    path = RACES_DIR / folder / "strategy.parquet"
+    if not path.exists():
+        return None
+    strat = pd.read_parquet(path)
+    laps = pd.read_parquet(RACES_DIR / folder / "laps.parquet")
+    info = json.loads((RACES_DIR / folder / "info.json").read_text())
+    codes = {d["number"]: d.get("code") or str(d["number"]) for d in info["drivers"]}
+
+    calls = {}
+    for (d, L), g in strat.groupby(["driver_number", "lap"]):
+        g = g.sort_values("exp_position")
+        call = g[g["call"]].iloc[0]
+        threat = call["undercut_by"]
+        calls.setdefault(str(int(d)), {})[str(int(L))] = {
+            "call": call["plan"],
+            "plans": [[r.plan, round(float(r.exp_position), 1), int(r.best_position),
+                       int(r.worst_position)] for r in g.itertuples()],
+            "undercut": codes.get(int(threat)) if pd.notna(threat) else None,
+        }
+
+    stops = real_stops(laps)
+    pit_now = strat[strat["call"] & (strat["plan"] == "Pit now")]
+    drivers = []
+    for d in sorted(set(stops["driver_number"]) | set(pit_now["driver_number"])):
+        real = [int(x) for x in sorted(stops.loc[stops["driver_number"] == d, "lap"])]
+        said = [int(x) for x in sorted(pit_now.loc[pit_now["driver_number"] == d, "lap"])]
+        windows = [L for L in said if L - 1 not in said]          # first lap of each 'box' call
+        matched = sum(any(r - 2 <= L <= r for L in said) for r in real)
+        drivers.append({"code": codes.get(int(d), str(d)), "real": real,
+                        "windows": windows, "matched": int(matched)})
+    return {"calls": calls, "verdict": {**summary(folder), "drivers": drivers}}
 
 def main():
     parser = argparse.ArgumentParser(description="Run the Pit Wall strategist")

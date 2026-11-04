@@ -1,8 +1,9 @@
-"""Pit Wall: watch any race back, with every car on the real 3D track."""
+"""Pit Wall: watch any race back with every car on the real 3D track,
+plus the strategist's pit calls and its verdict against the real teams."""
 import streamlit as st
 
-from app_data import get_prepared_races, get_race_file, get_replay
-from track3d import replay_view
+from app_data import get_prepared_races, get_race_file, get_replay, get_strategy
+from pitwall3d import pit_wall_view
 
 races = get_prepared_races()
 if races.empty:
@@ -18,10 +19,14 @@ folder = right.selectbox("Race", list(names), format_func=names.get)
 with st.spinner("Building the replay..."):
     try:
         data = get_replay(folder)
+        strategy = get_strategy(folder)
     except Exception as error:
         st.error(f"Couldn't build a replay for this race: {error}")
         st.stop()
 
-replay_view(data, get_race_file(folder, "track"), dark=st.session_state.dark)
-st.caption("Car positions come from OpenF1, once per second. Cars in the pit lane are shown "
-           "on the track next to it. Click a driver in the leaderboard to highlight and follow them.")
+pit_wall_view(data, get_race_file(folder, "track"), strategy=strategy, dark=st.session_state.dark)
+
+if strategy is None:
+    st.caption("The strategist hasn't analysed this race yet. The robot adds it within a few hours.")
+st.caption("Click a driver in the leaderboard to follow them and get their BOX calls. "
+           "Car positions come from OpenF1, once per second; cars in the pit lane are shown on the track next to it.")
