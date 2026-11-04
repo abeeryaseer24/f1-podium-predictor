@@ -2,7 +2,7 @@
 import pandas as pd
 import streamlit as st
 
-from app_data import get_model_info, get_scoreboard
+from app_data import get_model_history, get_model_info, get_scoreboard
 from predictor import clean_name, season_summary
 from style import empty_note, race_card, show_cards, stat_tiles
 
@@ -82,3 +82,24 @@ else:
     st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
     st.caption("Places off: how many places, on average, each driver finished away from where the "
                "model (or the grid) put them. Lower is better.")
+
+st.subheader("How the live model is chosen")
+st.write("A few different recipes for the model take the same fair test above. The live recipe "
+         "(the champion) is retrained every time new results come in. A challenger only takes over "
+         "if it is clearly better: at least 0.05 more podium drivers per race, and no worse on the "
+         "whole order.")
+if info and info.get("challengers"):
+    champion = info.get("recipe")
+    rows = [{"Recipe": r["label"] + ("  ← live" if name == champion else ""),
+             "Podium drivers per race": r["podium_hits"], "Places off, whole order": r["places_off"],
+             "Winner right": f'{r["winner_right"]:.0%}'}
+            for name, r in sorted(info["challengers"].items(), key=lambda kv: -kv[1]["podium_hits"])]
+    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+    st.caption(f"Latest decision: {info.get('decision', '')}")
+history = get_model_history()
+if history:
+    with st.expander(f"Model history ({len(history)} decision{'s' if len(history) != 1 else ''})"):
+        for h in reversed(history[-20:]):
+            when = pd.to_datetime(h["date"]).strftime("%d %b %Y")
+            mark = "🔄 New champion" if h["changed"] else "✓ Champion kept"
+            st.markdown(f"**{when}** · {mark} · {h['races_known']} races known  \n{h['reason']}")

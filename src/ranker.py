@@ -52,9 +52,9 @@ def add_model_columns(df):
     return df
 
 
-def race_matrix(d, fill=None, scale=None):
+def race_matrix(d, fill=None, scale=None, features=None):
     """Inputs as numbers, each one compared with the average of its own race."""
-    X = d[FEATURES].astype(float)
+    X = d[features or FEATURES].astype(float)
     fill = X.median() if fill is None else pd.Series(fill)
     X = X.fillna(fill)
     X = X - X.groupby([d["season"].to_numpy(), d["round"].to_numpy()]).transform("mean").to_numpy()
@@ -62,9 +62,11 @@ def race_matrix(d, fill=None, scale=None):
     return (X / scale).to_numpy(), fill, scale
 
 
-def fit(train):
-    """Learn the weights from past races (maximum likelihood of the real finishing orders)."""
-    X, fill, scale = race_matrix(train)
+def fit(train, top=TOP, l2=L2, features=None):
+    """Learn the weights from past races (maximum likelihood of the real finishing orders).
+    `top`: how many finishers it learns from; `l2`: how strongly the weights are kept small."""
+    features = list(features or FEATURES)
+    X, fill, scale = race_matrix(train, features=features)
     key = train["season"].astype(str).to_numpy() + "_" + train["round"].astype(str).to_numpy()
     finish = train["finish_position"].to_numpy()
     races = [idx[np.argsort(finish[idx])] for idx in pd.Series(range(len(train))).groupby(key).indices.values()]
@@ -76,25 +78,27 @@ def fit(train):
             e = np.exp(s - s.max())
             tail = np.cumsum(e[::-1])[::-1]                 # everyone still to be placed
             tail_x = np.cumsum((e[:, None] * Xo)[::-1], axis=0)[::-1]
-            k = min(TOP, len(order))
+            k = min(top, len(order))
             total -= (s[:k] - s.max() - np.log(tail[:k])).sum()
             grad -= (Xo[:k] - tail_x[:k] / tail[:k, None]).sum(axis=0)
-        return total + L2 * w @ w, grad + 2 * L2 * w
+        return total + l2 * w @ w, grad + 2 * l2 * w
 
     w = minimize(loss, np.zeros(X.shape[1]), jac=True, method="L-BFGS-B").x
-    return {"weights": dict(zip(FEATURES, w.tolist())), "fill": fill.to_dict(), "scale": scale.to_dict(),
-            "luck": 1.0}
+    return {"weights": dict(zip(features, w.tolist())), "fill": fill.to_dict(), "scale": scale.to_dict(),
+            "features": features, "luck": 1.0}
 
 
 def strengths(model, d):
-    X, _, _ = race_matrix(d, model["fill"], model["scale"])
-    return X @ np.array([model["weights"][f] for f in FEATURES])
+    features = model.get("features", FEATURES)
+    X, _, _ = race_matrix(d, model["fill"], model["scale"], features)
+    return X @ np.array([model["weights"][f] for f in features])
 
 
 def contributions(model, d):
     """How much each input adds to or takes from each driver's strength (vs the race average)."""
-    X, _, _ = race_matrix(d, model["fill"], model["scale"])
-    return pd.DataFrame(X * np.array([model["weights"][f] for f in FEATURES]), columns=FEATURES, index=d.index)
+    features = model.get("features", FEATURES)
+    X, _, _ = race_matrix(d, model["fill"], model["scale"], features)
+    return pd.DataFrame(X * np.array([model["weights"][f] for f in features]), columns=features, index=d.index)
 
 
 def chances(s, luck=1.0, n=SIMULATIONS, seed=0):
@@ -118,15 +122,24 @@ def predict(model, race):
     return race
 
 
-def pick_luck(model, races):
-    """How much luck to add so the chances are honest, judged on races the model never saw
-    (smaller = more confident). Chosen to make the podium chances as accurate as possible."""
-    options = [0.5, 0.6, 0.7, 0.8, 1.0, 1.2]
-    errors = []
-    for luck in options:
-        err = []
-        for _, race in races.groupby(["season", "round"]):
-            _, podium, _ = chances(strengths(model, race), luck, n=2000)
-            err.append(np.mean((podium - race["podium"].to_numpy()) ** 2))
-        errors.append(np.mean(err))
-    return options[int(np.argmin(errors))]
+# ---------- the recipes that compete to be the live model (champion vs challengers) ----------
+
+SHORT_TERM = [f for f in FEATURES if f not in (
+    "driver_podium_rate", "driver_avg_finish", "driver_dnf_rate", "driver_avg_gain", "constructor_avg_gain",
+    "driver_circuit_podium_rate", "constructor_circuit_podium_rate")]
+
+RECIPES = {
+    "top10": {"label": "Learns from the first 10 finishers", "top": 10, "l2": 1.0, "features": FEATURES},
+    "top5": {"label": "Learns from the first 5 finishers", "top": 5, "l2": 1.0, "features": FEATURES},
+    "top15-smooth": {"label": "First 15 finishers, stronger smoothing", "top": 15, "l2": 5.0, "features": FEATURES},
+    "short-term": {"label": "Only this weekend and recent form (no career stats)", "top": 10, "l2": 1.0,
+                   "features": SHORT_TERM},
+}
+DEFAULT_RECIPE = "top10"
+
+
+def fit_recipe(train, name):
+    r = RECIPES[name]
+    model = fit(train, top=r["top"], l2=r["l2"], features=r["features"])
+    model["recipe"] = name
+    return model

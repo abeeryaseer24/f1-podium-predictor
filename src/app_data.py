@@ -109,3 +109,10 @@ def get_strategy(folder):
 @st.cache_data(ttl=86400)
 def get_game(folder):
     return game_pack(folder)
+
+
+@st.cache_data(ttl=600)
+def get_model_history():
+    """Every champion-vs-challenger decision (newest last), or an empty list."""
+    path = RACES_DIR.parent.parent / "models" / "history.json"
+    return json.loads(path.read_text()) if path.exists() else []

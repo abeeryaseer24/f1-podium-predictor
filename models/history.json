@@ -1,0 +1,40 @@
+[
+  {
+    "date": "2026-11-04T16:02:27+00:00",
+    "races_known": 233,
+    "champion_before": "top10",
+    "champion_after": "top10",
+    "changed": false,
+    "reason": "No challenger was clearly better, so the champion stays (retrained on the newest races).",
+    "results": {
+      "top10": {
+        "label": "Learns from the first 10 finishers",
+        "podium_hits": 2.072,
+        "places_off": 3.32,
+        "order_match": 0.669,
+        "winner_right": 0.573
+      },
+      "top5": {
+        "label": "Learns from the first 5 finishers",
+        "podium_hits": 2.03,
+        "places_off": 3.366,
+        "order_match": 0.661,
+        "winner_right": 0.563
+      },
+      "top15-smooth": {
+        "label": "First 15 finishers, stronger smoothing",
+        "podium_hits": 2.008,
+        "places_off": 3.324,
+        "order_match": 0.669,
+        "winner_right": 0.58
+      },
+      "short-term": {
+        "label": "Only this weekend and recent form (no career stats)",
+        "podium_hits": 2.034,
+        "places_off": 3.36,
+        "order_match": 0.663,
+        "winner_right": 0.573
+      }
+    }
+  }
+]

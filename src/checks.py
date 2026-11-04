@@ -7,7 +7,7 @@ import sys
 
 import pandas as pd
 
-from predictor import FEATURES_CSV, RACES_DIR, RESULTS_CSV, SCOREBOARD_FILES, model_info
+from predictor import FEATURES_CSV, RACES_DIR, RESULTS_CSV, ROOT, SCOREBOARD_FILES, model_info
 from strategy import engineer_step, load_race, run_engineer, stored_knowledge
 FIRST_SEASON = 2016
 
@@ -75,6 +75,13 @@ def check_model():
     check(test["model_top3_hits"] >= 2.0,
           f"2025 test score is healthy ({test['model_top3_hits']} of 3 per race)")
     check(test["roc_auc"] >= 0.85, f"ROC-AUC is healthy ({test['roc_auc']})")
+    champion = ROOT / "models" / "champion.json"
+    if champion.exists():
+        import json
+        import joblib
+        recipe = json.loads(champion.read_text())["recipe"]
+        live = joblib.load(ROOT / "models" / "podium_model.joblib")["model"].get("recipe")
+        check(live == recipe, f"the live model is the champion recipe ({recipe})")
 
 
 # ---------- the locked predictions (fairness) ----------

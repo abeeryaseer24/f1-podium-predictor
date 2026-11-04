@@ -1,10 +1,14 @@
-"""Train the ranking model (the whole finishing order) and test it honestly.
+"""Train the ranking model (the whole finishing order), test it honestly, and pick the live model.
 
-The test: for every season from 2022 on, a model trained ONLY on the seasons before it
+THE TEST: for every season from 2022 on, a model trained ONLY on the seasons before it
 predicts that season. It is compared with two baselines:
   - the grid (finishing order = starting order), a very strong baseline in F1
   - the old podium model (a Random Forest that only answered "podium or not")
-Then the final model is trained on every race and saved.
+
+CHAMPION VS CHALLENGERS: a few different recipes for the model (ranker.RECIPES) all take the
+same test. The live recipe (the champion) is always retrained on the newest races. A challenger
+only takes over if it is CLEARLY better: at least MARGIN more podium drivers per race, and no
+worse on the whole order. Every decision is written to models/history.json.
 """
 import json
 from datetime import datetime, timezone
@@ -23,6 +27,9 @@ import ranker
 
 FIRST_TEST = 2022                 # backtests from this season on
 FIRST_MODEL = 2019                # the first season a model is trained for (needs 3 seasons of history)
+MARGIN = 0.05                     # podium drivers per race a challenger must gain to take over
+CHAMPION_FILE = Path("models/champion.json")
+HISTORY_FILE = Path("models/history.json")
 OLD_FEATURES = [
     "grid", "quali_position",
     "driver_podium_rate", "driver_avg_finish", "driver_dnf_rate",
@@ -62,99 +69,166 @@ def luck_for(season, models, df):
     return options[int(np.argmin(errors))]
 
 
-def main():
-    df = ranker.add_model_columns(pd.read_csv("data/processed/features.csv"))
+def backtest(df, recipe):
+    """One recipe through the whole test. Returns its models (one per season),
+    one row per race, and a summary per season."""
     last_season = int(df["season"].max())
-
-    # One model per season, each trained only on the seasons before it
-    models = {}
-    for season in range(FIRST_MODEL, last_season + 2):
-        models[season] = ranker.fit(df[df["season"] < season])
-    for season in models:
-        models[season]["luck"] = luck_for(season, models, df)
-
-    # The backtest: every season from 2022, predicted by a model that never saw it
+    models = {s: ranker.fit_recipe(df[df["season"] < s], recipe) for s in range(FIRST_MODEL, last_season + 2)}
+    for s in models:
+        models[s]["luck"] = luck_for(s, models, df)
     races, summary = [], {}
     for season in range(FIRST_TEST, last_season + 1):
-        test = df[df["season"] == season]
-        old = make_pipeline(SimpleImputer(strategy="mean"),
-                            RandomForestClassifier(n_estimators=300, max_depth=6, min_samples_leaf=20,
-                                                   random_state=42, n_jobs=-1))
-        old.fit(df.loc[df["season"] < season, OLD_FEATURES], df.loc[df["season"] < season, "podium"])
         probs, labels = [], []
-        for rnd, race in test.groupby("round"):
+        for rnd, race in df[df["season"] == season].groupby("round"):
             pred = ranker.predict(models[season], race)
             order = pred["driver"].tolist()
-            grid_order = race.sort_values("grid")["driver"].tolist()
-            old_order = race.assign(p=old.predict_proba(race[OLD_FEATURES])[:, 1]).sort_values(
-                "p", ascending=False)["driver"].tolist()
-            m, g, o = race_scores(race, order), race_scores(race, grid_order), race_scores(race, old_order)
-            row = {"season": season, "round": int(rnd), "race_name": race["race_name"].iloc[0], **m,
-                   "grid_podium_hits": g["podium_hits"], "grid_winner_right": g["winner_right"],
-                   "grid_order_match": g["order_match"], "grid_places_off": g["places_off"],
-                   "old_podium_hits": o["podium_hits"], "order": json.dumps(order)}
+            row = {"season": season, "round": int(rnd), "race_name": race["race_name"].iloc[0],
+                   **race_scores(race, order), "order": json.dumps(order)}
             for i, r in pred.head(3).iterrows():
                 row[f"p{i + 1}"], row[f"p{i + 1}_team"] = r["driver"], r["constructor"]
                 row[f"p{i + 1}_chance"] = r["podium_chance"]
             races.append(row)
             probs += (pred["podium_chance"] / 100).tolist()
             labels += pred["podium"].tolist()
-        season_rows = pd.DataFrame([r for r in races if r["season"] == season])
+        rows = pd.DataFrame([r for r in races if r["season"] == season])
         summary[str(season)] = {
-            "races": len(season_rows),
-            "podium_hits": round(season_rows["podium_hits"].mean(), 2),
-            "grid_podium_hits": round(season_rows["grid_podium_hits"].mean(), 2),
-            "old_model_podium_hits": round(season_rows["old_podium_hits"].mean(), 2),
-            "winner_right": round(season_rows["winner_right"].mean(), 3),
-            "grid_winner_right": round(season_rows["grid_winner_right"].mean(), 3),
-            "order_match": round(season_rows["order_match"].mean(), 3),
-            "grid_order_match": round(season_rows["grid_order_match"].mean(), 3),
-            "places_off": round(season_rows["places_off"].mean(), 2),
-            "grid_places_off": round(season_rows["grid_places_off"].mean(), 2),
+            "races": len(rows), "podium_hits": round(rows["podium_hits"].mean(), 2),
+            "winner_right": round(rows["winner_right"].mean(), 3),
+            "order_match": round(rows["order_match"].mean(), 3), "places_off": round(rows["places_off"].mean(), 2),
             "podium_auc": round(float(roc_auc_score(labels, probs)), 3),
         }
-    table = pd.DataFrame(races)
+    return models, pd.DataFrame(races), summary
+
+
+def baselines(df):
+    """The grid and the old podium model, on the same races."""
+    rows = []
+    for season in range(FIRST_TEST, int(df["season"].max()) + 1):
+        train, test = df[df["season"] < season], df[df["season"] == season]
+        old = make_pipeline(SimpleImputer(strategy="mean"),
+                            RandomForestClassifier(n_estimators=300, max_depth=6, min_samples_leaf=20,
+                                                   random_state=42, n_jobs=-1))
+        old.fit(train[OLD_FEATURES], train["podium"])
+        for rnd, race in test.groupby("round"):
+            grid = race_scores(race, race.sort_values("grid")["driver"].tolist())
+            old_order = race.assign(p=old.predict_proba(race[OLD_FEATURES])[:, 1]).sort_values(
+                "p", ascending=False)["driver"].tolist()
+            rows.append({"season": season, "round": int(rnd), "grid_podium_hits": grid["podium_hits"],
+                         "grid_winner_right": grid["winner_right"], "grid_order_match": grid["order_match"],
+                         "grid_places_off": grid["places_off"],
+                         "old_podium_hits": race_scores(race, old_order)["podium_hits"]})
+    return pd.DataFrame(rows)
+
+
+def average(summary, key):
+    """Average over seasons (every season counts the same)."""
+    return round(float(np.mean([s[key] for s in summary.values()])), 3)
+
+
+def choose(champion, results):
+    """Champion vs challengers. A challenger takes over only if it is clearly better."""
+    champ = results[champion]
+    best, reason = champion, "No challenger was clearly better, so the champion stays (retrained on the newest races)."
+    for name, r in results.items():
+        if name == champion:
+            continue
+        gain = r["podium_hits"] - champ["podium_hits"]
+        if gain >= MARGIN and r["places_off"] <= champ["places_off"] and \
+                (best == champion or r["podium_hits"] > results[best]["podium_hits"]):
+            best = name
+            reason = (f"\"{ranker.RECIPES[name]['label']}\" was clearly better: {gain:+.2f} podium drivers per race "
+                      f"and {r['places_off'] - champ['places_off']:+.2f} places off on the whole order.")
+    return best, reason
+
+
+def main():
+    df = ranker.add_model_columns(pd.read_csv("data/processed/features.csv"))
+    last_season = int(df["season"].max())
+
+    champion = ranker.DEFAULT_RECIPE
+    if CHAMPION_FILE.exists():
+        champion = json.loads(CHAMPION_FILE.read_text()).get("recipe", champion)
+    if champion not in ranker.RECIPES:
+        champion = ranker.DEFAULT_RECIPE
+
+    # Every recipe takes the same test
+    runs, results = {}, {}
+    for name in ranker.RECIPES:
+        models, table, summary = backtest(df, name)
+        runs[name] = (models, table, summary)
+        results[name] = {"label": ranker.RECIPES[name]["label"], "podium_hits": average(summary, "podium_hits"),
+                         "places_off": average(summary, "places_off"), "order_match": average(summary, "order_match"),
+                         "winner_right": average(summary, "winner_right")}
+        print(f"  {name:13s} {results[name]['label']:52s} podium {results[name]['podium_hits']:.3f}"
+              f"  places off {results[name]['places_off']:.2f}{'   <- champion' if name == champion else ''}")
+    winner, reason = choose(champion, results)
+    print(f"\nDecision: {reason}")
+
+    # The live model and its test results
+    models, table, summary = runs[winner]
+    base = baselines(df)
+    table = table.merge(base, on=["season", "round"], how="left")
+    for season, s in summary.items():
+        b = base[base["season"] == int(season)]
+        s.update(grid_podium_hits=round(b["grid_podium_hits"].mean(), 2),
+                 old_model_podium_hits=round(b["old_podium_hits"].mean(), 2),
+                 grid_winner_right=round(b["grid_winner_right"].mean(), 3),
+                 grid_order_match=round(b["grid_order_match"].mean(), 3),
+                 grid_places_off=round(b["grid_places_off"].mean(), 2))
     Path("data/predictions").mkdir(parents=True, exist_ok=True)
     table.to_csv("data/predictions/backtests.csv", index=False)
     cols = ["season", "round", "race_name", "p1", "p1_team", "p1_chance", "p2", "p2_team", "p2_chance",
             "p3", "p3_team", "p3_chance", "order"]
     table.loc[table["season"] == 2025, cols].to_csv("data/predictions/backtest_2025.csv", index=False)
 
-    print("Backtest: each season predicted by a model trained only on the seasons before it")
+    print("\nBacktest of the live model: each season predicted by a model trained only on the seasons before it")
     print(f"{'season':>6}  {'podium (model / grid / old)':>28}  {'winner (model / grid)':>22}  "
           f"{'order match (model / grid)':>27}  {'places off (model / grid)':>26}")
     for season, s in summary.items():
         print(f"{season:>6}  {s['podium_hits']:>12} / {s['grid_podium_hits']} / {s['old_model_podium_hits']:<5}"
               f"  {s['winner_right']:>12.0%} / {s['grid_winner_right']:.0%}  "
               f"{s['order_match']:>15} / {s['grid_order_match']:<7}  {s['places_off']:>14} / {s['grid_places_off']}")
-    avg = {k: round(float(np.mean([s[k] for s in summary.values()])), 3)
-           for k in ("podium_hits", "grid_podium_hits", "old_model_podium_hits", "winner_right",
-                     "grid_winner_right", "order_match", "grid_order_match", "places_off", "grid_places_off")}
+    avg = {k: average(summary, k) for k in ("podium_hits", "grid_podium_hits", "old_model_podium_hits",
+                                            "winner_right", "grid_winner_right", "order_match",
+                                            "grid_order_match", "places_off", "grid_places_off")}
     print(f"   avg  {avg['podium_hits']:>12} / {avg['grid_podium_hits']} / {avg['old_model_podium_hits']}")
 
-    # The final model: trained on every race, ready for the next one
+    # Save the live model: the winning recipe, trained on every race
     final = models[last_season + 1]
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     Path("models").mkdir(exist_ok=True)
-    joblib.dump({"kind": "plackett_luce", "model": final, "features": ranker.FEATURES},
+    joblib.dump({"kind": "plackett_luce", "model": final, "features": final["features"]},
                 "models/podium_model.joblib")
-    print(f"Model saved to models/podium_model.joblib (luck setting {final['luck']})")
+    print(f"\nModel saved to models/podium_model.joblib (recipe: {winner}, luck setting {final['luck']})")
+
+    previous = json.loads(CHAMPION_FILE.read_text()) if CHAMPION_FILE.exists() else {}
+    since = previous.get("since", now) if winner == previous.get("recipe") else now
+    CHAMPION_FILE.write_text(json.dumps({"recipe": winner, "label": ranker.RECIPES[winner]["label"],
+                                         "since": since}, indent=2))
+    history = json.loads(HISTORY_FILE.read_text()) if HISTORY_FILE.exists() else []
+    history.append({"date": now, "races_known": int(len(df.groupby(["season", "round"]))),
+                    "champion_before": champion, "champion_after": winner,
+                    "changed": winner != champion, "reason": reason, "results": results})
+    HISTORY_FILE.write_text(json.dumps(history[-50:], indent=2))
 
     last = df.sort_values(["season", "round"]).iloc[-1]
     s25 = summary.get("2025", {})
     info = {
-        "trained_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "trained_at": now,
         "trained_on_rows": int(len(df)),
         "model": "Plackett-Luce ranking model: predicts the whole finishing order",
-        "last_race": {"season": int(last["season"]), "round": int(last["round"]),
-                      "race_name": last["race_name"]},
-        "features": ranker.FEATURES,
+        "recipe": winner, "recipe_label": ranker.RECIPES[winner]["label"],
+        "last_race": {"season": int(last["season"]), "round": int(last["round"]), "race_name": last["race_name"]},
+        "features": final["features"],
         "test_2025": {"model_top3_hits": s25.get("podium_hits"), "grid_top3_hits": s25.get("grid_podium_hits"),
                       "roc_auc": s25.get("podium_auc")},
         "backtests": summary,
         "backtest_average": avg,
+        "challengers": results,
+        "decision": reason,
     }
     Path("models/model_info.json").write_text(json.dumps(info, indent=2))
-    print("Model info saved to models/model_info.json")
+    print("Model info saved to models/model_info.json; decision logged in models/history.json")
 
     # What the model relies on: the weight of every input
     weights = pd.Series(final["weights"]).rename(index=ranker.LABELS).sort_values()
