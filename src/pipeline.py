@@ -73,6 +73,9 @@ def main():
     # Race files for the 3D pages: up to 3 missing races per run, newest first.
     run("src/prepare_race.py", "--missing", "--limit", "3")
     run("src/corners.py", "--missing")
+    # The strategist's knowledge from earlier races, then strategies for races that need one.
+    run("src/history.py", "--missing", "--limit", "5")
+    run("src/tyre_book.py")
     run("src/strategy.py", "--missing", "--limit", "10")
    
     # 2. Lock in the next race's prediction if qualifying is done.
@@ -87,4 +90,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()

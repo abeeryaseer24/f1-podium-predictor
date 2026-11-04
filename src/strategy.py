@@ -5,9 +5,13 @@ At the end of every lap it looks at the race so far and keeps ONE plan per drive
   plan made or changed, "box in 2 laps", "Box... box...", missed call, safety car chance,
   undercut threat, pit stop done, no more stops needed.
 
+It starts each race with what it learned from EARLIER races (tyre_book.py): how hard this circuit
+is on tyres, how long teams run them here, the pit stop loss, and a pit-timing model of when
+real teams tend to stop. The simulation says what is fastest; the pit-timing model keeps it realistic.
+
 THE NO-FUTURE RULE: the plan at the end of lap L is made by engineer_step(), which only ever
-receives laps, pit stops and race control messages up to lap L. checks.py re-runs the first
-half of a race from truncated data and compares, to prove it.
+receives laps, pit stops and race control messages up to lap L, plus knowledge from earlier
+races. checks.py re-runs the first half of a race from truncated data and compares, to prove it.
 
 Simple, stated assumptions:
 - tyres lose time in a straight line with age, plus a "cliff" near the end of their life
@@ -28,6 +32,7 @@ import numpy as np
 import pandas as pd
 
 from predictor import RACES_DIR
+from tyre_book import book_for, features as timing_features, hazard, pit_model_for, real_pits
 from tyres import MIN_LAPS, clean_laps, design, fit, pit_loss
 
 DRY = ["SOFT", "MEDIUM", "HARD"]
@@ -47,8 +52,9 @@ FUEL_RANGE = (-0.09, -0.02)      # sensible limits for the estimates (seconds)
 OFFSET_RANGE = (-1.5, 1.5)
 WEAR_RANGE = (0.0, 0.2)
 
-# How long a set of tyres can last, and how fast it falls off near the end
+# How long a set of tyres can last (until the tyre book knows better), and its cliff
 TYRE_LIFE = {"SOFT": 35, "MEDIUM": 45, "HARD": 55}
+TIMING_WEIGHT = 20.0            # seconds per unit of "how unusual would a real team find this stop"
 CLIFF_START = 0.85              # the cliff starts at 85% of the tyre's life
 CLIFF_RATE = 0.04               # extra seconds per lap, growing with every lap past it
 
@@ -63,7 +69,6 @@ COVER_COST = 4.0                # covering an undercut is fine if it costs less 
 UNDERCUT_GAP = 2.5              # seconds: a car this close behind can undercut
 SC_FACTOR = {"SC": 0.55, "VSC": 0.7}
 RED_FLAG = re.compile(r"\bRED FLAG\b")   # careful: "CHEQUERED FLAG" also contains "RED FLAG"
-RED_FLAG_LANE = 45              # a pit lane visit longer than this is a red-flag stoppage, not a stop
 
 LAP_NOISE = 0.6                 # seconds of random variation per lap (for finish ranges)
 RUNS = 200
@@ -71,11 +76,24 @@ RUNS = 200
 
 # ---------- what the race has shown so far ----------
 
-def tyre_model(laps):
-    """Fuel, compound offsets and wear, from the laps so far, blended with typical values.
-    Early in a race there is little data, so every estimate is kept inside sensible limits."""
-    model = {"fuel": PRIOR_FUEL, "offset": dict(PRIOR_OFFSET), "wear": dict(PRIOR_WEAR),
-             "pit_loss": pit_loss(laps) or PRIOR_PIT_LOSS}
+def default_knowledge():
+    """What the strategist assumes when it has no earlier races to learn from."""
+    return {"book": {"offset": dict(PRIOR_OFFSET), "wear": dict(PRIOR_WEAR), "life": dict(TYRE_LIFE),
+                     "pit_loss": PRIOR_PIT_LOSS, "first_stop": 0.4, "source": "typical values",
+                     "wear_factor": 1.0, "stint_factor": 1.0},
+            "pit_model": None}
+
+
+def tyre_model(laps, knowledge=None):
+    """Fuel, compound offsets and wear, from the laps so far, blended with what earlier races
+    taught us (or typical values). Early in a race there is little data, so every estimate is
+    kept inside sensible limits."""
+    knowledge = knowledge or default_knowledge()
+    book = knowledge["book"]
+    prior_offset, prior_wear = book["offset"], book["wear"]
+    model = {"fuel": PRIOR_FUEL, "offset": dict(prior_offset), "wear": dict(prior_wear),
+             "pit_loss": pit_loss(laps) or book["pit_loss"], "life": dict(book["life"]),
+             "book": book, "pit_model": knowledge.get("pit_model")}
     clean = clean_laps(laps)
     clean = clean[clean["compound"].isin(DRY)]
     drivers_on = clean.groupby("compound")["driver_number"].nunique()
@@ -100,13 +118,13 @@ def tyre_model(laps):
     wear = coef[nd + nc:]
 
     model["fuel"] = fuel
-    shift = PRIOR_OFFSET[comps[0]]            # put the fitted offsets on the same scale as the priors
+    shift = prior_offset[comps[0]]            # put the fitted offsets on the same scale as the priors
     for c, o, wr in zip(comps, offsets, wear):
         wc = counts[c] / (counts[c] + PRIOR_WEIGHT)
         o = float(np.clip(o + shift, *OFFSET_RANGE))
         wr = float(np.clip(wr, *WEAR_RANGE))
-        model["offset"][c] = wc * o + (1 - wc) * PRIOR_OFFSET[c]
-        model["wear"][c] = wc * wr + (1 - wc) * PRIOR_WEAR[c]
+        model["offset"][c] = wc * o + (1 - wc) * prior_offset[c]
+        model["wear"][c] = wc * wr + (1 - wc) * prior_wear[c]
     return model
 
 
@@ -143,26 +161,12 @@ def neutralised(control, when):
     return status
 
 
-def real_pits(pits):
-    """Real pit stops from the pit lane records: (driver, in-lap). Red-flag stoppages and
-    lap 1 (pit lane starts) are left out; two stops on back-to-back laps count once."""
-    if pits.empty:
-        return pd.DataFrame(columns=["driver_number", "lap"])
-    p = pits.dropna(subset=["lap_number", "lane_duration"])
-    p = p[(p["lap_number"] > 1) & (p["lane_duration"] <= RED_FLAG_LANE)]
-    p = p.sort_values(["driver_number", "lap_number"])
-    back_to_back = p.groupby("driver_number")["lap_number"].diff() == 1
-    p = p[~back_to_back]
-    return (p[["driver_number", "lap_number"]].rename(columns={"lap_number": "lap"})
-            .astype(int).reset_index(drop=True))
-
-
 # ---------- the cost of a plan ----------
 
 def stint_cost(model, comp, age0, n):
     """Seconds lost to tyres over n laps on `comp`, starting at age `age0` (n can be an array)."""
     n = np.asarray(n, dtype=float)
-    life = TYRE_LIFE[comp]
+    life = model["life"][comp]
     ages_end = age0 + n
     linear = n * model["offset"][comp] + model["wear"][comp] * (age0 * n + n * (n - 1) / 2)
     start = CLIFF_START * life                                  # cliff: sum of (age - start) past it
@@ -172,35 +176,55 @@ def stint_cost(model, comp, age0, n):
     return linear + cliff
 
 
+def timing_cost(st, model, L, total):
+    """How unusual each possible first-stop lap would look to a real team, in seconds:
+    (stop on lap p) for p = L+1 .. total, and (no more stops). Zero without a pit-timing model,
+    and after the first stop (tested: the model helps the first stop and hurts later ones)."""
+    k = np.arange(L + 1, total + 1)
+    if model["pit_model"] is None or TIMING_WEIGHT == 0 or st.get("stops", 0) > 0:
+        return np.zeros(len(k)), 0.0                            # used for the first stop only: that is where it is strong
+    neutral = np.where(k == L + 1, float(st.get("neutral", False)), 0.0)
+    X = timing_features(st["age"] + (k - L), st["compound"], k, total, st.get("stops", 0),
+                        float(len(st["used"]) < 2), neutral, model["book"])
+    h = np.clip(hazard(model["pit_model"], X), 1e-4, 1 - 1e-4)
+    stay = -np.log(1 - h)
+    before = np.concatenate([[0.0], np.cumsum(stay)[:-1]])      # staying out on every lap before p
+    stop = before - np.log(h)
+    never = float(stay[: max(0, total - 2 - L)].sum())
+    return TIMING_WEIGHT * stop, TIMING_WEIGHT * never
+
+
 def best_plan(st, model, L, total, earliest, loss):
     """The fastest plan from the end of lap L: (pit_lap, compound, cost) with pit_lap None for
     'no more stops'. Up to two more stops are considered; new tyres can't go past their life."""
     N = total - L                                               # laps left
     used = st["used"]
+    life = {c: int(round(v)) for c, v in model["life"].items()}
+    realism, never = timing_cost(st, model, L, total)
     options = []
 
     if len(used) >= 2:                                          # no more stops
-        options.append((None, None, float(stint_cost(model, st["compound"], st["age"], N))))
+        options.append((None, None, float(stint_cost(model, st["compound"], st["age"], N)) + never))
 
     first = max(L + 1, earliest)
     last = total - 3
     if first <= last:
         p = np.arange(first, last + 1)                          # in-lap of the next stop
         n1 = p - L                                              # laps still on these tyres
-        now_cost = stint_cost(model, st["compound"], st["age"], n1)
+        now_cost = stint_cost(model, st["compound"], st["age"], n1) + realism[p - (L + 1)]
         rest = total - p                                        # laps after the stop
         for c in DRY:
             if len(used | {c}) < 2:
                 continue                                        # must use two compounds
-            ok = (rest <= TYRE_LIFE[c]) & (rest >= MIN_STINT)
+            ok = (rest <= life[c]) & (rest >= MIN_STINT)
             one = np.where(ok, now_cost + loss + stint_cost(model, c, 0, rest), np.inf)
             k = int(np.argmin(one))
             if np.isfinite(one[k]):
                 options.append((int(p[k]), c, float(one[k])))
             for c2 in DRY:                                      # two more stops
-                m = np.arange(MIN_STINT, TYRE_LIFE[c] + 1)
+                m = np.arange(MIN_STINT, life[c] + 1)
                 r2 = rest[:, None] - m[None, :]
-                ok2 = (r2 >= MIN_STINT) & (r2 <= TYRE_LIFE[c2])
+                ok2 = (r2 >= MIN_STINT) & (r2 <= life[c2])
                 two = (now_cost[:, None] + 2 * model["pit_loss"] + (loss - model["pit_loss"])
                        + stint_cost(model, c, 0, m)[None, :]
                        + stint_cost(model, c2, 0, np.maximum(r2, 0)))
@@ -215,21 +239,23 @@ def best_plan(st, model, L, total, earliest, loss):
 
 def plan_cost(st, model, L, total, pit_lap, comp, loss):
     """Cost of keeping a given plan (stop on `pit_lap` for `comp`), best finish after it."""
+    realism, never = timing_cost(st, model, L, total)
+    life = {c: int(round(v)) for c, v in model["life"].items()}
     if pit_lap is None:
         if len(st["used"]) < 2:
             return np.inf
-        return float(stint_cost(model, st["compound"], st["age"], total - L))
+        return float(stint_cost(model, st["compound"], st["age"], total - L)) + never
     if pit_lap <= L or pit_lap > total - 3 or len(st["used"] | {comp}) < 2:
         return np.inf
     n1, rest = pit_lap - L, total - pit_lap
-    cost = float(stint_cost(model, st["compound"], st["age"], n1)) + loss
-    if rest <= TYRE_LIFE[comp]:
+    cost = float(stint_cost(model, st["compound"], st["age"], n1)) + loss + float(realism[pit_lap - (L + 1)])
+    if rest <= life[comp]:
         return cost + float(stint_cost(model, comp, 0, rest))
-    m = np.arange(MIN_STINT, TYRE_LIFE[comp] + 1)
+    m = np.arange(MIN_STINT, life[comp] + 1)
     r2 = rest - m
     best = np.inf
     for c2 in DRY:
-        ok = (r2 >= MIN_STINT) & (r2 <= TYRE_LIFE[c2])
+        ok = (r2 >= MIN_STINT) & (r2 <= life[c2])
         two = stint_cost(model, comp, 0, m) + model["pit_loss"] + stint_cost(model, c2, 0, np.maximum(r2, 0))
         if ok.any():
             best = min(best, float(two[ok].min()))
@@ -311,7 +337,7 @@ def deployed_during(control, start, end):
     return None, None
 
 
-def engineer_step(laps, pits, control, L, total, memory):
+def engineer_step(laps, pits, control, L, total, memory, knowledge=None):
     """The engineer's work at the end of lap L. `laps`, `pits` and `control` must only contain
     laps 1..L: that is the no-future rule. `memory` carries each driver's plan between laps."""
     states = car_states(laps, L)
@@ -320,10 +346,14 @@ def engineer_step(laps, pits, control, L, total, memory):
             or (len(control) and control["t"].max() > line):
         raise ValueError("engineer_step was given future laps")
 
-    stops = real_pits(pits)
+    stops = real_pits(pits, laps)
     pitted_now = set(stops.loc[stops["lap"] == L, "driver_number"])
-    model = tyre_model(laps)
+    model = tyre_model(laps, knowledge)
     model_loss = model["pit_loss"]
+    made = stops.groupby("driver_number").size().to_dict()
+    for d, st in states.items():
+        st["stops"] = int(made.get(d, 0))
+        st["neutral"] = neutralised(control, st["end"]) in ("SC", "VSC")
     bases, fallback = base_pace(laps, model)
     bases = {d: bases.get(d, fallback) for d in states}
     earliest = max(round(EARLIEST_STOP * total), FIRST_PLAN_LAP + 1)
@@ -470,8 +500,9 @@ def engineer_step(laps, pits, control, L, total, memory):
     return rows
 
 
-def run_engineer(laps, pits, control, total, upto):
-    """Run the engineer from lap 2 to `upto`, feeding it only the past at every lap."""
+def run_engineer(laps, pits, control, total, upto, knowledge=None):
+    """Run the engineer from lap 2 to `upto`, feeding it only the past at every lap
+    (plus the knowledge from earlier races)."""
     memory, rows = {}, []
     ends = (laps["t_start"] + laps["lap_duration"]).groupby(laps["lap_number"]).max()
     for L in range(2, upto + 1):
@@ -479,7 +510,7 @@ def run_engineer(laps, pits, control, total, upto):
         rows += engineer_step(laps[laps["lap_number"] <= L],
                               pits[pits["lap_number"] <= L] if len(pits) else pits,
                               control[control["t"] <= line] if len(control) else control,
-                              L, total, memory)
+                              L, total, memory, knowledge)
     radio = [dict(m, driver_number=int(d)) for d, mem in memory.items() for m in mem["radio"]]
     return pd.DataFrame(rows), pd.DataFrame(radio)
 
@@ -495,10 +526,25 @@ def load_race(folder):
     return laps, pits, control
 
 
+def race_knowledge(folder):
+    """What the strategist knows before this race: only from earlier races."""
+    info = json.loads((RACES_DIR / folder / "info.json").read_text())
+    season, rnd = int(info["season"]), int(info["round"])
+    return {"book": book_for(season, rnd, info.get("location")), "pit_model": pit_model_for(season)}
+
+
+def stored_knowledge(folder):
+    """The knowledge a stored strategy was built with (so checks can re-run it exactly)."""
+    path = RACES_DIR / folder / "knowledge.json"
+    return json.loads(path.read_text()) if path.exists() else None
+
+
 def build_strategy(folder):
     laps, pits, control = load_race(folder)
     total = int(laps["lap_number"].max())
-    plans, radio = run_engineer(laps, pits, control, total, total - 2)
+    knowledge = race_knowledge(folder)
+    (RACES_DIR / folder / "knowledge.json").write_text(json.dumps(knowledge, indent=1))
+    plans, radio = run_engineer(laps, pits, control, total, total - 2, knowledge)
     plans.to_parquet(RACES_DIR / folder / "strategy.parquet", index=False)
     radio.to_parquet(RACES_DIR / folder / "radio.parquet", index=False)
     return plans, radio
@@ -517,7 +563,11 @@ def verdict(folder):
     laps, pits, control = load_race(folder)
     plans = pd.read_parquet(RACES_DIR / folder / "strategy.parquet")
     radio = pd.read_parquet(RACES_DIR / folder / "radio.parquet")
-    stops = real_pits(pits)
+    return verdict_from(plans, radio, laps, pits, control)
+
+
+def verdict_from(plans, radio, laps, pits, control):
+    stops = real_pits(pits, laps)
     red_laps = sorted({int(l) for l, m in zip(control["lap_number"], control["message"].fillna(""))
                        if pd.notna(l) and RED_FLAG.search(m.upper())}) if len(control) else []
 
@@ -584,7 +634,12 @@ def replay_payload(folder):
               "real": num(r.real), "diff": num(r.diff), "verdict": r.verdict}
              for r in v["table"].sort_values(["driver_number", "real"], na_position="last").itertuples()]
     v["table"] = table
-    return {"calls": calls, "radio": messages, "verdict": v}
+    k = stored_knowledge(folder) or default_knowledge()
+    b, m = k["book"], k.get("pit_model")
+    knew = {"source": b.get("source"), "wear": round(float(b.get("wear_factor", 1.0)), 2),
+            "stints": round(float(b.get("stint_factor", 1.0)), 2), "first_stop": round(float(b["first_stop"]), 2),
+            "pit_loss": round(float(b["pit_loss"]), 1), "timing": m.get("trained_on") if m else None}
+    return {"calls": calls, "radio": messages, "verdict": v, "knew": knew}
 
 
 def main():

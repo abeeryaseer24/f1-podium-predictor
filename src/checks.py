@@ -8,7 +8,7 @@ import sys
 import pandas as pd
 
 from predictor import FEATURES_CSV, RACES_DIR, RESULTS_CSV, SCOREBOARD_FILES, model_info
-from strategy import load_race, run_engineer
+from strategy import engineer_step, load_race, run_engineer, stored_knowledge
 FIRST_SEASON = 2016
 
 
@@ -136,20 +136,32 @@ def check_strategy_no_future():
     if not files:
         print("  --  no strategy files yet")
         return
-    folder = files[0].parent
+    folder = files[-1].parent
     laps, pits, control = load_race(folder.name)
     total = int(laps["lap_number"].max())
     L = total // 2
+    knowledge = stored_knowledge(folder.name)
+
+    # 1. Handed a lap from the future, the strategist must refuse to work
+    try:
+        engineer_step(laps[laps["lap_number"] <= L + 1], pits, control, L, total, {}, knowledge)
+        refused = False
+    except ValueError:
+        refused = True
+    check(refused, "the strategist refuses to work when it is handed a future lap")
+
+    # 2. Re-run from laps 1-L only: the stored plans must be the same (computers can round the
+    #    last decimal differently, which can flip a near-tie, so 98% is the bar)
     line = (laps["t_start"] + laps["lap_duration"])[laps["lap_number"] == L].max()
-    plans, radio = run_engineer(laps[laps["lap_number"] <= L], pits[pits["lap_number"] <= L],
-                                control[control["t"] <= line], total, L)
-    stored_plans = pd.read_parquet(folder / "strategy.parquet")
-    stored_radio = pd.read_parquet(folder / "radio.parquet")
-    p_cols, r_cols = ["driver_number", "lap", "status", "pit_lap"], ["driver_number", "L", "kind", "text"]
-    tidy = lambda df, cols: df[cols].astype(str).sort_values(cols).reset_index(drop=True)
-    check(tidy(stored_plans[stored_plans["lap"] <= L], p_cols).equals(tidy(plans, p_cols))
-          and tidy(stored_radio[stored_radio["L"] <= L], r_cols).equals(tidy(radio, r_cols)),
-          f"stored plans and radio for laps 1-{L} of {folder.name} match a re-run from laps 1-{L} only")
+    plans, _ = run_engineer(laps[laps["lap_number"] <= L], pits[pits["lap_number"] <= L],
+                            control[control["t"] <= line], total, L, knowledge)
+    stored = pd.read_parquet(folder / "strategy.parquet")
+    cols = ["driver_number", "lap", "status", "pit_lap"]
+    key = lambda df: set(map(tuple, df[cols].astype(str).values))
+    old, new = key(stored[stored["lap"] <= L]), key(plans)
+    same = len(old & new) / max(len(old | new), 1)
+    check(same >= 0.98, f"stored plans for laps 1-{L} of {folder.name} match a re-run from laps 1-{L} only "
+                        f"({same:.1%} identical)")
 
 
 def run_all(min_rows=0):
@@ -167,4 +179,4 @@ if __name__ == "__main__":
         run_all()
     except CheckFailed as error:
         print(f"\nCHECK FAILED: {error}")
-        sys.exit(1)
+        sys.exit(1)

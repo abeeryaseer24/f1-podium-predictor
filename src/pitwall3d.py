@@ -109,6 +109,11 @@ TEMPLATE = r"""<!doctype html>
   #verdict .close { position: absolute; top: 14px; right: 14px; }
   #verdict .legend { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 12px; }
   #verdict #toggleMissed { margin-top: 10px; }
+  #verdict .knew { margin: 10px 0 4px; padding: 10px 12px; border-radius: 12px; border: 1px solid var(--border);
+                   background: rgba(127,127,140,.08); }
+  #verdict .knew b { display: block; margin-bottom: 4px; }
+  #verdict .knew ul { margin: 0; padding-left: 18px; }
+  #verdict .knew li { margin: 2px 0; }
 
   @media (max-width: 760px) {
     #app { grid-template-columns: 1fr; height: auto; }
@@ -484,6 +489,23 @@ function diffText(r) {
   const n = Math.abs(r.diff);
   return `Team ${n} lap${n > 1 ? "s" : ""} ${r.diff < 0 ? "earlier" : "later"}`;
 }
+function knewText(k) {
+  if (!k) return "";
+  const vs = (x, more, less) => x >= 1.1 ? `${x.toFixed(1)}× ${more} than an average circuit`
+                              : x <= 0.9 ? `${x.toFixed(1)}× (${less} than an average circuit)` : "about average";
+  const items = [];
+  if (k.source === "typical values") items.push("Nothing yet: no earlier races to learn from, so it used typical values.");
+  else {
+    items.push(`Tyre wear here: ${vs(k.wear, "higher", "gentler")}.`);
+    items.push(`How long teams run a set of tyres here: ${vs(k.stints, "longer", "shorter")}.`);
+    items.push(`Teams usually make their first stop about ${Math.round(k.first_stop * 100)}% into the race ` +
+               `(around lap ${Math.round(k.first_stop * D.laps)}). A stop costs about ${Math.round(k.pit_loss)} s.`);
+    items.push(`Learned from ${k.source}.`);
+  }
+  items.push(k.timing ? `Its pit-timing model learned when real teams stop from ${k.timing}.`
+                      : "No pit-timing model yet (it needs a full earlier season).");
+  return `<div class="knew"><b>What our strategist knew before the race</b><ul>${items.map(i => `<li>${i}</li>`).join("")}</ul></div>`;
+}
 function showVerdict() {
   const v = D.strategy.verdict;
   const row = r => `<tr><td><b>${r.code}</b></td>` +
@@ -503,7 +525,7 @@ function showVerdict() {
     `<p><b>Matched</b> means the real team pitted within 2 laps of the lap our strategist planned.</p>` +
     notes.map(t => `<p class="note">${t}</p>`).join("") +
     `<p class="note">Our strategist only knew what had happened up to each lap. Real teams also have tyre sensors ` +
-    `and team radio, so matching every stop isn't expected.</p>` +
+    `and team radio, so matching every stop isn't expected.</p>` + knewText(D.strategy.knew) +
     `<div class="chips"><span class="chip v-matched">✓ Matched ${v.matched}</span><span class="chip v-close">≈ Close ${v.close}</span>` +
     `<span class="chip v-different">✗ Different ${v.different}</span>` +
     `<span class="chip v-stayed_out">✗ Team stayed out ${v.stayed_out}</span></div>` +
