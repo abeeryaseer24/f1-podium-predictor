@@ -1,6 +1,8 @@
 """Ghost Lap Duel engine: two drivers' fastest laps, compared around the whole lap.
 
 The laps come live from OpenF1 (2023 onwards). The app keeps the results for a day.
+Both laps are lined up on the exact moment each car crosses the start/finish line,
+so the comparison doesn't depend on OpenF1's lap start timestamps.
 
 Test from the terminal:
   python src/duel.py 2026 19 Qualifying ANT RUS
@@ -54,15 +56,36 @@ def fastest_laps(key):
     return best.sort_values("lap_duration").reset_index(drop=True)
 
 
-def lap_trace(key, number, lap):
-    """One lap at full detail: t (seconds into the lap), dist (metres), x, y, z,
-    speed, throttle, brake, n_gear."""
+def start_line(folder):
+    """The start/finish line: where the race's fastest lap begins, and the track direction there."""
+    track = pd.read_parquet(RACES_DIR / folder / "track.parquet")
+    x0, y0 = float(track["x"].iloc[0]), float(track["y"].iloc[0])
+    dx, dy = float(track["x"].iloc[3]) - x0, float(track["y"].iloc[3]) - y0
+    length = (dx ** 2 + dy ** 2) ** 0.5 or 1.0
+    return x0, y0, dx / length, dy / length
+
+
+def line_crossing(trace, line, t_lo, t_hi):
+    """The exact moment the car crosses the start/finish line between t_lo and t_hi."""
+    x0, y0, tx, ty = line
+    part = trace[(trace["t"] >= t_lo) & (trace["t"] <= t_hi)]
+    past = ((part["x"] - x0) * tx + (part["y"] - y0) * ty).to_numpy()       # >0 = past the line
+    near = (((part["x"] - x0) ** 2 + (part["y"] - y0) ** 2) ** 0.5).to_numpy() < 600   # within 60 m
+    t = part["t"].to_numpy()
+    for k in range(len(past) - 1):
+        if past[k] <= 0 < past[k + 1] and near[k]:
+            return t[k] + (t[k + 1] - t[k]) * (-past[k]) / (past[k + 1] - past[k])
+    return None
+
+
+def lap_trace(key, number, lap, line):
+    """One lap at full detail, from start line to start line:
+    t (seconds), frac (0 = line, 1 = line again), dist (m), x, y, z, speed, throttle, brake, n_gear."""
     start = to_dt(pd.Series([lap["date_start"]])).iloc[0]
     duration = float(lap["lap_duration"])
-    end = start + pd.Timedelta(seconds=duration)
     window = {"session_key": key, "driver_number": int(number),
-              "date>": fmt(start - pd.Timedelta(seconds=1)),
-              "date<": fmt(end + pd.Timedelta(seconds=1))}
+              "date>": fmt(start - pd.Timedelta(seconds=5)),
+              "date<": fmt(start + pd.Timedelta(seconds=duration + 5))}
     loc = pd.DataFrame(get("location", window))
     car = pd.DataFrame(get("car_data", window))
     if loc.empty or car.empty:
@@ -73,10 +96,22 @@ def lap_trace(key, number, lap):
                           car.sort_values("date")[["date", "speed", "throttle", "brake", "n_gear"]],
                           on="date", direction="nearest")
     trace["t"] = (trace["date"] - start).dt.total_seconds()
-    trace = trace[(trace["t"] >= 0) & (trace["t"] <= duration)].reset_index(drop=True)
     step = (trace[["x", "y"]].diff().pow(2).sum(axis=1) ** 0.5).fillna(0) / 10   # 1/10 m -> m
     trace["dist"] = step.cumsum()
-    return trace[["t", "dist", "x", "y", "z", "speed", "throttle", "brake", "n_gear"]]
+
+    # Find the real start and end of the lap on the line (fall back to the timestamp if needed)
+    t0 = line_crossing(trace, line, -5, 5)
+    t1 = line_crossing(trace, line, duration - 5, duration + 5)
+    if t0 is None or t1 is None or t1 <= t0:
+        t0, t1 = 0.0, duration
+    d0, d1 = np.interp([t0, t1], trace["t"], trace["dist"])
+
+    trace = trace[(trace["t"] >= t0) & (trace["t"] <= t1)].copy()
+    trace["t"] = (trace["t"] - t0) * duration / (t1 - t0)     # matches the official lap time exactly
+    trace["frac"] = (trace["dist"] - d0) / (d1 - d0)
+    trace["dist"] = trace["dist"] - d0
+    return trace[["t", "frac", "dist", "x", "y", "z", "speed", "throttle", "brake",
+                  "n_gear"]].reset_index(drop=True)
 
 
 # ---------- comparing ----------
@@ -86,8 +121,8 @@ def compare(trace_a, trace_b, lap_a, lap_b):
     grid = np.linspace(0, 1, 501)
 
     def times(trace, lap):
-        frac = (trace["dist"] / trace["dist"].iloc[-1]).to_numpy()
-        return np.interp(grid, np.r_[0, frac, 1], np.r_[0, trace["t"].to_numpy(), lap])
+        return np.interp(grid, np.r_[0, trace["frac"].to_numpy(), 1],
+                         np.r_[0, trace["t"].to_numpy(), lap])
 
     ta, tb = times(trace_a, lap_a), times(trace_b, lap_b)
     edges = np.linspace(0, 1, MINI_SECTORS + 1)
@@ -108,12 +143,11 @@ def corner_fractions(folder, trace):
         return []
     corners = json.loads(path.read_text())
     track = pd.read_parquet(RACES_DIR / folder / "track.parquet")
-    frac = trace["dist"] / trace["dist"].iloc[-1]
     found = []
     for c in corners:
         x, y = track.loc[c["i"], "x"], track.loc[c["i"], "y"]
         j = ((trace["x"] - x) ** 2 + (trace["y"] - y) ** 2).idxmin()
-        found.append((c["label"], float(frac[j])))
+        found.append((c["label"], float(trace.loc[j, "frac"])))
     return sorted(found, key=lambda c: c[1])
 
 
@@ -170,8 +204,9 @@ def run_duel(folder, session_name, num_a, num_b):
     lap_a, lap_b = laps.loc[num_a], laps.loc[num_b]
     time_a, time_b = float(lap_a["lap_duration"]), float(lap_b["lap_duration"])
 
-    trace_a = lap_trace(key, num_a, lap_a)
-    trace_b = lap_trace(key, num_b, lap_b)
+    line = start_line(folder)
+    trace_a = lap_trace(key, num_a, lap_a, line)
+    trace_b = lap_trace(key, num_b, lap_b, line)
     grid, delta, segments = compare(trace_a, trace_b, time_a, time_b)
     corners = corner_fractions(folder, trace_a)
     gap = time_a - time_b

@@ -1,8 +1,9 @@
 """Ghost Lap Duel: two drivers' fastest laps, head to head."""
 import streamlit as st
 
-from app_data import get_duel, get_fastest_laps, get_prepared_races, get_race_info
+from app_data import get_duel, get_fastest_laps, get_prepared_races, get_race_file, get_race_info
 from duel import lap_time
+from track3d import duel_view
 
 
 races = get_prepared_races()
@@ -70,3 +71,12 @@ wins_a = int((duel["segments"]["winner"] == "a").sum())
 total = len(duel["segments"])
 st.caption(f"{code_a} was faster in {wins_a} of {total} mini-sectors, "
            f"{code_b} in the other {total - wins_a}.")
+
+# ---------- the 3D duel ----------
+track = get_race_file(folder, "track")
+driver_a = drivers.get(num_a, {"code": code_a})
+driver_b = drivers.get(num_b, {"code": code_b})
+duel_view(track, duel, driver_a, driver_b, dark=st.session_state.dark)
+if driver_a.get("team") and driver_a.get("team") == driver_b.get("team"):
+    shade = "white" if st.session_state.dark else "black"
+    st.caption(f"Teammates share a team colour, so {code_b} is shown in {shade}.")
