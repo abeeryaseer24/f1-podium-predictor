@@ -21,6 +21,9 @@ PAGES = {
         st.Page("app_pages/podium_predictor.py", title="Podium Predictor", default=True),
         st.Page("app_pages/scoreboard.py", title="Scoreboard"),
     ],
+    "Race": [
+        st.Page("app_pages/circuit_explorer.py", title="Circuit Explorer"),
+    ],
 }
 page = st.navigation(PAGES, position="top")
 
