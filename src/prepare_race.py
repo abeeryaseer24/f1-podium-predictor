@@ -59,7 +59,9 @@ def get(endpoint, params):
 
 
 def to_dt(values):
-    return pd.to_datetime(values, utc=True, format="ISO8601")
+    """Read times and store them all at the same precision (nanoseconds),
+    so time columns from different places can be matched with each other."""
+    return pd.to_datetime(values, utc=True, format="ISO8601").dt.as_unit("ns")
 
 
 def fmt(ts):
