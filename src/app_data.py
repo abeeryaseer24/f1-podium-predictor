@@ -5,6 +5,8 @@ import json
 import pandas as pd
 import streamlit as st
 
+from duel import fastest_laps, run_duel, session_key
+
 from predictor import (RACES_DIR, model_info, past_races, predict_past, predict_upcoming,
                        scoreboard, upcoming_races)
 
@@ -69,3 +71,14 @@ def get_corners(folder):
     """Corner labels for a race, or [] if they haven't been made yet."""
     path = RACES_DIR / folder / "corners.json"
     return json.loads(path.read_text()) if path.exists() else []
+
+# ---------- Ghost Lap Duel (live from OpenF1, kept for a day) ----------
+
+@st.cache_data(ttl=86400)
+def get_fastest_laps(folder, session_name):
+    return fastest_laps(session_key(folder, session_name))
+
+
+@st.cache_data(ttl=86400)
+def get_duel(folder, session_name, num_a, num_b):
+    return run_duel(folder, session_name, num_a, num_b)

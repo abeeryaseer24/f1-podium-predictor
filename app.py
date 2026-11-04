@@ -21,7 +21,8 @@ PAGES = {
         st.Page("app_pages/podium_predictor.py", title="Podium Predictor", default=True),
         st.Page("app_pages/scoreboard.py", title="Scoreboard"),
     ],
-    "Race": [
+        "Race": [
+        st.Page("app_pages/ghost_lap_duel.py", title="Ghost Lap Duel"),
         st.Page("app_pages/circuit_explorer.py", title="Circuit Explorer"),
     ],
 }
