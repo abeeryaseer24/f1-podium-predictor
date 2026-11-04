@@ -22,11 +22,13 @@ PAGES = {
         st.Page("app_pages/podium_predictor.py", title="Podium Predictor", default=True),
         st.Page("app_pages/scoreboard.py", title="Scoreboard"),
     ],
-    "Race": [
+       "Race": [
+        st.Page("app_pages/pit_wall.py", title="Pit Wall"),
         st.Page("app_pages/ghost_lap_duel.py", title="Ghost Lap Duel"),
         st.Page("app_pages/circuit_explorer.py", title="Circuit Explorer"),
         st.Page("app_pages/tyre_lab.py", title="Tyre Lab"),
     ],
+    
 }
 page = st.navigation(PAGES, position="top")
 
@@ -40,6 +42,7 @@ TAGLINES = {
     "Circuit Explorer": "Every circuit in its real shape and elevation. "
                         "Hills are shown 4× higher so you can see them.",
     "Tyre Lab": "How fast each tyre wears, measured from every clean racing lap.",
+        "Pit Wall": "Watch any race back, lap by lap, with every car on the real track.",
 }
 
 
