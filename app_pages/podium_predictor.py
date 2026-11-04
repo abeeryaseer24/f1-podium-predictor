@@ -2,6 +2,7 @@
 import streamlit as st
 
 from app_data import get_past_races, get_upcoming, run_past, run_upcoming
+from predictor import current_season
 from style import driver_rows, picks, podium, score, steps, tag
 
 
@@ -19,9 +20,10 @@ def go(screen):
 
 def screen_pick():
     steps(1)
+    season_now = current_season()
 
     mode = st.radio("What do you want to predict?",
-                    ["Past race", "Upcoming 2026 race"], horizontal=True)
+                    ["Past race", f"Upcoming {season_now} race"], horizontal=True)
 
     if mode == "Past race":
         races = get_past_races()
@@ -35,20 +37,17 @@ def screen_pick():
         st.session_state.choice = ("past", int(season), int(rnd))
 
     else:
-        upcoming = get_upcoming(2026)
+        upcoming = get_upcoming(season_now)
         if upcoming.empty:
-            st.info("No races left in the 2026 season.")
+            st.info(f"No races left in the {season_now} season.")
             return
         names = dict(zip(upcoming["round"], upcoming["race_name"]))
         rnd = st.selectbox("Race", list(names.keys()),
                            format_func=lambda r: f"Round {r} · {names[r]}")
-        st.session_state.choice = ("upcoming", 2026, int(rnd))
+        st.session_state.choice = ("upcoming", season_now, int(rnd))
 
     st.write("")
     st.button("Predict the podium →", type="primary", on_click=go, args=("predict",))
-
-
-# ---------- Screen 2: the model's prediction ----------
 
 def screen_predict():
     kind, season, rnd = st.session_state.choice

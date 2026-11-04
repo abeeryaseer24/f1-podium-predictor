@@ -1,4 +1,6 @@
 """Shared prediction engine, used by predict.py, predict_next.py and the web app."""
+from datetime import datetime, timezone
+from functools import lru_cache
 from pathlib import Path
 
 import joblib
@@ -17,6 +19,12 @@ MODEL_FILE = ROOT / "models" / "podium_model.joblib"
 BASE_URL = "https://api.jolpi.ca/ergast/f1"
 
 
+
+def current_season():
+    """The season we're in, based on today's date (2027 starts by itself)."""
+    return datetime.now(timezone.utc).year
+
+
 # ---------- small helpers ----------
 
 def clean_name(driver_id):
@@ -24,9 +32,16 @@ def clean_name(driver_id):
     return driver_id.replace("_", " ").title()
 
 
-def load_model():
+@lru_cache(maxsize=1)
+def _load_model(modified_time):
     bundle = joblib.load(MODEL_FILE)
     return bundle["model"], bundle["features"]
+
+
+def load_model():
+    """The saved model, loaded once and kept in memory.
+    It reloads by itself when the model file changes (after the robot retrains)."""
+    return _load_model(MODEL_FILE.stat().st_mtime)
 
 
 def score_race(race, model, features):
@@ -105,6 +120,8 @@ def get_qualifying(season, rnd):
 def estimate_grid(history, season):
     """No qualifying yet: rank drivers by their average qualifying this season."""
     this_season = history[history["season"] == season]
+    if this_season.empty:   # first race of a new season: use last season's form
+     this_season = history[history["season"] == history["season"].max()]
     last_round = this_season["round"].max()
     entry = this_season[this_season["round"] == last_round][["driver", "constructor"]].copy()
     avg_q = this_season.groupby("driver")["quali_position"].mean()

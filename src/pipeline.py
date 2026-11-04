@@ -14,9 +14,9 @@ import pandas as pd
 import requests
 
 from checks import check_log_unchanged, check_results, run_all, snapshot_log
-from predictor import BASE_URL, RESULTS_CSV
+from predictor import BASE_URL, RESULTS_CSV, current_season
 
-SEASON = 2026
+SEASON = current_season()
 
 
 def run(script, *args):

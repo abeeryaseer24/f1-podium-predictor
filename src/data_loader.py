@@ -1,15 +1,24 @@
+"""Download race and qualifying results from the Jolpica-F1 API.
+
+Normal run:  only re-downloads the newest season we have (plus any newer one), then
+             merges it into the existing data. Fast, and kind to the free API.
+--full:      re-downloads every season from 2016 (use if the data ever looks broken).
+"""
+import argparse
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pandas as pd
 import requests
 
 BASE_URL = "https://api.jolpi.ca/ergast/f1"
-SEASONS = range(2016, 2027)   # 2016 to 2026 (2026 = completed races so far)
+FIRST_SEASON = 2016
 LIMIT = 100                   # rows per API call (the API's max)
 
 RAW_DIR = Path("data/raw")
 PROCESSED_DIR = Path("data/processed")
+OUT_FILE = PROCESSED_DIR / "results.csv"
 
 
 def get_json(url, params):
@@ -74,11 +83,25 @@ def fetch_qualifying(season):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Download F1 race and qualifying results")
+    parser.add_argument("--full", action="store_true",
+                        help="re-download every season from scratch")
+    args = parser.parse_args()
+
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
 
+    # Which seasons to download
+    old = None
+    if OUT_FILE.exists() and not args.full:
+        old = pd.read_csv(OUT_FILE)
+        first = int(old["season"].max())        # refresh the newest season we have
+    else:
+        first = FIRST_SEASON                     # full rebuild
+    seasons = range(first, datetime.now(timezone.utc).year + 1)
+
     results, quali = [], []
-    for season in SEASONS:
+    for season in seasons:
         print(f"Downloading {season}...")
         results += fetch_results(season)
         time.sleep(0.5)
@@ -88,16 +111,20 @@ def main():
     results_df = pd.DataFrame(results)
     quali_df = pd.DataFrame(quali)
 
-    # Save the data exactly as downloaded
+    # Keep a copy of exactly what was downloaded this time
     results_df.to_csv(RAW_DIR / "results_raw.csv", index=False)
     quali_df.to_csv(RAW_DIR / "quali_raw.csv", index=False)
 
     # Combine into one table: one row per driver per race
-    df = results_df.merge(quali_df, on=["season", "round", "driver"], how="left")
-    df = df.sort_values(["season", "round", "finish_position"]).reset_index(drop=True)
-    df.to_csv(PROCESSED_DIR / "results.csv", index=False)
+    new = results_df.merge(quali_df, on=["season", "round", "driver"], how="left")
 
-    print(f"Done. {len(df)} rows saved to data/processed/results.csv")
+    # Keep the older seasons we already had, replace the ones we just downloaded
+    if old is not None:
+        new = pd.concat([old[old["season"] < first], new], ignore_index=True)
+
+    new = new.sort_values(["season", "round", "finish_position"]).reset_index(drop=True)
+    new.to_csv(OUT_FILE, index=False)
+    print(f"Done. {len(new)} rows saved to {OUT_FILE}")
 
 
 if __name__ == "__main__":

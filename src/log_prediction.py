@@ -10,7 +10,8 @@ from datetime import datetime, timezone
 
 import pandas as pd
 
-from predictor import ROOT, get_race_start, model_version, predict_upcoming, upcoming_races
+from predictor import (ROOT, current_season, get_race_start, model_version,
+                       predict_upcoming, upcoming_races)
 
 LOG_FILE = ROOT / "data" / "predictions" / "predictions.csv"
 
@@ -36,7 +37,7 @@ def next_race(season, now):
 
 def main():
     parser = argparse.ArgumentParser(description="Lock in the next race's podium prediction")
-    parser.add_argument("--season", type=int, default=2026)
+    parser.add_argument("--season", type=int, default=current_season())
     parser.add_argument("--dry-run", action="store_true",
                         help="show what would be saved, without saving anything")
     args = parser.parse_args()
