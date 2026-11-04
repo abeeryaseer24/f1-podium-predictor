@@ -1,4 +1,4 @@
-"""Lock in the podium prediction for the next race, once its qualifying is done.
+"""Lock in the prediction for the next race (the podium and the whole order), once its qualifying is done.
 
 Rules that keep the scoreboard fair:
 - only races that haven't started yet
@@ -6,6 +6,7 @@ Rules that keep the scoreboard fair:
 - once a race is saved, it is never changed
 """
 import argparse
+import json
 from datetime import datetime, timezone
 
 import pandas as pd
@@ -82,6 +83,7 @@ def main():
         row[f"p{i}"] = r["driver"]
         row[f"p{i}_team"] = r["constructor"]
         row[f"p{i}_chance"] = r["podium_chance"]
+    row["order"] = json.dumps(result["table"]["driver"].tolist())        # the whole predicted order, 1-22
 
     LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
     pd.concat([log, pd.DataFrame([row])], ignore_index=True).to_csv(LOG_FILE, index=False)
@@ -89,4 +91,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()

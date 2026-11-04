@@ -110,12 +110,83 @@ def add_gain_features(df):
         race[["constructor", "season", "round", "constructor_avg_gain"]],
         on=["constructor", "season", "round"], how="left")
     return df
+# ---------- Step 9: recent form, this weekend's car, teammates, circuit type ----------
+
+def rolling_past(df, keys, col, window):
+    """Average of `col` over each group's last `window` EARLIER races (never the race itself)."""
+    return df.groupby(keys)[col].transform(lambda s: s.shift(1).rolling(window, min_periods=1).mean())
+
+
+def add_form_features(df):
+    """Recent form: the last few races say more about this year's car than a whole season."""
+    df["driver_form_finish"] = rolling_past(df, ["driver"], "finish_position", 5)
+    df["driver_form_quali"] = rolling_past(df, ["driver"], "quali_position", 5)
+    df["driver_form_dnf"] = rolling_past(df, ["driver"], "dnf", 10)
+
+    # Team: both cars together, per race first, then the last 3 races
+    race = (df.groupby(["constructor", "season", "round"], as_index=False)
+              .agg(team_finish=("finish_position", "mean"), team_quali=("quali_position", "mean"))
+              .sort_values(["season", "round"]))
+    for col, name in (("team_finish", "team_form_finish"), ("team_quali", "team_form_quali")):
+        race[name] = race.groupby("constructor")[col].transform(
+            lambda s: s.shift(1).rolling(3, min_periods=1).mean())
+    return df.merge(race[["constructor", "season", "round", "team_form_finish", "team_form_quali"]],
+                    on=["constructor", "season", "round"], how="left")
+
+
+def add_weekend_features(df):
+    """This weekend's qualifying, known before the race: how fast is the car right now?"""
+    g = df.groupby(["season", "round", "constructor"])["quali_position"]
+    df["team_best_quali"] = g.transform("min")
+    team_sum, team_n = g.transform("sum"), g.transform("count")
+    df["teammate_quali"] = ((team_sum - df["quali_position"]) / (team_n - 1)).where(team_n > 1)
+    df["quali_gap_teammate"] = df["quali_position"] - df["teammate_quali"]
+    df["field_size"] = df.groupby(["season", "round"])["driver"].transform("count")
+    return df
+
+
+def add_teammate_features(df):
+    """How the driver usually does against their teammate (earlier races only)."""
+    race = df.groupby(["season", "round", "constructor"])
+    beat = (df["finish_position"] < (race["finish_position"].transform("sum") - df["finish_position"])
+            / (race["finish_position"].transform("count") - 1))
+    df["_beat_mate"] = beat.where(race["finish_position"].transform("count") > 1).astype(float)
+    df["driver_beats_teammate"] = rolling_past(df, ["driver"], "_beat_mate", 10)
+    df["driver_quali_gap_form"] = rolling_past(df, ["driver"], "quali_gap_teammate", 5)
+    return df.drop(columns="_beat_mate")
+
+
+def add_circuit_features(df):
+    """Circuit type: how much the grid decides the result here (Monaco high, Spa lower),
+    from earlier races at this circuit."""
+    race = (df.groupby(["circuit", "season", "round"])
+              .apply(lambda r: pd.Series({
+                  "grid_finish_corr": r["grid"].corr(r["finish_position"], method="spearman"),
+                  "places_changed": (r["grid"] - r["finish_position"]).abs().mean()}),
+                  include_groups=False)
+              .reset_index().sort_values(["season", "round"]))
+    for col, name in (("grid_finish_corr", "circuit_grid_importance"),
+                      ("places_changed", "circuit_places_changed")):
+        race[name] = race.groupby("circuit")[col].transform(lambda s: s.shift(1).expanding().mean())
+    return df.merge(race[["circuit", "season", "round", "circuit_grid_importance", "circuit_places_changed"]],
+                    on=["circuit", "season", "round"], how="left")
+
+
+def add_step9_features(df):
+    df = add_weekend_features(df)
+    df = add_form_features(df)
+    df = add_teammate_features(df)
+    df = add_circuit_features(df)
+    return df
+
+
 def main():
     df = load_and_clean()
     df = add_driver_features(df)
     df = add_team_features(df)
     df = add_season_features(df)
     df = add_gain_features(df)
+    df = add_step9_features(df)
     df.to_csv("data/processed/features.csv", index=False)
 
     cols = ["grid", "quali_position", "driver_podium_rate", "driver_avg_finish",
@@ -129,4 +200,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()

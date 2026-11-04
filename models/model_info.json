@@ -1,32 +1,114 @@
 {
-  "trained_at": "2026-11-03T12:22:22+00:00",
+  "trained_at": "2026-11-04T15:51:39+00:00",
   "trained_on_rows": 4738,
+  "model": "Plackett-Luce ranking model: predicts the whole finishing order",
   "last_race": {
     "season": 2026,
     "round": 19,
     "race_name": "Mexico City Grand Prix"
   },
   "features": [
-    "grid",
-    "quali_position",
+    "log_grid",
+    "log_quali",
+    "log_team_best_q",
+    "quali_gap_teammate",
+    "grid_x_circuit",
+    "driver_form_finish",
+    "team_form_finish",
+    "team_form_quali",
+    "driver_season_avg_finish",
+    "constructor_season_podium_rate",
     "driver_podium_rate",
     "driver_avg_finish",
+    "driver_form_dnf",
     "driver_dnf_rate",
-    "driver_races",
-    "driver_circuit_podium_rate",
-    "constructor_podium_rate",
-    "constructor_circuit_podium_rate",
-    "constructor_season_podium_rate",
-    "driver_season_podium_rate",
-    "driver_season_avg_finish",
-    "grid_gap_to_pole",
-    "team_rank_in_race",
+    "driver_beats_teammate",
     "driver_avg_gain",
-    "constructor_avg_gain"
+    "constructor_avg_gain",
+    "driver_circuit_podium_rate",
+    "constructor_circuit_podium_rate"
   ],
   "test_2025": {
-    "model_top3_hits": 2.29,
+    "model_top3_hits": 2.42,
     "grid_top3_hits": 2.25,
-    "roc_auc": 0.949
+    "roc_auc": 0.95
+  },
+  "backtests": {
+    "2022": {
+      "races": 22,
+      "podium_hits": 2.18,
+      "grid_podium_hits": 1.91,
+      "old_model_podium_hits": 1.95,
+      "winner_right": 0.409,
+      "grid_winner_right": 0.455,
+      "order_match": 0.599,
+      "grid_order_match": 0.526,
+      "places_off": 3.65,
+      "grid_places_off": 3.94,
+      "podium_auc": 0.95
+    },
+    "2023": {
+      "races": 22,
+      "podium_hits": 1.73,
+      "grid_podium_hits": 1.91,
+      "old_model_podium_hits": 1.91,
+      "winner_right": 0.636,
+      "grid_winner_right": 0.636,
+      "order_match": 0.641,
+      "grid_order_match": 0.586,
+      "places_off": 3.46,
+      "grid_places_off": 3.75,
+      "podium_auc": 0.912
+    },
+    "2024": {
+      "races": 24,
+      "podium_hits": 2.08,
+      "grid_podium_hits": 2.0,
+      "old_model_podium_hits": 1.96,
+      "winner_right": 0.5,
+      "grid_winner_right": 0.458,
+      "order_match": 0.757,
+      "grid_order_match": 0.73,
+      "places_off": 2.78,
+      "grid_places_off": 2.9,
+      "podium_auc": 0.942
+    },
+    "2025": {
+      "races": 24,
+      "podium_hits": 2.42,
+      "grid_podium_hits": 2.25,
+      "old_model_podium_hits": 2.29,
+      "winner_right": 0.583,
+      "grid_winner_right": 0.667,
+      "order_match": 0.669,
+      "grid_order_match": 0.651,
+      "places_off": 3.24,
+      "grid_places_off": 3.34,
+      "podium_auc": 0.95
+    },
+    "2026": {
+      "races": 19,
+      "podium_hits": 1.95,
+      "grid_podium_hits": 1.84,
+      "old_model_podium_hits": 1.84,
+      "winner_right": 0.737,
+      "grid_winner_right": 0.684,
+      "order_match": 0.68,
+      "grid_order_match": 0.657,
+      "places_off": 3.47,
+      "grid_places_off": 3.47,
+      "podium_auc": 0.94
+    }
+  },
+  "backtest_average": {
+    "podium_hits": 2.072,
+    "grid_podium_hits": 1.982,
+    "old_model_podium_hits": 1.99,
+    "winner_right": 0.573,
+    "grid_winner_right": 0.58,
+    "order_match": 0.669,
+    "grid_order_match": 0.63,
+    "places_off": 3.32,
+    "grid_places_off": 3.48
   }
 }

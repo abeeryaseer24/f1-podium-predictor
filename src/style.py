@@ -240,18 +240,26 @@ def podium(places):
     st.markdown(f'<div class="pp-podium">{"".join(parts)}</div>', unsafe_allow_html=True)
 
 
-def driver_rows(table, start=0, end=10):
-    """Styled rows: position, team stripe, driver, team, grid, podium chance."""
+def driver_rows(table, start=0, end=10, real=False):
+    """Styled rows: predicted position, team stripe, driver, team, grid, podium and win chance.
+    With real=True (past races), also where the driver really finished."""
     rows = []
     for i, r in table.iloc[start:end].iterrows():
         team_name, color = team_info(r["constructor"])
         top = " top" if i < 3 else ""
+        extra = ""
+        if real and r.get("finish_position") == r.get("finish_position"):
+            off = int(r["finish_position"] - (i + 1))
+            word = "spot on" if off == 0 else f"{abs(off)} place{'s' if abs(off) > 1 else ''} {'lower' if off > 0 else 'higher'}"
+            extra = f' · <b>really finished P{int(r["finish_position"])}</b> ({word})'
+        win = f'<small style="display:block;font-size:.75rem;font-weight:600;opacity:.7">win {r["win_chance"]:.0f}%</small>' \
+            if "win_chance" in r else ""
         rows.append(
             f'<div class="pp-row{top}"><div class="pp-pos">{i + 1}</div>'
             f'<div class="pp-stripe" style="background:{color}"></div>'
             f'<div class="pp-who"><b>{html.escape(r["name"])}</b>'
-            f'<small>{team_name} · Grid {int(r["grid"])}</small></div>'
-            f'<div class="pp-pct">{r["podium_chance"]:.1f}%</div></div>'
+            f'<small>{team_name} · Grid {int(r["grid"])}{extra}</small></div>'
+            f'<div class="pp-pct" style="text-align:right">{r["podium_chance"]:.1f}%{win}</div></div>'
         )
     st.markdown(f'<div class="pp-rows">{"".join(rows)}</div>', unsafe_allow_html=True)
 
@@ -362,4 +370,4 @@ def show_cards(cards):
 
 
 def empty_note(text):
-    st.markdown(f'<div class="pp-empty">{text}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pp-empty">{text}</div>', unsafe_allow_html=True)

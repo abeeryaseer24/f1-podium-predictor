@@ -1,4 +1,5 @@
-"""Shared prediction engine, used by predict.py, predict_next.py and the web app."""
+"""Shared prediction engine, used by predict.py, predict_next.py and the web app.
+The model ranks the whole field (see ranker.py): predicted position, win and podium chances."""
 from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
@@ -8,8 +9,9 @@ import numpy as np
 import pandas as pd
 import requests
 
+import ranker
 from features import (TEAM_MAP, add_driver_features, add_team_features,
-                      add_season_features, add_gain_features)
+                      add_season_features, add_gain_features, add_step9_features)
 
 # Paths that work no matter which folder you run from
 ROOT = Path(__file__).resolve().parent.parent
@@ -46,11 +48,11 @@ def load_model():
 
 
 def score_race(race, model, features):
-    """Give every driver a podium chance (%) and sort, best first."""
-    race = race.copy()
-    race["podium_chance"] = (model.predict_proba(race[features])[:, 1] * 100).round(1)
+    """The predicted finishing order of one race, best first, with every driver's predicted
+    position, win chance, podium chance and expected finish."""
+    race = ranker.predict(model, ranker.add_model_columns(race))
     race["name"] = race["driver"].map(clean_name)
-    return race.sort_values("podium_chance", ascending=False).reset_index(drop=True)
+    return race
 
 
 # ---------- race lists (for the app's dropdowns) ----------
@@ -84,6 +86,7 @@ def predict_past(season, rnd):
         raise ValueError(f"No results for season {season}, round {rnd}.")
 
     race = score_race(race, model, features)
+    race["places_off"] = race["finish_position"] - race["predicted_position"]
     predicted = race.head(3)["name"].tolist()
     actual = race.sort_values("finish_position").head(3)["name"].tolist()
     return {
@@ -145,6 +148,7 @@ def prepare(df):
     df = add_team_features(df)
     df = add_season_features(df)
     df = add_gain_features(df)
+    df = add_step9_features(df)
     return df
 
 
@@ -206,6 +210,7 @@ PREDICTIONS_DIR = ROOT / "data" / "predictions"
 SCOREBOARD_FILES = {
     "live": PREDICTIONS_DIR / "predictions.csv",        # 2026, locked before each race
     "backtest": PREDICTIONS_DIR / "backtest_2025.csv",  # 2025, model trained on 2016-2024
+    "backtests": PREDICTIONS_DIR / "backtests.csv",     # every season from 2022, each by a model that never saw it
 }
 
 
@@ -264,4 +269,4 @@ def model_info():
     """The model card written by train.py (None if it doesn't exist yet)."""
     if MODEL_INFO.exists():
         return json.loads(MODEL_INFO.read_text())
-    return None
+    return None

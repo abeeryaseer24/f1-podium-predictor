@@ -2,7 +2,7 @@
 import pandas as pd
 import streamlit as st
 
-from app_data import get_scoreboard
+from app_data import get_model_info, get_scoreboard
 from predictor import clean_name, season_summary
 from style import empty_note, race_card, show_cards, stat_tiles
 
@@ -61,3 +61,24 @@ else:
     stat_tiles(season_summary(back))
     with st.expander(f"Show all {len(back)} races"):
         show_cards(race_cards(back, live=False))
+
+st.subheader("Every season, tested fairly")
+st.write("Each season below was predicted by a model trained only on the seasons before it. "
+         "\"The grid\" means simply guessing that the race finishes in starting order, a tough "
+         "baseline in Formula 1.")
+info = get_model_info()
+tests = (info or {}).get("backtests")
+if not tests:
+    empty_note("No backtests yet. Run src/train.py to create them.")
+else:
+    rows = [{"Season": int(s), "Races": t["races"],
+             "Podium drivers per race (model)": t["podium_hits"],
+             "Podium drivers per race (grid)": t["grid_podium_hits"],
+             "Winner right (model)": f'{t["winner_right"]:.0%}',
+             "Winner right (grid)": f'{t["grid_winner_right"]:.0%}',
+             "Places off, whole order (model)": t["places_off"],
+             "Places off, whole order (grid)": t["grid_places_off"]}
+            for s, t in sorted(tests.items(), reverse=True)]
+    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+    st.caption("Places off: how many places, on average, each driver finished away from where the "
+               "model (or the grid) put them. Lower is better.")

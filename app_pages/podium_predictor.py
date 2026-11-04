@@ -1,4 +1,4 @@
-"""Podium Predictor page: pick a race -> the model's prediction -> the reveal."""
+"""Podium Predictor page: pick a race -> the model's predicted order -> the reveal."""
 import streamlit as st
 
 from app_data import get_past_races, get_upcoming, run_past, run_upcoming
@@ -67,14 +67,17 @@ def screen_predict():
 
     podium([
         {"name": r["name"], "team": r["constructor"],
-         "note": f'{r["podium_chance"]:.1f}% chance'}
+         "note": f'{r["podium_chance"]:.0f}% podium · {r["win_chance"]:.0f}% win'}
         for _, r in table.head(3).iterrows()
     ])
 
-    st.subheader("Every driver's chance")
+    st.subheader("The predicted finishing order")
+    st.caption("Big number: chance of a podium. Small number: chance of winning. The model replays "
+               "the race 5,000 times with the right amount of luck, so podium chances add up to "
+               "exactly 3 drivers and win chances to 100%.")
     driver_rows(table, 0, 10)
     if len(table) > 10:
-        with st.expander("Show the rest of the grid"):
+        with st.expander(f"Show positions 11–{len(table)}"):
             driver_rows(table, 10, len(table))
 
     back, forward = st.columns(2)
@@ -105,11 +108,23 @@ def screen_reveal():
     st.subheader("The model's picks")
     picks(result["predicted"], result["actual"], team_of)
 
+    st.subheader("The whole order: predicted vs real")
+    finished = table.dropna(subset=["finish_position"])
+    model_off = (finished["finish_position"] - finished["predicted_position"]).abs().mean()
+    grid_rank = finished["grid"].rank(method="first")
+    grid_off = (finished["finish_position"] - grid_rank).abs().mean()
+    st.caption(f"On average the model's order was {model_off:.1f} places off. "
+               f"Simply copying the starting grid would have been {grid_off:.1f} places off.")
+    driver_rows(table, 0, 10, real=True)
+    if len(table) > 10:
+        with st.expander(f"Show positions 11–{len(table)}"):
+            driver_rows(table, 10, len(table), real=True)
+
     with st.expander("How fair is this?"):
         st.write("The model learned from past races, including this one, so it has "
                  "already seen this result. For an honest test, open the Scoreboard: "
-                 "it shows predictions locked in before each 2026 race, and a 2025 "
-                 "backtest by a model that never saw those races.")
+                 "it shows predictions locked in before each 2026 race, and backtests for "
+                 "every season since 2022, each by a model that never saw those races.")
 
     back, again = st.columns(2)
     back.button("← Back to prediction", on_click=go, args=("predict",))
@@ -119,4 +134,4 @@ def screen_reveal():
 # ---------- show the current screen ----------
 
 SCREENS = {"pick": screen_pick, "predict": screen_predict, "reveal": screen_reveal}
-SCREENS[st.session_state.screen]()
+SCREENS[st.session_state.screen]()
