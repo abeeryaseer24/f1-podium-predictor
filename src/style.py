@@ -55,10 +55,12 @@ def apply_style(dark):
 .stApp {{ background: var(--pp-bg); font-family: Inter, system-ui, sans-serif; }}
 .stApp p, .stApp label, .stApp span, .stApp li, .stApp h1, .stApp h2, .stApp h3 {{ color: var(--pp-text); }}
 .stApp h2, .stApp h3 {{ font-family: 'Saira Condensed', sans-serif; font-weight: 800; letter-spacing: .5px; }}
-[data-testid="stHeader"] {{ background: transparent; }}
-[data-testid="stToolbar"], [data-testid="stDecoration"] {{ display: none; }}
+[data-testid="stHeader"] {{ background: var(--pp-bg); border-bottom: 1px solid var(--pp-border); }}
+[data-testid="stHeader"] a, [data-testid="stHeader"] span, [data-testid="stHeader"] p {{ color: var(--pp-text) !important; }}
+[data-baseweb="popover"] a, [data-baseweb="popover"] span {{ color: var(--pp-text) !important; }}
+[data-testid="stMainMenu"], [data-testid="stAppDeployButton"], [data-testid="stDecoration"] {{ display: none; }}
 [data-testid="stSidebar"] {{ background: var(--pp-panel); border-right: 1px solid var(--pp-border); }}
-.block-container {{ position: relative; z-index: 1; max-width: 1100px; padding-top: 2.5rem; }}
+.block-container {{ position: relative; z-index: 1; max-width: 1100px; padding-top: 6rem; }}
 
 /* dropdowns */
 [data-baseweb="select"] > div {{ background: var(--pp-panel2) !important; border-color: var(--pp-border) !important; }}
