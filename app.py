@@ -35,8 +35,15 @@ if "dark" not in st.session_state:
     st.session_state.dark = True
 
 title_col, switch_col = st.columns([5, 1], vertical_alignment="center")
+TAGLINES = {
+    "Podium Predictor": "Pick a Formula 1 race and see who the model puts on the podium.",
+    "Scoreboard": "Every prediction, locked in before the race and scored after it.",
+    "Ghost Lap Duel": "Two drivers' fastest laps, head to head, all the way round.",
+    "Circuit Explorer": "Every circuit in its real shape and elevation. "
+                        "Hills are shown 4× higher so you can see them.",
+}
 with title_col:
-    hero()
+    hero(page.title, TAGLINES.get(page.title, ""))
 with switch_col:
     st.toggle("Dark theme", key="dark")
 

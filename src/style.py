@@ -130,10 +130,17 @@ def apply_style(dark):
     st.markdown(SCOREBOARD_CSS, unsafe_allow_html=True)
 
 
-def hero():
+BRAND = "Podium Predictor"
+
+
+def hero(title, subtitle):
+    """The big page title (last word in the second style), with the app name above it."""
+    words = title.split()
+    first, last = " ".join(words[:-1]), words[-1]
+    brand = "" if title == BRAND else f'<div class="pp-brand">{BRAND}</div>'
     st.markdown(
-        '<div class="pp-hero"><h1>Podium <span>Predictor</span></h1></div>'
-        '<p class="pp-sub">Pick a Formula 1 race and see who the model puts on the podium.</p>',
+        f'{brand}<div class="pp-hero"><h1>{first} <span>{last}</span></h1></div>'
+        f'<p class="pp-sub">{subtitle}</p>',
         unsafe_allow_html=True,
     )
 
@@ -172,6 +179,7 @@ def team_info(team_id):
 
 
 COMPONENT_CSS = """<style>
+.pp-brand{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:2px;text-transform:uppercase;color:var(--pp-red);margin-bottom:.15rem}
 .pp-podium{display:flex;align-items:flex-end;justify-content:center;gap:14px;margin:1.2rem 0 2rem}
 .pp-place{flex:1;max-width:230px;display:flex;flex-direction:column;align-items:center;text-align:center}
 .pp-info{margin-bottom:10px;opacity:0;animation:pp-fade .5s ease-out forwards}

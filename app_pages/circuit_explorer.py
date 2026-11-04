@@ -4,9 +4,7 @@ import streamlit as st
 from app_data import get_corners, get_prepared_races, get_race_file, get_race_info
 from track3d import circuit_view
 
-st.subheader("Circuit Explorer")
-st.write("Every circuit in its real shape, traced from the fastest lap of the race. "
-         "Hills are shown 4× higher than real so you can see them.")
+
 
 races = get_prepared_races()
 if races.empty:

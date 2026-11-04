@@ -4,8 +4,6 @@ import streamlit as st
 from app_data import get_duel, get_fastest_laps, get_prepared_races, get_race_info
 from duel import lap_time
 
-st.subheader("Ghost Lap Duel")
-st.write("Pick two drivers and compare their fastest laps, all the way round.")
 
 races = get_prepared_races()
 if races.empty:
