@@ -8,7 +8,7 @@ import sys
 import pandas as pd
 
 from predictor import FEATURES_CSV, RACES_DIR, RESULTS_CSV, SCOREBOARD_FILES, model_info
-
+from strategy import calls_for_lap
 FIRST_SEASON = 2016
 
 
@@ -128,6 +128,27 @@ def check_race_files():
     too_big = [p.name for p in folders if sum(f.stat().st_size for f in p.iterdir()) > 15e6]
     check(not too_big, "every race folder is under 15 MB")
 
+# ---------- the strategist (the no-future rule) ----------
+
+def check_strategy_no_future():
+    print("Checking the strategist uses no future laps")
+    files = sorted(RACES_DIR.glob("*_*/strategy.parquet"))
+    if not files:
+        print("  --  no strategy files yet")
+        return
+    folder = files[0].parent
+    laps = pd.read_parquet(folder / "laps.parquet")
+    total = int(laps["lap_number"].max())
+    L = total // 2
+    fresh = calls_for_lap(laps[laps["lap_number"] <= L], L, total)
+    stored = pd.read_parquet(files[0])
+    stored = stored[stored["lap"] == L]
+    cols = ["driver_number", "plan", "exp_position", "call"]
+    tidy = lambda df: df[cols].sort_values(cols[:2]).reset_index(drop=True)
+    check(tidy(stored).equals(tidy(fresh)),
+          f"stored calls for lap {L} of {folder.name} match a recomputation from laps 1-{L} only")
+
+
 
 
 def run_all(min_rows=0):
@@ -136,6 +157,7 @@ def run_all(min_rows=0):
     check_model()
     check_predictions()
     check_race_files()
+    check_strategy_no_future()
     print("All checks passed.")
 
 
