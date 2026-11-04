@@ -1,7 +1,7 @@
 """Circuit Explorer: any circuit in 3D, in its real shape and elevation."""
 import streamlit as st
 
-from app_data import get_prepared_races, get_race_file, get_race_info
+from app_data import get_corners, get_prepared_races, get_race_file, get_race_info
 from track3d import circuit_view
 
 st.subheader("Circuit Explorer")
@@ -21,11 +21,19 @@ in_season = races[races["season"] == season].sort_values("round")
 names = {r.folder: f"Round {r.round} · {r.race_name}" for r in in_season.itertuples()}
 folder = right.selectbox("Circuit", list(names), format_func=names.get)
 colour_by = st.radio("Colour the track by", ["Speed", "Gear"], horizontal=True)
+show_corners = st.toggle("Show corner numbers", value=True)
 
 # ---------- the 3D view ----------
 track = get_race_file(folder, "track")
 info = get_race_info(folder)
-circuit_view(track, colour_by=colour_by.lower(), dark=st.session_state.dark)
+corners = get_corners(folder)
+labels = [{"text": "START / FINISH", "i": 0, "kind": "start"}]
+if show_corners:
+    labels += [{"text": c["label"], "i": c["i"], "kind": "corner"} for c in corners]
+circuit_view(track, colour_by=colour_by.lower(), dark=st.session_state.dark, labels=labels)
+if show_corners and corners and corners[0]["source"] == "estimated":
+    st.caption("Corner numbers here are estimated from where the car slows down, "
+               "so they may differ from the official numbering.")
 
 # ---------- fastest-lap facts ----------
 laps = get_race_file(folder, "laps")

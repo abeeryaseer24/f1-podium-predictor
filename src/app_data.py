@@ -63,3 +63,9 @@ def get_race_file(folder, name):
 @st.cache_data(ttl=600)
 def get_race_info(folder):
     return json.loads((RACES_DIR / folder / "info.json").read_text())
+
+@st.cache_data(ttl=600)
+def get_corners(folder):
+    """Corner labels for a race, or [] if they haven't been made yet."""
+    path = RACES_DIR / folder / "corners.json"
+    return json.loads(path.read_text()) if path.exists() else []

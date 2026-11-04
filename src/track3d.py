@@ -35,6 +35,7 @@ TEMPLATE = r"""<!doctype html>
            font-size: 11px; font-weight: 700; letter-spacing: .4px; white-space: nowrap; pointer-events: none;
            background: var(--panel); color: var(--text); border: 1px solid var(--border); }
   .label.start { background: #e10600; color: #fff; border-color: #e10600; }
+  .label.corner { font-size: 10px; padding: 2px 6px; font-weight: 600; }
   #ui { position: absolute; top: 12px; right: 12px; display: flex; gap: 8px; }
   #ui button { font: 600 12px Inter, system-ui, sans-serif; padding: 9px 14px; border-radius: 999px; cursor: pointer;
                border: 1px solid var(--border); background: var(--panel); color: var(--text); }
@@ -171,7 +172,7 @@ scene.add(line);
 // ---------- labels pinned to the track ----------
 const labels = (D.labels || []).map(l => {
   const el = document.createElement("div");
-  el.className = "label" + (l.kind === "start" ? " start" : "");
+    el.className = "label" + (l.kind ? " " + l.kind : "");
   el.textContent = l.text;
   wrap.appendChild(el);
   return { el, pos: pts[Math.min(l.i, n - 1)].clone().add(new THREE.Vector3(0, 1.5, 0)) };
