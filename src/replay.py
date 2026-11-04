@@ -7,6 +7,7 @@ amount, so cars always stay on the track and move smoothly.
 Times in the result are seconds from lights out (roughly), one value per second.
 """
 import json
+import re
 
 import numpy as np
 import pandas as pd
@@ -16,6 +17,7 @@ from predictor import RACES_DIR
 
 TRACK_POINTS = 1500               # the track line is resampled to this many evenly spaced points
 NOISY_FLAGS = {"BLUE", "CLEAR", "GREEN", "YELLOW", "DOUBLE YELLOW"}
+RED_FLAG = re.compile(r"\bRED FLAG\b")      # careful: "CHEQUERED FLAG" also contains "RED FLAG"
 
 
 def load(folder, name):
@@ -77,13 +79,13 @@ def race_events(control, base, end):
         msg = str(r.get("message") or "")
         up = msg.upper()
         new = None
-        if "VIRTUAL SAFETY CAR DEPLOYED" in up:
+        if "VIRTUAL SAFETY CAR DEPLOYED" in up or "VSC DEPLOYED" in up:
             new = "VSC"
         elif "SAFETY CAR DEPLOYED" in up:
             new = "SC"
-        elif "RED FLAG" in up or r.get("flag") == "RED":
+        elif RED_FLAG.search(up) or r.get("flag") == "RED":
             new = "RED"
-        closes = any(w in up for w in ("VIRTUAL SAFETY CAR ENDING", "SAFETY CAR IN THIS LAP",
+        closes = any(w in up for w in ("VIRTUAL SAFETY CAR ENDING", "VSC ENDING", "SAFETY CAR IN THIS LAP",
                                        "TRACK CLEAR", "RESUME")) or r.get("flag") == "CHEQUERED"
         if (new or closes) and open_kind:
             extra = 45 if open_kind == "SC" and "IN THIS LAP" in up else 0
@@ -140,4 +142,4 @@ def build_replay(folder):
     events, status = race_events(control, base, end)
     return {"race_name": info["race_name"], "season": info["season"], "laps": total_laps,
             "duration": int(len(ticks) - 1), "lapTimes": lap_times, "cars": cars,
-            "events": events, "status": status}
+            "events": events, "status": status}

@@ -1,5 +1,5 @@
 """Pit Wall 3D: the race replay plus the strategist on screen
-(BOX BOX calls, pulsing dots, undercut warnings, strategist panel and verdict)."""
+(team radio for the driver you follow, strategist panel, planned-stop badges and the verdict)."""
 import json
 
 import streamlit.components.v1 as components
@@ -28,8 +28,8 @@ TEMPLATE = r"""<!doctype html>
   #hud { position: absolute; left: 12px; top: 12px; padding: 10px 12px; border-radius: 12px;
          background: var(--panel); border: 1px solid var(--border); color: var(--text); font-size: 12px; }
   #lap { font: 800 24px 'Saira Condensed', Inter, sans-serif; }
-  #status { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); padding: 8px 16px; border-radius: 999px;
-            font: 800 14px 'Saira Condensed', Inter, sans-serif; letter-spacing: 1px; display: none; }
+  #status { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); padding: 6px 14px; border-radius: 999px;
+            font: 800 13px 'Saira Condensed', Inter, sans-serif; letter-spacing: 1px; display: none; z-index: 3; }
   #ticker { position: absolute; left: 12px; bottom: 12px; padding: 8px 12px; border-radius: 10px; font-size: 12px;
             background: var(--panel); border: 1px solid var(--border); color: var(--text); display: none; }
   #views { position: absolute; top: 12px; right: 12px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -53,48 +53,78 @@ TEMPLATE = r"""<!doctype html>
                display: flex; align-items: center; justify-content: center; }
   .row .age, .row .stops { color: var(--muted); text-align: center; font-variant-numeric: tabular-nums; }
   .pit { color: #e10600 !important; font-weight: 800; }
-  .badge { font-size: 9px; font-weight: 800; padding: 1px 5px; border-radius: 4px; margin-left: 4px; }
-  .badge.box { background: #e10600; color: #fff; }
-  .badge.uc { background: #f2c21b; color: #111; }
+  .badge { font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 4px; margin-left: 5px;
+           border: 1px solid var(--border); color: var(--muted); }
+  .badge.box { background: #e10600; border-color: #e10600; color: #fff; }
 
-  /* BOX BOX banner (our own design) */
-  #boxbox { position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%) scale(.6); opacity: 0;
-            pointer-events: none; text-align: center; transition: transform .25s cubic-bezier(.2,1.4,.4,1), opacity .2s; z-index: 4; }
-  #boxbox.show { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  #boxbox .bb { display: inline-block; font: 900 64px 'Saira Condensed', Inter, sans-serif; letter-spacing: 6px; color: #fff;
-                background: #e10600; padding: 4px 30px; border-radius: 6px; transform: skewX(-8deg);
-                box-shadow: 0 10px 40px rgba(225,6,0,.45); }
-  #boxbox.show .bb { animation: flash .45s ease-in-out 3; }
-  @keyframes flash { 0%, 100% { filter: none; } 50% { filter: brightness(1.4); } }
-  #boxbox .who { margin-top: 10px; display: inline-flex; gap: 8px; align-items: center; padding: 6px 14px; border-radius: 999px;
-                 background: var(--panel); border: 1px solid var(--border); color: var(--text); font-weight: 700; font-size: 13px; }
-  #boxbox .stripe { width: 6px; height: 18px; border-radius: 2px; }
+  /* team radio: small glass cards, newest at the bottom */
+  #radio { position: absolute; left: 50%; top: 50px; transform: translateX(-50%); width: min(330px, 62%);
+           display: flex; flex-direction: column; gap: 6px; pointer-events: none; z-index: 4; }
+  .card { border: 1.5px solid var(--team); border-left-width: 5px; border-radius: 12px; padding: 7px 11px 8px;
+          background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+          color: var(--text); box-shadow: 0 6px 22px rgba(0,0,0,.18);
+          opacity: 0; transform: translateY(-6px); transition: opacity .35s ease, transform .35s ease; }
+  .card.show { opacity: 1; transform: none; }
+  .card .top { display: flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 700; letter-spacing: .6px; }
+  .card .who { color: var(--muted); }
+  .card .lapTag { margin-left: auto; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--border); color: var(--text); }
+  .card .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--team); }
+  .card .msg { margin-top: 3px; font-size: 14px; font-weight: 600; line-height: 1.3; }
+  .card.box .msg { font: 800 18px 'Saira Condensed', Inter, sans-serif; letter-spacing: .5px; }
+  .card.box .dot { background: #e10600; }
+  .card.done .dot { background: #2ecc71; }
+  .card.missed .dot { background: #f2a71b; }
+  #hint { padding: 6px 12px; border-radius: 999px; font-size: 11px; text-align: center; color: var(--muted);
+          background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(8px); align-self: center; }
 
   /* strategist panel */
   #strat { position: absolute; right: 12px; bottom: 12px; width: 250px; padding: 10px 12px; border-radius: 12px;
            background: var(--panel); border: 1px solid var(--border); color: var(--text); font-size: 11px; display: none; }
   #strat h4 { margin: 0 0 6px; font: 800 13px 'Saira Condensed', Inter, sans-serif; letter-spacing: .5px; }
-  #strat .plan { display: flex; justify-content: space-between; gap: 8px; padding: 4px 6px; border-radius: 6px; }
-  #strat .plan.call { background: rgba(225,6,0,.2); font-weight: 700; }
-  #strat .uc { margin-top: 6px; color: #f2c21b; font-weight: 700; }
+  #strat .plan { font-size: 13px; font-weight: 700; }
+  #strat .count { margin-top: 2px; font-weight: 700; }
+  #strat .count.now { color: #e10600; }
   #strat .muted { color: var(--muted); }
+  #strat .log { margin-top: 8px; border-top: 1px solid var(--border); padding-top: 6px; display: grid; gap: 3px; }
+  #strat .log div { display: grid; grid-template-columns: 30px 1fr; gap: 4px; }
+  #strat .log b { color: var(--muted); font-weight: 700; }
 
   /* verdict */
   #verdict { position: absolute; inset: 0; background: var(--panel2); color: var(--text); padding: 18px 20px; overflow: auto;
-             display: none; z-index: 5; font-size: 13px; }
-  #verdict h3 { margin: 0 0 6px; font: 800 22px 'Saira Condensed', Inter, sans-serif; }
-  #verdict .big { font: 800 40px 'Saira Condensed', Inter, sans-serif; color: #e10600; }
-  #verdict table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12px; }
+             display: none; z-index: 6; font-size: 13px; }
+  #verdict h3 { margin: 0; font: 800 30px 'Saira Condensed', Inter, sans-serif; }
+  #verdict h3 span { color: #e10600; }
+  #verdict .sub { color: var(--muted); margin: 2px 0 10px; }
+  #verdict p { margin: 4px 0; }
+  #verdict .note { color: var(--muted); }
+  #verdict .chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0 4px; }
+  .chip { padding: 3px 9px; border-radius: 999px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+  .chip.v-matched { background: rgba(46,204,113,.18); color: #22a85a; }
+  .chip.v-close { background: rgba(242,194,27,.2); color: #b38900; }
+  .chip.v-different, .chip.v-stayed_out { background: rgba(225,6,0,.15); color: #e10600; }
+  .chip.v-unplanned { background: rgba(140,140,150,.18); color: var(--muted); }
+  #verdict table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
   #verdict th, #verdict td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); }
   #verdict th { color: var(--muted); font-weight: 600; }
   #verdict .close { position: absolute; top: 14px; right: 14px; }
+  #verdict .legend { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; color: var(--muted); font-size: 12px; }
+  #verdict #toggleMissed { margin-top: 10px; }
 
   @media (max-width: 760px) {
     #app { grid-template-columns: 1fr; height: auto; }
     #stage { height: 420px; flex: none; }
     #board { height: 260px; }
-    #strat { width: 200px; }
-    #boxbox .bb { font-size: 44px; }
+    #views { left: 8px; right: 8px; top: 8px; justify-content: flex-start; gap: 6px; }
+    #views button { padding: 6px 10px; font-size: 11px; }
+    #hud { top: 46px; left: 8px; padding: 6px 10px; }
+    #lap { font-size: 18px; }
+    #status { top: 48px; left: auto; right: 8px; transform: none; }
+    #radio { width: calc(100% - 16px); top: 104px; }
+    .card .msg { font-size: 13px; }
+    .card.box .msg { font-size: 16px; }
+    #strat { left: 8px; right: 8px; bottom: 8px; width: auto; padding: 8px 10px; }
+    #strat .log { display: none; }
+    #ticker { display: none !important; }
   }
 </style>
 <script type="importmap">
@@ -112,9 +142,9 @@ TEMPLATE = r"""<!doctype html>
         <button id="overview" class="on">Overview</button><button id="follow">Follow</button>
         <button id="verdictBtn">Strategist verdict</button>
       </div>
+      <div id="radio"><div id="hint">Tap a driver to hear their team radio</div></div>
       <div id="ticker"></div>
       <div id="strat"></div>
-      <div id="boxbox"></div>
       <div id="verdict"></div>
     </div>
     <div id="controls">
@@ -134,14 +164,17 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 const D = __DATA__;
-const STRAT = D.strategy ? D.strategy.calls : null;
+const PLANS = D.strategy ? D.strategy.calls : null;
+const RADIO = D.strategy ? D.strategy.radio : {};
 
 // ---------- theme ----------
 const T = D.dark
   ? { bg: "#0b0b10", panel: "rgba(21,21,30,.9)", panel2: "#15151e", border: "#2c2c3a", text: "#f5f5f7",
-      muted: "#a3a3b2", ground: "#111118", grid: "#23232f", curtain: "#ffffff", track: "#3a3a4a" }
+      muted: "#a3a3b2", ground: "#111118", grid: "#23232f", curtain: "#ffffff", track: "#3a3a4a",
+      glass: "rgba(21,21,30,.55)" }
   : { bg: "#f6f6f3", panel: "rgba(255,255,255,.94)", panel2: "#ffffff", border: "#d9d9d4", text: "#15151e",
-      muted: "#55556a", ground: "#ececea", grid: "#d6d6cf", curtain: "#15151e", track: "#c4c4cc" };
+      muted: "#55556a", ground: "#ececea", grid: "#d6d6cf", curtain: "#15151e", track: "#c4c4cc",
+      glass: "rgba(255,255,255,.6)" };
 const STATUS = { SC: { text: "SAFETY CAR", bg: "#f2c21b", fg: "#111", track: "#8a7414" },
                  VSC: { text: "VIRTUAL SAFETY CAR", bg: "#f2c21b", fg: "#111", track: "#8a7414" },
                  RED: { text: "RED FLAG", bg: "#e10600", fg: "#fff", track: "#7a1d1d" } };
@@ -149,7 +182,7 @@ const TYRES = { SOFT: ["S", "#e10600"], MEDIUM: ["M", "#f2c21b"], HARD: ["H", "#
                 INTERMEDIATE: ["I", "#2ecc71"], WET: ["W", "#2b6cff"] };
 const app = document.getElementById("app"), stage = document.getElementById("stage");
 for (const [k, v] of Object.entries({ "--panel": T.panel, "--panel2": T.panel2, "--border": T.border,
-                                      "--text": T.text, "--muted": T.muted }))
+                                      "--text": T.text, "--muted": T.muted, "--glass": T.glass }))
   app.style.setProperty(k, v);
 document.body.style.background = T.bg;
 
@@ -229,7 +262,12 @@ const cars = D.cars.map(c => {
     new THREE.MeshBasicMaterial({ color: c.colour, transparent: true, opacity: 0, depthWrite: false }));
   mesh.add(halo);
   scene.add(mesh);
-  return { ...c, mesh, halo, el: makeLabel(c.code), p: 0, showLabel: false, boxNow: false, boxShownLap: -1 };
+  // each radio message gets its replay time: the start of the lap it is heard on, plus any seconds into it
+  const radio = (RADIO[c.number] || []).map(m => {
+    const start = c.lapStarts[m.lap - 1];
+    return { ...m, t: start === undefined || start < 0 ? null : start + (m.at || 0) };
+  }).filter(m => m.t !== null);
+  return { ...c, mesh, halo, radio, el: makeLabel(c.code), p: 0, showLabel: false, boxNow: false };
 });
 let selected = null;
 
@@ -250,13 +288,13 @@ function firstIndexAtOrAbove(arr, x) {
 }
 const isOut = (c, time) => c.out !== null && time >= c.out;
 
-// The strategist's call for a car right now: the call made at the end of its last completed lap
-function callFor(c, time) {
-  if (!STRAT || !STRAT[c.number]) return null;
+// The strategist's plan for a car right now: the one made at the end of its last completed lap
+function planFor(c, time) {
+  if (!PLANS || !PLANS[c.number]) return null;
   const completed = lastIndexAtOrBefore(c.lapStarts, time);     // index i = on lap i+1 = i laps done
   if (completed < 1) return null;
-  const call = STRAT[c.number][String(completed)];
-  return call ? { lap: completed, ...call } : null;
+  const plan = PLANS[c.number][String(completed)];
+  return plan ? { onLap: completed + 1, ...plan } : null;
 }
 
 // ---------- camera ----------
@@ -294,7 +332,7 @@ jumpSel.onchange = () => { if (jumpSel.value !== "") time = Number(jumpSel.value
 // ---------- HUD: lap, clock, status, ticker ----------
 const lapEl = document.getElementById("lap"), clockEl = document.getElementById("clock"),
       statusEl = document.getElementById("status"), tickerEl = document.getElementById("ticker");
-tickerEl.style.right = STRAT ? "274px" : "12px";
+tickerEl.style.right = PLANS ? "274px" : "12px";
 const fmtClock = s => { s = Math.max(0, Math.floor(s)); const h = Math.floor(s / 3600), m = Math.floor(s / 60) % 60;
   return (h ? h + ":" + String(m).padStart(2, "0") : m) + ":" + String(s % 60).padStart(2, "0"); };
 let currentStatus = null;
@@ -321,50 +359,74 @@ function updateHud() {
   else tickerEl.style.display = "none";
 }
 
-// ---------- BOX BOX ----------
-const boxEl = document.getElementById("boxbox");
-let boxTimer = null;
-function showBox(c, call) {
-  const plan = call.plans.find(p => p[0] === "Pit now");
-  const expect = plan ? ` → P${Math.round(plan[1])}` : "";
-  boxEl.innerHTML = `<div class="bb">BOX BOX</div><br><div class="who">` +
-    `<span class="stripe" style="background:${c.colour}"></span>${c.code} · Pit now${expect}</div>`;
-  boxEl.classList.remove("show");
-  void boxEl.offsetWidth;                       // restart the animation
-  boxEl.classList.add("show");
-  clearTimeout(boxTimer);
-  boxTimer = setTimeout(() => boxEl.classList.remove("show"), 2800);
+// ---------- team radio cards ----------
+const radioEl = document.getElementById("radio"), hintEl = document.getElementById("hint");
+const CARD_LIFE = 4500;                                   // milliseconds on screen
+function maxCards() { return parseFloat(speedSel.value) >= 30 ? 2 : 3; }
+function removeCard(card) {
+  card.classList.remove("show");
+  setTimeout(() => card.remove(), 350);
+}
+function showCard(c, m) {
+  const card = document.createElement("div");
+  card.className = "card " + m.kind;
+  card.style.setProperty("--team", c.colour);
+  card.innerHTML = `<div class="top"><span class="dot"></span><span class="who">RADIO · ${c.code}</span>` +
+                   `<span class="lapTag">L${m.lap}</span></div><div class="msg"></div>`;
+  card.querySelector(".msg").textContent = m.text;
+  radioEl.appendChild(card);
+  requestAnimationFrame(() => card.classList.add("show"));
+  const cards = [...radioEl.querySelectorAll(".card")].filter(k => !k.dataset.leaving);
+  while (cards.length > maxCards()) { const old = cards.shift(); old.dataset.leaving = "1"; removeCard(old); }
+  setTimeout(() => { card.dataset.leaving = "1"; removeCard(card); }, CARD_LIFE);
+}
+function clearCards() { radioEl.querySelectorAll(".card").forEach(k => k.remove()); }
+let radioTime = 0;
+function checkRadio() {
+  const from = radioTime;
+  radioTime = time;
+  if (!selected || !playing || time < from || time - from > 20) return;   // no flood after a jump
+  for (const m of selected.radio) if (m.t > from && m.t <= time) showCard(selected, m);
 }
 
 // ---------- strategist panel ----------
 const stratEl = document.getElementById("strat");
+const esc = s => String(s).replace(/[&<>]/g, ch => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[ch]));
+const finishText = p => `Finish P${Math.round(p.finish)}` + (p.best !== p.worst ? ` (likely P${p.best}–P${p.worst})` : "");
 function updateStrat() {
-  if (!STRAT) return;
+  if (!PLANS) return;
   const c = focusCar();
-  const call = callFor(c, time);
+  const plan = isOut(c, time) ? null : planFor(c, time);
   stratEl.style.display = "block";
-  let html = `<h4>STRATEGIST · ${c.code}${call ? " · end of lap " + call.lap : ""}</h4>`;
-  if (!call) {
-    html += "<div class='muted'>No call right now (start of the race, a pit lap, or wet tyres).</div>";
+  let html = `<h4>STRATEGIST · ${c.code}</h4>`;
+  if (!plan) {
+    html += "<div class='muted'>No plan right now (opening laps, a pit stop, wet tyres or a red flag).</div>";
+  } else if (plan.pit === null) {
+    html += `<div class="plan">No more stops</div><div class="muted">${finishText(plan)}</div>`;
   } else {
-    for (const [plan, exp, best, worst] of call.plans) {
-      const isCall = plan === call.call;
-      html += `<div class="plan${isCall ? " call" : ""}"><span>${plan}</span>` +
-              `<span>P${Math.round(exp)} <span class="muted">· P${best}–P${worst}</span></span></div>`;
-    }
-    if (call.undercut) html += `<div class="uc">Undercut threat from ${call.undercut}</div>`;
+    const toGo = plan.pit - plan.onLap;
+    const count = toGo <= 0 ? "Box this lap" : `Box in ${toGo} lap${toGo > 1 ? "s" : ""}`;
+    html += `<div class="plan">Plan: box lap ${plan.pit} → ${plan.tyre}</div>` +
+            `<div class="count${toGo <= 0 ? " now" : ""}">${count}</div>` +
+            `<div class="muted">${plan.rejoin ? `Out in ~P${plan.rejoin} · ` : ""}${finishText(plan)}</div>`;
   }
-  if (!selected) html += "<div class='muted' style='margin-top:6px'>Showing the leader. Click a driver to get their BOX calls.</div>";
+  const heard = c.radio.filter(m => m.t <= time).slice(-4);
+  if (heard.length)
+    html += "<div class='log'>" + heard.map(m => `<div><b>L${m.lap}</b><span>${esc(m.text)}</span></div>`).join("") + "</div>";
+  if (!selected) html += "<div class='muted' style='margin-top:6px'>Showing the leader. Tap a driver to follow their radio.</div>";
   stratEl.innerHTML = html;
 }
 
 // ---------- leaderboard ----------
 const board = document.getElementById("board");
-board.onclick = e => {
+board.onpointerdown = e => {     // on press, so a redraw mid-click never loses it
   const row = e.target.closest(".row[data-n]");
   if (!row) return;
   const car = cars.find(c => c.number === Number(row.dataset.n));
   selected = selected === car ? null : car;
+  clearCards();
+  hintEl.style.display = selected ? "none" : "block";
+  radioTime = time;
   updateBoard();
   updateStrat();
 };
@@ -390,18 +452,15 @@ function updateBoard() {
     const inPit = c.pits.some(t => time >= t && time - t < 25);
     const out = isOut(c, time);
     const gap = out ? "OUT" : inPit ? "<span class='pit'>PIT</span>" : gapText(c, leader);
-    const call = out ? null : callFor(c, time);
-    c.boxNow = !!call && call.call === "Pit now" && !inPit;
-    if (c.boxNow && c === selected && playing && call.lap !== c.boxShownLap) {
-      c.boxShownLap = call.lap;
-      showBox(c, call);
-    }
-    const badges = (c.boxNow ? "<span class='badge box'>BOX</span>" : "") +
-                   (call && call.undercut ? `<span class='badge uc' title='Undercut threat from ${call.undercut}'>UC</span>` : "");
+    const plan = out ? null : planFor(c, time);
+    c.boxNow = !!plan && plan.pit !== null && plan.pit === plan.onLap && !inPit;
+    const badge = !plan || plan.pit === null ? ""
+      : c.boxNow ? "<span class='badge box' title='Box this lap'>BOX</span>"
+      : `<span class='badge' title='Planned stop'>L${plan.pit}</span>`;
     c.showLabel = i < 3 || c === selected;
     html += `<div class="row${c === selected ? " sel" : ""}" data-n="${c.number}">` +
       `<span class="pos">${out ? "-" : i + 1}</span><span class="bar" style="background:${c.colour}"></span>` +
-      `<span class="code">${c.code}${badges}</span><span class="gap">${gap}</span>` +
+      `<span class="code">${c.code}${badge}</span><span class="gap">${gap}</span>` +
       `<span class="tyre" style="background:${tyre[1]}">${tyre[0]}</span><span class="age">${age}</span>` +
       `<span class="stops">${stops}</span></div>`;
   });
@@ -411,21 +470,56 @@ function updateBoard() {
 // ---------- verdict: the strategist vs the real teams ----------
 const verdictEl = document.getElementById("verdict"), verdictBtn = document.getElementById("verdictBtn");
 if (!D.strategy) verdictBtn.style.display = "none";
+const VERDICT = {
+  matched: ["✓ Matched", "The team pitted within 2 laps of the lap our strategist planned"],
+  close: ["≈ Close", "The team pitted 3 to 5 laps away from our strategist's plan"],
+  different: ["✗ Different", "The team pitted 6 or more laps away from our plan, or when we planned no stop"],
+  stayed_out: ["✗ Team stayed out", "Our strategist said box, but the team kept going"],
+  unplanned: ["Not counted", "A stop in the first 3 laps is usually damage, which no strategist can plan"],
+};
+function diffText(r) {
+  if (r.verdict === "stayed_out") return "–";
+  if (r.diff === null) return r.verdict === "unplanned" ? "Unplanned (damage?)" : "–";
+  if (r.diff === 0) return "Same lap";
+  const n = Math.abs(r.diff);
+  return `Team ${n} lap${n > 1 ? "s" : ""} ${r.diff < 0 ? "earlier" : "later"}`;
+}
 function showVerdict() {
   const v = D.strategy.verdict;
-  const pct = v.stops ? Math.round(100 * v.matched / v.stops) : 0;
-  const rows = v.drivers.filter(d => d.real.length || d.windows.length).map(d =>
-    `<tr><td><b>${d.code}</b></td><td>${d.real.length ? d.real.map(l => "Lap " + l).join(", ") : "–"}</td>` +
-    `<td>${d.windows.length ? d.windows.map(l => "Lap " + l).join(", ") : "–"}</td>` +
-    `<td>${d.real.length ? d.matched + " / " + d.real.length : "–"}</td></tr>`).join("");
+  const row = r => `<tr><td><b>${r.code}</b></td>` +
+    `<td>${r.planned !== null ? "Lap " + r.planned : "No stop planned"}</td>` +
+    `<td>${r.real !== null ? "Lap " + r.real : "Stayed out"}</td><td>${diffText(r)}</td>` +
+    `<td><span class="chip v-${r.verdict}" title="${VERDICT[r.verdict][1]}">${VERDICT[r.verdict][0]}</span></td></tr>`;
+  const stops = v.table.filter(r => r.verdict !== "stayed_out");
+  const missed = v.table.filter(r => r.verdict === "stayed_out");
+  const head = "<tr><th>Driver</th><th>Our strategist planned</th><th>Team actually pitted</th><th>Difference</th><th>Verdict</th></tr>";
+  const notes = [];
+  if (v.red_laps.length)
+    notes.push(`Red flag on lap ${v.red_laps.join(", ")}: tyre changes during the stoppage aren't counted.`);
+  if (v.unplanned) notes.push("Stops in the first 3 laps (usually damage) aren't counted.");
   verdictEl.innerHTML = `<button class="close" id="closeVerdict">Close</button>` +
-    `<h3>Strategist verdict</h3><div class="big">${v.matched} / ${v.stops}</div>` +
-    `<div>real pit stops that the strategist called in the 2 laps before (${pct}%).</div>` +
-    `<div style="color:var(--muted);margin-top:6px">Every call only used laps up to that point. Teams know things ` +
-    `the model can't (tyre data, the radio, traffic plans), so a perfect score isn't the goal.</div>` +
-    `<table><tr><th>Driver</th><th>Real stops</th><th>Strategist said BOX</th><th>Called in time</th></tr>${rows}</table>`;
+    `<h3><span>${v.matched} of ${v.stops}</span> pit stops matched</h3>` +
+    `<div class="sub">All drivers in this race combined</div>` +
+    `<p><b>Matched</b> means the real team pitted within 2 laps of the lap our strategist planned.</p>` +
+    notes.map(t => `<p class="note">${t}</p>`).join("") +
+    `<p class="note">Our strategist only knew what had happened up to each lap. Real teams also have tyre sensors ` +
+    `and team radio, so matching every stop isn't expected.</p>` +
+    `<div class="chips"><span class="chip v-matched">✓ Matched ${v.matched}</span><span class="chip v-close">≈ Close ${v.close}</span>` +
+    `<span class="chip v-different">✗ Different ${v.different}</span>` +
+    `<span class="chip v-stayed_out">✗ Team stayed out ${v.stayed_out}</span></div>` +
+    `<table>${head}${stops.map(row).join("")}</table>` +
+    (missed.length ? `<button id="toggleMissed">Show the ${missed.length} BOX calls the team didn't follow</button>` +
+                     `<table id="missedTable" style="display:none">${head}${missed.map(row).join("")}</table>` : "") +
+    `<div class="legend"><span><b>✓ Matched</b> within 2 laps</span><span><b>≈ Close</b> 3–5 laps apart</span>` +
+    `<span><b>✗ Different</b> 6+ laps apart</span><span><b>Not counted</b> damage or red flag</span></div>`;
   verdictEl.style.display = "block";
   document.getElementById("closeVerdict").onclick = () => { verdictEl.style.display = "none"; };
+  const toggle = document.getElementById("toggleMissed");
+  if (toggle) toggle.onclick = () => {
+    const t = document.getElementById("missedTable"), open = t.style.display === "none";
+    t.style.display = open ? "table" : "none";
+    toggle.textContent = (open ? "Hide" : "Show") + ` the ${missed.length} BOX calls the team didn't follow`;
+  };
 }
 verdictBtn.onclick = showVerdict;
 
@@ -450,6 +544,7 @@ let lastBoard = 0;
     }
     scrub.value = time / END * 1000;
   }
+  checkRadio();
   const pulse = 1 + 0.4 * (0.5 + 0.5 * Math.sin(now / 160));
   for (const c of cars) {
     c.p = progAt(c, time);

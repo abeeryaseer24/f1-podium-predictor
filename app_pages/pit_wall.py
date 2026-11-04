@@ -1,5 +1,5 @@
 """Pit Wall: watch any race back with every car on the real 3D track,
-plus the strategist's pit calls and its verdict against the real teams."""
+plus the strategist's team radio and its verdict against the real teams."""
 import streamlit as st
 
 from app_data import get_prepared_races, get_race_file, get_replay, get_strategy
@@ -28,5 +28,6 @@ pit_wall_view(data, get_race_file(folder, "track"), strategy=strategy, dark=st.s
 
 if strategy is None:
     st.caption("The strategist hasn't analysed this race yet. The robot adds it within a few hours.")
-st.caption("Click a driver in the leaderboard to follow them and get their BOX calls. "
-           "Car positions come from OpenF1, once per second; cars in the pit lane are shown on the track next to it.")
+st.caption("Tap a driver in the leaderboard to hear their team radio: the strategist's plan, the countdown "
+           "and the BOX call. The strategist only knows what has happened up to each lap. "
+           "Car positions come from OpenF1, once per second; cars in the pit lane are shown on the track next to it.")

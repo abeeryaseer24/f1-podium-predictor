@@ -8,7 +8,7 @@ import sys
 import pandas as pd
 
 from predictor import FEATURES_CSV, RACES_DIR, RESULTS_CSV, SCOREBOARD_FILES, model_info
-from strategy import calls_for_lap
+from strategy import load_race, run_engineer
 FIRST_SEASON = 2016
 
 
@@ -132,23 +132,24 @@ def check_race_files():
 
 def check_strategy_no_future():
     print("Checking the strategist uses no future laps")
-    files = sorted(RACES_DIR.glob("*_*/strategy.parquet"))
+    files = sorted(RACES_DIR.glob("*_*/radio.parquet"))
     if not files:
         print("  --  no strategy files yet")
         return
     folder = files[0].parent
-    laps = pd.read_parquet(folder / "laps.parquet")
+    laps, pits, control = load_race(folder.name)
     total = int(laps["lap_number"].max())
     L = total // 2
-    fresh = calls_for_lap(laps[laps["lap_number"] <= L], L, total)
-    stored = pd.read_parquet(files[0])
-    stored = stored[stored["lap"] == L]
-    cols = ["driver_number", "plan", "exp_position", "call"]
-    tidy = lambda df: df[cols].sort_values(cols[:2]).reset_index(drop=True)
-    check(tidy(stored).equals(tidy(fresh)),
-          f"stored calls for lap {L} of {folder.name} match a recomputation from laps 1-{L} only")
-
-
+    line = (laps["t_start"] + laps["lap_duration"])[laps["lap_number"] == L].max()
+    plans, radio = run_engineer(laps[laps["lap_number"] <= L], pits[pits["lap_number"] <= L],
+                                control[control["t"] <= line], total, L)
+    stored_plans = pd.read_parquet(folder / "strategy.parquet")
+    stored_radio = pd.read_parquet(folder / "radio.parquet")
+    p_cols, r_cols = ["driver_number", "lap", "status", "pit_lap"], ["driver_number", "L", "kind", "text"]
+    tidy = lambda df, cols: df[cols].astype(str).sort_values(cols).reset_index(drop=True)
+    check(tidy(stored_plans[stored_plans["lap"] <= L], p_cols).equals(tidy(plans, p_cols))
+          and tidy(stored_radio[stored_radio["L"] <= L], r_cols).equals(tidy(radio, r_cols)),
+          f"stored plans and radio for laps 1-{L} of {folder.name} match a re-run from laps 1-{L} only")
 
 
 def run_all(min_rows=0):
@@ -166,4 +167,4 @@ if __name__ == "__main__":
         run_all()
     except CheckFailed as error:
         print(f"\nCHECK FAILED: {error}")
-        sys.exit(1)
+        sys.exit(1)
