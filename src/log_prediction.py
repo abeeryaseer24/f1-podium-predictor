@@ -11,8 +11,8 @@ from datetime import datetime, timezone
 
 import pandas as pd
 
-from predictor import (ROOT, current_season, get_race_start, model_version,
-                       predict_upcoming, upcoming_races)
+from predictor import (ROOT, current_season, get_race_start, load_model, model_version,
+                       predict_upcoming, reasons, upcoming_races)
 
 LOG_FILE = ROOT / "data" / "predictions" / "predictions.csv"
 
@@ -84,6 +84,7 @@ def main():
         row[f"p{i}_team"] = r["constructor"]
         row[f"p{i}_chance"] = r["podium_chance"]
     row["order"] = json.dumps(result["table"]["driver"].tolist())        # the whole predicted order, 1-22
+    row["why"] = json.dumps(reasons(result["table"], load_model()[0]))   # "Why this pick?", saved with it
 
     LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
     pd.concat([log, pd.DataFrame([row])], ignore_index=True).to_csv(LOG_FILE, index=False)
@@ -91,4 +92,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main()

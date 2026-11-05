@@ -342,6 +342,33 @@ SCOREBOARD_CSS = """<style>
 .pp-msg.win{background:rgba(31,168,85,.16);color:#1fa855}
 .pp-msg.lose{background:rgba(225,6,0,.13);color:#f0443a}
 @media (max-width:640px){.pp-vs{gap:6px}.pp-vsbox{padding:9px 8px}.pp-vsrow{font-size:.74rem;gap:4px}.pp-vsp{width:1rem}.pp-vsrow .pp-dot{width:4px;height:16px;border-radius:2px}.pp-vsn{overflow:visible;text-overflow:clip;letter-spacing:-.2px;min-width:auto}.pp-vsrow .mk{flex:none}.pp-vsbox{padding:9px 6px}.pp-vsn .full{display:none}.pp-vsn .short{display:inline}.pp-vst{font-size:.66rem}}
+.pp-whys{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:.2rem 0 .6rem}
+.pp-whycard{background:var(--pp-panel);border:1px solid var(--pp-border);border-top:4px solid;border-radius:12px;padding:12px 14px}
+.pp-whycard .h{font-weight:600;color:var(--pp-text);margin-bottom:8px;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.pp-whycard .h b{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--pp-red);font-size:1.1rem}
+.pp-whycard .h small{color:var(--pp-muted);font-weight:500}
+.pp-why{margin:7px 0}
+.pp-why .t{font-size:.88rem;color:var(--pp-text);line-height:1.3}
+.pp-why .bar{height:5px;border-radius:3px;background:var(--pp-panel2);margin-top:4px;overflow:hidden}
+.pp-why .bar span{display:block;height:100%;border-radius:3px}
+.pp-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(76px,1fr));gap:6px;margin:.4rem 0 .3rem}
+.pp-rt{border-radius:10px;padding:8px 8px 7px;display:flex;flex-direction:column;gap:1px;border:1px solid var(--pp-border);min-width:0}
+.pp-rt b{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.5rem;line-height:1}
+.pp-rt small{font-size:.68rem;font-weight:600;opacity:.75}
+.pp-rt span{font-size:.72rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-rt.h3{background:#e10600;border-color:#e10600}.pp-rt.h3 *{color:#fff}
+.pp-rt.h2{background:rgba(225,6,0,.45);border-color:transparent}.pp-rt.h2 *{color:#fff}
+.pp-rt.h1{background:rgba(225,6,0,.16)}.pp-rt.h1 *{color:var(--pp-text)}
+.pp-rt.h0{background:var(--pp-panel)}.pp-rt.h0 *{color:var(--pp-muted)}
+.pp-legend{color:var(--pp-muted);font-size:.8rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0 0 1rem}
+.pp-legend i{display:inline-block;width:12px;height:12px;border-radius:3px;border:1px solid var(--pp-border);margin-left:6px}
+.pp-legend i.h3{background:#e10600}.pp-legend i.h2{background:rgba(225,6,0,.45)}.pp-legend i.h1{background:rgba(225,6,0,.16)}.pp-legend i.h0{background:var(--pp-panel)}
+.pp-call{background:var(--pp-panel);border:1px solid var(--pp-border);border-left:4px solid;border-radius:12px;padding:12px 16px;margin-bottom:10px}
+.pp-call.good{border-left-color:#1fa855}.pp-call.bad{border-left-color:#e10600}
+.pp-call .k{color:var(--pp-muted);font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.6px}
+.pp-call b{display:block;color:var(--pp-text);font-size:1.05rem;margin:2px 0}
+.pp-call span{color:var(--pp-muted);font-size:.88rem}
+@media (max-width:640px){.pp-stats.four{grid-template-columns:repeat(2,1fr)}.pp-strip{grid-template-columns:repeat(auto-fill,minmax(62px,1fr))}}
 .pp-link{color:var(--pp-muted);font-size:.9rem;margin-top:1.4rem}
 .pp-empty{padding:22px;border:1px dashed var(--pp-border);border-radius:14px;color:var(--pp-muted);text-align:center;margin:.5rem 0 1.5rem}
 </style>"""
@@ -449,6 +476,28 @@ def vs_boxes(boxes):
         cols.append(f'<div class="pp-vsbox"><div class="pp-vst">{html.escape(title)}</div>{"".join(lines)}</div>')
     st.markdown(f'<div class="pp-vs" style="grid-template-columns:repeat({len(boxes)},1fr)">{"".join(cols)}</div>',
                 unsafe_allow_html=True)
+
+
+def why_cards(table, why):
+    """'Why this pick?': one small card per podium driver with the top reasons and a strength bar.
+    table: rows with driver, name, constructor (first three are used); why: from predictor.reasons."""
+    cards = []
+    for pos, (_, r) in enumerate(table.head(3).iterrows(), start=1):
+        team_name, color = team_info(r["constructor"])
+        lines = "".join(
+            f'<div class="pp-why"><div class="t">{html.escape(x["text"])}</div>'
+            f'<div class="bar"><span style="width:{max(8, int(100 * x["size"]))}%;background:{color}"></span></div></div>'
+            for x in why.get(r["driver"], []))
+        cards.append(f'<div class="pp-whycard" style="border-top-color:{color}"><div class="h"><b>P{pos}</b> '
+                     f'{html.escape(r["name"])}<small>{team_name}</small></div>{lines}</div>')
+    st.markdown(f'<div class="pp-whys">{"".join(cards)}</div>', unsafe_allow_html=True)
+
+
+def stat_strip(tiles):
+    """A row of number tiles. tiles = [(label, value, small text, red?)]."""
+    body = "".join(f'<div class="pp-stat"><div class="k">{k}</div><div class="v{" red" if red else ""}">{v}</div>'
+                   f'<div class="s">{s}</div></div>' for k, v, s, red in tiles)
+    st.markdown(f'<div class="pp-stats{" four" if len(tiles) == 4 else ""}">{body}</div>', unsafe_allow_html=True)
 
 
 def empty_note(text):

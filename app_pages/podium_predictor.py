@@ -1,9 +1,9 @@
 """Podium Predictor page: pick a race -> the model's predicted order -> the reveal."""
 import streamlit as st
 
-from app_data import get_past_races, get_upcoming, run_past, run_upcoming
+from app_data import get_past_races, get_reasons, get_upcoming, run_past, run_upcoming
 from predictor import current_season
-from style import driver_rows, picks, podium, score, steps, tag
+from style import driver_rows, picks, podium, score, steps, tag, why_cards
 
 
 # ---------- remember which screen the user is on ----------
@@ -70,6 +70,11 @@ def screen_predict():
          "note": f'{r["podium_chance"]:.0f}% podium · {r["win_chance"]:.0f}% win'}
         for _, r in table.head(3).iterrows()
     ])
+
+    with st.expander("Why this pick?"):
+        st.caption("The biggest reasons the model rates each driver this highly, compared with the rest of "
+                   "the field. Longer bar = bigger reason.")
+        why_cards(table, get_reasons(kind, season, rnd))
 
     st.subheader("The predicted finishing order")
     st.caption("Big number: chance of a podium. Small number: chance of winning. The model replays "

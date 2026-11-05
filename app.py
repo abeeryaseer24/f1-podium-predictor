@@ -19,6 +19,7 @@ PAGES = {
     "Predictor": [
         st.Page("app_pages/podium_predictor.py", title="Podium Predictor", default=True),
         st.Page("app_pages/scoreboard.py", title="Scoreboard"),
+        st.Page("app_pages/season_rewind.py", title="Season Rewind"),
     ],
        "Race": [
         st.Page("app_pages/pit_wall.py", title="Pit Wall"),
@@ -42,6 +43,7 @@ page = st.navigation(PAGES, position="top")
 TAGLINES = {
     "Podium Predictor": "Pick a Formula 1 race and see who the model puts on the podium.",
     "Scoreboard": "Every prediction, locked in before the race and scored after it.",
+    "Season Rewind": "A whole season, race by race, as our model would have called it.",
     "Ghost Lap Duel": "Two drivers' fastest laps, head to head, all the way round.",
     "Circuit Explorer": "Every circuit in its real shape and elevation. "
                         "Hills are shown 4× higher so you can see them.",

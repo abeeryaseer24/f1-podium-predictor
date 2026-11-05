@@ -11,7 +11,7 @@ from replay import build_replay
 from strategy import replay_payload
 from engineer import game_pack
 
-from predictor import (RACES_DIR, full_order, load_model, model_info, past_races, predict_past,
+from predictor import (RACES_DIR, full_order, reasons, load_model, model_info, past_races, predict_past,
                        predict_upcoming, race_calendar, scoreboard, upcoming_races)
 
 
@@ -48,6 +48,21 @@ def get_model_info():
 @st.cache_data(ttl=3600)
 def get_calendar(season):
     return race_calendar(season)
+
+
+@st.cache_data(ttl=600)
+def get_backtests():
+    """Every backtested race (each season by a model that never saw it), or an empty table."""
+    path = RACES_DIR.parent / "predictions" / "backtests.csv"
+    return pd.read_csv(path) if path.exists() else pd.DataFrame()
+
+
+@st.cache_data(ttl=600)
+def get_reasons(kind, season, rnd):
+    """'Why this pick?' for the podium of a past or upcoming race."""
+    result = run_past(season, rnd) if kind == "past" else run_upcoming(season, rnd)
+    model, _ = load_model()
+    return reasons(result["table"], model)
 
 
 @st.cache_data(ttl=600)

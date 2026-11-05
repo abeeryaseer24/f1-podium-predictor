@@ -42,6 +42,7 @@ with tabs[0]:
     table([
         {"Page": "Podium Predictor", "What it shows": "Pick any race: the model's podium, the whole predicted order and the real result."},
         {"Page": "Scoreboard", "What it shows": "Every live prediction, locked in before the race and scored after it."},
+        {"Page": "Season Rewind", "What it shows": "A whole season race by race: how our model did against the grid."},
         {"Page": "Pit Wall", "What it shows": "Any race since 2023 replayed on the real 3D track, with our strategist's team radio."},
         {"Page": "Ghost Lap Duel", "What it shows": "Two drivers' fastest laps raced against each other, corner by corner."},
         {"Page": "Circuit Explorer", "What it shows": "Every circuit in its real shape and elevation."},

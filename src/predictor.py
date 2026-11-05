@@ -47,6 +47,76 @@ def load_model():
     return _load_model(MODEL_FILE.stat().st_mtime)
 
 
+# ---------- "Why this pick?": the biggest reasons behind a driver's strength ----------
+
+REASON_GROUPS = {          # inputs that say the same thing are added up and shown as one reason
+    "grid": ["log_grid", "log_quali", "grid_x_circuit", "quali_gap_teammate"],
+    "car": ["log_team_best_q", "team_form_quali"],
+    "form": ["driver_form_finish"],
+    "team_form": ["team_form_finish"],
+    "season": ["driver_season_avg_finish"],
+    "team_season": ["constructor_season_podium_rate"],
+    "career": ["driver_podium_rate", "driver_avg_finish"],
+    "circuit": ["driver_circuit_podium_rate", "constructor_circuit_podium_rate"],
+    "reliable": ["driver_form_dnf", "driver_dnf_rate"],
+    "racecraft": ["driver_avg_gain", "constructor_avg_gain", "driver_beats_teammate"],
+}
+
+
+def _num(row, col):
+    value = row.get(col)
+    return None if value is None or value != value else float(value)
+
+
+def reason_text(group, row):
+    """One reason in plain words, using the driver's real numbers where we have them."""
+    grid, quali = _num(row, "grid"), _num(row, "quali_position")
+    if group == "grid":
+        if grid and quali and int(quali) != int(grid):
+            return f"Starts P{int(grid)} (qualified P{int(quali)})"
+        return f"Starts P{int(grid)}" if grid else "Strong starting position"
+    if group == "car":
+        best = _num(row, "team_best_quali")
+        if not best:
+            return "Fast car this weekend"
+        if best == 1:
+            return "The fastest car in qualifying"
+        if quali and best < quali:
+            return f"Quick car: the teammate qualified P{int(best)}"
+        return f"One of the quickest cars: P{int(best)} in qualifying"
+    texts = {
+        "form": ("driver_form_finish", "Averaging P{:.0f} in the last 5 races"),
+        "team_form": ("team_form_finish", "The team is averaging P{:.0f} in the last 3 races"),
+        "season": ("driver_season_avg_finish", "Averaging P{:.0f} this season"),
+        "team_season": ("constructor_season_podium_rate", "The team is on the podium in {:.0%} of races this season"),
+        "career": ("driver_podium_rate", "On the podium in {:.0%} of career races"),
+        "circuit": ("driver_circuit_podium_rate", "On the podium in {:.0%} of past races here"),
+    }
+    if group in texts:
+        col, text = texts[group]
+        value = _num(row, col)
+        if value is not None:
+            return text.format(value)
+    return {"reliable": "Rarely retires from races", "racecraft": "Usually gains places on race day",
+            "team_season": "Strong team this season", "career": "Strong career record",
+            "circuit": "Good record at this circuit"}.get(group, group)
+
+
+def reasons(table, model, top=3):
+    """The top reasons that helped each of the first three drivers in a predicted table:
+    {driver_id: [{"text": ..., "size": 0-1}, ...]}. Only reasons that HELP are shown."""
+    contrib = ranker.contributions(model, table)
+    out = {}
+    for i in table.index[:3]:
+        row = table.loc[i]
+        sums = {g: float(contrib.loc[i, [f for f in fs if f in contrib.columns]].sum())
+                for g, fs in REASON_GROUPS.items()}
+        best = sorted(((v, g) for g, v in sums.items() if v > 0.02), reverse=True)[:top]
+        biggest = best[0][0] if best else 1.0
+        out[row["driver"]] = [{"text": reason_text(g, row), "size": round(v / biggest, 2)} for v, g in best]
+    return out
+
+
 def score_race(race, model, features):
     """The predicted finishing order of one race, best first, with every driver's predicted
     position, win chance, podium chance and expected finish."""
