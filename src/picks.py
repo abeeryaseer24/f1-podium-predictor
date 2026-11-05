@@ -42,14 +42,20 @@ def clean_code(text):
 
 # ---------- where picks are saved ----------
 
+def _base(url):
+    """'https://abc.supabase.co/rest/v1/' -> 'https://abc.supabase.co' (forgives a copied API path)."""
+    url = url.strip().rstrip("/")
+    return url[:-len("/rest/v1")] if url.endswith("/rest/v1") else url
+
+
 def _supabase():
     """(url, key) from Streamlit's secrets (the app) or environment variables (the robot), or None."""
     if os.environ.get("SUPABASE_URL") and os.environ.get("SUPABASE_KEY"):
-        return os.environ["SUPABASE_URL"].rstrip("/"), os.environ["SUPABASE_KEY"]
+        return _base(os.environ["SUPABASE_URL"]), os.environ["SUPABASE_KEY"].strip()
     try:
         import streamlit as st
         conf = st.secrets["supabase"]
-        return conf["url"].rstrip("/"), conf["key"]
+        return _base(conf["url"]), conf["key"].strip()
     except Exception:
         return None
 
