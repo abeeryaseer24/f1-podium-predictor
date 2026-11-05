@@ -2,89 +2,83 @@
 
 ![Race pipeline](https://github.com/abeeryaseer24/f1-podium-predictor/actions/workflows/pipeline.yml/badge.svg)
 
-Pick a Formula 1 race and this tells you which three drivers it thinks will finish on the podium.
-
-It's also a small live system: after every qualifying session it locks in a prediction for the race, after every race it checks the result, retrains itself and updates a public scoreboard. All of that runs automatically on GitHub Actions.
+A Formula 1 machine learning app that runs itself. It predicts the **whole finishing order** of every race, locks the prediction in after qualifying, scores it after the race and retrains on the new result, with no human in the loop. Around the model sit 3D race replays, a pit-stop strategist and two games.
 
 **Try it live: [f1-podium-predictor1.streamlit.app](https://f1-podium-predictor1.streamlit.app/)**
 
-![The app](reports/figures/app_screenshot.png)
+## What's in the app
 
-## The app
+| Page | What it does |
+|---|---|
+| **Home** | The next race at a glance: a live countdown with the five start lights, the weekend schedule in your own time, our model's locked podium. |
+| **Podium Predictor** | Pick any race since 2016: the predicted podium with win and podium chances, the whole predicted order 1–22, *why* the model picked each podium driver, and the real result. |
+| **Scoreboard** | Every live prediction, locked in before the race and scored after it, against the starting grid. Each race opens up to the full predicted order with a verdict for every driver. |
+| **Season Rewind** | A whole season race by race, as the model would have called it. |
+| **Pit Wall** | Any race since 2023 replayed on the real 3D track, with every car, and our strategist calling pit stops on team radio. |
+| **Ghost Lap Duel · Circuit Explorer · Tyre Lab** | Two drivers' fastest laps head to head, every circuit in 3D with real elevation, and tyre wear measured from real laps. |
+| **Beat the AI** | Visitors pick the podium before the race, share a card, and find out after the race whether they beat the model. |
+| **Be the Race Engineer** | Make the pit calls for a real driver in a real race and try to beat their team and our strategist. |
+| **About** | Everything behind the app, sorted: the model, how it is tested, the strategist, the live system. |
 
-- **Predict:** pick any race since 2016 and see the model's podium, then reveal what actually happened. For upcoming 2026 races it predicts before the race, using the real qualifying grid once it's available.
-- **Scoreboard:** every 2026 prediction locked in before its race, scored against the result and against a simple baseline (the front three on the grid), plus a full 2025 backtest.
-- Dark and light themes, works on phones.
+Dark and light themes, works on phones.
 
-![The scoreboard](reports/figures/scoreboard_screenshot.png)
+## How the model works
+
+Every driver gets a **strength score**, a weighted sum of what is known before the race: grid and qualifying position, the car's pace that weekend, recent form, season form, career and circuit records, reliability and racecraft. Every input is compared with the rest of the same race, so the model learns who is better than whom.
+
+The finishing order is then modelled the way races work: who comes out on top, then who is best of the rest, and so on. This is a **Plackett-Luce ranking model**, fitted by maximum likelihood (SciPy) on the first 10 finishers of each race. To turn strengths into chances, each race is replayed 5,000 times with a measured amount of luck, so win chances add up to 100% and podium chances to exactly 3 drivers.
+
+Because the model is linear, every prediction can be explained exactly. That's where **"Why this pick?"** comes from: the biggest reasons behind each podium driver, in plain words.
+
+**Champion vs challengers:** a few model recipes take the same fair test every time new results come in. A challenger only replaces the live model if it is clearly better (at least 0.05 more podium drivers per race and no worse on the whole order). Every decision is logged.
+
+## Results, tested fairly
+
+Each season below was predicted by a model trained **only on the seasons before it**, so it never saw those results. "The grid" means guessing the race finishes in starting order, a tough baseline in F1. "Old model" is this project's first version, a Random Forest that only picked the podium.
+
+| Season | Races | Podium drivers right per race: model | grid | old model | Winners called: model | grid | Places off (whole order): model | grid |
+|---|---|---|---|---|---|---|---|---|
+| 2026 (so far) | 19 | **1.95** | 1.84 | 1.84 | **74%** | 68% | 3.47 | 3.47 |
+| 2025 | 24 | **2.42** | 2.25 | 2.29 | 58% | **67%** | **3.24** | 3.34 |
+| 2024 | 24 | **2.08** | 2.00 | 1.96 | **50%** | 46% | **2.78** | 2.90 |
+| 2023 | 22 | 1.73 | **1.91** | 1.91 | 64% | 64% | **3.46** | 3.75 |
+| 2022 | 22 | **2.18** | 1.91 | 1.95 | 41% | **45%** | **3.65** | 3.94 |
+| **All** | 111 | **2.07** | 1.98 | 1.99 | 57% | 58% | **3.32** | 3.48 |
+
+**Honest reading:** the model beats the grid on podium picks in four of five seasons and is better or level on the whole order every season, but the edge is small, and in 2023 the grid was better. Qualifying already tells you most of what matters on Sunday. From São Paulo 2026 onwards, the Scoreboard tracks predictions locked in before each race, which is the most honest test of all.
+
+![Podium rate by grid position](reports/figures/podium_by_grid.png)
 
 ## How it runs itself
 
 ```mermaid
 flowchart LR
-    A[GitHub Actions<br/>every 3 hours] --> B{New race<br/>results online?}
-    B -- yes --> C[Download data] --> D[Safety checks] --> E[Rebuild features<br/>and retrain]
+    A[GitHub Actions<br/>every 3 hours] --> B{New race<br/>results?}
+    B -- yes --> C[Download] --> D[Safety checks] --> E[Rebuild inputs, retrain,<br/>champion vs challengers]
     B -- no --> F
-    E --> F{Next race's<br/>qualifying done?}
-    F -- yes --> G[Lock in prediction]
-    F -- no --> H
-    G --> H[Final checks]
-    H --> I[Push to GitHub] --> J[Live app updates]
+    E --> F[Prepare 3D replays<br/>+ strategist]
+    F --> G{Qualifying<br/>done?}
+    G -- yes --> H[Lock in the whole order]
+    G -- no --> I
+    H --> I[Final checks] --> J[Push] --> K[Live app updates]
 ```
 
-Every 3 hours, `src/pipeline.py` runs on GitHub's servers:
+**Rules that keep it honest:**
+- A prediction is saved only with the real qualifying grid, and only before the race starts. Once saved, it is never changed, and every run checks that.
+- Every input is built only from races before the one being predicted.
+- The pit strategist only knows the laps that have happened. The code refuses to run if it is handed a future lap, and every run tests this.
 
-1. **After a race:** if new results are online, it downloads them, checks them, rebuilds the features and retrains the model.
-2. **After qualifying:** if the next race's grid is out and its prediction isn't saved yet, it locks one in.
-3. **If anything changed,** it commits and pushes, and the live app picks up the new data.
+**Safety checks:** no results lost, missing or duplicated; exactly one P1, P2 and P3 per race; a healthy model score; complete replay files. If any check fails, the run stops, nothing is pushed, and I get an email.
 
-**Rules that keep the scoreboard honest:**
+## Data
 
-- A prediction is only saved with the real qualifying grid, and only before the race starts.
-- Once saved, it is never changed. The pipeline checks on every run that earlier predictions are exactly as they were.
-- Every prediction records which model version made it (`models/model_info.json`).
+- [Jolpica-F1](https://github.com/jolpica/jolpica-f1) (the Ergast successor): results, grids and qualifying since 2016, and the calendar
+- [OpenF1](https://openf1.org): laps, tyres, pit stops, race control and car positions, 2023 onwards
+- MultiViewer circuit data: official corner numbers
 
-**Safety checks:** before new data is used, the pipeline checks that no rows were lost, no races or drivers are missing or duplicated, and every race has exactly one P1, P2 and P3. If any check fails, the run stops, nothing is pushed, and I get an email. The badge at the top shows whether the last run passed.
+## Built with
 
-## How the model works
-
-For every driver in a race, the model estimates their chance of finishing in the top 3. The three highest chances are the predicted podium.
-
-It only uses things you'd know before the lights go out:
-
-- grid and qualifying position
-- each driver's and team's long-term record (podium rate, average finish, DNF rate, past results at that circuit)
-- how they're doing this season
-- how many places they usually gain or lose on race day
-
-Every stat is built only from races *before* the one being predicted, so the model never gets a peek at the result it's guessing.
-
-## Results
-
-To keep things honest I split the data by time: trained on 2016-2022, compared models on 2023-2024, and only touched 2025 once, at the very end.
-
-The score I care about is simple: **in an average race, how many of the 3 predicted drivers actually made the podium?**
-
-| Model | 2023-2024 | 2025 |
-|---|---|---|
-| Grid baseline (first 3 on the grid) | 1.96 | 2.25 |
-| Logistic Regression | 1.80 | 1.83 |
-| XGBoost | 1.89 | 2.21 |
-| **Random Forest (final model)** | 1.93 | **2.29** |
-
-The baseline is brutal. Just picking the front three on the grid gets about 2 of 3 right before any machine learning happens. My final model scored **2.29 on 2025**, a season it had never seen, against 2.25 for the grid (ROC-AUC 0.949). That's a small edge, and over ~24 races a gap like that could easily be noise, so I'd call it "matches the grid, maybe slightly better" rather than a big win.
-
-The real lesson: qualifying already tells you most of what matters on Sunday.
-
-The 2025 backtest is in the app's Scoreboard, race by race. From round 20 of 2026, the Scoreboard also tracks predictions locked in before each race, which is the most honest test of all.
-
-## What the model pays attention to
-
-![Feature importance](reports/figures/feature_importance.png)
-
-Grid and qualifying position dominate, followed by current-season form. Ten years of history helped less than I thought it would, which makes sense in 2026, when new regulations reshuffled the order.
-
-![Podium rate by grid position](reports/figures/podium_by_grid.png)
+Python, pandas, NumPy, SciPy, scikit-learn · Streamlit and Altair · Three.js for the 3D pages · GitHub Actions · Supabase for Beat the AI picks (reached only from the app's server).
 
 ## Run it yourself
 
@@ -94,79 +88,21 @@ cd f1-podium-predictor
 python -m venv .venv
 source .venv/Scripts/activate      # on Mac/Linux: source .venv/bin/activate
 pip install -r requirements-dev.txt
-```
-
-Start the app:
-
-```bash
 streamlit run app.py
 ```
 
-Rebuild everything from scratch (downloads the data, builds features, trains the model):
+Rebuild everything, or run the robot by hand:
 
 ```bash
-python src/data_loader.py
-python src/features.py
-python src/train.py
-```
-
-Run the live pipeline or the checks by hand:
-
-```bash
+python src/data_loader.py && python src/features.py && python src/train.py
 python src/pipeline.py                     # what GitHub Actions runs every 3 hours
-python src/log_prediction.py --dry-run     # preview the next race's prediction
-python src/checks.py                       # run all safety checks
+python src/checks.py                       # all safety checks
 ```
 
-Command-line predictions:
+Beat the AI works without a database (picks are saved locally). To use Supabase, add `.streamlit/secrets.toml`:
 
-```bash
-python src/predict.py --season 2025 --round 1          # a past race
-python src/predict_next.py --season 2026 --round 20    # an upcoming race
+```toml
+[supabase]
+url = "https://your-project.supabase.co"
+key = "your-secret-key"
 ```
-
-## Project structure
-
-```
-app.py                  the Streamlit web app
-.streamlit/             app theme settings
-.github/workflows/      the GitHub Actions schedule (pipeline.yml)
-data/processed/         cleaned race data and features
-data/predictions/       locked 2026 predictions and the 2025 backtest
-notebooks/              exploration and model comparison
-src/
-  data_loader.py        downloads results from the Jolpica-F1 API
-  features.py           builds the pre-race features
-  train.py              trains, tests and saves the model, the model card and the backtest
-  predictor.py          shared engine: predictions and the scoreboard
-  log_prediction.py     locks in the next race's prediction
-  pipeline.py           the automated live update
-  checks.py             safety and fairness checks
-  style.py              the app's design
-  predict.py            predicts a past race (command line)
-  predict_next.py       predicts an upcoming race (command line)
-models/                 the saved model and its model card (model_info.json)
-reports/figures/        charts and screenshots
-```
-
-## Limitations
-
-- F1 is chaotic. Safety cars, first-lap crashes and strategy calls can't be predicted from history.
-- Each driver's podium chance is estimated separately, so the chances don't add up to exactly 3 drivers.
-- The live scoreboard started late in 2026, so it only has a few races so far. It keeps growing from 2027.
-- Renamed teams are merged (Force India → Aston Martin, Toro Rosso → Racing Bulls and so on), so older races show today's team names.
-- No weather, tyre or lap-time data yet.
-
-## What's next
-
-- Weather and practice-session pace from FastF1, to try to properly beat the grid
-- A model that predicts the full finishing order, not just the podium
-- Full driver names in the data
-
-## Data
-
-Race and qualifying results come from the [Jolpica-F1 API](https://github.com/jolpica/jolpica-f1), the community successor to the Ergast API.
-
----
-
-Built by Talha Yaseer Abeer ([@abeeryaseer24](https://github.com/abeeryaseer24))
