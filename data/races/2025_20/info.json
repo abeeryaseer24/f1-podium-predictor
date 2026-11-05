@@ -1,0 +1,153 @@
+{
+  "season": 2025,
+  "round": 20,
+  "race_name": "Mexico City Grand Prix",
+  "location": "Mexico City",
+  "country": "Mexico",
+  "openf1_session_key": 9877,
+  "session_start": "2025-10-26T20:00:00+00:00",
+  "laps": 71,
+  "practice_session": "Practice 2",
+  "drivers": [
+    {
+      "number": 1,
+      "code": "VER",
+      "name": "Max VERSTAPPEN",
+      "team": "Red Bull Racing",
+      "colour": "#4781D7"
+    },
+    {
+      "number": 4,
+      "code": "NOR",
+      "name": "Lando NORRIS",
+      "team": "McLaren",
+      "colour": "#F47600"
+    },
+    {
+      "number": 5,
+      "code": "BOR",
+      "name": "Gabriel BORTOLETO",
+      "team": "Kick Sauber",
+      "colour": "#01C00E"
+    },
+    {
+      "number": 6,
+      "code": "HAD",
+      "name": "Isack HADJAR",
+      "team": "Racing Bulls",
+      "colour": "#6C98FF"
+    },
+    {
+      "number": 10,
+      "code": "GAS",
+      "name": "Pierre GASLY",
+      "team": "Alpine",
+      "colour": "#00A1E8"
+    },
+    {
+      "number": 12,
+      "code": "ANT",
+      "name": "Kimi ANTONELLI",
+      "team": "Mercedes",
+      "colour": "#00D7B6"
+    },
+    {
+      "number": 14,
+      "code": "ALO",
+      "name": "Fernando ALONSO",
+      "team": "Aston Martin",
+      "colour": "#229971"
+    },
+    {
+      "number": 16,
+      "code": "LEC",
+      "name": "Charles LECLERC",
+      "team": "Ferrari",
+      "colour": "#ED1131"
+    },
+    {
+      "number": 18,
+      "code": "STR",
+      "name": "Lance STROLL",
+      "team": "Aston Martin",
+      "colour": "#229971"
+    },
+    {
+      "number": 22,
+      "code": "TSU",
+      "name": "Yuki TSUNODA",
+      "team": "Red Bull Racing",
+      "colour": "#4781D7"
+    },
+    {
+      "number": 23,
+      "code": "ALB",
+      "name": "Alexander ALBON",
+      "team": "Williams",
+      "colour": "#1868DB"
+    },
+    {
+      "number": 27,
+      "code": "HUL",
+      "name": "Nico HULKENBERG",
+      "team": "Kick Sauber",
+      "colour": "#01C00E"
+    },
+    {
+      "number": 30,
+      "code": "LAW",
+      "name": "Liam LAWSON",
+      "team": "Racing Bulls",
+      "colour": "#6C98FF"
+    },
+    {
+      "number": 31,
+      "code": "OCO",
+      "name": "Esteban OCON",
+      "team": "Haas F1 Team",
+      "colour": "#9C9FA2"
+    },
+    {
+      "number": 43,
+      "code": "COL",
+      "name": "Franco COLAPINTO",
+      "team": "Alpine",
+      "colour": "#00A1E8"
+    },
+    {
+      "number": 44,
+      "code": "HAM",
+      "name": "Lewis HAMILTON",
+      "team": "Ferrari",
+      "colour": "#ED1131"
+    },
+    {
+      "number": 55,
+      "code": "SAI",
+      "name": "Carlos SAINZ",
+      "team": "Williams",
+      "colour": "#1868DB"
+    },
+    {
+      "number": 63,
+      "code": "RUS",
+      "name": "George RUSSELL",
+      "team": "Mercedes",
+      "colour": "#00D7B6"
+    },
+    {
+      "number": 81,
+      "code": "PIA",
+      "name": "Oscar PIASTRI",
+      "team": "McLaren",
+      "colour": "#F47600"
+    },
+    {
+      "number": 87,
+      "code": "BEA",
+      "name": "Oliver BEARMAN",
+      "team": "Haas F1 Team",
+      "colour": "#9C9FA2"
+    }
+  ]
+}
