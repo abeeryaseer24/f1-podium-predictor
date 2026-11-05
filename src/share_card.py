@@ -53,9 +53,8 @@ function frame() {
   g.save(); g.globalAlpha = .07; g.fillStyle = "#fff";                 // chequered corner
   for (let i = 0; i < 9; i++) for (let j = 0; j < 5; j++) if ((i + j) % 2 === 0) g.fillRect(W - 360 + i * 40, j * 40, 40, 40);
   g.restore();
-  g.fillStyle = RED; g.save(); g.translate(72, 92); g.transform(1, 0, -0.2, 1, 0, 0); g.fillRect(0, 0, 14, 58); g.restore();
-  g.fillStyle = RED; g.font = F(800, 34); g.fillText("PODIUM PREDICTOR", 104, 112);
-  g.fillStyle = "rgba(255,255,255,.55)"; g.font = F(500, 26, "i"); g.fillText("Beat the AI", 104, 146);
+  g.fillStyle = RED; g.font = F(800, 34); g.fillText("PODIUM PREDICTOR", 72, 112);
+  g.fillStyle = "rgba(255,255,255,.55)"; g.font = F(500, 26, "i"); g.fillText("Beat the AI", 72, 146);
   g.fillStyle = "rgba(255,255,255,.12)"; g.fillRect(72, H - 150, W - 144, 2);
   g.fillStyle = "#fff"; g.font = F(800, 40); g.fillText("THINK YOU CAN BEAT THE AI?", 72, H - 92);
   g.fillStyle = "rgba(255,255,255,.6)"; g.font = F(500, 28, "i"); g.fillText(D.url, 72, H - 52);
@@ -64,15 +63,28 @@ function frame() {
 function pickCard() {
   g.fillStyle = "#fff"; fit("MY PODIUM PICK", W - 144, 800, 120); g.fillText("MY PODIUM PICK", 72, 300);
   g.fillStyle = "rgba(255,255,255,.75)"; fit(D.race, W - 144, 500, 40, "i"); g.fillText(D.race, 72, 362);
-  const heights = [0, 0, 0], y0 = 430;
-  D.you.forEach((p, i) => {
-    const y = y0 + i * 190;
-    rr(72, y, W - 144, 160, 22, "rgba(255,255,255,.06)");
-    rr(72, y, 16, 160, 8, p.color);
-    g.fillStyle = i === 0 ? RED : "rgba(255,255,255,.45)"; g.font = F(800, 96); g.fillText(`P${i + 1}`, 120, y + 116);
-    g.fillStyle = "#fff"; fit(p.name.toUpperCase(), W - 144 - 300, 800, 84); g.fillText(p.name.toUpperCase(), 300, y + 110);
+  // the podium: P2 left, P1 middle, P3 right, names above each block (like the app)
+  const base = 1120, w = 290, gap = 20, x0 = (W - (3 * w + 2 * gap)) / 2;
+  const spots = [{pos: 2, h: 380, fill: "#b9bcc4", ink: "#15151e"},
+                 {pos: 1, h: 490, fill: "#e10600", ink: "#ffffff"},
+                 {pos: 3, h: 300, fill: "#b5743c", ink: "#15151e"}];
+  spots.forEach((sp, i) => {
+    const p = D.you[sp.pos - 1]; if (!p) return;
+    const x = x0 + i * (w + gap), top = base - sp.h;
+    g.save(); g.beginPath(); g.roundRect(x, top, w, sp.h, [18, 18, 0, 0]); g.fillStyle = sp.fill; g.fill(); g.restore();
+    rr(x, top, w, 14, [18, 18, 0, 0], p.color);
+    g.fillStyle = sp.ink; g.font = F(800, 110); const t = `P${sp.pos}`;
+    g.fillText(t, x + (w - g.measureText(t).width) / 2, top + 130);
+    const parts = p.name.split(" "), last = parts.slice(-1)[0].toUpperCase(), first = parts.slice(0, -1).join(" ");
+    g.fillStyle = "#fff"; fit(last, w - 10, 800, 64);
+    g.fillText(last, x + (w - g.measureText(last).width) / 2, top - 30);
+    if (first) { g.fillStyle = "rgba(255,255,255,.6)"; g.font = F(500, 26, "i");
+      g.fillText(first, x + (w - g.measureText(first).width) / 2, top - 100); }
+    rr(x + w / 2 - 30, top - 18 + 4, 60, 6, 3, p.color);
   });
-  if (D.nickname) { g.fillStyle = "rgba(255,255,255,.6)"; g.font = F(500, 30, "i"); g.fillText(`Picked by ${D.nickname}`, 72, y0 + 3 * 190 + 30); }
+  g.fillStyle = "rgba(255,255,255,.12)"; g.fillRect(72, base, W - 144, 2);
+  if (D.nickname) { g.fillStyle = "rgba(255,255,255,.6)"; g.font = F(500, 30, "i");
+    const t = `Picked by ${D.nickname}`; g.fillText(t, (W - g.measureText(t).width) / 2, base + 60); }
 }
 
 function column(x, w, title, rows, marks) {

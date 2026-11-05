@@ -369,6 +369,14 @@ SCOREBOARD_CSS = """<style>
 .pp-call b{display:block;color:var(--pp-text);font-size:1.05rem;margin:2px 0}
 .pp-call span{color:var(--pp-muted);font-size:.88rem}
 @media (max-width:640px){.pp-stats.four{grid-template-columns:repeat(2,1fr)}.pp-strip{grid-template-columns:repeat(auto-fill,minmax(62px,1fr))}}
+.pp-block.pp-ghost{background:var(--pp-panel2)!important;color:var(--pp-muted)!important;border-top-color:var(--pp-border)!important}
+.pp-tease{text-align:center;color:var(--pp-muted);margin:-1.2rem 0 1rem}
+.pp-band{padding:18px 20px;border-radius:16px;border:1px solid var(--pp-border);background:var(--pp-panel);margin:1.4rem 0 .4rem;display:flex;flex-direction:column;gap:4px}
+.pp-band b{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.7rem;letter-spacing:.5px;color:var(--pp-text);line-height:1.1}
+.pp-band span{color:var(--pp-muted)}
+.pp-band.hot{background:linear-gradient(100deg,#e10600,#9e0400);border-color:#e10600}
+.pp-band.hot b,.pp-band.hot span{color:#fff}
+.pp-band.hot b{text-transform:uppercase}
 .pp-link{color:var(--pp-muted);font-size:.9rem;margin-top:1.4rem}
 .pp-empty{padding:22px;border:1px dashed var(--pp-border);border-radius:14px;color:var(--pp-muted);text-align:center;margin:.5rem 0 1.5rem}
 </style>"""
@@ -498,6 +506,17 @@ def stat_strip(tiles):
     body = "".join(f'<div class="pp-stat"><div class="k">{k}</div><div class="v{" red" if red else ""}">{v}</div>'
                    f'<div class="s">{s}</div></div>' for k, v, s, red in tiles)
     st.markdown(f'<div class="pp-stats{" four" if len(tiles) == 4 else ""}">{body}</div>', unsafe_allow_html=True)
+
+
+def teaser_podium(note):
+    """A greyed-out podium with question marks, before our model has locked in its pick."""
+    parts = []
+    for pos, cls in ((2, "p2"), (1, "p1"), (3, "p3")):
+        parts.append(f'<div class="pp-place"><div class="pp-info" style="opacity:1;animation:none">'
+                     f'<div class="pp-name" style="color:var(--pp-muted)">?</div></div>'
+                     f'<div class="pp-block {cls} pp-ghost" style="transform:none;animation:none">P{pos}</div></div>')
+    st.markdown(f'<div class="pp-podium">{"".join(parts)}</div><p class="pp-tease">{html.escape(note)}</p>',
+                unsafe_allow_html=True)
 
 
 def empty_note(text):

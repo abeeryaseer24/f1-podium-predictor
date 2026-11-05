@@ -267,13 +267,40 @@ def get_race_start(season, rnd):
     return datetime.fromisoformat(f"{race['date']}T{time}")
 
 
+# Time zone of each circuit, to show "at the track" times on the Home page
+CIRCUIT_TZ = {
+    "albert_park": "Australia/Melbourne", "shanghai": "Asia/Shanghai", "suzuka": "Asia/Tokyo",
+    "bahrain": "Asia/Bahrain", "jeddah": "Asia/Riyadh", "miami": "America/New_York",
+    "villeneuve": "America/Toronto", "monaco": "Europe/Monaco", "catalunya": "Europe/Madrid",
+    "madring": "Europe/Madrid", "red_bull_ring": "Europe/Vienna", "silverstone": "Europe/London",
+    "spa": "Europe/Brussels", "hungaroring": "Europe/Budapest", "zandvoort": "Europe/Amsterdam",
+    "monza": "Europe/Rome", "imola": "Europe/Rome", "baku": "Asia/Baku", "marina_bay": "Asia/Singapore",
+    "americas": "America/Chicago", "rodriguez": "America/Mexico_City", "interlagos": "America/Sao_Paulo",
+    "vegas": "America/Los_Angeles", "losail": "Asia/Qatar", "yas_marina": "Asia/Dubai",
+}
+SESSIONS = [("FirstPractice", "Practice 1"), ("SecondPractice", "Practice 2"), ("ThirdPractice", "Practice 3"),
+            ("SprintQualifying", "Sprint Qualifying"), ("SprintShootout", "Sprint Qualifying"),
+            ("Sprint", "Sprint"), ("Qualifying", "Qualifying")]
+
+
 def race_calendar(season):
-    """Every race of a season: round, name, race start and qualifying start (UTC; None if unknown)."""
+    """Every race of a season: round, name, circuit, race start, qualifying start and every session
+    (times in UTC; None if unknown)."""
     data = requests.get(f"{BASE_URL}/{season}.json", timeout=30).json()
     when = lambda d: datetime.fromisoformat(f"{d['date']}T{d.get('time', '12:00:00Z').replace('Z', '+00:00')}")
-    return [{"round": int(r["round"]), "race_name": r["raceName"], "race_start": when(r),
-             "quali_start": when(r["Qualifying"]) if "Qualifying" in r else None}
-            for r in data["MRData"]["RaceTable"]["Races"]]
+    races = []
+    for r in data["MRData"]["RaceTable"]["Races"]:
+        circuit = r.get("Circuit", {})
+        sessions = sorted(((label, when(r[key])) for key, label in SESSIONS if key in r), key=lambda x: x[1])
+        races.append({
+            "round": int(r["round"]), "race_name": r["raceName"], "race_start": when(r),
+            "quali_start": when(r["Qualifying"]) if "Qualifying" in r else None,
+            "circuit_id": circuit.get("circuitId", ""), "circuit": circuit.get("circuitName", ""),
+            "place": circuit.get("Location", {}).get("locality", ""),
+            "track_tz": CIRCUIT_TZ.get(circuit.get("circuitId", "")),
+            "sessions": sessions + [("Race", when(r))],
+        })
+    return races
 
 
 def model_version():

@@ -16,8 +16,11 @@ st.set_page_config(page_title="Podium Predictor", page_icon="🏁", layout="wide
 # ---------- the top menu: new pages get added here as they're built ----------
 
 PAGES = {
+    "": [                                   # no group: shows as a plain "Home" link
+        st.Page("app_pages/home.py", title="Home", default=True),
+    ],
     "Predictor": [
-        st.Page("app_pages/podium_predictor.py", title="Podium Predictor", default=True),
+        st.Page("app_pages/podium_predictor.py", title="Podium Predictor"),
         st.Page("app_pages/scoreboard.py", title="Scoreboard"),
         st.Page("app_pages/season_rewind.py", title="Season Rewind"),
     ],
@@ -41,6 +44,7 @@ page = st.navigation(PAGES, position="top")
 # ---------- one line under the title, for each page ----------
 
 TAGLINES = {
+    "Home": "Formula 1 predictions, replays and games, live every race weekend.",
     "Podium Predictor": "Pick a Formula 1 race and see who the model puts on the podium.",
     "Scoreboard": "Every prediction, locked in before the race and scored after it.",
     "Season Rewind": "A whole season, race by race, as our model would have called it.",
@@ -62,7 +66,7 @@ if "dark" not in st.session_state:
 
 title_col, switch_col = st.columns([5, 1], vertical_alignment="center")
 with title_col:
-    hero(page.title, TAGLINES.get(page.title, ""))
+    hero("Podium Predictor" if page.title == "Home" else page.title, TAGLINES.get(page.title, ""))
 with switch_col:
     st.toggle("Dark theme", key="dark")
 
