@@ -4,12 +4,10 @@ and one line to TAGLINES."""
 import sys
 from pathlib import Path
 
-import pandas as pd
 import streamlit as st
 
 # Let every page find the files inside src/
 sys.path.append(str(Path(__file__).parent / "src"))
-from app_data import get_model_info
 from style import apply_style, hero
 
 st.set_page_config(page_title="Podium Predictor", page_icon="🏁", layout="wide")
@@ -29,7 +27,11 @@ PAGES = {
         st.Page("app_pages/tyre_lab.py", title="Tyre Lab"),
     ],
     "Games": [
+        st.Page("app_pages/beat_the_ai.py", title="Beat the AI"),
         st.Page("app_pages/race_engineer.py", title="Be the Race Engineer"),
+    ],
+    "About": [
+        st.Page("app_pages/about.py", title="About"),
     ],
 }
 page = st.navigation(PAGES, position="top")
@@ -46,6 +48,8 @@ TAGLINES = {
     "Tyre Lab": "How fast each tyre wears, measured from every clean racing lap.",
     "Pit Wall": "Watch any race back, lap by lap, with every car on the real track.",
     "Be the Race Engineer": "Make the pit calls for a real driver in a real race. Can you beat their team?",
+    "Beat the AI": "Pick the podium before the race. After it, see if you beat our model.",
+    "About": "Everything behind the app: the model, how it is tested, and the robot that runs it.",
 }
 
 
@@ -67,13 +71,3 @@ apply_style(st.session_state.dark)
 
 page.run()
 
-
-# ---------- footer: which model is running ----------
-
-info = get_model_info()
-if info:
-    last = info["last_race"]
-    trained = pd.to_datetime(info["trained_at"]).strftime("%d %b %Y")
-    st.write("")
-    st.caption(f"Model trained on {trained}, using every race up to the "
-               f"{last['race_name']} {last['season']} (round {last['round']}).")

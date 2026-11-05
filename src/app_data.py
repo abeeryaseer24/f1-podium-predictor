@@ -11,8 +11,8 @@ from replay import build_replay
 from strategy import replay_payload
 from engineer import game_pack
 
-from predictor import (RACES_DIR, model_info, past_races, predict_past, predict_upcoming,
-                       scoreboard, upcoming_races)
+from predictor import (RACES_DIR, full_order, load_model, model_info, past_races, predict_past,
+                       predict_upcoming, race_calendar, scoreboard, upcoming_races)
 
 
 @st.cache_data(ttl=600)
@@ -43,6 +43,23 @@ def get_scoreboard(kind):
 @st.cache_data(ttl=600)
 def get_model_info():
     return model_info()
+
+
+@st.cache_data(ttl=3600)
+def get_calendar(season):
+    return race_calendar(season)
+
+
+@st.cache_data(ttl=600)
+def get_full_order(season, rnd, order):
+    return full_order(season, rnd, order)
+
+
+@st.cache_data(ttl=600)
+def get_model_weights():
+    """How much each input moves a driver's strength in the live model (one row per input)."""
+    model, features = load_model()
+    return pd.DataFrame({"feature": features, "weight": [model["weights"][f] for f in features]})
 
 
 # ---------- prepared race files (for the 3D pages) ----------

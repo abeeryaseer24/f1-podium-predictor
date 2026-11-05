@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 import pandas as pd
 import requests
 
+from picks import ping
 from checks import check_log_unchanged, check_results, run_all, snapshot_log
 from predictor import BASE_URL, RESULTS_CSV, current_season
 
@@ -86,8 +87,14 @@ def main():
     run_all(min_rows=rows_before)
     check_log_unchanged(log_before)
 
+    # 4. Keep the Beat the AI database awake (free databases pause after a week without use)
+    try:
+        ping()
+    except Exception as error:                     # never stop the robot for this
+        print(f"Couldn't reach the picks database: {error}")
+
     print("\nPipeline finished.")
 
 
 if __name__ == "__main__":
-    main()
+    main()

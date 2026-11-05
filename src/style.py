@@ -310,31 +310,63 @@ SCOREBOARD_CSS = """<style>
 .pp-sc b{font-family:'Saira Condensed',sans-serif;font-size:1.25rem}
 .pp-sc.model b{color:var(--pp-red)}
 .pp-wait{padding:6px 12px;border-radius:10px;background:var(--pp-panel2);color:var(--pp-muted);font-weight:600;font-size:.9rem;white-space:nowrap}
+.pp-osum{padding:12px 14px;border-radius:12px;background:var(--pp-panel2);color:var(--pp-text);font-size:.92rem;line-height:1.5;margin-bottom:10px}
+.pp-order{display:flex;flex-direction:column;gap:4px}
+.pp-orow{display:grid;grid-template-columns:3rem 10px minmax(0,1fr) 3rem 9.5rem;align-items:center;gap:10px;padding:7px 12px;border-radius:10px;background:var(--pp-panel);border:1px solid var(--pp-border);font-size:.92rem;color:var(--pp-text)}
+.pp-orow.nr{grid-template-columns:3rem 10px minmax(0,1fr)}
+.pp-orow.head{background:none;border:none;padding-top:0;padding-bottom:0;color:var(--pp-muted);font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.6px}
+.pp-orow.head *{color:var(--pp-muted);font-family:inherit;font-size:.72rem;font-weight:600}
+.pp-opos{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.05rem;color:var(--pp-muted)}
+.pp-oname{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-oreal{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.05rem}
+.pp-ov{font-size:.82rem;font-weight:600;padding:3px 9px;border-radius:999px;justify-self:start;color:var(--pp-muted)}
+.pp-ov.on{background:rgba(31,168,85,.18);color:#1fa855}
+.pp-ov.near{background:rgba(242,194,27,.2);color:#c99a00}
+.pp-ov.far{background:rgba(225,6,0,.15);color:#f0443a}
+@media (max-width:640px){.pp-orow{grid-template-columns:2.4rem 8px minmax(0,1fr) 2.4rem 5.6rem;gap:7px;padding:6px 9px;font-size:.85rem}.pp-orow.nr{grid-template-columns:2.4rem 8px minmax(0,1fr)}.pp-ov{font-size:.74rem;padding:2px 7px}.pp-ov .w{display:none}
+.pp-stats{grid-template-columns:repeat(3,1fr);gap:8px}.pp-stat{padding:10px 10px}.pp-stat .v{font-size:1.9rem}.pp-stat .k{font-size:.66rem;letter-spacing:.3px}.pp-stat .s{font-size:.72rem;line-height:1.3}}
+.pp-banner{padding:14px 18px;border-radius:14px;border:1px solid var(--pp-border);background:var(--pp-panel);margin:.4rem 0 1.2rem;display:flex;flex-direction:column;gap:3px}
+.pp-banner b{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:.5px;color:var(--pp-text)}
+.pp-banner span{color:var(--pp-muted);font-size:.92rem}
+.pp-banner.hammer{border-color:var(--pp-red);background:linear-gradient(90deg,rgba(225,6,0,.16),var(--pp-panel) 70%)}
+.pp-banner.hammer b{color:var(--pp-red);text-transform:uppercase}
+.pp-vs{display:grid;gap:10px;margin:.3rem 0 .6rem}
+.pp-vsbox{background:var(--pp-panel);border:1px solid var(--pp-border);border-radius:14px;padding:12px 14px;min-width:0}
+.pp-vst{color:var(--pp-muted);font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
+.pp-vsrow{display:flex;align-items:center;gap:8px;padding:5px 0;color:var(--pp-text);font-weight:600;font-size:.95rem}
+.pp-vsp{font-family:'Saira Condensed',sans-serif;font-weight:800;color:var(--pp-muted);width:1.6rem}
+.pp-vsn{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pp-vsn .short{display:none}
+.pp-vsrow .mk{font-weight:800}.pp-vsrow .mk.hit{color:#1fa855}.pp-vsrow .mk.miss{color:#f0443a}
+.pp-msg{padding:12px 16px;border-radius:12px;font-weight:700;margin:0 0 1.4rem;color:var(--pp-text);background:var(--pp-panel2)}
+.pp-msg.win{background:rgba(31,168,85,.16);color:#1fa855}
+.pp-msg.lose{background:rgba(225,6,0,.13);color:#f0443a}
+@media (max-width:640px){.pp-vs{gap:6px}.pp-vsbox{padding:9px 8px}.pp-vsrow{font-size:.74rem;gap:4px}.pp-vsp{width:1rem}.pp-vsrow .pp-dot{width:4px;height:16px;border-radius:2px}.pp-vsn{overflow:visible;text-overflow:clip;letter-spacing:-.2px;min-width:auto}.pp-vsrow .mk{flex:none}.pp-vsbox{padding:9px 6px}.pp-vsn .full{display:none}.pp-vsn .short{display:inline}.pp-vst{font-size:.66rem}}
+.pp-link{color:var(--pp-muted);font-size:.9rem;margin-top:1.4rem}
 .pp-empty{padding:22px;border:1px dashed var(--pp-border);border-radius:14px;color:var(--pp-muted);text-align:center;margin:.5rem 0 1.5rem}
 </style>"""
 
 
 def stat_tiles(summary):
-    """Three summary tiles (model, grid, races) and a one-line verdict."""
+    """Three summary tiles (our model, the grid, races finished) and a one-line verdict."""
     races = summary.get("races", 0)
     if not races:
         return
     diff = summary["model_hits"] - summary["grid_hits"]
     plural = "s" if abs(diff) != 1 else ""
     if diff > 0:
-        verdict = f"The model is ahead of the grid by {diff} podium driver{plural}."
+        verdict = f"Our model is ahead of the grid by {diff} podium driver{plural}."
     elif diff < 0:
-        verdict = f"The grid is ahead of the model by {-diff} podium driver{plural}."
+        verdict = f"The grid is ahead of our model by {-diff} podium driver{plural}."
     else:
-        verdict = "The model and the grid are level."
+        verdict = "Our model and the grid are level."
     waiting = summary.get("waiting", 0)
     tiles = [
-        ("Model", f'{summary["model_avg"]:.2f}',
-         f'per race · {summary["model_hits"]} of {3 * races} podium drivers', " red"),
-        ("Grid baseline", f'{summary["grid_avg"]:.2f}',
-         f'per race · {summary["grid_hits"]} of {3 * races}', ""),
-        ("Races scored", str(races),
-         f"{waiting} waiting for result" if waiting else "all results in", ""),
+        ("Our model", f'{summary["model_avg"]:.2f}',
+         f'podium drivers per race · {summary["model_hits"]} of {3 * races}', " red"),
+        ("The grid", f'{summary["grid_avg"]:.2f}',
+         f'podium drivers per race · {summary["grid_hits"]} of {3 * races}', ""),
+        ("Races finished", str(races), f"{waiting} waiting" if waiting else "all results in", ""),
     ]
     tiles_html = "".join(
         f'<div class="pp-stat"><div class="k">{k}</div><div class="v{c}">{v}</div>'
@@ -356,9 +388,9 @@ def race_card(title, meta, picks, model_hits=None, grid_hits=None):
         chips.append(f'<div class="pp-chip{cls}"><div class="pp-dot" style="background:{color}"></div>'
                      f'{html.escape(p["name"])}{extra}{mark}</div>')
     if model_hits is None:
-        right = '<div class="pp-wait">Waiting for result</div>'
+        right = '<div class="pp-wait">WAITING</div>'
     else:
-        right = (f'<div class="pp-sc model">Model <b>{model_hits}/3</b></div>'
+        right = (f'<div class="pp-sc model">Our model <b>{model_hits}/3</b></div>'
                  f'<div class="pp-sc">Grid <b>{grid_hits}/3</b></div>')
     return (f'<div class="pp-race"><div class="head"><div class="title">{html.escape(title)}</div>'
             f'<div class="meta">{meta}</div></div><div class="chips">{"".join(chips)}</div>'
@@ -369,5 +401,55 @@ def show_cards(cards):
     st.markdown("".join(cards), unsafe_allow_html=True)
 
 
+def order_table(rows, summary):
+    """The whole predicted order (one line per driver). After the race: where each driver really
+    finished and a coloured verdict (green spot on, yellow 1-2 places off, red 3 or more)."""
+    out = []
+    if summary:
+        out.append(f'<div class="pp-osum"><b>On average {summary["model_off"]:.1f} places off</b> · copying '
+                   f'the grid would have been {summary["grid_off"]:.1f} places off<br>'
+                   f'{summary["spot_on"]} driver{"s" if summary["spot_on"] != 1 else ""} spot on · '
+                   f'{summary["within_2"]} within 2 places</div>')
+    for r in rows.itertuples():
+        _, color = team_info(r.team) if r.team else ("", "#8a8a96")
+        if summary is None:
+            right = ""
+        elif r.real is None or r.real != r.real:
+            right = '<span class="pp-oreal">—</span><span class="pp-ov">No result</span>'
+        else:
+            off = int(r.off)
+            cls = "on" if off == 0 else ("near" if abs(off) <= 2 else "far")
+            word = "✓ Spot on" if off == 0 else (
+                f'{abs(off)}<span class="w"> place{"s" if abs(off) > 1 else ""}</span> '
+                f'{"lower" if off > 0 else "higher"}')
+            right = f'<span class="pp-oreal">P{int(r.real)}</span><span class="pp-ov {cls}">{word}</span>'
+        out.append(f'<div class="pp-orow{"" if summary else " nr"}"><span class="pp-opos">P{r.predicted}</span>'
+                   f'<span class="pp-dot" style="background:{color}"></span>'
+                   f'<span class="pp-oname">{html.escape(r.name)}</span>{right}</div>')
+    head = (f'<div class="pp-orow head{"" if summary else " nr"}"><span class="pp-opos">Ours</span><span></span><span class="pp-oname">'
+            'Driver</span>' + ('<span class="pp-oreal">Real</span><span class="pp-ov">Verdict</span>'
+                               if summary else '') + '</div>')
+    st.markdown(f'<div class="pp-order">{head}{"".join(out)}</div>', unsafe_allow_html=True)
+
+
+def vs_boxes(boxes):
+    """Side-by-side boxes, e.g. You / Our model / Actual result.
+    boxes = [(title, [(name, team, mark)])], mark True (on the podium), False, or None (no mark)."""
+    cols = []
+    for title, rows in boxes:
+        lines = []
+        for i, (name, team, mark) in enumerate(rows, start=1):
+            _, color = team_info(team) if team else ("", "#8a8a96")
+            tick = "" if mark is None else (f'<span class="mk {"hit" if mark else "miss"}">{"✓" if mark else "✗"}</span>')
+            surname = html.escape(name.split(" ")[-1])
+            lines.append(f'<div class="pp-vsrow"><span class="pp-vsp">P{i}</span>'
+                         f'<span class="pp-dot" style="background:{color}"></span>'
+                         f'<span class="pp-vsn"><span class="full">{html.escape(name)}</span>'
+                         f'<span class="short">{surname}</span></span>{tick}</div>')
+        cols.append(f'<div class="pp-vsbox"><div class="pp-vst">{html.escape(title)}</div>{"".join(lines)}</div>')
+    st.markdown(f'<div class="pp-vs" style="grid-template-columns:repeat({len(boxes)},1fr)">{"".join(cols)}</div>',
+                unsafe_allow_html=True)
+
+
 def empty_note(text):
-    st.markdown(f'<div class="pp-empty">{text}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="pp-empty">{text}</div>', unsafe_allow_html=True)

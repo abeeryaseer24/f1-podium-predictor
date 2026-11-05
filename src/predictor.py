@@ -197,6 +197,15 @@ def get_race_start(season, rnd):
     return datetime.fromisoformat(f"{race['date']}T{time}")
 
 
+def race_calendar(season):
+    """Every race of a season: round, name, race start and qualifying start (UTC; None if unknown)."""
+    data = requests.get(f"{BASE_URL}/{season}.json", timeout=30).json()
+    when = lambda d: datetime.fromisoformat(f"{d['date']}T{d.get('time', '12:00:00Z').replace('Z', '+00:00')}")
+    return [{"round": int(r["round"]), "race_name": r["raceName"], "race_start": when(r),
+             "quali_start": when(r["Qualifying"]) if "Qualifying" in r else None}
+            for r in data["MRData"]["RaceTable"]["Races"]]
+
+
 def model_version():
     """Which model made a prediction: the time it was trained.
     (Step 4 adds model_info.json; until then we use the model file's save time.)"""
@@ -249,6 +258,41 @@ def scoreboard(kind):
     return pd.DataFrame(rows)
 
 
+def full_order(season, rnd, order):
+    """A locked whole-order prediction next to the real result (once the race is done).
+    Returns (rows, summary): one row per predicted position; summary is None before the result."""
+    order = json.loads(order) if isinstance(order, str) else list(order)
+    results = pd.read_csv(RESULTS_CSV)
+    results["constructor"] = results["constructor"].replace(TEAM_MAP)
+    race = results[(results["season"] == season) & (results["round"] == rnd)]
+    last_team = results.sort_values(["season", "round"]).groupby("driver")["constructor"].last()
+    real = dict(zip(race["driver"], race["finish_position"]))
+    team = dict(zip(race["driver"], race["constructor"])) if not race.empty else {}
+
+    rows = []
+    for i, d in enumerate(order, start=1):
+        pos = real.get(d)
+        rows.append({"predicted": i, "driver": d, "name": clean_name(d),
+                     "team": team.get(d, last_team.get(d, "")),
+                     "real": int(pos) if pos == pos and pos is not None else None,
+                     "off": None if pos is None or pos != pos else int(pos) - i})
+    rows = pd.DataFrame(rows)
+    if race.empty:
+        return rows, None
+
+    done = rows.dropna(subset=["real"])
+    grid = race.assign(start=race["grid"].where(race["grid"] > 0, 99))
+    grid_rank = grid["start"].rank(method="first")
+    summary = {
+        "model_off": round(float(done["off"].abs().mean()), 1),
+        "grid_off": round(float((grid["finish_position"] - grid_rank).abs().mean()), 1),
+        "spot_on": int((done["off"] == 0).sum()),
+        "within_2": int((done["off"].abs() <= 2).sum()),
+        "drivers": len(done),
+    }
+    return rows, summary
+
+
 def season_summary(board):
     """Totals and averages for the finished races: the model vs the grid."""
     if board.empty:
@@ -269,4 +313,4 @@ def model_info():
     """The model card written by train.py (None if it doesn't exist yet)."""
     if MODEL_INFO.exists():
         return json.loads(MODEL_INFO.read_text())
-    return None
+    return None

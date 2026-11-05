@@ -120,11 +120,9 @@ def screen_reveal():
         with st.expander(f"Show positions 11–{len(table)}"):
             driver_rows(table, 10, len(table), real=True)
 
-    with st.expander("How fair is this?"):
-        st.write("The model learned from past races, including this one, so it has "
-                 "already seen this result. For an honest test, open the Scoreboard: "
-                 "it shows predictions locked in before each 2026 race, and backtests for "
-                 "every season since 2022, each by a model that never saw those races.")
+    st.caption("The model has already seen this race's result, so this is not a fair test. "
+               "The fair tests are on the About page.")
+    st.page_link("app_pages/about.py", label="How the model is tested fairly →")
 
     back, again = st.columns(2)
     back.button("← Back to prediction", on_click=go, args=("predict",))
@@ -134,4 +132,4 @@ def screen_reveal():
 # ---------- show the current screen ----------
 
 SCREENS = {"pick": screen_pick, "predict": screen_predict, "reveal": screen_reveal}
-SCREENS[st.session_state.screen]()
+SCREENS[st.session_state.screen]()
