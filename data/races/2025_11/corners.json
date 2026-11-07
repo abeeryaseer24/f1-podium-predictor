@@ -1,0 +1,52 @@
+[
+  {
+    "label": "T1",
+    "i": 21,
+    "source": "official"
+  },
+  {
+    "label": "T2",
+    "i": 57,
+    "source": "official"
+  },
+  {
+    "label": "T3",
+    "i": 78,
+    "source": "official"
+  },
+  {
+    "label": "T4",
+    "i": 135,
+    "source": "official"
+  },
+  {
+    "label": "T5",
+    "i": 151,
+    "source": "official"
+  },
+  {
+    "label": "T6",
+    "i": 170,
+    "source": "official"
+  },
+  {
+    "label": "T7",
+    "i": 191,
+    "source": "official"
+  },
+  {
+    "label": "T8",
+    "i": 203,
+    "source": "official"
+  },
+  {
+    "label": "T9",
+    "i": 230,
+    "source": "official"
+  },
+  {
+    "label": "T10",
+    "i": 244,
+    "source": "official"
+  }
+]
