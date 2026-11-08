@@ -6,3 +6,4 @@ data/raw/
 cache/
 .streamlit/secrets.toml
 data/picks_local.json
+PROJECT_NOTES.md
