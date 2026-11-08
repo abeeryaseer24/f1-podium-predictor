@@ -27,13 +27,13 @@ def card(r):
                      int(r["model_hits"]) if done else None, int(r["grid_hits"]) if done else None)
 
 
-st.write("Predictions are locked in after qualifying, before every race.")
+st.write("Predictions are locked in on race day, after qualifying and grid penalties, before lights out.")
 
 live = get_scoreboard("live")
 if live.empty:
     upcoming = get_upcoming(current_season())
     race = upcoming.iloc[0]["race_name"].replace(" Grand Prix", "") if not upcoming.empty else "the next"
-    empty_note(f"The first prediction is locked in after {race} qualifying.")
+    empty_note(f"The first prediction is locked in on {race} race day.")
 else:
     stat_tiles(season_summary(live))
     for _, r in live.sort_values(["season", "round"], ascending=False).iterrows():

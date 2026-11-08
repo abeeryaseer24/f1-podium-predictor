@@ -181,8 +181,8 @@ with tabs[2]:
 
     st.subheader("Rules that keep it honest")
     st.markdown(
-        "- **Locked before the race.** A live prediction is saved only with the real qualifying grid, "
-        "and only before the race starts. The whole order 1–22 is saved, not just the podium.\n"
+        "- **Locked before the race.** A live prediction is saved on race day, 8 hours before lights out, with "
+        "the real qualifying results and the known grid penalties. The whole order 1–22 is saved, not just the podium.\n"
         "- **Never changed.** Every robot run checks that earlier predictions are exactly as they were.\n"
         "- **No peeking.** Every input is built only from races before the one being predicted.\n"
         "- **Fair comparison.** Every recipe, and the grid, is scored on the same races in the same way.\n"
@@ -227,7 +227,7 @@ with tabs[4]:
         "The recipes compete again and the best one stays live.\n"
         "2. **New race files:** prepares replays for races that don't have one yet, and the strategist "
         "analyses them.\n"
-        "3. **After qualifying:** locks in the next race's prediction (the whole order).\n"
+        "3. **On race day:** locks in the race's prediction (the whole order), with grid penalties applied.\n"
         "4. **Safety checks**, then it saves everything to GitHub and the live app updates.")
 
     st.subheader("Safety checks")

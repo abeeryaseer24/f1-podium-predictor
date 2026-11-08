@@ -7,7 +7,7 @@ Rules that keep the scoreboard fair:
 """
 import argparse
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import pandas as pd
 
@@ -15,6 +15,9 @@ from predictor import (ROOT, current_season, get_race_start, load_model, model_v
                        predict_upcoming, reasons, upcoming_races)
 
 LOG_FILE = ROOT / "data" / "predictions" / "predictions.csv"
+
+
+LOCK_HOURS = 8           # lock on race day, this many hours before lights out (grid penalties are known by then)
 
 
 def load_log():
@@ -70,6 +73,13 @@ def main():
         print("\nQualifying hasn't happened yet, so nothing was locked in. "
               "Run this again after qualifying.")
         return
+    if now < start - timedelta(hours=LOCK_HOURS):
+        print(f"\nNot locked yet: predictions are locked on race day, from {LOCK_HOURS} hours before "
+              f"lights out ({start - timedelta(hours=LOCK_HOURS):%Y-%m-%d %H:%M} UTC), so late grid "
+              "penalties are included. Fill in data/grid_penalties.csv before then.")
+        return
+    if result["penalties"]:
+        print("Grid penalties applied:", ", ".join(f"{p['name']} ({p['note']})" for p in result["penalties"]))
 
     row = {
         "season": args.season,
@@ -85,6 +95,7 @@ def main():
         row[f"p{i}_chance"] = r["podium_chance"]
     row["order"] = json.dumps(result["table"]["driver"].tolist())        # the whole predicted order, 1-22
     row["why"] = json.dumps(reasons(result["table"], load_model()[0]))   # "Why this pick?", saved with it
+    row["penalties"] = json.dumps(result["penalties"])                   # grid penalties it knew about
 
     LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
     pd.concat([log, pd.DataFrame([row])], ignore_index=True).to_csv(LOG_FILE, index=False)

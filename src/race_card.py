@@ -122,7 +122,7 @@ function tick() {
     pill = now - start < 2.5 * 3600e3 ? "Race on now" : "Race done, results soon"; hot = true;
     $("lbl").textContent = "Lights went out"; $("num").innerHTML = '<span class="away">AND AWAY WE GO</span>';
   } else {
-    if (quali && now >= quali) pill = D.locked ? "Prediction locked" : "Locking prediction soon";
+    if (quali && now >= quali) pill = D.locked ? "Prediction locked" : "Prediction locks on race day";
     if (left < 3600e3) { pill = "Lights out soon!"; hot = true; }
     const s = Math.floor(left / 1000), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600),
           m = Math.floor(s % 3600 / 60), sec = s % 60;

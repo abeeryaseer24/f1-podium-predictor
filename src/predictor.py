@@ -191,6 +191,48 @@ def get_qualifying(season, rnd):
     } for q in races[0]["QualifyingResults"]])
 
 
+PENALTIES_CSV = ROOT / "data" / "grid_penalties.csv"
+
+
+def grid_penalties(season, rnd):
+    """Grid penalties for one race from data/grid_penalties.csv (filled in each race weekend).
+    penalty = a number of places, 'back' (back of the grid) or 'pitlane'."""
+    if not PENALTIES_CSV.exists():
+        return pd.DataFrame(columns=["driver", "penalty", "note"])
+    pens = pd.read_csv(PENALTIES_CSV, dtype={"penalty": str})
+    return pens[(pens["season"] == season) & (pens["round"] == rnd)][["driver", "penalty", "note"]]
+
+
+def apply_grid_penalties(quali, season, rnd):
+    """The starting grid: qualifying order with the known grid penalties applied.
+    A place penalty drops a driver behind that many drivers who qualified behind him, back-of-grid
+    penalties go to the back in qualifying order, pit lane starts behind them.
+    A close match to the FIA procedure, which can differ when several penalties overlap."""
+    pens = grid_penalties(season, rnd)
+    rule = dict(zip(pens["driver"], pens["penalty"].astype(str).str.strip().str.lower()))
+    df = quali.sort_values("quali_position").reset_index(drop=True)
+    clean = [q for d, q in zip(df["driver"], df["quali_position"]) if d not in rule]   # no penalty
+    keys = []
+    for _, r in df.iterrows():
+        p, q = rule.get(r["driver"]), r["quali_position"]
+        if p == "pitlane":
+            keys.append((2, q, 0))
+        elif p == "back":
+            keys.append((1, q, 0))
+        elif p and p.lstrip("-").isdigit() and int(p) > 0:
+            behind = [c for c in clean if c > q]           # drops behind this many drivers who qualified behind
+            spot = behind[min(int(p), len(behind)) - 1] if behind else q
+            keys.append((0, spot, 1))
+        else:
+            keys.append((0, q, 0))
+    df["_key"] = keys
+    df = df.sort_values("_key").drop(columns="_key").reset_index(drop=True)
+    df["grid"] = np.arange(1, len(df) + 1)
+    applied = [{"driver": d, "name": clean_name(d), "note": n} for d, n in zip(pens["driver"], pens["note"])
+               if d in set(df["driver"])]
+    return df, applied
+
+
 def estimate_grid(history, season):
     """No qualifying yet: rank drivers by their average qualifying this season."""
     this_season = history[history["season"] == season]
@@ -231,13 +273,16 @@ def predict_upcoming(season, rnd):
     race_name, circuit, date = get_race_info(season, rnd)
     quali = get_qualifying(season, rnd)
     real_quali = quali is not None
-    if not real_quali:
+    penalties = []
+    if real_quali:
+        quali, penalties = apply_grid_penalties(quali, season, rnd)     # the real starting grid
+    else:
         quali = estimate_grid(history, season)
+        quali["grid"] = quali["quali_position"]
 
     new_rows = quali.assign(
         season=season, round=rnd, race_name=race_name, circuit=circuit, date=date,
-        grid=quali["quali_position"], finish_position=np.nan,
-        status="Upcoming", points=np.nan)
+        finish_position=np.nan, status="Upcoming", points=np.nan)
 
     df = prepare(pd.concat([history, new_rows], ignore_index=True))
     race = df[(df["season"] == season) & (df["round"] == rnd)]
@@ -250,6 +295,7 @@ def predict_upcoming(season, rnd):
         "table": race,
         "predicted": race.head(3)["name"].tolist(),
         "real_quali": real_quali,
+        "penalties": penalties,
     }
 
 # ================= Live system helpers =================

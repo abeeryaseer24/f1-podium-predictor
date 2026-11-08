@@ -87,9 +87,8 @@ else:
 
     close = f"Picks close at lights out: {local_time(open_race['race_start'])} your time."
     if race["real_quali"]:
-        st.markdown(f'<div class="pp-banner hammer"><b>It\'s Hammertime.</b><span>Qualifying is done and our '
-                    f'model has locked in its pick. You\'ll see it after the race. {close}</span></div>',
-                    unsafe_allow_html=True)
+        st.markdown(f'<div class="pp-banner hammer"><b>It\'s Hammertime.</b><span>Qualifying is done. '
+                    f'Can you beat our model? {close}</span></div>', unsafe_allow_html=True)
     else:
         quali = f" Qualifying is {local_time(open_race['quali_start'])} your time." if open_race["quali_start"] else ""
         st.markdown(f'<div class="pp-banner"><b>You\'re early, but you can still predict.</b>'

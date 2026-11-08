@@ -61,6 +61,9 @@ def screen_predict():
     if kind == "upcoming":
         if result["real_quali"]:
             st.success("Using real qualifying results")
+            if result.get("penalties"):
+                st.caption("Grid penalties applied: " + ", ".join(
+                    f'{p["name"]} ({p["note"]})' for p in result["penalties"]))
         else:
             st.warning("Qualifying hasn't happened yet, so the grid is estimated "
                        "from each driver's average qualifying this season")
@@ -77,9 +80,7 @@ def screen_predict():
         why_cards(table, get_reasons(kind, season, rnd))
 
     st.subheader("The predicted finishing order")
-    st.caption("Big number: chance of a podium. Small number: chance of winning. The model replays "
-               "the race 5,000 times with the right amount of luck, so podium chances add up to "
-               "exactly 3 drivers and win chances to 100%.")
+    st.caption("Big number: podium chance · Small number: winning chance")
     driver_rows(table, 0, 10)
     if len(table) > 10:
         with st.expander(f"Show positions 11–{len(table)}"):

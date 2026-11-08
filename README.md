@@ -2,7 +2,7 @@
 
 ![Race pipeline](https://github.com/abeeryaseer24/f1-podium-predictor/actions/workflows/pipeline.yml/badge.svg)
 
-A Formula 1 machine learning app that runs itself. It predicts the **whole finishing order** of every race, locks the prediction in after qualifying, scores it after the race and retrains on the new result, with no human in the loop. Around the model sit 3D race replays, a pit-stop strategist and two games.
+A Formula 1 machine learning app that runs itself. It predicts the **whole finishing order** of every race, locks the prediction in on race day (after qualifying and grid penalties), scores it after the race and retrains on the new result, with no human in the loop. Around the model sit 3D race replays, a pit-stop strategist and two games.
 
 **Try it live: [f1-podium-predictor1.streamlit.app](https://f1-podium-predictor1.streamlit.app/)**
 
@@ -64,7 +64,7 @@ flowchart LR
 ```
 
 **Rules that keep it honest:**
-- A prediction is saved only with the real qualifying grid, and only before the race starts. Once saved, it is never changed, and every run checks that.
+- A prediction is saved on race day, 8 hours before lights out, with the real qualifying results and the known grid penalties. Once saved, it is never changed, and every run checks that.
 - Every input is built only from races before the one being predicted.
 - The pit strategist only knows the laps that have happened. The code refuses to run if it is handed a future lap, and every run tests this.
 
