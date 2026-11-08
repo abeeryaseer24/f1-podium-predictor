@@ -409,10 +409,20 @@ def scoreboard(kind):
     """Every saved prediction next to the real result.
     kind = "live" or "backtest". One row per race."""
     file = SCOREBOARD_FILES[kind]
-    if not file.exists():
+    preds = pd.read_csv(file) if file.exists() else pd.DataFrame()
+    if kind == "live":                      # add locks the app saved that the robot hasn't copied yet
+        try:
+            from locks import get_locks
+            saved = pd.DataFrame(get_locks())
+            if not saved.empty:
+                if not preds.empty:
+                    have = set(zip(preds["season"], preds["round"]))
+                    saved = saved[[(s, r) not in have for s, r in zip(saved["season"], saved["round"])]]
+                preds = pd.concat([preds, saved], ignore_index=True)
+        except Exception:
+            pass                            # database offline: the file alone still works
+    if preds.empty:
         return pd.DataFrame()
-
-    preds = pd.read_csv(file)
     results = pd.read_csv(RESULTS_CSV)
     results["constructor"] = results["constructor"].replace(TEAM_MAP)
 

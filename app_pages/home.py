@@ -53,10 +53,10 @@ else:
     # ---------- 3. our model's podium ----------
     st.subheader("Our model's podium")
     if locked is not None:
-        when = pd.to_datetime(locked["predicted_at"]).strftime("%a %d %b, %H:%M UTC")
+        when = local_time(pd.to_datetime(locked["predicted_at"]).to_pydatetime())
         podium([{"name": clean_name(locked[f"p{i}"]), "team": locked[f"p{i}_team"],
                  "note": f'{locked[f"p{i}_chance"]:.0f}% podium'} for i in (1, 2, 3)])
-        st.caption(f"Locked in on race day, {when}, with the real qualifying results and grid penalties. "
+        st.caption(f"Locked in on race day, {when} your time, with the real qualifying results and grid penalties. "
                    "It won't change.")
     else:
         lock_at = race["race_start"] - timedelta(hours=LOCK_HOURS)
@@ -71,8 +71,8 @@ else:
                     for _, r in provisional["table"].head(3).iterrows()])
             pens = " and grid penalties" if provisional.get("grid_source") in ("official", "penalties file") else ""
             if now >= lock_at:
-                st.caption(f"Locking in now: lock time was {local_time(lock_at)} your time. Our robot checks "
-                           "every 10 minutes on race weekends, so the locked pick appears here shortly.")
+                st.caption(f"Locking in now: lock time was {local_time(lock_at)} your time. "
+                           "Refresh in a minute to see the locked pick.")
             else:
                 st.caption(f"Provisional: from the real qualifying{pens}. It locks in on race day, "
                            f"{local_time(lock_at)} your time, and won't change after that.")

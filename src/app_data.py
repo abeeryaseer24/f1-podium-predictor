@@ -35,9 +35,43 @@ def run_upcoming(season, rnd):
     return predict_upcoming(season, rnd)
 
 
-@st.cache_data(ttl=600)
-def get_scoreboard(kind):
+@st.cache_data(ttl=60)
+def _scoreboard(kind):
     return scoreboard(kind)
+
+
+def get_scoreboard(kind):
+    """Saved predictions next to the real results. For the live scoreboard, this also locks
+    the next race the moment its lock time passes (see lock_if_due)."""
+    if kind == "live":
+        try:
+            if lock_if_due(_scoreboard("live")):
+                _scoreboard.clear()
+        except Exception:
+            pass                            # never break a page over this; the robot locks it later
+    return _scoreboard(kind)
+
+
+def lock_if_due(live):
+    """Lock the next race if its lock time has passed and nobody has locked it yet.
+    The prediction is saved once in the database (the first save wins), so every visitor sees the same
+    locked pick, and the robot later copies it into predictions.csv. Returns True if a lock was saved."""
+    from datetime import datetime, timedelta, timezone
+    from locks import save_lock
+    from log_prediction import LOCK_HOURS, build_lock
+    from predictor import RESULTS_CSV, current_season
+
+    now = datetime.now(timezone.utc)
+    season = current_season()
+    results = pd.read_csv(RESULTS_CSV, usecols=["season", "round"])
+    finished = set(zip(results["season"], results["round"]))
+    race = next((r for r in get_calendar(season) if (season, r["round"]) not in finished), None)
+    if race is None or not (race["race_start"] - timedelta(hours=LOCK_HOURS) <= now < race["race_start"]):
+        return False
+    if not live.empty and ((live["season"] == season) & (live["round"] == race["round"])).any():
+        return False                        # already locked
+    row, _ = build_lock(season, race["round"], race["race_start"], now)
+    return row is not None and save_lock(row) is not None
 
 
 @st.cache_data(ttl=600)
