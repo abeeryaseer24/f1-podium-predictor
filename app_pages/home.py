@@ -70,8 +70,12 @@ else:
             podium([{"name": r["name"], "team": r["constructor"], "note": f'{r["podium_chance"]:.0f}% podium'}
                     for _, r in provisional["table"].head(3).iterrows()])
             pens = " and grid penalties" if provisional.get("grid_source") in ("official", "penalties file") else ""
-            st.caption(f"Provisional: from the real qualifying{pens}. It locks in on race day, "
-                       f"{local_time(lock_at)} your time, and won't change after that.")
+            if now >= lock_at:
+                st.caption(f"Locking in now: lock time was {local_time(lock_at)} your time. Our robot checks "
+                           "every 10 minutes on race weekends, so the locked pick appears here shortly.")
+            else:
+                st.caption(f"Provisional: from the real qualifying{pens}. It locks in on race day, "
+                           f"{local_time(lock_at)} your time, and won't change after that.")
         else:
             teaser_podium(f"Our model's pick comes after qualifying, and locks in on race day "
                           f"({local_time(lock_at)} your time).")

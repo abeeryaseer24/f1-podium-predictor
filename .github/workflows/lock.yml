@@ -1,0 +1,57 @@
+name: Race-day lock
+
+# Locks in the next race's prediction as soon as its lock time passes (8 hours before lights out).
+# Checks every 10 minutes on Saturdays and Sundays (UTC). Most checks say "not yet" and end in seconds.
+
+on:
+  schedule:
+    - cron: "3-59/10 * * * 6,0"   # every 10 minutes on Saturdays and Sundays (UTC)
+  workflow_dispatch:              # adds a "Run workflow" button for manual runs
+
+permissions:
+  contents: write                 # allows this job to push the locked prediction
+
+concurrency:
+  group: race-pipeline            # shares the main robot's queue, so they never run at the same time
+  cancel-in-progress: false
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Is it lock time?
+        id: gate
+        run: python3 src/lock_gate.py
+
+      - name: Set up Python
+        if: steps.gate.outputs.run == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+
+      - name: Install libraries
+        if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Lock in the prediction
+        if: steps.gate.outputs.run == 'true'
+        run: python src/lock_now.py
+
+      - name: Save it to the repo
+        if: steps.gate.outputs.run == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/predictions
+          if git diff --cached --quiet; then
+            echo "Nothing locked yet (for example, the grid isn't out). Trying again in 10 minutes."
+          else
+            git commit -m "Race-day lock $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git pull --rebase
+            git push
+          fi
