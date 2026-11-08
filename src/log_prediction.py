@@ -76,8 +76,9 @@ def main():
     if now < start - timedelta(hours=LOCK_HOURS):
         print(f"\nNot locked yet: predictions are locked on race day, from {LOCK_HOURS} hours before "
               f"lights out ({start - timedelta(hours=LOCK_HOURS):%Y-%m-%d %H:%M} UTC), so late grid "
-              "penalties are included. Fill in data/grid_penalties.csv before then.")
+              "penalties are included (read from OpenF1's official starting grid).")
         return
+    print("Starting grid from:", result.get("grid_source"))
     if result["penalties"]:
         print("Grid penalties applied:", ", ".join(f"{p['name']} ({p['note']})" for p in result["penalties"]))
 

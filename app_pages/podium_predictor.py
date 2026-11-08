@@ -61,7 +61,11 @@ def screen_predict():
     if kind == "upcoming":
         if result["real_quali"]:
             st.success("Using real qualifying results")
-            if result.get("penalties"):
+            if result.get("grid_source") == "official":
+                st.caption("Starting grid: the official grid, grid penalties included" + (
+                    ". " + ", ".join(f'{p["name"]} ({p["note"]})' for p in result["penalties"])
+                    if result["penalties"] else "."))
+            elif result.get("penalties"):
                 st.caption("Grid penalties applied: " + ", ".join(
                     f'{p["name"]} ({p["note"]})' for p in result["penalties"]))
         else:

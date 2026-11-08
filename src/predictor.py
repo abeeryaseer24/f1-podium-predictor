@@ -188,10 +188,48 @@ def get_qualifying(season, rnd):
         "driver": q["Driver"]["driverId"],
         "constructor": q["Constructor"]["constructorId"],
         "quali_position": int(q["position"]),
+        "number": int(q["number"]) if str(q.get("number", "")).isdigit() else None,
     } for q in races[0]["QualifyingResults"]])
 
 
 PENALTIES_CSV = ROOT / "data" / "grid_penalties.csv"
+OPENF1 = "https://api.openf1.org/v1"
+
+
+def openf1_grid(race_date):
+    """The official starting grid (grid penalties included) from OpenF1, as {car number: grid slot},
+    or None if it isn't published yet. Only accepted if it belongs to this race weekend."""
+    try:
+        grid = requests.get(f"{OPENF1}/starting_grid", params={"meeting_key": "latest"}, timeout=30).json()
+        if not isinstance(grid, list) or len(grid) < 15:
+            return None
+        meeting = requests.get(f"{OPENF1}/meetings", params={"meeting_key": grid[0]["meeting_key"]},
+                               timeout=30).json()
+        start = pd.to_datetime(meeting[0]["date_start"], utc=True)
+        if abs((pd.to_datetime(race_date, utc=True) - start).days) > 5:
+            return None                                          # the grid of another race weekend
+        return {int(g["driver_number"]): int(g["position"]) for g in grid if g.get("position")}
+    except Exception:
+        return None
+
+
+def starting_grid(quali, season, rnd, race_date):
+    """The real starting grid for an upcoming race, and where it came from.
+      1. OpenF1's official starting grid (automatic, includes every grid penalty)
+      2. qualifying + data/grid_penalties.csv (a backup if OpenF1 is late)
+      3. qualifying order"""
+    official = openf1_grid(race_date) if "number" in quali else None
+    if official and quali["number"].map(lambda n: n in official).sum() >= len(quali) - 2:
+        df = quali.copy()
+        df["grid"] = df["number"].map(official).fillna(99)
+        df = df.sort_values(["grid", "quali_position"]).reset_index(drop=True)
+        df["grid"] = np.arange(1, len(df) + 1)
+        moved = df[df["grid"] - df["quali_position"] >= 3]           # penalties show as big drops
+        notes = [{"driver": r.driver, "name": clean_name(r.driver),
+                  "note": f"qualified P{int(r.quali_position)}, starts P{int(r.grid)}"} for r in moved.itertuples()]
+        return df, notes, "official"
+    df, notes = apply_grid_penalties(quali, season, rnd)
+    return df, notes, ("penalties file" if notes else "qualifying")
 
 
 def grid_penalties(season, rnd):
@@ -273,9 +311,9 @@ def predict_upcoming(season, rnd):
     race_name, circuit, date = get_race_info(season, rnd)
     quali = get_qualifying(season, rnd)
     real_quali = quali is not None
-    penalties = []
+    penalties, grid_source = [], "estimated"
     if real_quali:
-        quali, penalties = apply_grid_penalties(quali, season, rnd)     # the real starting grid
+        quali, penalties, grid_source = starting_grid(quali, season, rnd, date)   # the real starting grid
     else:
         quali = estimate_grid(history, season)
         quali["grid"] = quali["quali_position"]
@@ -296,6 +334,7 @@ def predict_upcoming(season, rnd):
         "predicted": race.head(3)["name"].tolist(),
         "real_quali": real_quali,
         "penalties": penalties,
+        "grid_source": grid_source,
     }
 
 # ================= Live system helpers =================

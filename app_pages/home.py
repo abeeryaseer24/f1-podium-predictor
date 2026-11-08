@@ -69,8 +69,8 @@ else:
         if provisional is not None and provisional["real_quali"]:
             podium([{"name": r["name"], "team": r["constructor"], "note": f'{r["podium_chance"]:.0f}% podium'}
                     for _, r in provisional["table"].head(3).iterrows()])
-            pens = " with the grid penalties" if provisional.get("penalties") else ""
-            st.caption(f"Provisional: from the real qualifying results{pens}. It locks in on race day, "
+            pens = " and grid penalties" if provisional.get("grid_source") in ("official", "penalties file") else ""
+            st.caption(f"Provisional: from the real qualifying{pens}. It locks in on race day, "
                        f"{local_time(lock_at)} your time, and won't change after that.")
         else:
             teaser_podium(f"Our model's pick comes after qualifying, and locks in on race day "
