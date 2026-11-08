@@ -51,12 +51,22 @@ dots = alt.Chart(points).mark_circle(size=22, opacity=0.25).encode(
     color=alt.Color("Compound:N", scale=scale, legend=None))
 lines = alt.Chart(curves).mark_line(strokeWidth=3.5).encode(
     x="Tyre age (laps):Q", y=alt.Y(f"{y_title}:Q"),
-    color=alt.Color("Compound:N", scale=scale, legend=alt.Legend(orient="top", title=None)))
+    color=alt.Color("Compound:N", scale=scale, legend=None))          # the tyre key sits above the chart
 chart = ((dots + lines).properties(height=380)
          .configure(background="transparent")
          .configure_axis(labelColor=text_colour, titleColor=text_colour,
                          gridColor=grid_colour, domainColor=grid_colour)
          .configure_legend(labelColor=text_colour))
+def tyre_chip(name):
+    """A small tyre (coloured ring, like the real sidewall marking) with the compound's name."""
+    colour = COLOURS[name.upper()]
+    return (f'<span style="display:inline-flex;align-items:center;gap:7px;margin-right:18px;font-weight:600">'
+            f'<span style="width:16px;height:16px;border-radius:50%;background:#1b1b22;'
+            f'box-shadow:inset 0 0 0 4px {colour}"></span>{name.title()}</span>')
+
+
+st.markdown('<div style="margin:.2rem 0 .4rem">' + "".join(tyre_chip(c["name"]) for c in compounds) + "</div>",
+            unsafe_allow_html=True)
 st.altair_chart(chart, width="stretch", theme=None)
 st.caption("Each faint dot is one clean lap, with the driver's pace and the fuel load taken out. "
            "The lines are the model's wear curves.")
@@ -65,9 +75,11 @@ st.caption("Each faint dot is one clean lap, with the driver's pace and the fuel
 st.subheader("Compound by compound")
 cards = st.columns(len(compounds))
 for card, c in zip(cards, compounds):
-    card.metric(c["name"].title(), f"{c['wear']:+.3f} s/lap")
-    card.caption(f"Fresh: {c['offset']:+.2f} s vs {ref} · {c['laps']} clean laps · "
-                 f"longest stint {c['max_age']} laps")
+    card.markdown(tyre_chip(c["name"]), unsafe_allow_html=True)
+    card.metric("Wear per lap", f"{c['wear']:+.3f} s/lap")
+    card.caption(f"Fresh: {c['offset']:+.2f} s vs {ref}  \n"
+                 f"{c['laps']} clean laps  \n"
+                 f"Longest stint: {c['max_age']} laps")
 
 if len(compounds) > 1:
     best = min(compounds, key=lambda c: c["wear"])
@@ -87,4 +99,4 @@ m2.metric("Pit stop loss", f"{result['pit_loss']:.1f} s" if result["pit_loss"] e
 m3.metric("Model error", f"±{result['error']:.2f} s",
           help="Typical error per lap, measured on laps the model didn't learn from")
 st.caption(f"Based on {result['clean_laps']} clean racing laps. A negative wear number means "
-           "the track got faster than the tyre wore out.")
+           "the track got faster than the tyre wore out.")
