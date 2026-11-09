@@ -4737,3 +4737,25 @@ season,round,race_name,circuit,date,driver,constructor,grid,finish_position,stat
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,bottas,cadillac,21,20,Retired,0.0,21.0
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,stroll,aston_martin,19,21,Retired,0.0,19.0
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,alonso,aston_martin,17,22,Retired,0.0,17.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,norris,mclaren,1,1,Finished,25.0,1.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,max_verstappen,red_bull,21,2,Finished,18.0,16.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,hadjar,red_bull,5,3,Finished,15.0,7.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,russell,mercedes,7,4,Finished,12.0,2.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,antonelli,mercedes,2,5,Finished,10.0,3.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,piastri,mclaren,10,6,Finished,8.0,12.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,lawson,rb,3,7,Finished,6.0,5.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,leclerc,ferrari,14,8,Finished,4.0,4.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,hamilton,ferrari,20,9,Lapped,2.0,11.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,hulkenberg,audi,4,10,Lapped,1.0,6.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,arvid_lindblad,rb,18,11,Lapped,0.0,14.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,alonso,aston_martin,8,12,Lapped,0.0,9.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,colapinto,alpine,13,13,Lapped,0.0,17.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,gasly,alpine,15,14,Lapped,0.0,18.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,albon,williams,9,15,Lapped,0.0,10.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,bortoleto,audi,19,16,Lapped,0.0,22.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,bearman,haas,6,17,Lapped,0.0,8.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,perez,cadillac,22,18,Lapped,0.0,21.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,sainz,williams,12,19,Lapped,0.0,15.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,rafael_camara,haas,11,20,Lapped,0.0,13.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,stroll,aston_martin,16,21,Retired,0.0,19.0
+2026,20,Brazilian Grand Prix,interlagos,2026-11-08,bottas,cadillac,17,22,Did not start,0.0,20.0

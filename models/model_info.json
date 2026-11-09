@@ -1,13 +1,13 @@
 {
-  "trained_at": "2026-11-04T16:02:27+00:00",
-  "trained_on_rows": 4738,
+  "trained_at": "2026-11-09T00:57:49+00:00",
+  "trained_on_rows": 4760,
   "model": "Plackett-Luce ranking model: predicts the whole finishing order",
   "recipe": "top10",
   "recipe_label": "Learns from the first 10 finishers",
   "last_race": {
     "season": 2026,
-    "round": 19,
-    "race_name": "Mexico City Grand Prix"
+    "round": 20,
+    "race_name": "Brazilian Grand Prix"
   },
   "features": [
     "log_grid",
@@ -89,58 +89,58 @@
       "grid_places_off": 3.34
     },
     "2026": {
-      "races": 19,
-      "podium_hits": 1.95,
-      "winner_right": 0.737,
-      "order_match": 0.68,
-      "places_off": 3.47,
-      "podium_auc": 0.94,
-      "grid_podium_hits": 1.84,
-      "old_model_podium_hits": 1.84,
-      "grid_winner_right": 0.684,
-      "grid_order_match": 0.657,
-      "grid_places_off": 3.47
+      "races": 20,
+      "podium_hits": 1.9,
+      "winner_right": 0.75,
+      "order_match": 0.689,
+      "places_off": 3.42,
+      "podium_auc": 0.936,
+      "grid_podium_hits": 1.8,
+      "old_model_podium_hits": 1.8,
+      "grid_winner_right": 0.7,
+      "grid_order_match": 0.645,
+      "grid_places_off": 3.57
     }
   },
   "backtest_average": {
-    "podium_hits": 2.072,
-    "grid_podium_hits": 1.982,
-    "old_model_podium_hits": 1.99,
-    "winner_right": 0.573,
-    "grid_winner_right": 0.58,
-    "order_match": 0.669,
-    "grid_order_match": 0.63,
-    "places_off": 3.32,
-    "grid_places_off": 3.48
+    "podium_hits": 2.062,
+    "grid_podium_hits": 1.974,
+    "old_model_podium_hits": 1.982,
+    "winner_right": 0.576,
+    "grid_winner_right": 0.583,
+    "order_match": 0.671,
+    "grid_order_match": 0.628,
+    "places_off": 3.31,
+    "grid_places_off": 3.5
   },
   "challengers": {
     "top10": {
       "label": "Learns from the first 10 finishers",
-      "podium_hits": 2.072,
-      "places_off": 3.32,
-      "order_match": 0.669,
-      "winner_right": 0.573
+      "podium_hits": 2.062,
+      "places_off": 3.31,
+      "order_match": 0.671,
+      "winner_right": 0.576
     },
     "top5": {
       "label": "Learns from the first 5 finishers",
-      "podium_hits": 2.03,
-      "places_off": 3.366,
-      "order_match": 0.661,
-      "winner_right": 0.563
+      "podium_hits": 2.02,
+      "places_off": 3.36,
+      "order_match": 0.663,
+      "winner_right": 0.566
     },
     "top15-smooth": {
       "label": "First 15 finishers, stronger smoothing",
-      "podium_hits": 2.008,
-      "places_off": 3.324,
-      "order_match": 0.669,
-      "winner_right": 0.58
+      "podium_hits": 2.0,
+      "places_off": 3.32,
+      "order_match": 0.67,
+      "winner_right": 0.583
     },
     "short-term": {
       "label": "Only this weekend and recent form (no career stats)",
-      "podium_hits": 2.034,
-      "places_off": 3.36,
-      "order_match": 0.663,
-      "winner_right": 0.573
+      "podium_hits": 2.026,
+      "places_off": 3.35,
+      "order_match": 0.665,
+      "winner_right": 0.576
     }
   },
   "decision": "No challenger was clearly better, so the champion stays (retrained on the newest races)."
