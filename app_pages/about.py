@@ -35,7 +35,8 @@ with tabs[0]:
     st.write(f"Podium Predictor is a Formula 1 machine learning project that runs itself. It predicts "
              f"the whole finishing order of every race, locks the prediction in after qualifying, scores "
              f"it after the race and retrains on the new result. Around it sit 3D race replays, a pit "
-             f"strategist and two games. It has learned from {len(races)} races since "
+             f"strategist, two games and a full set of team and driver pages. It has learned "
+             f"from {len(races)} races since "
              f"{int(races['season'].min())}, and {len(prepared)} races can be replayed in 3D.")
 
     st.subheader("A tour of the pages")
@@ -43,6 +44,17 @@ with tabs[0]:
         {"Page": "Podium Predictor", "What it shows": "Pick any race: the model's podium, the whole predicted order and the real result."},
         {"Page": "Scoreboard", "What it shows": "Every live prediction, locked in before the race and scored after it."},
         {"Page": "Season Rewind", "What it shows": "A whole season race by race: how our model did against the grid."},
+        {"Page": "Constructor Standings", "What it shows": "The teams' championship for any season, with the charts behind every point."},
+        {"Page": "Team Cards", "What it shows": "Every team as a card. Tap one for its own page in the team's colours: who runs it, what it has won and where it is based."},
+        {"Page": "Team Performance", "What it shows": "How fast each car really was, measured from the race lap times rather than the results."},
+        {"Page": "Reliability", "What it shows": "How often each team's cars reached the finish, and what stopped the rest."},
+        {"Page": "Pit and Strategy", "What it shows": "Pit stop times by team, and the tyre strategy of any race since 2023."},
+        {"Page": "Power Units", "What it shows": "Engine parts used and how close each driver is to a grid penalty. Kept by hand."},
+        {"Page": "Upgrades", "What it shows": "Where the lap times show a car stepped forward, next to notes on what each team brought."},
+        {"Page": "Driver Standings", "What it shows": "The drivers' championship, race by race."},
+        {"Page": "Driver Cards", "What it shows": "Every driver as a card. Tap one for their career, teammates and race craft."},
+        {"Page": "Driver Ratings", "What it shows": "Each driver's form through the season, on raw pace and against their own teammate."},
+        {"Page": "Teammate Battles", "What it shows": "Same car, same weekend: who is winning inside each garage."},
         {"Page": "Pit Wall", "What it shows": "Any race since 2023 replayed on the real 3D track, with our strategist's team radio."},
         {"Page": "Ghost Lap Duel", "What it shows": "Two drivers' fastest laps raced against each other, corner by corner."},
         {"Page": "Circuit Explorer", "What it shows": "Every circuit in its real shape and elevation."},
