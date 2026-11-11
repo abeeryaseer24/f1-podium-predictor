@@ -80,6 +80,8 @@ def main():
         run("src/train.py")
         # Sprint points, for the championship tables on the Teams and Drivers pages.
         run_soft("src/sprint_loader.py")
+        # The archive behind the History pages. Only the current season is re-downloaded.
+        run_soft("src/history_loader.py")
     else:
         print("No new race results.")
 
