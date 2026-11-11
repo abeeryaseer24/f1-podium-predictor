@@ -26,6 +26,16 @@ def run(script, *args):
     subprocess.run([sys.executable, script, *args], check=True)
 
 
+def run_soft(script, *args):
+    """Run one of our scripts, but carry on if it fails. Used for the extra pages
+    (sprint points, car pace): the prediction does not depend on them, so a problem
+    there must not stop the robot from locking in a race."""
+    try:
+        run(script, *args)
+    except subprocess.CalledProcessError as error:
+        print(f"Skipped {script}: {error}")
+
+
 def race_start(race):
     """Start time of a race from the calendar, in UTC."""
     time = race.get("time", "12:00:00Z").replace("Z", "+00:00")
@@ -68,12 +78,16 @@ def main():
         check_results(min_rows=rows_before)
         run("src/features.py")
         run("src/train.py")
+        # Sprint points, for the championship tables on the Teams and Drivers pages.
+        run_soft("src/sprint_loader.py")
     else:
         print("No new race results.")
 
     # Race files for the 3D pages: up to 3 missing races per run, newest first.
     run("src/prepare_race.py", "--missing", "--limit", "3")
     run("src/corners.py", "--missing")
+    # Car and driver pace from those race files, for the Team Performance page.
+    run_soft("src/pace.py")
     # The strategist's knowledge from earlier races, then strategies for races that need one.
     run("src/history.py", "--missing", "--limit", "5")
     run("src/tyre_book.py")
