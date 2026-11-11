@@ -35,8 +35,8 @@ with tabs[0]:
     st.write(f"Podium Predictor is a Formula 1 machine learning project that runs itself. It predicts "
              f"the whole finishing order of every race, locks the prediction in after qualifying, scores "
              f"it after the race and retrains on the new result. Around it sit 3D race replays, a pit "
-             f"strategist, two games and a full set of team and driver pages. It has learned "
-             f"from {len(races)} races since "
+             f"strategist, four games, a full set of team and driver pages and an archive "
+             f"going back to 1950. The model has learned from {len(races)} races since "
              f"{int(races['season'].min())}, and {len(prepared)} races can be replayed in 3D.")
 
     st.subheader("A tour of the pages")
@@ -44,6 +44,7 @@ with tabs[0]:
         {"Page": "Podium Predictor", "What it shows": "Pick any race: the model's podium, the whole predicted order and the real result."},
         {"Page": "Scoreboard", "What it shows": "Every live prediction, locked in before the race and scored after it."},
         {"Page": "Season Rewind", "What it shows": "A whole season race by race: how our model did against the grid."},
+        {"Page": "Championship Odds", "What it shows": "The rest of the season replayed thousands of times, to see who still wins the title."},
         {"Page": "Constructor Standings", "What it shows": "The teams' championship for any season, with the charts behind every point."},
         {"Page": "Team Cards", "What it shows": "Every team as a card. Tap one for its own page in the team's colours: who runs it, what it has won and where it is based."},
         {"Page": "Team Performance", "What it shows": "How fast each car really was, measured from the race lap times rather than the results."},
@@ -55,12 +56,22 @@ with tabs[0]:
         {"Page": "Driver Cards", "What it shows": "Every driver as a card. Tap one for their career, teammates and race craft."},
         {"Page": "Driver Ratings", "What it shows": "Each driver's form through the season, on raw pace and against their own teammate."},
         {"Page": "Teammate Battles", "What it shows": "Same car, same weekend: who is winning inside each garage."},
+        {"Page": "History: Champions", "What it shows": "Every drivers' and constructors' title since 1950."},
+        {"Page": "History: Eras", "What it shows": "Which teams owned which decade, and how the sport itself has changed."},
+        {"Page": "History: Records", "What it shows": "All-time leaderboards for wins, poles, podiums, points and starts."},
+        {"Page": "History: Great Seasons", "What it shows": "The closest title fights and the championships that went to the final race."},
+        {"Page": "History: Driver and Circuit Profiles", "What it shows": "Any driver who has started a Grand Prix, and every track that has held one."},
+        {"Page": "History: On This Day and Head to Head", "What it shows": "What happened on today's date, and any two drivers from any era side by side."},
         {"Page": "Pit Wall", "What it shows": "Any race since 2023 replayed on the real 3D track, with our strategist's team radio."},
-        {"Page": "Ghost Lap Duel", "What it shows": "Two drivers' fastest laps raced against each other, corner by corner."},
+        {"Page": "Race Insights", "What it shows": "The weather, the flags and the lap-by-lap position swapping behind any race since 2023."},
+        {"Page": "Penalties Log", "What it shows": "Every stewards' decision of a season, pulled out of the race control messages."},
+        {"Page": "Ghost Lap Duel", "What it shows": "Two drivers' fastest laps raced against each other, corner by corner, with the speed, throttle, brake and gear traces."},
         {"Page": "Circuit Explorer", "What it shows": "Every circuit in its real shape and elevation."},
         {"Page": "Tyre Lab", "What it shows": "How fast each tyre compound wears, measured from real laps."},
         {"Page": "Beat the AI", "What it shows": "Pick the podium before the race, share your card, and see after the race if you beat our model."},
         {"Page": "Be the Race Engineer", "What it shows": "Make the pit calls for a real driver and try to beat their team."},
+        {"Page": "Beat the AI: Constructors", "What it shows": "Pick the three teams that will score the most points at the next race, then see your pick against our model's."},
+        {"Page": "F1 Quiz", "What it shows": "Ten questions written from the archive itself, with a score and a share card. No two quizzes are the same."},
     ])
 
     st.subheader("Built with")
