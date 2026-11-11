@@ -1,8 +1,9 @@
-"""Ghost Lap Duel: two drivers' fastest laps, head to head."""
+"""Ghost Lap Duel: two drivers' fastest laps, head to head, with the telemetry."""
 import streamlit as st
 
 from app_data import get_duel, get_fastest_laps, get_prepared_races, get_race_file, get_race_info
 from duel import lap_time
+from duel_charts import delta_chart, gear_chart, pedals_chart, speed_chart, top_speeds
 from track3d import duel_view
 
 
@@ -80,3 +81,53 @@ duel_view(track, duel, driver_a, driver_b, dark=st.session_state.dark)
 if driver_a.get("team") and driver_a.get("team") == driver_b.get("team"):
     shade = "white" if st.session_state.dark else "black"
     st.caption(f"Teammates share a team colour, so {code_b} is shown in {shade}.")
+
+# ---------- the telemetry ----------
+
+colour_a = driver_a.get("colour") or "#e10600"
+colour_b = driver_b.get("colour") or "#27f4d2"
+if colour_a.lower() == colour_b.lower():                 # teammates: tell them apart
+    colour_b = "#f5f5f7" if st.session_state.dark else "#15151e"
+
+st.subheader("Where the time went")
+st.caption("The gap building up round the lap. Above the line means "
+           f"{code_a} is losing time to {code_b}; below it means {code_a} is gaining. "
+           "The dotted lines are the corners, and hovering one names it.")
+st.altair_chart(delta_chart(duel, code_a, code_b, colour_a, colour_b),
+                width="stretch", theme=None)
+
+fastest = top_speeds(duel, code_a, code_b)
+if fastest:
+    row = st.columns(len(fastest))
+    for column, (code, speed) in zip(row, fastest.items()):
+        column.metric(f"{code} top speed", f"{speed:.0f} km/h")
+
+st.subheader("Speed")
+st.caption("Both laps, all the way round. The dips are the corners: a higher dip means "
+           "more speed carried through, and a later dip means braking later.")
+st.altair_chart(speed_chart(duel, code_a, code_b, colour_a, colour_b),
+                width="stretch", theme=None)
+
+st.subheader("Throttle and brake")
+pedals = pedals_chart(duel, code_a, code_b, colour_a, colour_b)
+if isinstance(pedals, tuple):
+    throttle, braking = pedals
+    st.caption("Throttle as a percentage. The marks underneath are every point on the "
+               "lap where the brake was on, so you can see who braked earlier.")
+    st.altair_chart(throttle, width="stretch", theme=None)
+    st.altair_chart(braking, width="stretch", theme=None)
+else:
+    st.caption("Throttle as a percentage. No brake data was recorded for these laps.")
+    st.altair_chart(pedals, width="stretch", theme=None)
+
+gears = gear_chart(duel, code_a, code_b, colour_a, colour_b)
+if gears is not None:
+    st.subheader("Gear")
+    st.caption("Which gear the car was in. A driver a gear higher through a corner is "
+               "carrying more speed; a flat top-gear stretch is the straight.")
+    st.altair_chart(gears, width="stretch", theme=None)
+
+st.caption("Telemetry is recorded about four times a second, so very short inputs can "
+           "fall between two readings. Both laps are lined up on the start/finish line, "
+           "not on the clock, so the comparison is fair even if one driver started their "
+           "lap earlier.")
