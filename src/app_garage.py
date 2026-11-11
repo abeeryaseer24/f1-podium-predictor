@@ -9,10 +9,13 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
+import numpy as np
+
+import odds
 import standings
 from pace import driver_pace_table, smooth, team_pace
 from pitstops import race_folders, race_stints, race_stops, team_compound_use, team_stop_summary
-from predictor import current_season
+from predictor import current_season, load_model
 
 ROOT = Path(__file__).resolve().parent.parent
 POWER_UNITS_CSV = ROOT / "data" / "power_units.csv"
@@ -209,6 +212,77 @@ def get_upgrades():
         if col not in table.columns:
             table[col] = ""
     return table[columns]
+
+
+# ---------- championship odds ----------
+
+@st.cache_data(ttl=900)
+def get_championship_odds(season, simulations=5000):
+    """Who still wins the title. Returns a dict, or one with an 'error' key if the
+    season cannot be simulated (no races left, or the calendar could not be reached)."""
+    from app_data import get_calendar, get_upcoming, run_upcoming
+
+    drivers_now = get_driver_table(season)
+    teams_now = get_constructor_table(season)
+    if drivers_now.empty:
+        return {"error": f"No results for {season} yet."}
+
+    try:
+        upcoming = get_upcoming(season)
+        calendar = get_calendar(season)
+    except Exception as problem:
+        return {"error": f"Could not read the {season} calendar: {problem}"}
+
+    if upcoming.empty:
+        return {"error": "every race of this season has been run", "finished": True}
+
+    left = set(upcoming["round"])
+    races_left = len(left)
+    sprints_left = sum(1 for race in calendar
+                       if race["round"] in left
+                       and any(label == "Sprint" for label, _ in race.get("sessions", [])))
+
+    next_round = int(upcoming["round"].min())
+    try:
+        prediction = run_upcoming(season, next_round)
+    except Exception as problem:
+        return {"error": f"Could not work out the grid for the next race: {problem}"}
+
+    race = prediction["table"]
+    entered = race["driver"].tolist()
+    extra = [d for d in drivers_now["driver"] if d not in entered]
+    drivers = entered + extra
+
+    strength = np.concatenate([race["strength"].to_numpy(dtype=float),
+                               np.full(len(extra), -10.0)])
+
+    season_rows = standings.points_table(season)
+    stop_rate = odds.dnf_rates(season_rows, drivers)
+    stop_rate[len(entered):] = 1.0          # drivers no longer racing score nothing more
+
+    points_now = drivers_now.set_index("driver")["points"]
+    driver_points = np.array([float(points_now.get(d, 0.0)) for d in drivers])
+
+    team_of = dict(zip(race["driver"], race["constructor"]))
+    for driver in extra:
+        team_of[driver] = drivers_now.set_index("driver").loc[driver, "constructor"]
+    team_points = dict(zip(teams_now["constructor"], teams_now["points"].astype(float)))
+
+    model, _ = load_model()
+    driver_odds, team_odds = odds.simulate(
+        drivers, strength, stop_rate, driver_points, team_of, team_points,
+        races_left, sprints_left, luck=model.get("luck", 1.0), simulations=simulations)
+
+    return {
+        "drivers": odds.still_alive(driver_odds, races_left, sprints_left),
+        "teams": odds.still_alive(team_odds, races_left, sprints_left),
+        "races_left": races_left,
+        "sprints_left": sprints_left,
+        "most_points_left": odds.most_points_left(races_left, sprints_left),
+        "next_race": prediction["race_name"],
+        "grid_source": prediction.get("grid_source", "estimated"),
+        "simulations": simulations,
+    }
 
 
 def power_unit_counts(season):

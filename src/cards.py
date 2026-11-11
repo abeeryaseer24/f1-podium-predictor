@@ -306,5 +306,13 @@ def standings_rows(rows):
     st.markdown(f'<div class="pp-tbl">{"".join(out)}</div>', unsafe_allow_html=True)
 
 
+def ordinal(n):
+    """1 -> 1st, 2 -> 2nd, 11 -> 11th."""
+    n = int(n)
+    if 10 <= n % 100 <= 20:
+        return f"{n}th"
+    return f"{n}{ {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th') }"
+
+
 def note(text):
     st.markdown(f'<p class="pp-note">{text}</p>', unsafe_allow_html=True)

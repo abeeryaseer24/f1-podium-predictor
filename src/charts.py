@@ -40,6 +40,40 @@ def team_scale(team_ids):
     return alt.Scale(domain=names, range=colours)
 
 
+# A spread of colours for teams from the past, which have no official colour of their own.
+# They are picked in a fixed order, so the same team keeps the same colour every time.
+ARCHIVE_COLOURS = [
+    "#e10600", "#27f4d2", "#3671c6", "#ff8000", "#229971", "#ff87bc", "#64c4ff",
+    "#b6babd", "#c9a227", "#9b5de5", "#f2c21b", "#4cc9a0", "#f4845f", "#7a8fa6",
+]
+KNOWN_BY_NAME = {
+    "ferrari": "#e8002d", "mclaren": "#ff8000", "mercedes": "#27f4d2",
+    "red bull": "#3671c6", "williams": "#64c4ff", "renault": "#f2c21b",
+    "team lotus": "#00703c", "lotus": "#00703c", "brabham": "#1d4e89",
+    "tyrrell": "#1f4ea1", "benetton": "#00a650", "brm": "#0b6623",
+    "cooper": "#1e8a4c", "alpine": "#ff87bc", "aston martin": "#229971",
+    "haas": "#b6babd", "audi": "#bb0a30", "sauber": "#52e252",
+    "jordan": "#f2c21b", "brawn": "#b8fd6e", "matra": "#1f4ea1",
+    "vanwall": "#0b6623", "maserati": "#c0392b", "alfa romeo": "#9b1b30",
+}
+
+
+def name_scale(names):
+    """A colour scale for teams named in words (the History pages), using the real colour
+    where we know it and a fixed spread of colours for the rest."""
+    colours, spare = [], 0
+    for name in names:
+        key = str(name).lower()
+        if key in KNOWN_BY_NAME:
+            colours.append(KNOWN_BY_NAME[key])
+        elif key == "everyone else":
+            colours.append("#6b6b7a")
+        else:
+            colours.append(ARCHIVE_COLOURS[spare % len(ARCHIVE_COLOURS)])
+            spare += 1
+    return alt.Scale(domain=list(names), range=colours)
+
+
 def with_team_names(table, column="constructor"):
     """Add a 'Team' column of readable names next to the team ids."""
     out = table.copy()
