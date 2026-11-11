@@ -9,17 +9,11 @@ import streamlit as st
 from app_garage import (get_driver_history, get_driver_pace, get_driver_races,
                         get_driver_teammates, get_driver_totals)
 from cards import (accent, cards_css, crest, figures, glass, head_to_head, key_values,
-                   note, team_theme, timeline)
+                   note, ordinal, team_theme, timeline)
 from charts import dress, season_line, season_positions
 from predictor import clean_name
 from style import empty_note, team_info
 
-
-def ordinal(n):
-    n = int(n)
-    if 10 <= n % 100 <= 20:
-        return f"{n}th"
-    return f"{n}{ {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th') }"
 
 
 def season_story(row):

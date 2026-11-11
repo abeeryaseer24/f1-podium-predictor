@@ -32,9 +32,14 @@ def verdict(score, total):
 
 
 def start(era):
+    """Begin a new quiz. Each one gets its own id, which goes into the answer widget's
+    key: without it a second quiz would inherit the first one's selected answers, and
+    Streamlit would choke when an old answer is not among the new options."""
     questions = build(QUESTIONS, era=era)
+    st.session_state["quiz_round"] = st.session_state.get("quiz_round", 0) + 1
     st.session_state[STATE] = {
         "questions": questions, "era": era, "at": 0,
+        "id": st.session_state["quiz_round"],
         "answers": [], "marks": [], "checked": False,
     }
 
@@ -109,7 +114,8 @@ st.caption(f'Question {at + 1} of {len(questions)} · {question["kind"]} · '
 
 st.subheader(question["question"])
 choice = st.radio("Your answer", question["options"], index=None,
-                  key=f'choice_{at}', label_visibility="collapsed")
+                  key=f'choice_{state.get("id", 0)}_{at}',
+                  label_visibility="collapsed")
 
 if not state["checked"]:
     if st.button("Check my answer", type="primary", disabled=choice is None):

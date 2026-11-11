@@ -10,19 +10,12 @@ import streamlit as st
 from app_garage import (get_constructor_progress, get_constructor_table, get_entries,
                         get_team_drivers, get_team_history, get_teammate_battles)
 from cards import (accent, cards_css, crest, figures, glass, head_to_head, key_values,
-                   note, photo_url, team_theme, timeline)
+                   note, ordinal, photo_url, team_theme, timeline)
 from charts import season_line, season_positions
 from predictor import clean_name
 from style import empty_note, team_info
 from teaminfo import family, photo_credits, team_meta
 
-
-def ordinal(n):
-    """1 -> 1st, 2 -> 2nd, 11 -> 11th"""
-    n = int(n)
-    if 10 <= n % 100 <= 20:
-        return f"{n}th"
-    return f"{n}{ {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th') }"
 
 
 def season_story(row):

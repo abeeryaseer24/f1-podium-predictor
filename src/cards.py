@@ -81,7 +81,9 @@ CARDS_CSS = """<style>
 .pp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:.4rem 0 .2rem}
 .pp-card{position:relative;border-radius:16px;padding:16px 16px 14px;overflow:hidden;border:1px solid var(--pp-border);background:var(--pp-panel);min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
 .pp-card .wash{position:absolute;inset:0;z-index:0;background:var(--card-wash)}
-.pp-card .mark{position:absolute;right:-14px;bottom:-26px;z-index:0;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:5.4rem;line-height:1;letter-spacing:-2px;opacity:.13;white-space:nowrap;text-transform:uppercase}
+/* The team name ghosted behind the card. It sits top right, clear of the numbers at the
+   bottom left, and stays faint enough to read as texture rather than words. */
+.pp-card .mark{position:absolute;right:-10px;top:-8px;z-index:0;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:3.6rem;line-height:1;letter-spacing:-2px;opacity:.10;white-space:nowrap;text-transform:uppercase}
 .pp-card .body{position:relative;z-index:1}
 .pp-card .rank{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:1px;opacity:.75}
 .pp-card h4{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.65rem;letter-spacing:.5px;margin:.1rem 0 .3rem;line-height:1.05;text-transform:uppercase}
@@ -127,7 +129,7 @@ CARDS_CSS = """<style>
 .pp-h2h{display:flex;flex-direction:column;gap:10px;margin:.3rem 0 1rem}
 .pp-h2hrow{background:var(--pp-panel);border:1px solid var(--pp-border);border-radius:14px;padding:12px 16px}
 .pp-h2hrow .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:4px}
-.pp-h2hrow .top b{font-weight:600}
+.pp-h2hrow .top b{font-weight:600;color:var(--pp-text)}
 .pp-h2hrow .top small{color:var(--pp-muted)}
 .pp-h2hbar{display:flex;height:16px;border-radius:8px;overflow:hidden;background:var(--pp-panel2);margin:6px 0 2px}
 .pp-h2hbar i{display:block;height:100%;font-style:normal}
@@ -136,8 +138,10 @@ CARDS_CSS = """<style>
 @media (max-width:640px){
 .pp-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .pp-card{padding:12px 12px 10px;min-height:128px}
-.pp-card h4{font-size:1.2rem}.pp-card .mark{font-size:3.6rem}
+.pp-card h4{font-size:1.2rem}.pp-card .mark{font-size:2.6rem}
+.pp-card .nums{gap:9px}
 .pp-card .nums b{font-size:1.1rem}
+.pp-card .nums small{font-size:.58rem;letter-spacing:.2px}
 .pp-crest .word{font-size:4rem}.pp-crest{min-height:140px}
 .pp-fig b{font-size:1.5rem}
 }
