@@ -20,7 +20,9 @@ import requests
 from predictor import ROOT
 
 TABLE = "picks"
+TEAM_TABLE = "team_picks"                                  # Beat the AI: Constructors
 LOCAL_FILE = ROOT / "data" / "picks_local.json"
+TEAM_LOCAL_FILE = ROOT / "data" / "team_picks_local.json"
 CODE_LETTERS = "ABCDEFGHJKMNPQRSTUVWXYZ23456789"          # no 0/O or 1/I/L, easy to copy
 
 
@@ -93,6 +95,48 @@ def save_pick(player, season, rnd, podium, order=None, nickname=""):
             if not (r["player"] == player and r["season"] == row["season"] and r["round"] == row["round"])]
     LOCAL_FILE.parent.mkdir(parents=True, exist_ok=True)
     LOCAL_FILE.write_text(json.dumps(rows + [row], indent=1))
+
+
+# ---------- Beat the AI: Constructors (its own table, same shape) ----------
+
+def _read_team_local():
+    return json.loads(TEAM_LOCAL_FILE.read_text()) if TEAM_LOCAL_FILE.exists() else []
+
+
+def save_team_pick(player, season, rnd, teams, nickname=""):
+    """Save (or replace) one player's team pick for one race."""
+    row = {"player": player, "season": int(season), "round": int(rnd),
+           "teams": list(teams),
+           "nickname": (nickname or "").strip()[:20] or None,
+           "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+    conf = _supabase()
+    if conf:
+        url, key = conf
+        response = requests.post(f"{url}/rest/v1/{TEAM_TABLE}?on_conflict=player,season,round",
+                                 json=row,
+                                 headers={**_headers(key),
+                                          "Prefer": "resolution=merge-duplicates,return=minimal"},
+                                 timeout=15)
+        response.raise_for_status()
+        return
+    rows = [r for r in _read_team_local()
+            if not (r["player"] == player and r["season"] == row["season"]
+                    and r["round"] == row["round"])]
+    TEAM_LOCAL_FILE.parent.mkdir(parents=True, exist_ok=True)
+    TEAM_LOCAL_FILE.write_text(json.dumps(rows + [row], indent=1))
+
+
+def get_team_picks(player):
+    """Every team pick this player has saved, as a list of dicts."""
+    conf = _supabase()
+    if conf:
+        url, key = conf
+        response = requests.get(f"{url}/rest/v1/{TEAM_TABLE}",
+                                params={"player": f"eq.{player}", "select": "*"},
+                                headers=_headers(key), timeout=15)
+        response.raise_for_status()
+        return response.json()
+    return [r for r in _read_team_local() if r["player"] == player]
 
 
 def get_picks(player):
