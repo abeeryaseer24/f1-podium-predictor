@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2024,5,Chinese Grand Prix,False,alpine,100.007,1.234,82
+2024,5,Chinese Grand Prix,False,aston_martin,99.3135,0.532,82
+2024,5,Chinese Grand Prix,False,audi,99.85159999999999,1.077,56
+2024,5,Chinese Grand Prix,False,ferrari,99.72618181818183,0.95,87
+2024,5,Chinese Grand Prix,False,haas,101.0612,2.302,84
+2024,5,Chinese Grand Prix,False,mclaren,99.23536363636363,0.453,87
+2024,5,Chinese Grand Prix,False,mercedes,100.3606,1.592,84
+2024,5,Chinese Grand Prix,False,rb,101.3575,2.601,35
+2024,5,Chinese Grand Prix,False,red_bull,98.78754545454545,0.0,86
+2024,5,Chinese Grand Prix,False,williams,101.2645,2.507,84
+2024,6,Miami Grand Prix,False,alpine,92.238,1.251,96
+2024,6,Miami Grand Prix,False,aston_martin,92.07475,1.071,97
+2024,6,Miami Grand Prix,False,audi,92.60891666666667,1.658,98
+2024,6,Miami Grand Prix,False,ferrari,91.22933333333333,0.143,97
+2024,6,Miami Grand Prix,False,haas,92.15575,1.16,96
+2024,6,Miami Grand Prix,False,mclaren,91.09869230769232,0.0,98
+2024,6,Miami Grand Prix,False,mercedes,91.41375000000001,0.346,96
+2024,6,Miami Grand Prix,False,rb,91.88866666666667,0.867,100
+2024,6,Miami Grand Prix,False,red_bull,91.34225000000002,0.267,97
+2024,6,Miami Grand Prix,False,williams,92.36558333333333,1.391,69
 2024,7,Emilia Romagna Grand Prix,False,alpine,81.64928571428571,1.922,116
 2024,7,Emilia Romagna Grand Prix,False,aston_martin,80.74893333333333,0.798,115
 2024,7,Emilia Romagna Grand Prix,False,audi,81.593,1.852,118

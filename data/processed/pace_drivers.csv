@@ -1,4 +1,44 @@
 season,round,race_name,wet,driver,code,team_id,driver_number,pace,pct_off,clean_laps
+2024,5,Chinese Grand Prix,False,max_verstappen,VER,red_bull,1,98.78754545454545,0.0,43
+2024,5,Chinese Grand Prix,False,sargeant,SAR,williams,2,101.64379999999998,2.891,42
+2024,5,Chinese Grand Prix,False,ricciardo,RIC,rb,3,101.3575,2.601,18
+2024,5,Chinese Grand Prix,False,norris,NOR,mclaren,4,99.23536363636363,0.453,45
+2024,5,Chinese Grand Prix,False,gasly,GAS,alpine,10,100.007,1.234,40
+2024,5,Chinese Grand Prix,False,perez,PER,red_bull,11,99.59581818181819,0.818,43
+2024,5,Chinese Grand Prix,False,alonso,ALO,aston_martin,14,99.3135,0.532,40
+2024,5,Chinese Grand Prix,False,leclerc,LEC,ferrari,16,99.72618181818183,0.95,45
+2024,5,Chinese Grand Prix,False,stroll,STR,aston_martin,18,99.98320000000001,1.21,42
+2024,5,Chinese Grand Prix,False,kevin_magnussen,MAG,haas,20,101.2723,2.515,42
+2024,5,Chinese Grand Prix,False,tsunoda,TSU,rb,22,102.09049999999999,3.343,17
+2024,5,Chinese Grand Prix,False,albon,ALB,williams,23,101.2645,2.507,42
+2024,5,Chinese Grand Prix,False,,ZHO,audi,24,99.85159999999999,1.077,40
+2024,5,Chinese Grand Prix,False,hulkenberg,HUL,haas,27,101.0612,2.302,42
+2024,5,Chinese Grand Prix,False,ocon,OCO,alpine,31,101.1755,2.417,42
+2024,5,Chinese Grand Prix,False,hamilton,HAM,mercedes,44,100.9768,2.216,42
+2024,5,Chinese Grand Prix,False,sainz,SAI,ferrari,55,100.16069999999999,1.39,42
+2024,5,Chinese Grand Prix,False,russell,RUS,mercedes,63,100.3606,1.592,42
+2024,5,Chinese Grand Prix,False,bottas,BOT,audi,77,101.90725,3.158,16
+2024,5,Chinese Grand Prix,False,piastri,PIA,mclaren,81,100.6555,1.891,42
+2024,6,Miami Grand Prix,False,max_verstappen,VER,red_bull,1,91.37983333333334,0.309,49
+2024,6,Miami Grand Prix,False,sargeant,SAR,williams,2,93.601,2.747,23
+2024,6,Miami Grand Prix,False,ricciardo,RIC,rb,3,92.5905,1.638,50
+2024,6,Miami Grand Prix,False,norris,NOR,mclaren,4,91.09869230769232,0.0,51
+2024,6,Miami Grand Prix,False,gasly,GAS,alpine,10,92.4565,1.49,47
+2024,6,Miami Grand Prix,False,perez,PER,red_bull,11,91.34225000000002,0.267,48
+2024,6,Miami Grand Prix,False,alonso,ALO,aston_martin,14,92.07475,1.071,49
+2024,6,Miami Grand Prix,False,leclerc,LEC,ferrari,16,91.35808333333334,0.285,48
+2024,6,Miami Grand Prix,False,stroll,STR,aston_martin,18,92.08516666666667,1.083,48
+2024,6,Miami Grand Prix,False,kevin_magnussen,MAG,haas,20,92.15575,1.16,49
+2024,6,Miami Grand Prix,False,tsunoda,TSU,rb,22,91.88866666666667,0.867,50
+2024,6,Miami Grand Prix,False,albon,ALB,williams,23,92.36558333333333,1.391,46
+2024,6,Miami Grand Prix,False,,ZHO,audi,24,92.60891666666667,1.658,50
+2024,6,Miami Grand Prix,False,hulkenberg,HUL,haas,27,92.20416666666667,1.213,47
+2024,6,Miami Grand Prix,False,ocon,OCO,alpine,31,92.238,1.251,49
+2024,6,Miami Grand Prix,False,hamilton,HAM,mercedes,44,91.41375000000001,0.346,48
+2024,6,Miami Grand Prix,False,sainz,SAI,ferrari,55,91.22933333333333,0.143,49
+2024,6,Miami Grand Prix,False,russell,RUS,mercedes,63,92.14833333333333,1.152,48
+2024,6,Miami Grand Prix,False,bottas,BOT,audi,77,92.62216666666666,1.672,48
+2024,6,Miami Grand Prix,False,piastri,PIA,mclaren,81,91.37133333333334,0.299,47
 2024,7,Emilia Romagna Grand Prix,False,max_verstappen,VER,red_bull,1,80.52153333333334,0.514,60
 2024,7,Emilia Romagna Grand Prix,False,sargeant,SAR,williams,2,81.59873333333331,1.859,59
 2024,7,Emilia Romagna Grand Prix,False,ricciardo,RIC,rb,3,81.96440000000001,2.316,59
