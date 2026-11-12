@@ -8,11 +8,13 @@ from cards import cards_css, note, team_card
 from predictor import clean_name
 from style import empty_note, team_info
 from teaminfo import team_meta
+from ui_kit import kit_css, tap_card
 
 PICKED = "garage_team"
 PER_ROW = 3
 
 cards_css()
+kit_css()
 
 seasons = get_seasons()
 if not seasons:
@@ -44,8 +46,8 @@ if table.empty:
     empty_note(f"No results for {season} yet.")
     st.stop()
 
-note("Tap a team to see who runs it, what it has won, every driver it has had, and where "
-     "its cars are built.")
+note("Tap a card to see who runs that team, what it has won, every driver it has had, "
+     "and where its cars are built.")
 
 teams = list(table.itertuples())
 for start in range(0, len(teams), PER_ROW):
@@ -55,15 +57,16 @@ for start in range(0, len(teams), PER_ROW):
             meta = team_meta(row.constructor)
             drivers = entries[entries["constructor"] == row.constructor]["driver"]
             line_up = ", ".join(clean_name(d).split()[-1] for d in drivers)
-            st.markdown(team_card(
+            card = team_card(
                 row.constructor,
                 rank=int(row.position),
                 lines=[line_up or "—", meta["engine"] and f'{meta["engine"]} power'],
                 numbers=[(f"{row.points:.0f}", "Points"),
                          (int(row.wins), "Wins"),
                          (int(row.podiums), "Podiums")],
-            ), unsafe_allow_html=True)
-            if st.button(f'Open {team_info(row.constructor)[0]}',
-                         key=f"team_{row.constructor}", width="stretch"):
+            )
+            # The whole card is the button: see ui_kit.tap_card.
+            if tap_card(card, key=f"team-{row.constructor}",
+                        label=f"Open {team_info(row.constructor)[0]}"):
                 st.session_state[PICKED] = row.constructor
                 st.rerun()

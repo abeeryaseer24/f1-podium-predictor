@@ -7,11 +7,13 @@ from app_garage import default_season, get_driver_table, get_seasons
 from cards import cards_css, driver_card, note
 from predictor import clean_name
 from style import empty_note
+from ui_kit import kit_css, tap_card
 
 PICKED = "garage_driver"
 PER_ROW = 3
 
 cards_css()
+kit_css()
 
 seasons = get_seasons()
 if not seasons:
@@ -42,8 +44,8 @@ if table.empty:
     empty_note(f"No results for {season} yet.")
     st.stop()
 
-note("Tap a driver to see their career, every teammate they have faced and how they "
-     "race from where they start.")
+note("Tap a card to see that driver's career, every teammate they have faced and how "
+     "they race from where they start.")
 
 drivers = list(table.itertuples())
 for start in range(0, len(drivers), PER_ROW):
@@ -51,7 +53,7 @@ for start in range(0, len(drivers), PER_ROW):
     for column, row in zip(columns, drivers[start:start + PER_ROW]):
         with column:
             name = clean_name(row.driver)
-            st.markdown(driver_card(
+            card = driver_card(
                 name, row.constructor,
                 number=None,
                 rank=int(row.position),
@@ -59,7 +61,8 @@ for start in range(0, len(drivers), PER_ROW):
                 numbers=[(f"{row.points:.0f}", "Points"),
                          (int(row.wins), "Wins"),
                          (int(row.podiums), "Podiums")],
-            ), unsafe_allow_html=True)
-            if st.button(f"Open {name}", key=f"driver_{row.driver}", width="stretch"):
+            )
+            # The whole card is the button: see ui_kit.tap_card.
+            if tap_card(card, key=f"driver-{row.driver}", label=f"Open {name}"):
                 st.session_state[PICKED] = row.driver
                 st.rerun()

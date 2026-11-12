@@ -81,9 +81,10 @@ CARDS_CSS = """<style>
 .pp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin:.4rem 0 .2rem}
 .pp-card{position:relative;border-radius:16px;padding:16px 16px 14px;overflow:hidden;border:1px solid var(--pp-border);background:var(--pp-panel);min-height:150px;display:flex;flex-direction:column;justify-content:space-between}
 .pp-card .wash{position:absolute;inset:0;z-index:0;background:var(--card-wash)}
-/* The team name ghosted behind the card. It sits top right, clear of the numbers at the
-   bottom left, and stays faint enough to read as texture rather than words. */
-.pp-card .mark{position:absolute;right:-10px;top:-8px;z-index:0;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:3.6rem;line-height:1;letter-spacing:-2px;opacity:.10;white-space:nowrap;text-transform:uppercase}
+/* The team name ghosted behind the card. It is centred on the right edge, so it bleeds
+   off the side the way a watermark should instead of being sliced across the top, and
+   it stays faint enough to read as texture rather than words. */
+.pp-card .mark{position:absolute;right:-14px;top:50%;transform:translateY(-50%);z-index:0;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:3.4rem;line-height:1;letter-spacing:-2px;opacity:.09;white-space:nowrap;text-transform:uppercase}
 .pp-card .body{position:relative;z-index:1}
 .pp-card .rank{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:.95rem;letter-spacing:1px;opacity:.75}
 .pp-card h4{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.65rem;letter-spacing:.5px;margin:.1rem 0 .3rem;line-height:1.05;text-transform:uppercase}
@@ -138,7 +139,7 @@ CARDS_CSS = """<style>
 @media (max-width:640px){
 .pp-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .pp-card{padding:12px 12px 10px;min-height:128px}
-.pp-card h4{font-size:1.2rem}.pp-card .mark{font-size:2.6rem}
+.pp-card h4{font-size:1.2rem}.pp-card .mark{font-size:2.3rem;right:-10px}
 .pp-card .nums{gap:9px}
 .pp-card .nums b{font-size:1.1rem}
 .pp-card .nums small{font-size:.58rem;letter-spacing:.2px}
