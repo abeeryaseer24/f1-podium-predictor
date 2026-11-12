@@ -8,6 +8,7 @@ import streamlit as st
 
 # Let every page find the files inside src/
 sys.path.append(str(Path(__file__).parent / "src"))
+import ui_kit
 from style import apply_style, hero
 
 st.set_page_config(page_title="Podium Predictor", page_icon="🏁", layout="wide")
@@ -125,9 +126,16 @@ with switch_col:
     st.toggle("Dark theme", key="dark")
 
 apply_style(st.session_state.dark)
+ui_kit.kit_css()
 
 
 # ---------- the chosen page ----------
 
 page.run()
+
+# Two things Streamlit cannot be told in Python: dropdowns should be tapped rather than
+# typed into, and a chart tooltip opened by a finger has no mouse to leave, so it used
+# to sit on the screen covering the page. This runs after the page so it also catches
+# anything the page just drew.
+ui_kit.polish()
 
