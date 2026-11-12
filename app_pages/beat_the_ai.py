@@ -63,9 +63,9 @@ open_race = next((r for r in calendar if (season, r["round"]) not in finished an
 me = player()
 try:
     my_picks = {(p["season"], p["round"]): p for p in picks.get_picks(me)}
-except Exception:
+except Exception as error:
     my_picks = {}
-    st.warning("Couldn't reach the picks database right now, so your saved picks aren't shown.")
+    st.warning("Your saved picks aren't shown. " + picks.describe_error(error))
 
 
 # ---------- 1. the next race: make your pick ----------

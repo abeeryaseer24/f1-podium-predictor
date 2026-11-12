@@ -20,6 +20,7 @@ from predictor import RESULTS_CSV, TEAM_MAP, current_season
 from style import empty_note, team_info, vs_boxes
 from team_card import team_card
 from team_game import PLACES, score, teams_from_order, teams_from_results, top_teams, verdict
+from ui_kit import kit_css, sheet
 
 COOKIE = "pp_player"
 MESSAGES = {"win": "Congratulations, you beat our model!",
@@ -27,6 +28,7 @@ MESSAGES = {"win": "Congratulations, you beat our model!",
             "tie": "Dead level with our model."}
 
 cards_css()
+kit_css()
 
 
 # ---------- who is this visitor? (the same code as the driver game) ----------
@@ -77,11 +79,10 @@ open_race = next((r for r in calendar
 me = player()
 try:
     my_picks = {(p["season"], p["round"]): p for p in picks.get_team_picks(me)}
-except Exception:
+except Exception as error:
     my_picks = {}
-    st.warning("Couldn't reach the picks database right now, so your saved picks aren't "
-               "shown. If this is the first time you have opened this page, the "
-               "team_picks table may still need creating.")
+    st.warning("Your saved picks aren't shown. "
+               + picks.describe_error(error, picks.TEAM_TABLE))
 
 st.markdown("**The game.** Which three teams will take the most points home from the "
             "next race? A team's haul is simply what both its cars score, so a quiet "
@@ -154,10 +155,9 @@ else:
         order = table.sort_values("predicted_position")["driver"].tolist()
         team_of = dict(zip(table["driver"], table["constructor"]))
         expected = teams_from_order(order, team_of)
-        st.dataframe(
-            pd.DataFrame([{"Team": team_label(t), "Points if the model is right": p,
-                           "Best car": f"P{b}"} for t, p, b in expected]),
-            hide_index=True, width="stretch")
+        sheet([("Team", "tag"), ("Points if the model is right", "num"),
+               ("Best car", "text")],
+              [[(team_info(t)[1], team_label(t)), p, f"P{b}"] for t, p, b in expected])
         note("This is only what the model's predicted finishing order adds up to. It is "
              "not locked in and it is not a result.")
 

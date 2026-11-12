@@ -139,6 +139,46 @@ def get_team_picks(player):
     return [r for r in _read_team_local() if r["player"] == player]
 
 
+def describe_error(error, table=TABLE):
+    """Turn a failed database call into a sentence that says what to actually do.
+
+    "Couldn't reach the picks database" was true but useless: a missing table, a wrong
+    key and a sleeping project all looked identical, so there was no way to tell which
+    one to go and fix.
+    """
+    if _supabase() is None:
+        return ("No database is configured, so picks are only saved in this browser "
+                "session. Add a [supabase] section with a url and a key to "
+                ".streamlit/secrets.toml to keep them.")
+    status = getattr(getattr(error, "response", None), "status_code", None)
+    body = ""
+    try:
+        body = (error.response.text or "")[:400]
+    except Exception:
+        body = str(error)[:400]
+    lowered = body.lower()
+
+    if status == 404 or "does not exist" in lowered or "could not find the table" in lowered:
+        return (f"The database is reachable, but it has no '{table}' table yet. Create "
+                f"it once in the Supabase SQL editor and this page starts working.")
+    if status in (401, 403):
+        return ("The database refused the key. Check the key in "
+                ".streamlit/secrets.toml matches the project, and that the table's "
+                "row-level security policy allows reading.")
+    if status == 406:
+        return (f"The '{table}' table exists but its columns are not what this page "
+                f"expects. Compare it with the SQL in the README.")
+    if isinstance(error, requests.exceptions.Timeout):
+        return ("The database did not answer in time. A free Supabase project pauses "
+                "after a week of no use; opening it once in the dashboard wakes it up.")
+    if isinstance(error, requests.exceptions.ConnectionError):
+        return ("Could not connect to the database at all. That is usually the url in "
+                "secrets.toml, or the project being paused.")
+    if status:
+        return f"The database answered with error {status}. It said: {body}"
+    return f"The database call failed: {body}"
+
+
 def get_picks(player):
     """Every pick this player has saved, as a list of dicts."""
     conf = _supabase()
