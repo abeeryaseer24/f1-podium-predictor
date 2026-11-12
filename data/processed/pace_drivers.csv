@@ -1,4 +1,40 @@
 season,round,race_name,wet,driver,code,team_id,driver_number,pace,pct_off,clean_laps
+2024,7,Emilia Romagna Grand Prix,False,max_verstappen,VER,red_bull,1,80.52153333333334,0.514,60
+2024,7,Emilia Romagna Grand Prix,False,sargeant,SAR,williams,2,81.59873333333331,1.859,59
+2024,7,Emilia Romagna Grand Prix,False,ricciardo,RIC,rb,3,81.96440000000001,2.316,59
+2024,7,Emilia Romagna Grand Prix,False,norris,NOR,mclaren,4,80.30146666666666,0.24,60
+2024,7,Emilia Romagna Grand Prix,False,gasly,GAS,alpine,10,81.64928571428571,1.922,57
+2024,7,Emilia Romagna Grand Prix,False,perez,PER,red_bull,11,80.19413333333333,0.106,60
+2024,7,Emilia Romagna Grand Prix,False,alonso,ALO,aston_martin,14,80.83064285714285,0.9,55
+2024,7,Emilia Romagna Grand Prix,False,leclerc,LEC,ferrari,16,80.37353333333334,0.33,60
+2024,7,Emilia Romagna Grand Prix,False,stroll,STR,aston_martin,18,80.74893333333333,0.798,60
+2024,7,Emilia Romagna Grand Prix,False,kevin_magnussen,MAG,haas,20,81.2818,1.463,59
+2024,7,Emilia Romagna Grand Prix,False,tsunoda,TSU,rb,22,81.82820000000001,2.146,59
+2024,7,Emilia Romagna Grand Prix,False,albon,ALB,williams,23,81.475,1.705,42
+2024,7,Emilia Romagna Grand Prix,False,,ZHO,audi,24,81.593,1.852,59
+2024,7,Emilia Romagna Grand Prix,False,hulkenberg,HUL,haas,27,82.03753333333333,2.407,59
+2024,7,Emilia Romagna Grand Prix,False,ocon,OCO,alpine,31,82.02366666666667,2.39,59
+2024,7,Emilia Romagna Grand Prix,False,hamilton,HAM,mercedes,44,80.60873333333332,0.623,60
+2024,7,Emilia Romagna Grand Prix,False,sainz,SAI,ferrari,55,80.60380000000002,0.617,60
+2024,7,Emilia Romagna Grand Prix,False,russell,RUS,mercedes,63,80.10942857142857,0.0,58
+2024,7,Emilia Romagna Grand Prix,False,bottas,BOT,audi,77,82.05760000000001,2.432,59
+2024,7,Emilia Romagna Grand Prix,False,piastri,PIA,mclaren,81,80.47526666666667,0.457,60
+2024,8,Monaco Grand Prix,False,max_verstappen,VER,red_bull,1,75.4153888888889,0.196,73
+2024,8,Monaco Grand Prix,False,sargeant,SAR,williams,2,77.02983333333333,2.341,71
+2024,8,Monaco Grand Prix,False,ricciardo,RIC,rb,3,78.4041111111111,4.167,73
+2024,8,Monaco Grand Prix,False,norris,NOR,mclaren,4,76.5658947368421,1.725,75
+2024,8,Monaco Grand Prix,False,gasly,GAS,alpine,10,78.2456111111111,3.957,74
+2024,8,Monaco Grand Prix,False,alonso,ALO,aston_martin,14,78.59466666666665,4.42,73
+2024,8,Monaco Grand Prix,False,leclerc,LEC,ferrari,16,76.38368421052633,1.483,75
+2024,8,Monaco Grand Prix,False,stroll,STR,aston_martin,18,77.76141176470588,3.313,69
+2024,8,Monaco Grand Prix,False,tsunoda,TSU,rb,22,77.34783333333333,2.764,73
+2024,8,Monaco Grand Prix,False,albon,ALB,williams,23,78.1571111111111,3.839,74
+2024,8,Monaco Grand Prix,False,,ZHO,audi,24,78.79588888888888,4.688,71
+2024,8,Monaco Grand Prix,False,hamilton,HAM,mercedes,44,75.2676111111111,0.0,73
+2024,8,Monaco Grand Prix,False,sainz,SAI,ferrari,55,76.38578947368421,1.486,75
+2024,8,Monaco Grand Prix,False,russell,RUS,mercedes,63,75.94168421052632,0.896,75
+2024,8,Monaco Grand Prix,False,bottas,BOT,audi,77,78.05149999999999,3.699,71
+2024,8,Monaco Grand Prix,False,piastri,PIA,mclaren,81,76.75894736842106,1.981,75
 2024,9,Canadian Grand Prix,True,max_verstappen,VER,red_bull,1,76.31576923076922,0.0,53
 2024,9,Canadian Grand Prix,True,sargeant,SAR,williams,2,87.14275,14.187,17
 2024,9,Canadian Grand Prix,True,ricciardo,RIC,rb,3,77.98275,2.184,47

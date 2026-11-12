@@ -1,4 +1,23 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2024,7,Emilia Romagna Grand Prix,False,alpine,81.64928571428571,1.922,116
+2024,7,Emilia Romagna Grand Prix,False,aston_martin,80.74893333333333,0.798,115
+2024,7,Emilia Romagna Grand Prix,False,audi,81.593,1.852,118
+2024,7,Emilia Romagna Grand Prix,False,ferrari,80.37353333333334,0.33,120
+2024,7,Emilia Romagna Grand Prix,False,haas,81.2818,1.463,118
+2024,7,Emilia Romagna Grand Prix,False,mclaren,80.30146666666666,0.24,120
+2024,7,Emilia Romagna Grand Prix,False,mercedes,80.10942857142857,0.0,118
+2024,7,Emilia Romagna Grand Prix,False,rb,81.82820000000001,2.146,118
+2024,7,Emilia Romagna Grand Prix,False,red_bull,80.19413333333333,0.106,120
+2024,7,Emilia Romagna Grand Prix,False,williams,81.475,1.705,101
+2024,8,Monaco Grand Prix,False,alpine,78.2456111111111,3.957,74
+2024,8,Monaco Grand Prix,False,aston_martin,77.76141176470588,3.313,142
+2024,8,Monaco Grand Prix,False,audi,78.05149999999999,3.699,142
+2024,8,Monaco Grand Prix,False,ferrari,76.38368421052633,1.483,150
+2024,8,Monaco Grand Prix,False,mclaren,76.5658947368421,1.725,150
+2024,8,Monaco Grand Prix,False,mercedes,75.2676111111111,0.0,148
+2024,8,Monaco Grand Prix,False,rb,77.34783333333333,2.764,146
+2024,8,Monaco Grand Prix,False,red_bull,75.4153888888889,0.196,73
+2024,8,Monaco Grand Prix,False,williams,77.02983333333333,2.341,145
 2024,9,Canadian Grand Prix,True,alpine,78.20207692307693,2.472,103
 2024,9,Canadian Grand Prix,True,aston_martin,77.51615384615384,1.573,100
 2024,9,Canadian Grand Prix,True,audi,79.01984615384616,3.543,101
