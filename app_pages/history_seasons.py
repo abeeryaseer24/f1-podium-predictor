@@ -8,8 +8,10 @@ from app_archive import (get_last_race_deciders, get_season_progress, get_season
 from cards import cards_css, note
 from charts import dress
 from style import empty_note, stat_strip
+from ui_kit import GOLD, SILVER, kit_css, league, section
 
 cards_css()
+kit_css()
 require_history()
 
 fights = get_title_fights()
@@ -29,10 +31,12 @@ stat_strip([
      f'{"s" if closest["gap"] != 1 else ""}', True),
     ("Most one-sided", str(int(widest["season"])),
      f'{widest["champion"]} by {widest["gap"]:g} points', False),
-    ("Went to the last race", str(len(deciders)), "seasons still open", False),
+    ("Decided at the last race", str(len(deciders)),
+     "the leader could still have been caught", False),
 ])
 
-st.subheader("The twenty closest championships")
+section("The twenty closest championships",
+        "Points between the champion and the runner-up when the season ended. The shorter the bar, the tighter the year.")
 close = fights.head(20).copy()
 close["Season"] = close["season"].astype(int).astype(str)
 chart = (alt.Chart(close).mark_bar(cornerRadiusEnd=4, color="#e10600")
@@ -47,18 +51,24 @@ note("Points are not comparable across the years, so a two-point gap in 1958 was
      "bigger deal than a two-point gap today. Treat this as a list of tight finishes, not "
      "a ranking.")
 
-st.dataframe(
-    close[["Season", "champion", "champion_team", "runner_up", "points_first",
-           "points_second", "gap", "wins_first", "wins_second"]]
-    .rename(columns={"champion": "Champion", "champion_team": "Team",
-                     "runner_up": "Runner-up", "points_first": "Champion points",
-                     "points_second": "Runner-up points", "gap": "Apart",
-                     "wins_first": "Champion wins", "wins_second": "Runner-up wins"}),
-    hide_index=True, width="stretch")
+section("The same twenty, with who they beat",
+        "The bar is how close it was: a full bar is the tightest championship there "
+        "has ever been.")
+widest_gap = max(float(close["gap"].max()), 0.5)
+league([{
+    "pos": int(r.season), "name": r.champion, "colour": GOLD,
+    "sub": f"beat {r.runner_up} · {r.champion_team}",
+    "bar": 1 - (float(r.gap) / widest_gap),
+    "figures": [(f"{r.gap:g}", "apart"),
+                (f"{r.points_first:g}", "champion"),
+                (f"{r.points_second:g}", "runner-up"),
+                (f"{int(r.wins_first)}-{int(r.wins_second)}", "wins")],
+} for r in close.itertuples()], wide_position=True)
 
 # ---------- one season in detail ----------
 
-st.subheader("Follow one season")
+section("Follow one season",
+        "Pick a year and watch the title race build up round by round.")
 pick = st.selectbox("Season", list(reversed(seasons)))
 progress, names = get_season_progress(int(pick))
 
@@ -82,15 +92,26 @@ else:
 
 # ---------- final race deciders ----------
 
-st.subheader("Still open going into the final race")
+section("Decided at the last race",
+        "Seasons where the leader's advantage going into the final round was smaller "
+        "than the points still on offer, so the title could genuinely still have "
+        "changed hands that afternoon.")
 if deciders.empty:
     empty_note("None found.")
 else:
-    note("Seasons where the leader's advantage before the last round was smaller than the "
-         "points still on offer, so the championship could still have changed hands.")
-    st.dataframe(
-        deciders.rename(columns={"season": "Season", "leader_before": "Led going in",
-                                 "chaser": "Chasing", "gap_before_final": "Points ahead",
-                                 "most_on_offer": "Most still available",
-                                 "champion": "Won it"}),
-        hide_index=True, width="stretch")
+    rows = []
+    for r in deciders.itertuples():
+        held_on = r.champion == r.leader_before
+        rows.append({
+            "pos": int(r.season),
+            "name": f"{r.leader_before} led, {r.chaser} chased",
+            "sub": (f"{r.champion} won it · " +
+                    ("the leader held on" if held_on else "the lead changed hands")),
+            "colour": GOLD if held_on else SILVER,
+            "bar": 1 - min(1.0, float(r.gap_before_final) / max(float(r.most_on_offer), 1)),
+            "figures": [(f"{r.gap_before_final:g}", "ahead"),
+                        (f"{r.most_on_offer:g}", "on offer")],
+        })
+    league(rows, wide_position=True)
+    note("The bar is how exposed the leader was: a full bar means the gap was almost "
+         "nothing next to what was still to be won.")

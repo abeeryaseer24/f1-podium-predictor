@@ -6,8 +6,10 @@ from app_archive import get_season_shape, get_wins_by_decade, get_wins_by_season
 from cards import cards_css, note
 from charts import dress, name_scale
 from style import empty_note, stat_strip
+from ui_kit import kit_css, league, scale_colour, section
 
 cards_css()
+kit_css()
 require_history()
 
 decades = get_wins_by_decade()
@@ -47,7 +49,8 @@ chart = (alt.Chart(decades).mark_bar()
                           alt.Tooltip("wins:Q", title="Wins")]))
 st.altair_chart(dress(chart).properties(height=380), width="stretch", theme=None)
 
-st.subheader("Wins per decade, as plain numbers")
+section("Wins per decade",
+        "Every race win of each decade, stacked by team.")
 chart = (alt.Chart(decades).mark_bar()
          .encode(x=alt.X("decade:O", title=None),
                  y=alt.Y("wins:Q", title="Race wins"),
@@ -57,8 +60,8 @@ chart = (alt.Chart(decades).mark_bar()
                           alt.Tooltip("wins:Q", title="Wins")]))
 st.altair_chart(dress(chart).properties(height=340), width="stretch", theme=None)
 
-st.subheader("Season by season")
-note("The same thing year by year, which shows how long each winning streak really lasted.")
+section("Season by season",
+        "The same thing year by year, which shows how long each winning streak really lasted.")
 chart = (alt.Chart(by_season).mark_area(interpolate="monotone")
          .encode(x=alt.X("season:Q", title=None, axis=alt.Axis(format="d")),
                  y=alt.Y("wins:Q", title="Wins that season", stack="normalize"),
@@ -68,9 +71,8 @@ chart = (alt.Chart(by_season).mark_area(interpolate="monotone")
                           alt.Tooltip("wins:Q", title="Wins")]))
 st.altair_chart(dress(chart).properties(height=340), width="stretch", theme=None)
 
-st.subheader("How the sport itself has changed")
-note("Races per season, and how many different drivers won at least one of them. "
-     "A season with one or two winners was a season somebody dominated.")
+section("How the sport itself has changed",
+        "Races per season against how many different drivers won at least one of them. A season with one or two winners was a season somebody dominated.")
 base = alt.Chart(shape).encode(x=alt.X("season:Q", title=None, axis=alt.Axis(format="d")))
 races = base.mark_area(opacity=.35, color="#e10600").encode(
     y=alt.Y("races:Q", title="Races in the season"),
@@ -83,9 +85,24 @@ winners = base.mark_line(strokeWidth=2.5, color="#27f4d2").encode(
 st.altair_chart(dress(alt.layer(races, winners).resolve_scale(y="independent")),
                 width="stretch", theme=None)
 
-st.subheader("The numbers")
-st.dataframe(
-    shape.rename(columns={"season": "Season", "races": "Races",
-                          "winners": "Different winners", "teams": "Teams",
-                          "entries": "Cars entered"}).sort_values("Season", ascending=False),
-    hide_index=True, width="stretch")
+section("Every season, by how open it was",
+        "The bar is how many different drivers won a race that year as a share of the "
+        "races held. A full bar is a season where almost every race had a new winner; "
+        "a short one is a season somebody owned.")
+table = shape.sort_values("season", ascending=False)
+rows = []
+for r in table.itertuples():
+    openness = r.winners / max(int(r.races), 1)
+    grid = r.entries / max(int(r.races), 1)
+    rows.append({
+        "pos": int(r.season),
+        "name": f"{int(r.winners)} different winners",
+        "sub": f"{100 * openness:.0f}% of the races had a new winner",
+        "colour": scale_colour(openness), "bar": openness,
+        "figures": [(int(r.races), "races"), (int(r.teams), "teams"),
+                    (f"{grid:.0f}", "cars/race")],
+    })
+league(rows, wide_position=True)
+note("<b>Cars a race</b> is every car that started, divided by the number of races. "
+     "It is the size of the grid: twenty today, more than thirty in the 1950s when "
+     "privateers entered their own cars.")

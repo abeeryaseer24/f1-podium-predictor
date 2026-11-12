@@ -7,8 +7,10 @@ from app_archive import (get_driver_career, get_driver_index, get_driver_seasons
 from cards import cards_css, figures, glass, key_values, note, ordinal
 from charts import dress
 from style import empty_note
+from ui_kit import GOLD, kit_css, league, section
 
 cards_css()
+kit_css()
 require_history()
 
 index = get_driver_index()
@@ -58,7 +60,8 @@ if seasons.empty:
     st.stop()
 
 if "championship_place" in seasons.columns and seasons["championship_place"].notna().any():
-    st.subheader("Championship place by season")
+    section("Championship place by season",
+            "Where they finished in the table each year. Lower is better.")
     note("Lower on the chart is better.")
     places = seasons.dropna(subset=["championship_place"])
     top = int(places["championship_place"].max())
@@ -73,7 +76,8 @@ if "championship_place" in seasons.columns and seasons["championship_place"].not
                               alt.Tooltip("points:Q", title="Points")]))
     st.altair_chart(dress(chart).properties(height=280), width="stretch", theme=None)
 
-st.subheader("Wins and podiums by season")
+section("Wins and podiums by season",
+            "How the good results were spread across the career.")
 melted = seasons.melt(id_vars="season", value_vars=["wins", "podiums"],
                       var_name="kind", value_name="count")
 melted["kind"] = melted["kind"].map({"wins": "Wins", "podiums": "Podiums"})
@@ -88,18 +92,22 @@ chart = (alt.Chart(melted).mark_bar()
                           alt.Tooltip("count:Q", title="Races")]))
 st.altair_chart(dress(chart).properties(height=300), width="stretch", theme=None)
 
-st.subheader("Season by season")
+section("Season by season",
+        "Every year of the career, newest first. The bar is how many races they won "
+        "that season against their own best year.")
 show = seasons.copy()
-if "championship_place" in show.columns:
-    show["Place"] = show["championship_place"].map(
-        lambda v: ordinal(v) if v == v else "—")
-else:
-    show["Place"] = "—"
-st.dataframe(
-    show[["season", "team", "Place", "races", "wins", "podiums", "poles", "points",
-          "best_finish"]]
-    .rename(columns={"season": "Season", "team": "Team", "races": "Races", "wins": "Wins",
-                     "podiums": "Podiums", "poles": "Poles", "points": "Points",
-                     "best_finish": "Best finish"})
-    .sort_values("Season", ascending=False),
-    hide_index=True, width="stretch")
+if "championship_place" not in show.columns:
+    show["championship_place"] = float("nan")
+best_year = max(float(show["wins"].max()), 1e-9)
+rows = []
+for r in show.sort_values("season", ascending=False).itertuples():
+    place = r.championship_place
+    place_text = ordinal(place) if place == place else "unplaced"
+    rows.append({
+        "pos": int(r.season), "name": r.team, "colour": GOLD,
+        "sub": f'{place_text} in the championship \u00b7 best finish P{int(r.best_finish)}',
+        "bar": float(r.wins) / best_year,
+        "figures": [(int(r.races), "races"), (int(r.wins), "wins"),
+                    (int(r.podiums), "podiums"), (f"{r.points:g}", "points")],
+    })
+league(rows, wide_position=True)

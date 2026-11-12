@@ -6,9 +6,11 @@ from app_archive import get_driver_records, get_team_records, require_history
 from archive import FASTEST_LAP_FROM, METRICS
 from cards import cards_css, note
 from charts import dress, name_scale
-from style import empty_note, stat_strip
+from style import empty_note, stat_strip, team_info
+from ui_kit import GOLD, kit_css, league, section
 
 cards_css()
+kit_css()
 require_history()
 
 labels = {key: value[0] for key, value in METRICS.items()}
@@ -52,7 +54,8 @@ if metric == "points":
          "1950, 9 from 1961, 10 from 1991 and 25 from 2010, and seasons are much longer "
          "now, so modern drivers tower over the rest of this list.")
 
-st.subheader(f"{value_label}: top {len(table)}")
+section(f"{value_label}: the top {len(table)}",
+        f"Every {who.lower()[:-1]} in the archive, ranked by {value_label.lower()}. Hover or tap a bar for when they raced.")
 chart = (alt.Chart(table).mark_bar(cornerRadiusEnd=4)
          .encode(x=alt.X("value:Q", title=value_label),
                  y=alt.Y(f"{name_column}:N", sort=table[name_column].tolist(), title=None),
@@ -67,14 +70,28 @@ chart = (alt.Chart(table).mark_bar(cornerRadiusEnd=4)
 st.altair_chart(dress(chart).properties(height=max(260, 26 * len(table))),
                 width="stretch", theme=None)
 
-show = table.copy()
-show["Seasons"] = (show["first_season"].astype(int).astype(str) + "–"
-                   + show["last_season"].astype(int).astype(str))
-show["Per start"] = (show["value"] / show["starts"]).round(3)
-st.dataframe(
-    show[[name_column, "value", "starts", "Per start", "Seasons"]]
-    .rename(columns={name_column: who[:-1], "value": value_label, "starts": "Race starts"}),
-    hide_index=True, width="stretch")
-note("<b>Per start</b> is the record divided by races entered. It flatters drivers from "
-     "the short seasons of the 1950s, when a championship was seven or eight races, and it "
-     "is hard on anyone who stayed in the sport long after their best car.")
+section("The same list, by strike rate",
+        f"The record divided by races entered, so a short brilliant career is not "
+        f"buried under a long steady one. The bar is the strike rate; the numbers on "
+        f"the right are the raw totals. Ranked by {value_label.lower()} per start.")
+rate = table.copy()
+rate["per_start"] = rate["value"] / rate["starts"].clip(lower=1)
+rate = rate.sort_values("per_start", ascending=False)
+best_rate = max(float(rate["per_start"].max()), 1e-9)
+digits = 2 if metric == "points" else 3
+rows = []
+for place, r in enumerate(rate.itertuples(), start=1):
+    colour = (team_info(r.constructor)[1] if who == "Constructors" else GOLD)
+    span = (f"{int(r.first_season)}" if r.first_season == r.last_season
+            else f"{int(r.first_season)}\u2013{int(r.last_season)}")
+    rows.append({
+        "pos": place, "name": getattr(r, name_column), "colour": colour,
+        "sub": f"{span} \u00b7 {int(r.starts)} starts",
+        "bar": float(r.per_start) / best_rate,
+        "figures": [(f"{r.per_start:.{digits}f}", "per start"),
+                    (f"{r.value:,.{decimals}f}", value_label.lower())],
+    })
+league(rows)
+note("<b>Per start</b> flatters drivers from the short seasons of the 1950s, when a "
+     "championship was seven or eight races, and it is hard on anyone who stayed in the "
+     "sport long after their best car. Read it next to the chart above, not instead of it.")
