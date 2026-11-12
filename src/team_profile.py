@@ -15,6 +15,7 @@ from charts import season_line, season_positions
 from predictor import clean_name
 from style import empty_note, team_info
 from teaminfo import family, photo_credits, team_meta
+from ui_kit import kit_css, league, section, sheet
 
 
 
@@ -41,6 +42,7 @@ def show(team_id, season):
     meta = team_meta(team_id)
     dark = st.session_state.get("dark", True)
     cards_css()
+    kit_css()
     shot = team_theme(colour, photo_url(team_id))
 
     fam = family(team_id)
@@ -120,7 +122,8 @@ def show(team_id, season):
         if history.empty:
             empty_note("No seasons for this team in our data yet.")
         else:
-            st.subheader("Season by season, in words")
+            section("Season by season, in words",
+                    "Written straight from the results, newest first.")
             note("Written from the results themselves. Our data starts in 2016, so anything "
                  "older is not listed here.")
             timeline([(int(r["season"]), season_story(r))
@@ -143,24 +146,25 @@ def show(team_id, season):
         if drivers.empty:
             empty_note("No drivers for this team in our data.")
         else:
-            st.subheader("Everyone who has raced for this team")
-            show_me = drivers.copy()
-            show_me["Driver"] = show_me["driver"].map(clean_name)
-            show_me["Seasons"] = [
-                f"{int(a)}" if a == b else f"{int(a)}–{int(b)}"
-                for a, b in zip(show_me["first_season"], show_me["last_season"])]
-            st.dataframe(
-                show_me[["Driver", "Seasons", "races", "wins", "podiums", "poles",
-                         "points", "best_finish"]]
-                .rename(columns={"races": "Races", "wins": "Wins", "podiums": "Podiums",
-                                 "poles": "Poles", "points": "Points",
-                                 "best_finish": "Best finish"}),
-                hide_index=True, width="stretch")
+            section("Everyone who has raced for this team",
+                    "Ranked by races started. The bar is how much of the team's "
+                    "history each of them was there for.")
+            busiest = max(float(drivers["races"].max()), 1e-9)
+            league([{
+                "pos": place, "name": clean_name(d.driver), "colour": colour,
+                "sub": (f"{int(d.first_season)}" if d.first_season == d.last_season
+                        else f"{int(d.first_season)}\u2013{int(d.last_season)}")
+                       + f" \u00b7 best finish P{int(d.best_finish)}",
+                "bar": float(d.races) / busiest,
+                "figures": [(int(d.races), "races"), (int(d.wins), "wins"),
+                            (int(d.podiums), "podiums"), (f"{d.points:g}", "points")],
+            } for place, d in enumerate(drivers.itertuples(), start=1)])
 
             battles = get_teammate_battles(season)
             mine = battles[battles["constructor"] == team_id] if not battles.empty else battles
             if not mine.empty:
-                st.subheader(f"Inside the garage in {season}")
+                section(f"Inside the garage in {season}",
+                        "The two drivers against each other in the same car.")
                 blocks = []
                 for b in mine.itertuples():
                     a_name, b_name = clean_name(b.driver_a), clean_name(b.driver_b)
@@ -183,28 +187,29 @@ def show(team_id, season):
         if history.empty:
             empty_note("No seasons for this team in our data yet.")
         else:
-            st.subheader("Championship place by season")
+            section("Championship place by season", "Lower is better.")
             st.altair_chart(season_positions(history, accent(colour, dark)),
                             width="stretch", theme=None)
-            st.subheader("Points by season")
+            section("Points by season", "")
             note("Points are not comparable across the years: the scoring system and the "
                  "number of races have both changed.")
             st.altair_chart(season_line(history, "points", "Points", accent(colour, dark)),
                             width="stretch", theme=None)
-            st.subheader("Wins and podiums by season")
+            section("Podiums by season", "")
             st.altair_chart(season_line(history, "podiums", "Podiums", accent(colour, dark)),
                             width="stretch", theme=None)
 
             progress = get_constructor_progress(season)
             mine = progress[progress["constructor"] == team_id]
             if not mine.empty:
-                st.subheader(f"{season}, race by race")
-                st.dataframe(
-                    mine[["round", "race_name", "points", "cum_points", "position"]]
-                    .rename(columns={"round": "Round", "race_name": "Race",
-                                     "points": "Points", "cum_points": "Running total",
-                                     "position": "Place"}),
-                    hide_index=True, width="stretch")
+                section(f"{season}, race by race",
+                        "What the team scored at each round, and where that left them "
+                        "in the championship.")
+                sheet([("Round", "num"), ("Race", "text"), ("Points", "num"),
+                       ("Running total", "num"), ("Place", "num")],
+                      [[int(r.round), r.race_name, f"{r.points:g}",
+                        f"{r.cum_points:g}", f"P{int(r.position)}"]
+                       for r in mine.itertuples()])
 
     # ---------- 5. facilities ----------
     with tabs[4]:

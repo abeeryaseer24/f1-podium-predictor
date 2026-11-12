@@ -13,6 +13,7 @@ from cards import (accent, cards_css, crest, figures, glass, head_to_head, key_v
 from charts import dress, season_line, season_positions
 from predictor import clean_name
 from style import empty_note, team_info
+from ui_kit import kit_css, league, section
 
 
 
@@ -48,6 +49,7 @@ def show(driver_id, season=None, team_id=None):
     team_name, colour = team_info(team_id)
     dark = st.session_state.get("dark", True)
     cards_css()
+    kit_css()
     team_theme(colour)
 
     seasons_text = (f'{totals["first_season"]}' if totals["first_season"] == totals["last_season"]
@@ -88,7 +90,7 @@ def show(driver_id, season=None, team_id=None):
         if history.empty:
             empty_note("No seasons to show.")
         else:
-            st.subheader("Season by season, in words")
+            section("Season by season, in words", "Written straight from the results.")
             timeline([(int(r["season"]), season_story(r))
                       for _, r in history.sort_values("season", ascending=False).iterrows()])
 
@@ -111,22 +113,26 @@ def show(driver_id, season=None, team_id=None):
         if history.empty:
             empty_note("No seasons to show.")
         else:
-            st.subheader("Championship place by season")
+            section("Championship place by season", "Lower is better.")
             st.altair_chart(season_positions(history, accent(colour, dark)),
                             width="stretch", theme=None)
-            st.subheader("Points by season")
+            section("Points by season", "")
             st.altair_chart(season_line(history, "points", "Points", accent(colour, dark)),
                             width="stretch", theme=None)
-            st.dataframe(
-                history[["season", "constructor", "position", "points", "wins",
-                         "podiums", "poles", "races", "dnfs"]]
-                .assign(constructor=history["constructor"].map(lambda t: team_info(t)[0]))
-                .rename(columns={"season": "Season", "constructor": "Team",
-                                 "position": "Place", "points": "Points", "wins": "Wins",
-                                 "podiums": "Podiums", "poles": "Poles", "races": "Races",
-                                 "dnfs": "DNFs"})
-                .sort_values("Season", ascending=False),
-                hide_index=True, width="stretch")
+            section("Every season in the numbers",
+                    "Newest first. The bar is how many races they won that year "
+                    "against their own best season.")
+            best_year = max(float(history["wins"].max()), 1e-9)
+            league([{
+                "pos": int(r.season), "name": team_info(r.constructor)[0],
+                "colour": team_info(r.constructor)[1],
+                "sub": f"{ordinal(r.position)} in the championship \u00b7 "
+                       f"{int(r.dnfs)} did not finish",
+                "bar": float(r.wins) / best_year,
+                "figures": [(int(r.races), "races"), (int(r.wins), "wins"),
+                            (int(r.podiums), "podiums"), (f"{r.points:g}", "points")],
+            } for r in history.sort_values("season", ascending=False).itertuples()],
+                   wide_position=True)
 
     # ---------- 4. teammates ----------
     with tabs[3]:
@@ -167,8 +173,8 @@ def show(driver_id, season=None, team_id=None):
                  f'P{int(races.loc[gained.idxmax(), "finish_position"])} at the '
                  f'{races.loc[gained.idxmax(), "race_name"]}'),
             ]))
-            st.subheader("Where they started against where they finished")
-            note("Each dot is one race. Below the line means places gained.")
+            section("Where they started against where they finished",
+                    "Each dot is one race. Below the line means places gained.")
             data = races.assign(Season=races["season"].astype(str))
             chart = (alt.Chart(data).mark_circle(size=70, opacity=.7, color=accent(colour, dark))
                      .encode(x=alt.X("grid:Q", title="Started"),
