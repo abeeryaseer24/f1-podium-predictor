@@ -12,8 +12,10 @@ from cards import cards_css, note
 from charts import dress, team_scale
 from predictor import clean_name
 from style import empty_note, stat_strip, team_info
+from ui_kit import kit_css, section
 
 cards_css()
+kit_css()
 
 seasons = get_seasons()
 season = st.selectbox("Season", seasons, index=seasons.index(default_season()))
@@ -24,7 +26,8 @@ if not pace_available():
          "<code>data/races/</code> and needs no downloading.")
     st.stop()
 
-pace = get_driver_pace(season, True)
+dry_only = True        # wet races say more about the gamble than the driver
+pace = get_driver_pace(season, dry_only)
 if pace.empty:
     empty_note(f"No lap data for {season}. Lap times only go back to 2023.")
     st.stop()
@@ -48,11 +51,24 @@ for (season_id, rnd), group in pace.groupby(["season", "round"]):
 mates_table = pd.DataFrame(pairs)
 
 best_pace = pace.groupby("Driver", as_index=False)["pct_off"].mean().round(3).sort_values("pct_off")
+
+# "Drivers measured" on its own is a confusing number: it is more than the twenty-odd
+# race seats, because it counts anyone who drove at all, including a reserve standing in
+# for one weekend. Split it so the number explains itself.
+races_measured = pace["round"].nunique()
+appearances = pace.groupby("driver")["round"].nunique()
+regulars = int((appearances >= max(races_measured * 0.6, 1)).sum())
+stand_ins = int(len(appearances) - regulars)
+stand_in_note = (f'{regulars} regular seats plus {stand_ins} stand-in'
+                 f'{"s" if stand_ins != 1 else ""}' if stand_ins
+                 else f'{regulars} regular seats, no stand-ins')
+
 stat_strip([
     ("Quickest on raw pace", best_pace.iloc[0]["Driver"],
      f'{best_pace.iloc[0]["pct_off"]:.2f}% off the fastest car', True),
-    ("Races measured", str(pace["round"].nunique()), "dry races only", False),
-    ("Drivers measured", str(pace["driver"].nunique()), f"in {season}", False),
+    ("Races measured", str(races_measured),
+     f'dry races of {season}' if dry_only else f'races of {season}', False),
+    ("Drivers who drove", str(len(appearances)), stand_in_note, False),
 ])
 
 note("Raw pace includes the car, so a driver in the quickest car will always look good. "
@@ -60,9 +76,8 @@ note("Raw pace includes the car, so a driver in the quickest car will always loo
 
 # ---------- chart 1: raw pace ----------
 
-st.subheader("Raw pace through the season")
-note("Per cent off the fastest car of the weekend, smoothed over three races. "
-     "Lower is faster. Two drivers in the same team share a colour.")
+section("Raw pace through the season",
+        "Per cent off the quickest car of each weekend, smoothed over three races. Lower is faster, and two drivers in the same team share a colour.")
 teams_present = sorted(pace["team_id"].dropna().unique())
 scale = team_scale(teams_present)
 base = alt.Chart(pace.dropna(subset=["team_id"])).encode(
@@ -91,11 +106,11 @@ else:
                                .transform(lambda s: s.rolling(3, min_periods=1).mean())
                                .round(3))
 
-    st.subheader("Against their own teammate")
-    note("How much slower or faster each driver's pace was than the other car in the same "
-         "garage, as a percentage of lap time. Below zero means faster than the teammate. "
-         "This is the fairest comparison there is, but it only says who was better in that "
-         "garage, not who is better overall.")
+    section("Against their own teammate",
+            "How much slower or faster each driver's pace was than the other car in the "
+            "same garage, as a percentage of lap time. Below zero means faster than the "
+            "teammate. This is the fairest comparison there is, but it only says who was "
+            "better in that garage, not who is better overall.")
     mate_base = alt.Chart(mates_table).encode(
         x=alt.X("round:Q", title="Round", axis=alt.Axis(tickMinStep=1, format="d")),
         color=alt.Color("Team:N", scale=team_scale(sorted(mates_table["team_id"].unique())),
@@ -109,7 +124,9 @@ else:
                               scale=alt.Scale(reverse=True)))),
         width="stretch", theme=None)
 
-    st.subheader("The season in one number each")
+    section("The season in one number each",
+            "Every driver's average gap to their own teammate across the whole year, "
+            "in their team's colour.")
     season_gap = (mates_table.groupby(["Driver", "Team"], as_index=False)["gap"]
                   .mean().round(3).sort_values("gap"))
     bars = (alt.Chart(season_gap).mark_bar(cornerRadiusEnd=4)
