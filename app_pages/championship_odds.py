@@ -1,5 +1,11 @@
 """Championship Odds: the rest of the season replayed thousands of times, to see who
-still wins the drivers' and constructors' titles."""
+still wins the drivers' and constructors' titles.
+
+Two different questions get answered here and they are kept apart on purpose. The
+simulation says how *likely* each outcome is. The arithmetic says what is still
+*possible*, and that one is never wrong: if the points still on offer are smaller than
+the gap, the championship is over whatever any model thinks.
+"""
 import altair as alt
 import streamlit as st
 
@@ -8,8 +14,10 @@ from cards import cards_css, note
 from charts import dress, team_scale
 from predictor import clean_name
 from style import empty_note, stat_strip, team_info
+from ui_kit import GOLD, banner, chip, kit_css, league, section
 
 cards_css()
+kit_css()
 
 seasons = get_seasons()
 if not seasons:
@@ -32,37 +40,103 @@ if "error" in result:
 
 drivers = result["drivers"]
 teams = result["teams"]
-leader = drivers.iloc[0]
-team_leader = teams.iloc[0]
-alive = int(drivers["alive"].sum())
+driver_state = result["driver_state"]
+team_state = result["team_state"]
+leader = driver_state["leader"]
+team_leader = team_state["leader"]
+
+
+def name_of(driver_id):
+    return clean_name(driver_id)
+
+
+# ---------- is it still a championship at all? ----------
+
+races_left = result["races_left"]
+sprints_left = result["sprints_left"]
+left_text = (f'{races_left} race{"s" if races_left != 1 else ""} left'
+             + (f' and {sprints_left} sprint{"s" if sprints_left != 1 else ""}'
+                if sprints_left else ""))
+
+if driver_state["settled"]:
+    runner_up = driver_state["runner_up"]
+    banner("🏆", f'{name_of(leader["driver"])} is the {season} world champion',
+           f'With {left_text}, {int(driver_state["on_offer"])} points are still on offer '
+           f'and {name_of(runner_up["driver"])} is {driver_state["gap_to_second"]:.0f} '
+           f'behind. Nobody can catch {name_of(leader["driver"])} now, so the title is '
+           f'settled whatever happens next.', GOLD)
+else:
+    chasers = driver_state["chasers"]
+    who = ", ".join(name_of(d) for d in chasers["driver"].head(4))
+    if len(chasers) > 4:
+        who += f" and {len(chasers) - 4} others"
+    banner("🔥", f'The drivers\' title is still open',
+           f'{name_of(leader["driver"])} leads, but {len(chasers)} '
+           f'driver{"s" if len(chasers) != 1 else ""} can still catch '
+           f'{"them" if len(chasers) != 1 else "them"}: {who}. There are '
+           f'{int(driver_state["on_offer"])} points left with {left_text}.')
 
 stat_strip([
-    ("Most likely champion", clean_name(leader["driver"]),
-     f'{leader["title_chance"]:.0f}% of simulated seasons', True),
-    ("Most likely team", team_info(team_leader["constructor"])[0],
-     f'{team_leader["title_chance"]:.0f}% of simulated seasons', False),
-    ("Races left", str(result["races_left"]),
-     f'{result["sprints_left"]} sprint{"s" if result["sprints_left"] != 1 else ""}', False),
-    ("Still mathematically alive", str(alive),
-     f'{result["most_points_left"]} points still on the table', False),
+    ("Leads the drivers", name_of(leader["driver"]),
+     f'{leader["points_now"]:.0f} points · '
+     + ("champion already" if driver_state["settled"]
+        else f'{driver_state["gap_to_second"]:.0f} clear'), True),
+    ("Leads the teams", team_info(team_leader["constructor"])[0],
+     f'{team_leader["points_now"]:.0f} points · '
+     + ("title already won" if team_state["settled"]
+        else f'{team_state["gap_to_second"]:.0f} clear'), False),
+    ("Still to run", str(races_left),
+     f'{sprints_left} sprint{"s" if sprints_left != 1 else ""}', False),
+    ("Can still win the drivers' title", str(driver_state["alive"]),
+     f'{int(driver_state["on_offer"])} points a driver could still score', False),
 ])
 
 grid_note = ("the real starting grid for the next race"
              if result["grid_source"] != "estimated"
              else "an estimated grid, because qualifying has not happened yet")
 note(f'The rest of the season was replayed <b>{result["simulations"]:,}</b> times, '
-     f'starting from the {result["next_race"]} and using {grid_note}.')
+     f'starting from the {result["next_race"]} and using {grid_note}. The count above '
+     f'includes the leader, so <b>1</b> means the championship is already decided.')
 
 # ---------- drivers ----------
 
-st.subheader("Drivers' championship")
+section("Who can still win the drivers' title",
+        "Pure arithmetic, not the model: a driver is listed here whenever the points "
+        "still available are more than the gap to the leader. The bar is how much of "
+        "the leader's total they already have.")
+
+top_points = max(float(drivers["points_now"].max()), 1.0)
+rows = []
+for place, row in enumerate(drivers.sort_values("points_now", ascending=False)
+                            .itertuples(), start=1):
+    if not row.alive and place > 1:
+        continue
+    behind = float(leader["points_now"]) - float(row.points_now)
+    needs = (chip("champion", GOLD, solid=True) if driver_state["settled"] and place == 1
+             else chip("leader", GOLD) if place == 1 else "")
+    rows.append({
+        "pos": place, "name": name_of(row.driver),
+        "colour": team_info(row.constructor)[1], "tag": needs,
+        "sub": (f'{team_info(row.constructor)[0]} · '
+                + ("leads" if place == 1 else f'{behind:.0f} behind')),
+        "bar": float(row.points_now) / top_points,
+        "figures": [(f"{row.points_now:.0f}", "points"),
+                    (f"{row.title_chance:.0f}%", "title chance"),
+                    (f"{row.expected_points:.0f}", "expected")],
+    })
+if len(rows) == 1:
+    note("Only the champion is left, so there is nothing to list against them.")
+league(rows)
+
+section("How often each driver won the simulated season",
+        "The same seasons replayed thousands of times. This is a likelihood, not a "
+        "certainty: it assumes the rest of the year looks like the next race.")
 data = drivers[drivers["title_chance"] > 0.05].copy()
 if data.empty:
     data = drivers.head(5).copy()
 data["Driver"] = data["driver"].map(clean_name)
 data["Team"] = data["constructor"].map(lambda t: team_info(t)[0])
 scale = team_scale(sorted(data["constructor"].unique()))
-
 chart = (alt.Chart(data).mark_bar(cornerRadiusEnd=4)
          .encode(x=alt.X("title_chance:Q", title="Chance of the title (%)"),
                  y=alt.Y("Driver:N", sort=data["Driver"].tolist(), title=None),
@@ -74,55 +148,58 @@ chart = (alt.Chart(data).mark_bar(cornerRadiusEnd=4)
 st.altair_chart(dress(chart).properties(height=max(200, 30 * len(data))),
                 width="stretch", theme=None)
 
-show = drivers.copy()
-show["Driver"] = show["driver"].map(clean_name)
-show["Team"] = show["constructor"].map(lambda t: team_info(t)[0])
-show["Title chance"] = show["title_chance"].map(lambda v: f"{v:.1f}%")
-show["Top three chance"] = show["top3_chance"].map(lambda v: f"{v:.1f}%")
-show["Likely final points"] = (show["low_points"].astype(int).astype(str) + " to "
-                               + show["high_points"].astype(int).astype(str))
-show["Still possible"] = show["alive"].map({True: "Yes", False: "Out of reach"})
-st.dataframe(
-    show[["Driver", "Team", "points_now", "Title chance", "Top three chance",
-          "expected_points", "Likely final points", "Still possible"]]
-    .rename(columns={"points_now": "Points now", "expected_points": "Expected points"}),
-    hide_index=True, width="stretch")
+section("Where everyone is expected to finish",
+        "The whole field, in the order the simulations put them at the end of the "
+        "season. The range is where they landed in the middle of those runs.")
+league([{
+    "pos": place,
+    "name": name_of(row.driver),
+    "colour": team_info(row.constructor)[1],
+    "tag": "" if row.alive else chip("out of reach", "#8a8a96"),
+    "sub": f'{team_info(row.constructor)[0]} · likely '
+           f'{int(row.low_points)}–{int(row.high_points)} points by the end',
+    "bar": float(row.expected_points) / max(float(drivers["expected_points"].max()), 1.0),
+    "figures": [(f"{row.points_now:.0f}", "now"),
+                (f"{row.expected_points:.0f}", "expected"),
+                (f"{row.top3_chance:.0f}%", "top three")],
+} for place, row in enumerate(drivers.itertuples(), start=1)])
 
 # ---------- constructors ----------
 
-st.subheader("Constructors' championship")
-team_data = teams[teams["title_chance"] > 0.05].copy()
-if team_data.empty:
-    team_data = teams.head(5).copy()
-team_data["Team"] = team_data["constructor"].map(lambda t: team_info(t)[0])
-chart = (alt.Chart(team_data).mark_bar(cornerRadiusEnd=4)
-         .encode(x=alt.X("title_chance:Q", title="Chance of the title (%)"),
-                 y=alt.Y("Team:N", sort=team_data["Team"].tolist(), title=None),
-                 color=alt.Color("Team:N",
-                                 scale=team_scale(sorted(team_data["constructor"].unique())),
-                                 legend=None),
-                 tooltip=["Team",
-                          alt.Tooltip("title_chance:Q", title="Title chance %", format=".1f"),
-                          alt.Tooltip("points_now:Q", title="Points now"),
-                          alt.Tooltip("expected_points:Q", title="Expected final points")]))
-st.altair_chart(dress(chart).properties(height=max(180, 32 * len(team_data))),
-                width="stretch", theme=None)
+if team_state["settled"]:
+    banner("🏆", f'{team_info(team_leader["constructor"])[0]} have won the '
+                 f'{season} constructors\' championship',
+           f'A team scores with both cars, so the most one could still take from '
+           f'{left_text} is {int(team_state["on_offer"])} points. The gap behind is '
+           f'{team_state["gap_to_second"]:.0f}, so it cannot be closed.',
+           team_info(team_leader["constructor"])[1])
+else:
+    section("The constructors' title", "")
 
-team_show = teams.copy()
-team_show["Team"] = team_show["constructor"].map(lambda t: team_info(t)[0])
-team_show["Title chance"] = team_show["title_chance"].map(lambda v: f"{v:.1f}%")
-team_show["Likely final points"] = (team_show["low_points"].astype(int).astype(str) + " to "
-                                    + team_show["high_points"].astype(int).astype(str))
-team_show["Still possible"] = team_show["alive"].map({True: "Yes", False: "Out of reach"})
-st.dataframe(
-    team_show[["Team", "points_now", "Title chance", "expected_points",
-               "Likely final points", "Still possible"]]
-    .rename(columns={"points_now": "Points now", "expected_points": "Expected points"}),
-    hide_index=True, width="stretch")
+section("Who can still win the constructors' title",
+        "A team's best possible weekend is a one-two, which is 43 points and not 25, "
+        "so teams stay in the fight longer than drivers do.")
+top_team_points = max(float(teams["points_now"].max()), 1.0)
+league([{
+    "pos": place, "name": team_info(row.constructor)[0],
+    "colour": team_info(row.constructor)[1],
+    "tag": (chip("champion", GOLD, solid=True)
+            if team_state["settled"] and place == 1 else
+            chip("leader", GOLD) if place == 1 else
+            "" if row.alive else chip("out of reach", "#8a8a96")),
+    "sub": ("leads" if place == 1 else
+            f'{float(team_leader["points_now"]) - float(row.points_now):.0f} behind'),
+    "bar": float(row.points_now) / top_team_points,
+    "figures": [(f"{row.points_now:.0f}", "points"),
+                (f"{row.title_chance:.0f}%", "title chance"),
+                (f'{int(row.low_points)}–{int(row.high_points)}', "likely final")],
+} for place, row in enumerate(teams.sort_values("points_now", ascending=False)
+                              .itertuples(), start=1)])
 
 # ---------- how it works ----------
 
-st.subheader("How these numbers are made")
+section("How these numbers are made",
+        "Worth reading once, so you know which of the two numbers to trust.")
 note("Every remaining race is drawn from the same model that makes our podium predictions: "
      "each driver has a strength, and the finishing order is drawn from those strengths with "
      "the right amount of luck mixed in. Drivers retire at roughly the rate they have this "
@@ -131,6 +208,6 @@ note("Every remaining race is drawn from the same model that makes our podium pr
      "team came out on top.")
 note("<b>What it cannot know.</b> It assumes the rest of the season looks like the next "
      "race, so an upgrade that has not landed yet, a wet weekend, a driver swap or a "
-     "penalty are all missing. <b>Still possible</b> in the table is different: that is "
-     "pure arithmetic, comparing the gap with the points still available, and it is always "
-     "right even when the percentage says the chance is tiny.")
+     "penalty are all missing. <b>Who can still win</b> is different: that is pure "
+     "arithmetic, comparing the gap with the points still available, and it is always "
+     "right even when the simulated chance rounds to zero.")

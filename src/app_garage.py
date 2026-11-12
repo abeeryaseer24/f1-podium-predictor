@@ -87,6 +87,16 @@ def get_reliability(season):
 
 
 @st.cache_data(ttl=600)
+def get_dnf_grid(season):
+    return standings.dnf_grid(season)
+
+
+@st.cache_data(ttl=600)
+def get_reasons_recorded(season):
+    return standings.reasons_recorded(season)
+
+
+@st.cache_data(ttl=600)
 def get_teammate_battles(season):
     return standings.teammate_battles(season)
 
@@ -273,12 +283,20 @@ def get_championship_odds(season, simulations=5000):
         drivers, strength, stop_rate, driver_points, team_of, team_points,
         races_left, sprints_left, luck=model.get("luck", 1.0), simulations=simulations)
 
+    # A driver can only score for themselves; a team scores with both of its cars, so
+    # the two have to be measured against different amounts of points still available.
+    driver_state = odds.title_state(driver_odds, races_left, sprints_left, cars=1)
+    team_state = odds.title_state(team_odds, races_left, sprints_left, cars=2)
+
     return {
-        "drivers": odds.still_alive(driver_odds, races_left, sprints_left),
-        "teams": odds.still_alive(team_odds, races_left, sprints_left),
+        "drivers": driver_state["table"],
+        "teams": team_state["table"],
+        "driver_state": driver_state,
+        "team_state": team_state,
         "races_left": races_left,
         "sprints_left": sprints_left,
         "most_points_left": odds.most_points_left(races_left, sprints_left),
+        "most_team_points_left": odds.most_points_left(races_left, sprints_left, cars=2),
         "next_race": prediction["race_name"],
         "grid_source": prediction.get("grid_source", "estimated"),
         "simulations": simulations,

@@ -111,16 +111,54 @@ def simulate(drivers, strength, dnf_rate, driver_points_now, team_of, team_point
     return driver_table, team_table
 
 
-def most_points_left(races_left, sprints_left):
-    """The most any single entrant could still score."""
-    return races_left * POINTS[0] + sprints_left * SPRINT_POINTS[0]
+def most_points_left(races_left, sprints_left, cars=1):
+    """The most one entrant could still score.
+
+    A driver can only win the race in front of them, so they take P1 and nothing else.
+    A team scores with both of its cars, so a perfect weekend for a team is a one-two,
+    which is 43 points and not 25. Getting this wrong makes every team look eliminated
+    far earlier than it is.
+    """
+    race = sum(POINTS[:cars])
+    sprint = sum(SPRINT_POINTS[:cars])
+    return races_left * race + sprints_left * sprint
 
 
-def still_alive(table, races_left, sprints_left):
+def still_alive(table, races_left, sprints_left, cars=1):
     """Add a column saying whether each driver or team can still catch the leader.
     This is arithmetic, not a guess: it is true whenever the gap is smaller than
     everything still on the table."""
     table = table.copy()
     best = table["points_now"].max()
-    table["alive"] = table["points_now"] + most_points_left(races_left, sprints_left) >= best
+    table["alive"] = (table["points_now"]
+                      + most_points_left(races_left, sprints_left, cars) >= best)
     return table
+
+
+def title_state(table, races_left, sprints_left, cars=1):
+    """Whether the championship is still open, and if not, who has already won it.
+
+    "Alive" counts the leader too, so a lone survivor means the title is settled: there
+    is nobody left who could still catch them. Saying that plainly is far more use than
+    printing the number 1.
+    """
+    if table.empty:
+        return {}
+    table = still_alive(table, races_left, sprints_left, cars)
+    leader = table.sort_values("points_now", ascending=False).iloc[0]
+    alive = table[table["alive"]]
+    chasers = alive[alive.index != leader.name]
+    on_offer = most_points_left(races_left, sprints_left, cars)
+    second = (table.sort_values("points_now", ascending=False).iloc[1]
+              if len(table) > 1 else None)
+    return {
+        "table": table,
+        "alive": int(len(alive)),
+        "settled": len(alive) <= 1,
+        "leader": leader,
+        "chasers": chasers,
+        "on_offer": on_offer,
+        "gap_to_second": (float(leader["points_now"]) - float(second["points_now"]))
+                         if second is not None else 0.0,
+        "runner_up": second,
+    }
