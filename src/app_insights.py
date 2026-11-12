@@ -50,5 +50,15 @@ def get_movers(folder_name):
 
 
 @st.cache_data(ttl=600)
+def get_places_from_grid(season, rnd, folder_name):
+    """Grid slot against finishing position, from the official results."""
+    import standings
+    rows = standings.points_table(season)
+    if rows.empty:
+        return rows
+    return insights.places_from_grid(folder_name, rows[rows["round"] == rnd])
+
+
+@st.cache_data(ttl=600)
 def get_overtaking(folder_name):
     return insights.overtaking_summary(folder_name)

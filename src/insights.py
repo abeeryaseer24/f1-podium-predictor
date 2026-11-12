@@ -203,7 +203,41 @@ def position_flow(folder_name):
         lambda n: people.get(int(n), ("", None, ""))[1])
     table["position"] = table["position"].astype(int)
     table["lap_number"] = table["lap_number"].astype(int)
-    return table
+
+    # Some laps come back with a position for only a handful of cars, usually around a
+    # red flag or a timing glitch. Drawn as they are, every line dives to the front and
+    # back out again, which looks like the whole field overtook each other on one lap.
+    table = table[table["position"] > 0]
+    if table.empty:
+        return table
+    reported = table.groupby("lap_number")["driver_number"].nunique()
+    full = reported.max()
+    keep = reported[reported >= max(2, full * 0.6)].index
+    return table[table["lap_number"].isin(keep)].reset_index(drop=True)
+
+
+def places_from_grid(folder_name, results_for_race):
+    """Where each driver started on the grid against where they finished.
+
+    The lap data only knows where a car was at the end of the first recorded lap, which
+    is after the start itself. The official grid is the real starting position, so a
+    first-corner move counts the way everyone watching counted it.
+    """
+    if results_for_race is None or results_for_race.empty:
+        return pd.DataFrame()
+    info = race_info(folder_name)
+    people = entries(info)
+    by_name = {}
+    for name, team_id, _ in people.values():
+        if name:
+            by_name[name.lower()] = team_id
+
+    table = results_for_race.copy()
+    table = table[(table["grid"] > 0) & (table["finish_position"] > 0)]
+    if table.empty:
+        return table
+    table["places_gained"] = table["grid"] - table["finish_position"]
+    return table.sort_values("places_gained", ascending=False).reset_index(drop=True)
 
 
 def movers(folder_name):

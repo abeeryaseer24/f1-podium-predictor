@@ -4,13 +4,26 @@ import altair as alt
 import streamlit as st
 
 from app_garage import default_season, get_seasons
-from app_insights import (get_control, get_movers, get_overtaking, get_position_flow,
-                          get_prepared_races, get_weather, get_weather_summary)
+from app_insights import (get_control, get_overtaking, get_places_from_grid,
+                          get_position_flow, get_prepared_races, get_weather,
+                          get_weather_summary)
 from cards import cards_css, figures, glass, key_values, note
 from charts import dress, team_scale
+from predictor import clean_name
 from style import empty_note, stat_strip, team_info
+from ui_kit import diverge, feed, kit_css, section
 
 cards_css()
+kit_css()
+
+# One colour per kind of race control message, so the feed can be skimmed by its stripes.
+MESSAGE_COLOUR = {
+    "Red flag": "#c0202a", "Safety car": "#e8b33a", "Disqualified": "#c0202a",
+    "Penalty given": "#e4544a", "Reprimand": "#e8b33a",
+    "Warning or black and white flag": "#e8b33a", "Lap time deleted": "#6fa8dc",
+    "Under investigation": "#a98ae0", "No further action": "#1fd6a0",
+    "Chequered flag": "#f3f1ea", "DRS": "#27f4d2", "Flag or track status": "#8a8a96",
+}
 
 seasons = get_seasons()
 season = st.selectbox("Season", seasons, index=seasons.index(default_season()))
@@ -23,13 +36,12 @@ if not races:
          "may not have been prepared yet.")
     st.stop()
 
-labels = {f'Round {rnd} · {name}': folder for rnd, name, folder in races}
+labels = {f'Round {rnd} · {name}': (folder, rnd) for rnd, name, folder in races}
 pick = st.selectbox("Race", list(labels), index=len(labels) - 1)
-folder = labels[pick]
+folder, round_number = labels[pick]
 
 summary = get_weather_summary(folder)
 overtaking = get_overtaking(folder)
-movers = get_movers(folder)
 control = get_control(folder)
 
 stat_strip([
@@ -44,7 +56,8 @@ stat_strip([
 
 # ---------- weather ----------
 
-st.subheader("The weather through the race")
+section("The weather through the race",
+        "Track and air temperature from the start of the session to the flag.")
 table = get_weather(folder)
 if table.empty:
     empty_note("No weather readings for this race.")
@@ -86,13 +99,12 @@ else:
 
 # ---------- position flow ----------
 
-st.subheader("Every position, lap by lap")
+section("Every position, lap by lap",
+        "One line per driver. Higher line = further ahead.")
 flow = get_position_flow(folder)
 if flow.empty:
     empty_note("No lap-by-lap positions for this race.")
 else:
-    note("One line per driver. Lower on the chart is further up the road. Flat lines are "
-         "a procession; crossing lines are the racing.")
     top = int(flow["position"].max())
     scale = team_scale(sorted(flow["constructor"].dropna().unique()))
     data = flow.dropna(subset=["constructor"]).copy()
@@ -111,26 +123,21 @@ else:
 
 # ---------- who gained ----------
 
-if not movers.empty:
-    st.subheader("Who made up ground")
-    note("Position at the end of the first recorded lap against the finish. It does not "
-         "separate overtaking from pit stops and retirements ahead, but it does show who "
-         "went forwards.")
-    data = movers.dropna(subset=["constructor"]).copy()
-    data["Team"] = data["constructor"].map(lambda t: team_info(t)[0])
-    chart = (alt.Chart(data).mark_bar(cornerRadiusEnd=4)
-             .encode(x=alt.X("places_gained:Q", title="Places gained"),
-                     y=alt.Y("driver_name:N", sort=data["driver_name"].tolist(),
-                             title=None),
-                     color=alt.Color("Team:N",
-                                     scale=team_scale(sorted(data["constructor"].unique())),
-                                     legend=None),
-                     tooltip=[alt.Tooltip("driver_name:N", title="Driver"), "Team",
-                              alt.Tooltip("early_position:Q", title="Early on"),
-                              alt.Tooltip("final_position:Q", title="Finished"),
-                              alt.Tooltip("places_gained:Q", title="Gained")]))
-    st.altair_chart(dress(chart).properties(height=max(240, 26 * len(data))),
-                    width="stretch", theme=None)
+moves = get_places_from_grid(season, round_number, folder)
+if not moves.empty:
+    section("Places won and lost from the grid",
+            "Where each driver started on the grid against where they finished. A bar "
+            "to the right is places made up, a bar to the left is places lost.")
+    diverge([{
+        "name": clean_name(row.driver),
+        "sub": f'P{int(row.grid)} on the grid, finished P{int(row.finish_position)}'
+               + ("" if row.finished else f' · {row.status.lower()}'),
+        "colour": team_info(row.constructor)[1],
+        "value": int(row.places_gained),
+    } for row in moves.itertuples()])
+    note("Measured from the official starting grid, so a move at the first corner counts "
+         "the way you saw it. It does not separate overtaking from pit stops and cars "
+         "retiring ahead, but it does show who went forwards.")
 
 if overtaking.get("leaders"):
     figures([(overtaking["lead_changes"], "Lead changes"),
@@ -141,7 +148,8 @@ if overtaking.get("leaders"):
 # ---------- race control ----------
 
 if not control.empty:
-    st.subheader("What race control said")
+    section("What race control said",
+        "Every message of the afternoon, grouped by what kind of message it was.")
     counts = (control.groupby("kind", as_index=False).size()
               .rename(columns={"size": "messages"}).sort_values("messages",
                                                                 ascending=False))
@@ -153,11 +161,16 @@ if not control.empty:
     st.altair_chart(dress(chart).properties(height=max(180, 30 * len(counts))),
                     width="stretch", theme=None)
     with st.expander("Every message, in order"):
-        st.dataframe(
-            control[["lap_number", "kind", "driver_name", "message"]]
-            .rename(columns={"lap_number": "Lap", "kind": "Kind",
-                             "driver_name": "Driver", "message": "Message"}),
-            hide_index=True, width="stretch")
+        items = []
+        for row in control.itertuples():
+            lap = getattr(row, "lap_number", None)
+            lap_text = "" if str(lap) in ("nan", "<NA>", "None") else int(lap)
+            items.append({"lap": lap_text, "lap_label": "lap", "chip": row.kind,
+                          "colour": MESSAGE_COLOUR.get(row.kind, "#8a8a96"),
+                          "who": row.driver_name or "", "text": row.message})
+        feed([{"title": pick.split(" · ")[-1],
+               "meta": f"{len(items)} messages, in the order they were sent",
+               "items": items}])
 
 note("The <b>Penalties Log</b> page pulls the stewards' decisions out of these messages "
      "and adds them up across the season.")
