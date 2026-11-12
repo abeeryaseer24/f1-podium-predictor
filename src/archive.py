@@ -148,6 +148,40 @@ def chassis_name(name):
     return CHASSIS_ALIASES.get(chassis, chassis)
 
 
+# The same team under its own name and under one of its chassis-engine entries. Only
+# ids written with a hyphen are folded, which is why "lotus_f1" and "lotus_racing" are
+# safe: those are the team that bought the name in 2010, not Chapman's Lotus.
+SAME_TEAM = {"team_lotus": "lotus"}
+
+
+def team_key(constructor_id):
+    """One id per real team, with the engine suffix taken off the old entries."""
+    base = str(constructor_id).split("-")[0].strip()
+    return SAME_TEAM.get(base, base)
+
+
+def fold_teams(df):
+    """Put every chassis-engine entry back under the team that built the chassis.
+
+    Without this, Lotus shows up four times in a records table: once as Team Lotus and
+    again as Lotus-Climax, Lotus-BRM and Lotus-Ford. The id each family keeps is the
+    one that started the most races, so the colours and names stay the ones people
+    recognise.
+    """
+    if df.empty:
+        return df
+    df = df.copy()
+    df["family"] = df["constructor"].map(team_key)
+    counts = df.groupby(["family", "constructor", "constructor_name"]).size()
+    pick = {}
+    for (family, constructor, name), size in counts.items():
+        if family not in pick or size > pick[family][2]:
+            pick[family] = (constructor, chassis_name(name), size)
+    df["constructor"] = df["family"].map(lambda f: pick[f][0])
+    df["constructor_name"] = df["family"].map(lambda f: pick[f][1])
+    return df.drop(columns="family")
+
+
 def notable_teams(top=12, per_decade=3):
     """The teams worth naming on a chart: the biggest winners of all time, plus the top
     few of every decade, so the 1950s do not collapse into one grey block."""
@@ -240,8 +274,9 @@ def driver_records(metric="wins", active_only=False, top=25):
 
 
 def team_records(metric="wins", active_only=False, top=25):
-    """The same leaderboard for constructors."""
-    df = results()
+    """The same leaderboard for constructors, with the chassis-engine entries folded
+    back into the team that built the car."""
+    df = fold_teams(results())
     if df.empty:
         return df
     if metric == "fastest_laps":
@@ -369,8 +404,13 @@ def driver_career(driver_id):
         return {}
     titles = title_counts("driver")
     won = titles[titles["driver"] == driver_id]
+    main_team = mine["constructor"].value_counts().idxmax()
     return {
         "name": mine["driver_name"].iloc[-1],
+        "team_id": main_team,
+        "team_name": mine[mine["constructor"] == main_team]["constructor_name"].iloc[-1],
+        "wins_from_pole": int(((mine["win"] == 1) & (mine["pole"] == 1)).sum()),
+        "finishes": int(mine["finished"].sum()),
         "nationality": mine["nationality"].iloc[-1],
         "starts": int(len(mine)),
         "wins": int(mine["win"].sum()),
@@ -461,6 +501,94 @@ def on_this_day(month, day):
         return pd.DataFrame()
     return (match[["season", "race_name", "circuit", "driver_name", "constructor_name", "date"]]
             .sort_values("season", ascending=False).reset_index(drop=True))
+
+
+def on_this_day_full(month, day):
+    """Everything that happened on one date of the year, in every season since 1950.
+
+    The races themselves come first, each with its podium, because that is what anyone
+    opening the page came to see. The rest is what makes a date worth reading about:
+    someone's first Grand Prix, someone's first win, and the seasons that ended here.
+    """
+    df = results()
+    if df.empty:
+        return {"races": [], "debuts": [], "first_wins": [], "finales": []}
+    dates = pd.to_datetime(df["date"], errors="coerce")
+    today = df[(dates.dt.month == month) & (dates.dt.day == day)]
+    if today.empty:
+        return {"races": [], "debuts": [], "first_wins": [], "finales": []}
+
+    # the last round of each season, so we can say which races closed a year out
+    last_round = df.groupby("season")["round"].max()
+    # every driver's first race, and their first win, anywhere in history
+    first_race = df.sort_values(["season", "round"]).groupby("driver").head(1)
+    first_race = set(zip(first_race["driver"], first_race["season"], first_race["round"]))
+    wins = df[df["win"] == 1].sort_values(["season", "round"]).groupby("driver").head(1)
+    first_win = set(zip(wins["driver"], wins["season"], wins["round"]))
+
+    tracks = race_list()
+    if not tracks.empty:
+        tracks = tracks.set_index(["season", "round"])
+
+    races, debuts, first_wins, finales = [], [], [], []
+    for (season, rnd), group in today.groupby(["season", "round"]):
+        group = group.sort_values("finish_position")
+        winner = group.iloc[0]
+        where = tracks.loc[(season, rnd)] if (not tracks.empty
+                                              and (season, rnd) in tracks.index) else None
+        podium = [{"position": int(r["finish_position"]), "driver": r["driver_name"],
+                   "team": r["constructor_name"], "team_id": r["constructor"]}
+                  for _, r in group.head(3).iterrows()]
+        is_finale = int(last_round.get(season, 0)) == int(rnd)
+        races.append({
+            "season": int(season), "round": int(rnd), "race_name": winner["race_name"],
+            "circuit": winner["circuit"], "date": winner["date"],
+            "circuit_name": (where["circuit_name"] if where is not None
+                             else str(winner["circuit"]).replace("_", " ").title()),
+            "locality": where["locality"] if where is not None else "",
+            "country": where["country"] if where is not None else "",
+            "winner": winner["driver_name"], "winner_id": winner["driver"],
+            "team": winner["constructor_name"], "team_id": winner["constructor"],
+            "from_grid": int(winner["grid"]) if winner["grid"] > 0 else None,
+            "starters": int(len(group)), "finishers": int(group["finished"].sum()),
+            "finale": is_finale, "podium": podium,
+        })
+        if is_finale:
+            champion = ranked(driver_standings())
+            champion = champion[(champion["season"] == season)
+                                & (champion["position"] == 1)] if not champion.empty else champion
+            finales.append({
+                "season": int(season), "race_name": winner["race_name"],
+                "champion": champion["driver_name"].iloc[0] if not champion.empty else "",
+                "team": champion["constructor_name"].iloc[0] if not champion.empty else "",
+            })
+        for _, row in group.iterrows():
+            key = (row["driver"], season, rnd)
+            if key in first_race:
+                debuts.append({"season": int(season), "driver": row["driver_name"],
+                               "team": row["constructor_name"],
+                               "team_id": row["constructor"],
+                               "race_name": row["race_name"]})
+            if key in first_win:
+                first_wins.append({"season": int(season), "driver": row["driver_name"],
+                                   "team": row["constructor_name"],
+                                   "team_id": row["constructor"],
+                                   "race_name": row["race_name"]})
+
+    races.sort(key=lambda r: r["season"], reverse=True)
+    for bundle in (debuts, first_wins, finales):
+        bundle.sort(key=lambda r: r["season"], reverse=True)
+    return {"races": races, "debuts": debuts, "first_wins": first_wins, "finales": finales}
+
+
+def race_dates():
+    """Every (month, day) that has ever held a Grand Prix, and how many."""
+    df = results()
+    if df.empty:
+        return {}
+    dates = pd.to_datetime(df[df["win"] == 1]["date"], errors="coerce").dropna()
+    counted = dates.dt.strftime("%m-%d").value_counts()
+    return {key: int(value) for key, value in counted.items()}
 
 
 # ---------- two drivers, side by side ----------
