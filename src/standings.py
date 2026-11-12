@@ -230,6 +230,38 @@ def cause_group(status):
     return "Other"
 
 
+def dnf_grid(season):
+    """One row per team per round: how many of its cars failed to finish.
+
+    The results feed stopped recording *why* a car retired a few seasons ago, so a
+    chart of causes is nearly empty for a recent year. Which races a team lost cars at
+    is still real, and says more anyway: three in a row is a pattern, one is a shunt.
+    """
+    rows = points_table(season)
+    if rows.empty:
+        return rows
+    grid = (rows.groupby(["round", "race_name", "constructor"], as_index=False)
+            .agg(cars=("dnf", "size"), dnfs=("dnf", "sum")))
+    grid["dnfs"] = grid["dnfs"].astype(int)
+    return grid.sort_values(["round", "constructor"]).reset_index(drop=True)
+
+
+def reasons_recorded(season):
+    """How many different retirement reasons the feed actually gives for a season.
+
+    Anything below about three means the data is generic ("Retired") rather than
+    specific ("Gearbox"), and a chart of causes would be telling the reader nothing.
+    """
+    rows = points_table(season)
+    if rows.empty:
+        return 0
+    stops = rows[rows["dnf"] == 1]
+    if stops.empty:
+        return 0
+    named = stops["status"].map(cause_group)
+    return int(named[~named.isin(["Retired, no reason given", "Other"])].nunique())
+
+
 def reliability(season):
     """How often each team's cars reached the finish, and why the others stopped."""
     rows = points_table(season)
