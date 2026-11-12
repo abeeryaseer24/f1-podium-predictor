@@ -10,17 +10,26 @@ from app_data import (get_model_history, get_model_info, get_model_weights, get_
 from predictor import clean_name, season_summary
 from ranker import LABELS
 from style import empty_note, race_card, show_cards, stat_tiles
+from ui_kit import kit_css, sheet
 
 GITHUB = "https://github.com/abeeryaseer24/f1-podium-predictor"
 LINKEDIN = ""          # paste your LinkedIn profile link here to show it on the page
 
+kit_css()
 info = get_model_info() or {}
 dark = st.session_state.get("dark", True)
 TEXT, GRID = ("#f5f5f7", "#2c2c3a") if dark else ("#15151e", "#d9d9d4")
 
 
 def table(rows):
-    st.dataframe(pd.DataFrame(rows), hide_index=True, width="stretch")
+    """A small spec table. Keys become the headings, in the order of the first row."""
+    if not rows:
+        return
+    headings = list(rows[0])
+    numeric = {h for h in headings
+               if all(isinstance(r.get(h), (int, float)) for r in rows)}
+    sheet([(h, "num" if h in numeric else "text") for h in headings],
+          [[r.get(h, "") for h in headings] for r in rows])
 
 
 tabs = st.tabs(["The project", "The prediction model", "Accuracy and fairness",

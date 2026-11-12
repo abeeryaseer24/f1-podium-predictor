@@ -4,7 +4,9 @@ import pandas as pd
 import streamlit as st
 
 from app_data import get_prepared_races, get_tyres
+from ui_kit import kit_css, section
 
+kit_css()
 races = get_prepared_races()
 if races.empty:
     st.info("No races prepared yet. The robot adds a few every 3 hours.")
@@ -72,7 +74,8 @@ st.caption("Each faint dot is one clean lap, with the driver's pace and the fuel
            "The lines are the model's wear curves.")
 
 # ---------- one card per compound ----------
-st.subheader("Compound by compound")
+section("Compound by compound",
+            "How quickly each tyre gives up its lap time, measured from clean racing laps.")
 cards = st.columns(len(compounds))
 for card, c in zip(cards, compounds):
     card.markdown(tyre_chip(c["name"]), unsafe_allow_html=True)
@@ -90,7 +93,8 @@ if len(compounds) > 1:
                 f"A fresh {fastest['name'].title()} is the quickest tyre.")
 
 # ---------- the key numbers for strategy ----------
-st.subheader("Strategy numbers")
+section("Strategy numbers",
+            "What the wear rates mean for a race: how long each tyre is worth running.")
 m1, m2, m3 = st.columns(3)
 m1.metric("Fuel effect", f"{-result['fuel']:.3f} s/lap",
           help="How much faster a car gets each lap as fuel burns off")
@@ -99,4 +103,4 @@ m2.metric("Pit stop loss", f"{result['pit_loss']:.1f} s" if result["pit_loss"] e
 m3.metric("Model error", f"±{result['error']:.2f} s",
           help="Typical error per lap, measured on laps the model didn't learn from")
 st.caption(f"Based on {result['clean_laps']} clean racing laps. A negative wear number means "
-           "the track got faster than the tyre wore out.")
+           "the track got faster than the tyre wore out.")

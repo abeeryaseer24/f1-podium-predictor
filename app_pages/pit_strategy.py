@@ -7,11 +7,13 @@ from app_garage import (default_season, get_compound_use, get_prepared_rounds,
 from cards import cards_css, note
 from charts import dress, simple_bars
 from style import empty_note, stat_strip, team_info
+from ui_kit import kit_css, league, section, sheet
 
 COMPOUND_COLOURS = {"SOFT": "#e10600", "MEDIUM": "#f2c21b", "HARD": "#dcdcdc",
                     "INTERMEDIATE": "#39b54a", "WET": "#1e6fd9", "UNKNOWN": "#8a8a96"}
 
 cards_css()
+kit_css()
 
 seasons = get_seasons()
 season = st.selectbox("Season", seasons, index=seasons.index(default_season()))
@@ -39,26 +41,34 @@ note("This is the time the car is stationary in the box, which is the number tea
      "Anything over 10 seconds is left out, because that is a repair or a penalty being "
      "served rather than a pit stop.")
 
-st.subheader("Typical stop time")
+section("Typical stop time",
+        "The middle stop time of the season for each crew: half their stops were quicker than this.")
 st.altair_chart(simple_bars(stops, "median_stop", "Seconds stationary (middle value)",
                             sort_ascending=True), width="stretch", theme=None)
 
-st.subheader("The whole table")
-table = stops.copy()
-table["Team"] = table["constructor"].map(lambda t: team_info(t)[0])
-st.dataframe(
-    table[["Team", "stops", "median_stop", "best_stop", "worst_stop"]]
-    .rename(columns={"stops": "Stops", "median_stop": "Typical (s)",
-                     "best_stop": "Fastest (s)", "worst_stop": "Slowest (s)"}),
-    hide_index=True, width="stretch")
+section("The pit lane league",
+        "Every crew by its typical stop. The bar is how close each is to the quickest "
+        "crew of the season, so a short bar is seconds lost on every visit.")
+quickest = float(stops["median_stop"].min())
+league([{
+    "pos": place, "name": team_info(row.constructor)[0],
+    "colour": team_info(row.constructor)[1],
+    "sub": f'{int(row.stops)} stops \u00b7 '
+           f'{row.median_stop - quickest:+.2f}s against the quickest crew',
+    "bar": quickest / float(row.median_stop),
+    "figures": [(f"{row.median_stop:.2f}s", "typical"),
+                (f"{row.best_stop:.2f}s", "fastest"),
+                (f"{row.worst_stop:.2f}s", "slowest")],
+} for place, row in enumerate(stops.sort_values("median_stop").itertuples(), start=1)])
 
 # ---------- tyres over the season ----------
 
 compounds = get_compound_use(season)
 if not compounds.empty:
-    st.subheader("Which tyres each team ran")
-    note("Laps completed on each compound. Teams that spend longer on the hard tyre are "
-         "usually looking after it to make a one-stop work.")
+    section("Which tyres each team ran",
+        "Laps completed on each compound across the season.")
+    note("Teams that spend longer on the hard tyre are usually looking after it to make "
+         "a one-stop work.")
     data = compounds.copy()
     data["Team"] = data["constructor"].map(lambda t: team_info(t)[0])
     order = (data.groupby("Team")["laps"].sum().sort_values(ascending=False).index.tolist())
@@ -89,12 +99,9 @@ if rounds:
         st.markdown(f'**Fastest stop of the race:** {best["driver_name"]} '
                     f'({team_info(best["constructor"])[0]}) in '
                     f'{best["pit_duration"]:.2f}s on lap {int(best["lap_number"])}.')
-        st.dataframe(
-            race_stops[["driver_name", "lap_number", "pit_duration"]]
-            .sort_values("pit_duration")
-            .rename(columns={"driver_name": "Driver", "lap_number": "Lap",
-                             "pit_duration": "Stationary (s)"}),
-            hide_index=True, width="stretch")
+        sheet([("Driver", "text"), ("Lap", "num"), ("Stationary", "num")],
+              [[r.driver_name, int(r.lap_number), f"{r.pit_duration:.2f}s"]
+               for r in race_stops.sort_values("pit_duration").itertuples()])
 
     stints = get_race_stints(folder)
     if not stints.empty:

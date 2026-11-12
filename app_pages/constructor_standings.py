@@ -8,8 +8,10 @@ from cards import cards_css, note, standings_rows
 from charts import gap_to_leader, points_heatmap, points_lines, points_per_race, position_bumps
 from predictor import clean_name
 from style import empty_note, stat_strip, team_info
+from ui_kit import kit_css, section
 
 cards_css()
+kit_css()
 
 seasons = get_seasons()
 if not seasons:
@@ -56,15 +58,18 @@ standings_rows(rows)
 
 # ---------- the charts ----------
 
-st.subheader("Points through the season")
+section("Points through the season",
+            "Every team's running total, round by round.")
 note("Every team's running total, race by race. The steeper the line, the better the run.")
 st.altair_chart(points_lines(progress), width="stretch", theme=None)
 
-st.subheader("Who was where, after every race")
+section("Who was where, after every race",
+            "Championship position after each round. Lines crossing means the order changed.")
 note("Championship place after each round. Higher on the chart is better.")
 st.altair_chart(position_bumps(progress), width="stretch", theme=None)
 
-st.subheader("Points scored at each race")
+section("Points scored at each race",
+            "What each team took home from each weekend, not the running total.")
 st.altair_chart(points_per_race(progress), width="stretch", theme=None)
 
 st.subheader("The season as a grid")

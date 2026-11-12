@@ -6,11 +6,13 @@ import streamlit as st
 from app_garage import default_season, get_seasons, get_team_pace, get_upgrades, pace_available
 from cards import cards_css, note
 from style import empty_note, stat_strip, team_info
+from ui_kit import kit_css, league, section, sheet
 
 JUMP = 0.25        # a gain this big (in per cent of lap time) counts as a step change
 LOOKBACK = 3       # races averaged before and after the step
 
 cards_css()
+kit_css()
 
 seasons = get_seasons()
 season = st.selectbox("Season", seasons, index=seasons.index(default_season()))
@@ -78,19 +80,22 @@ if steps.empty:
     else:
         empty_note(f"No clear steps in car pace found in {season}.")
 else:
-    st.subheader("Where the car pace stepped up")
-    show = steps.copy()
-    show["Team"] = show["constructor"].map(lambda t: team_info(t)[0])
-    show["Was"] = show["before"].map(lambda v: f"{v:.2f}% off")
-    show["Became"] = show["after"].map(lambda v: f"{v:.2f}% off")
-    show["Gained"] = show["gain"].map(lambda v: f"{v:.2f}%")
-    st.dataframe(
-        show[["Team", "round", "race_name", "Was", "Became", "Gained"]]
-        .rename(columns={"round": "From round", "race_name": "Race"})
-        .sort_values("Gained", ascending=False),
-        hide_index=True, width="stretch")
+    section("Where the car pace stepped up",
+            "Every point in the season where a team's measured pace jumped, biggest "
+            "step first. The bar is the size of the step.")
+    steps = steps.sort_values("gain", ascending=False)
+    biggest = max(float(steps["gain"].max()), 1e-9)
+    league([{
+        "pos": place, "name": team_info(row.constructor)[0],
+        "colour": team_info(row.constructor)[1],
+        "sub": f'from round {int(row.round)}, the {row.race_name} \u00b7 '
+               f'{row.before:.2f}% off became {row.after:.2f}% off',
+        "bar": float(row.gain) / biggest,
+        "figures": [(f"{row.gain:.2f}%", "gained")],
+    } for place, row in enumerate(steps.itertuples(), start=1)])
 
-st.subheader("Upgrade notes")
+section("Upgrade notes",
+        "What each team actually brought, written down by hand from the technical reports.")
 if notes.empty:
     empty_note(f"Nothing has been written down for {season} yet.")
     note("Add a line to <code>data/upgrades.csv</code> for each package a team brings. "
@@ -99,11 +104,8 @@ if notes.empty:
          "<code>area</code> is something like floor, front wing or sidepods, and "
          "<code>source</code> is where you read about it.")
 else:
-    show = notes.copy()
-    show["Team"] = show["constructor"].map(lambda t: team_info(t)[0])
-    st.dataframe(
-        show[["round", "Team", "area", "description", "source"]]
-        .rename(columns={"round": "Round", "area": "Area",
-                         "description": "What it was", "source": "Source"})
-        .sort_values("Round", ascending=False),
-        hide_index=True, width="stretch")
+    show = notes.copy().sort_values("round", ascending=False)
+    sheet([("Round", "num"), ("Team", "tag"), ("Area", "text"),
+           ("What it was", "wrap"), ("Source", "text")],
+          [[int(r.round), (team_info(r.constructor)[1], team_info(r.constructor)[0]),
+            r.area, r.description, r.source] for r in show.itertuples()])

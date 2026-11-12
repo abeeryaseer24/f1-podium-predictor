@@ -8,8 +8,10 @@ from cards import cards_css, note, standings_rows
 from charts import dress, team_scale
 from predictor import clean_name
 from style import empty_note, stat_strip, team_info
+from ui_kit import kit_css, section
 
 cards_css()
+kit_css()
 
 seasons = get_seasons()
 if not seasons:
@@ -61,7 +63,8 @@ shown = progress[progress["driver"].isin(leaders)].copy()
 shown = shown.rename(columns={"driver": "driver_id"})
 shown["constructor"] = shown["constructor"].fillna("unknown")
 
-st.subheader(f"Points through the season, top {TOP}")
+section(f"Points through the season, top {TOP}",
+            f"The running total for the leading {TOP} drivers, round by round.")
 note("Only the leading drivers are drawn, otherwise the chart turns into spaghetti. "
      "Two drivers from the same team share a colour, so hover a line to see who is who.")
 chart_data = shown.rename(columns={"driver_id": "driver"})
@@ -82,7 +85,8 @@ st.altair_chart(
           .encode(y=alt.Y("cum_points:Q", title="Points"))),
     width="stretch", theme=None)
 
-st.subheader(f"Championship place after every race, top {TOP}")
+section(f"Championship place after every race, top {TOP}",
+            "Where each of them sat in the table after each round. Lower is better.")
 top_place = int(chart_data["position"].max())
 bumps = base.encode(y=alt.Y("position:Q", title="Championship place",
                             scale=alt.Scale(domain=[top_place + 0.5, 0.5]),
@@ -90,7 +94,8 @@ bumps = base.encode(y=alt.Y("position:Q", title="Championship place",
 st.altair_chart(dress(bumps.mark_line(strokeWidth=3) + bumps.mark_circle(size=50)),
                 width="stretch", theme=None)
 
-st.subheader("Points scored at each race")
+section("Points scored at each race",
+            "What each driver took home from each weekend, not the running total.")
 bars = (alt.Chart(chart_data[chart_data["points"] > 0]).mark_bar()
         .encode(x=alt.X("round:O", title="Round"),
                 y=alt.Y("points:Q", title="Points that race"),
