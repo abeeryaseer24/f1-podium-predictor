@@ -7,6 +7,8 @@ they are based.
 import pandas as pd
 import streamlit as st
 
+import backdrop
+
 from app_garage import (get_constructor_progress, get_constructor_table, get_entries,
                         get_team_drivers, get_team_history, get_teammate_battles)
 from cards import (accent, cards_css, crest, figures, glass, head_to_head, key_values,
@@ -17,6 +19,27 @@ from style import empty_note, team_info
 from teaminfo import family, photo_credits, team_meta
 from ui_kit import kit_css, league, section, sheet
 
+
+
+@st.cache_data(ttl=3600)
+def title_run(family_ids):
+    """Every season this team has entered since 1958, and where it finished.
+
+    The garage data only goes back to 2016, so the line behind the header comes from
+    the full archive instead: Ferrari gets seventy years of sawtooth, Cadillac gets a
+    short new stub, and the picture is honest either way.
+    """
+    try:
+        import archive
+        table = archive.ranked(archive.team_standings())
+    except Exception:
+        return []
+    if table.empty:
+        return []
+    keys = {archive.team_key(f) for f in family_ids}
+    mine = table[table["constructor"].map(archive.team_key).isin(keys)]
+    return [(int(r.season), float(r.position), int(r.position) == 1)
+            for r in mine.itertuples()]
 
 
 def season_story(row):
@@ -43,10 +66,16 @@ def show(team_id, season):
     dark = st.session_state.get("dark", True)
     cards_css()
     kit_css()
-    shot = team_theme(colour, photo_url(team_id))
+    team_theme(colour, photo_url(team_id))
 
     fam = family(team_id)
     history = get_team_history(team_id, tuple(fam))
+    # Behind the header: a tinted texture, and this team's championship position every
+    # season it has ever entered, drawn as a line. See backdrop.py for why there is no
+    # photograph here.
+    shot = backdrop.build(colour, key=team_id, photo=photo_url(team_id),
+                          trace=backdrop.season_trace(title_run(fam), colour),
+                          dark=dark)
     drivers = get_team_drivers(tuple(fam))
     table = get_constructor_table(season)
     this_season = table[table["constructor"] == team_id]

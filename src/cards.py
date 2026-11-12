@@ -105,11 +105,18 @@ CARDS_CSS = """<style>
 /* the big header at the top of a team or driver profile */
 .pp-crest{position:relative;z-index:1;border-radius:20px;overflow:hidden;margin:.2rem 0 1rem;border:1px solid var(--glass-line);min-height:170px;display:flex;align-items:flex-end;background:var(--crest-bg)}
 .pp-crest .shot{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(115%)}
+/* The two generated layers that stand in for a photograph: a tinted CSS texture and
+   the page's own data drawn as a line. Both sit under the veil, so the words on top
+   stay readable whatever they look like. See backdrop.py. */
+.pp-crest .pp-weave{position:absolute;inset:0;z-index:0}
+.pp-crest .pp-trace{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.pp-crest .pp-track{position:absolute;right:3%;top:6%;height:88%;width:auto;max-width:52%;z-index:0}
+.pp-crest .pp-shade{position:absolute;inset:0;z-index:0}
 .pp-crest .veil{position:absolute;inset:0;background:var(--crest-veil)}
-.pp-crest .word{position:absolute;right:-10px;top:-18px;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:7rem;line-height:1;opacity:.14;text-transform:uppercase;letter-spacing:-3px;white-space:nowrap}
+.pp-crest .word{position:absolute;right:-10px;top:-18px;font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:7rem;line-height:1;opacity:.08;text-transform:uppercase;letter-spacing:-3px;white-space:nowrap}
 .pp-crest .inner{position:relative;z-index:2;padding:22px 24px;width:100%}
 .pp-crest .eyebrow{font-size:.8rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;opacity:.85}
-.pp-crest h2{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3rem);text-transform:uppercase;letter-spacing:1px;margin:.1rem 0 .3rem;line-height:1}
+.pp-crest h2{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3rem);text-transform:uppercase;letter-spacing:1px;margin:.1rem 0 .3rem;line-height:1;max-width:66%}
 .pp-crest p{margin:0;font-size:.95rem;opacity:.9;max-width:62ch}
 .pp-crest .pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .pp-crest .pill{padding:5px 12px;border-radius:999px;font-size:.82rem;font-weight:600;background:var(--pill-bg);border:1px solid var(--glass-line)}
@@ -137,6 +144,7 @@ CARDS_CSS = """<style>
 .pp-h2hlbl{display:flex;justify-content:space-between;font-size:.78rem;color:var(--pp-muted)}
 .pp-note{color:var(--pp-muted);font-size:.86rem;line-height:1.5;margin:.2rem 0 1rem}
 @media (max-width:640px){
+.pp-crest .pp-track{right:-4%;max-width:56%;opacity:.8}
 .pp-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .pp-card{padding:12px 12px 10px;min-height:128px}
 .pp-card h4{font-size:1.2rem}.pp-card .mark{font-size:2.3rem;right:-10px}
@@ -144,6 +152,7 @@ CARDS_CSS = """<style>
 .pp-card .nums b{font-size:1.1rem}
 .pp-card .nums small{font-size:.58rem;letter-spacing:.2px}
 .pp-crest .word{font-size:4rem}.pp-crest{min-height:140px}
+.pp-crest h2{max-width:100%}
 .pp-fig b{font-size:1.5rem}
 }
 </style>"""

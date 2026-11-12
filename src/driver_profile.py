@@ -6,6 +6,8 @@ The History pages use the same five tabs for drivers of the past.
 import altair as alt
 import streamlit as st
 
+import backdrop
+
 from app_garage import (get_driver_history, get_driver_pace, get_driver_races,
                         get_driver_teammates, get_driver_totals)
 from cards import (accent, cards_css, crest, figures, glass, head_to_head, key_values,
@@ -15,6 +17,25 @@ from predictor import clean_name
 from style import empty_note, team_info
 from ui_kit import kit_css, league, section
 
+
+
+@st.cache_data(ttl=3600)
+def career_run(driver_id):
+    """Where this driver finished the championship every season of their career.
+
+    Taken from the full archive rather than the 2016-onwards garage data, so a long
+    career is drawn in full.
+    """
+    try:
+        import archive
+        table = archive.ranked(archive.driver_standings())
+    except Exception:
+        return []
+    if table.empty:
+        return []
+    mine = table[table["driver"] == driver_id]
+    return [(int(r.season), float(r.position), int(r.position) == 1)
+            for r in mine.itertuples()]
 
 
 def season_story(row):
@@ -51,6 +72,11 @@ def show(driver_id, season=None, team_id=None):
     cards_css()
     kit_css()
     team_theme(colour)
+    # Behind the header: a tinted texture and this driver's whole career drawn as a
+    # line of championship positions. See backdrop.py.
+    shot = backdrop.build(colour, key=driver_id,
+                          trace=backdrop.season_trace(career_run(driver_id), colour),
+                          dark=dark)
 
     seasons_text = (f'{totals["first_season"]}' if totals["first_season"] == totals["last_season"]
                     else f'{totals["first_season"]}–{totals["last_season"]}')
@@ -59,7 +85,7 @@ def show(driver_id, season=None, team_id=None):
     crest("Driver", name,
           f'{totals["wins"]} wins and {totals["podiums"]} podiums from '
           f'{totals["races"]} starts since {totals["first_season"]}.',
-          pills, colour)
+          pills, colour, shot)
 
     figures([(totals["wins"], "Wins"), (totals["podiums"], "Podiums"),
              (totals["poles"], "Poles"), (f'{totals["points"]:.0f}', "Points"),

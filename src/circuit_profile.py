@@ -9,6 +9,8 @@ gets everything else, and a map pin instead of the track.
 import pandas as pd
 import streamlit as st
 
+import backdrop
+
 from app_archive import get_circuit_history, get_circuit_index, get_circuit_winners
 from cards import cards_css, crest, figures, glass, key_values, note
 from style import team_info
@@ -36,6 +38,28 @@ def latest_race_folder(circuit_id):
     matches = [r.folder for r in races.itertuples()
                if (int(r.season), int(r.round)) in wanted]
     return sorted(matches)[-1] if matches else None
+
+
+@st.cache_data(ttl=3600)
+def track_outline(circuit_id, colour):
+    """The circuit's real shape as a faint line for behind the header.
+
+    It is the same position data the 3D view uses, thinned down to a few hundred
+    points, so Monza's page is backed by Monza's actual outline rather than clip art.
+    Circuits with no race since 2023 have no position data and simply get the texture.
+    """
+    folder = latest_race_folder(circuit_id)
+    if folder is None:
+        return ""
+    try:
+        from app_data import get_race_file
+        track = get_race_file(folder, "track")
+    except Exception:
+        return ""
+    if track is None or track.empty or "x" not in track.columns:
+        return ""
+    return backdrop.track_trace(backdrop.thin(track["x"].tolist()),
+                                backdrop.thin(track["y"].tolist()), colour)
 
 
 def track_in_3d(circuit_id):
@@ -107,7 +131,10 @@ def show(circuit_id):
             f'{int(by_driver.iloc[0]["wins"])} times.' if not by_driver.empty else "")
     crest("Circuit", row["circuit_name"],
           f'{int(row["races"])} rounds of the world championship have been held here, '
-          f'{span}. {most}', pills, "#e10600")
+          f'{span}. {most}', pills, "#e10600",
+          backdrop.build("#e10600", key=circuit_id,
+                         trace=track_outline(circuit_id, "#e10600"),
+                         dark=st.session_state.get("dark", True)))
 
     figures([(int(row["races"]), "Races held"),
              (int(row["first_season"]), "First"),
