@@ -60,7 +60,17 @@ def apply_style(dark):
 [data-baseweb="popover"] a, [data-baseweb="popover"] span {{ color: var(--pp-text) !important; }}
 [data-testid="stMainMenu"], [data-testid="stAppDeployButton"], [data-testid="stDecoration"] {{ display: none; }}
 [data-testid="stSidebar"] {{ background: var(--pp-panel); border-right: 1px solid var(--pp-border); }}
-.block-container {{ position: relative; z-index: 1; max-width: 1100px; padding-top: 6rem; }}
+.block-container {{ position: relative; z-index: 1; max-width: 1100px; padding-top: 4.75rem; }}
+
+/* Streamlit lays a page out as a flex column and gives every element its own row, with
+   a 16px gap between rows. A stylesheet injected with st.markdown is an invisible row —
+   but it still takes its gap. Seven of them sat between the page heading and the first
+   control on the Driver Cards page and pushed it 137px down an otherwise empty screen.
+   Hiding those rows costs nothing: a <style> tag inside a hidden element still applies.
+   This is safe only while no single st.markdown call mixes a <style> with real content;
+   nothing in the app does, and anything new that did would simply vanish. */
+[data-testid="stElementContainer"]:has([data-testid="stMarkdown"] style) {{ display: none; }}
+[data-testid="stElementContainer"]:has(> [data-testid="stMarkdown"] [data-testid="stMarkdownContainer"]:empty) {{ display: none; }}
 
 /* dropdowns */
 [data-baseweb="select"] > div {{ background: var(--pp-panel2) !important; border-color: var(--pp-border) !important; }}
@@ -87,7 +97,7 @@ def apply_style(dark):
 .pp-hero h1 {{ font-family: 'Saira Condensed', sans-serif; font-weight: 800; text-transform: uppercase;
   font-size: clamp(2.2rem, 5vw, 3.4rem); letter-spacing: 1px; line-height: 1; margin: 0; padding: 0; }}
 .pp-hero h1 span {{ color: var(--pp-red); }}
-.pp-sub {{ color: var(--pp-muted); margin: .5rem 0 1.6rem; font-size: 1.05rem; }}
+.pp-sub {{ color: var(--pp-muted); margin: .4rem 0 1.1rem; font-size: 1.05rem; }}
 .pp-steps {{ display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.4rem; }}
 .pp-step {{ padding: 6px 14px; border-radius: 999px; font-size: .85rem; font-weight: 600;
   background: var(--pp-panel); border: 1px solid var(--pp-border); color: var(--pp-muted); }}
