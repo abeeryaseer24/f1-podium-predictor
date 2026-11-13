@@ -3,7 +3,7 @@ since 2023."""
 import altair as alt
 import streamlit as st
 
-from app_garage import default_season, get_seasons
+from app_garage import first_prepared, get_prepared_seasons, get_seasons
 from app_insights import (get_control, get_overtaking, get_places_from_grid,
                           get_position_flow, get_prepared_races, get_weather,
                           get_weather_summary)
@@ -26,14 +26,19 @@ MESSAGE_COLOUR = {
 }
 
 seasons = get_seasons()
-season = st.selectbox("Season", seasons, index=seasons.index(default_season()))
+season = st.selectbox("Season", seasons, index=seasons.index(first_prepared(seasons)))
 races = get_prepared_races(season)
 
 if not races:
-    empty_note(f"No prepared race files for {season}.")
-    note("This page reads the race files in <code>data/races/</code>, which the robot "
-         "builds from OpenF1 and which start in 2023. If the season is recent, its races "
-         "may not have been prepared yet.")
+    empty_note(f"Nothing prepared for {season} yet.")
+    ready = [s for s in get_prepared_seasons() if s in seasons]
+    if ready:
+        note("This page reads lap-by-lap data, which only exists for seasons the robot "
+             f"has prepared. Ready so far: <b>{', '.join(str(s) for s in ready)}</b>. "
+             "Pick one of those above.")
+    else:
+        note("This page reads lap-by-lap data, and none of it has been prepared yet. "
+             "It appears on its own once the robot has run.")
     st.stop()
 
 labels = {f'Round {rnd} · {name}': (folder, rnd) for rnd, name, folder in races}

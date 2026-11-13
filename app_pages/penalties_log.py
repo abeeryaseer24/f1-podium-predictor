@@ -8,7 +8,7 @@ sends them.
 import altair as alt
 import streamlit as st
 
-from app_garage import default_season, get_seasons
+from app_garage import first_prepared, get_prepared_seasons, get_seasons
 from app_insights import get_prepared_races, get_season_penalties
 from cards import cards_css, note
 from charts import dress
@@ -35,15 +35,21 @@ SHORT = {"Warning or black and white flag": "Warning",
          "Lap time deleted": "Lap deleted"}
 
 seasons = get_seasons()
-season = st.selectbox("Season", seasons, index=seasons.index(default_season()))
+season = st.selectbox("Season", seasons, index=seasons.index(first_prepared(seasons)))
 races = get_prepared_races(season)
 log = get_season_penalties(season)
 
 if log.empty:
     empty_note(f"No stewards' decisions found for {season}.")
-    note("This page reads the race control messages in the prepared race files under "
-         "<code>data/races/</code>, which start in 2023. If the season is recent, the "
-         "robot may not have prepared its races yet.")
+    ready = [s for s in get_prepared_seasons() if s in seasons]
+    if ready:
+        note("Decisions are read from the race control messages broadcast during each "
+             "race, which only exist for seasons the robot has prepared. Ready so far: "
+             f"<b>{', '.join(str(s) for s in ready)}</b>. Pick one of those above.")
+    else:
+        note("Decisions are read from the race control messages broadcast during each "
+             "race, and none of it has been prepared yet. It appears on its own once "
+             "the robot has run.")
     st.stop()
 
 given = log[log["kind"].isin(("Penalty given", "Disqualified"))]

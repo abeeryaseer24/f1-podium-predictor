@@ -178,6 +178,25 @@ def get_prepared_rounds(season):
 
 
 @st.cache_data(ttl=600)
+def get_prepared_seasons():
+    """Seasons that have prepared race files, newest first.
+
+    Pit stops, tyres, race insights and the penalties log are all built from the race
+    folders, which only exist from 2023 on and only once the robot has prepared them.
+    Pages that read them should open on a season that actually has files rather than
+    on the current one, which can easily be a season the robot has not reached yet.
+    """
+    found = {info.get("season") for _, info in race_folders()}
+    return sorted((s for s in found if s), reverse=True)
+
+
+def first_prepared(seasons):
+    """The newest season in `seasons` that has race files, or the usual default."""
+    prepared = get_prepared_seasons()
+    return next((s for s in seasons if s in prepared), default_season())
+
+
+@st.cache_data(ttl=600)
 def get_race_stops(folder_name):
     from pitstops import RACES_DIR
     import json

@@ -2,8 +2,9 @@
 import altair as alt
 import streamlit as st
 
-from app_garage import (default_season, get_compound_use, get_prepared_rounds,
-                        get_race_stints, get_race_stops, get_seasons, get_team_stops)
+from app_garage import (first_prepared, get_compound_use, get_prepared_rounds,
+                        get_prepared_seasons, get_race_stints, get_race_stops,
+                        get_seasons, get_team_stops)
 from cards import cards_css, note
 from charts import dress, simple_bars
 from style import empty_note, stat_strip, team_info
@@ -16,14 +17,20 @@ cards_css()
 kit_css()
 
 seasons = get_seasons()
-season = st.selectbox("Season", seasons, index=seasons.index(default_season()))
+# Open on a season that actually has race files. The current season is often one the
+# robot has not prepared yet, and landing on an empty page makes the app look broken.
+season = st.selectbox("Season", seasons, index=seasons.index(first_prepared(seasons)))
 
 stops = get_team_stops(season)
 if stops.empty:
-    empty_note(f"No pit stop data for {season}.")
-    note("Pit stops come from the prepared race files in <code>data/races/</code>, which "
-         "start in 2023. If the season is recent, the robot may not have prepared its "
-         "races yet.")
+    empty_note(f"No pit stop data for {season} yet.")
+    ready = [s for s in get_prepared_seasons() if s in seasons]
+    if ready:
+        note("Pit stops are measured from the lap data, which is available for "
+             f"<b>{', '.join(str(s) for s in ready)}</b>. Pick one of those above.")
+    else:
+        note("Pit stops are measured from the lap data, and none of it has been "
+             "prepared yet. It appears on its own once the robot has run.")
     st.stop()
 
 quickest = stops.iloc[0]
