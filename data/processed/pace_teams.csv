@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2024,1,Bahrain Grand Prix,False,alpine,95.47249999999998,1.228,100
+2024,1,Bahrain Grand Prix,False,aston_martin,94.91269230769231,0.634,104
+2024,1,Bahrain Grand Prix,False,audi,96.44569230769231,2.259,102
+2024,1,Bahrain Grand Prix,False,ferrari,94.88476923076922,0.604,104
+2024,1,Bahrain Grand Prix,False,haas,95.41575,1.167,101
+2024,1,Bahrain Grand Prix,False,mclaren,95.198,0.937,104
+2024,1,Bahrain Grand Prix,False,mercedes,95.13161538461539,0.866,104
+2024,1,Bahrain Grand Prix,False,rb,95.638,1.403,102
+2024,1,Bahrain Grand Prix,False,red_bull,94.3146923076923,0.0,104
+2024,1,Bahrain Grand Prix,False,williams,95.56983333333334,1.331,99
+2024,2,Saudi Arabian Grand Prix,False,alpine,93.73445454545454,1.687,45
+2024,2,Saudi Arabian Grand Prix,False,aston_martin,92.54016666666666,0.391,46
+2024,2,Saudi Arabian Grand Prix,False,audi,92.96636363636364,0.853,86
+2024,2,Saudi Arabian Grand Prix,False,ferrari,92.34250000000002,0.177,92
+2024,2,Saudi Arabian Grand Prix,False,haas,92.63227272727273,0.491,90
+2024,2,Saudi Arabian Grand Prix,False,mclaren,92.22854545454545,0.053,90
+2024,2,Saudi Arabian Grand Prix,False,mercedes,92.17972727272726,0.0,90
+2024,2,Saudi Arabian Grand Prix,False,rb,93.6971818181818,1.646,89
+2024,2,Saudi Arabian Grand Prix,False,red_bull,92.31366666666666,0.145,92
+2024,2,Saudi Arabian Grand Prix,False,williams,92.98949999999998,0.878,91
 2024,3,Australian Grand Prix,False,alpine,81.55215384615386,1.643,99
 2024,3,Australian Grand Prix,False,aston_martin,81.04746153846153,1.014,101
 2024,3,Australian Grand Prix,False,audi,81.67900000000002,1.801,100

@@ -1,4 +1,42 @@
 season,round,race_name,wet,driver,code,team_id,driver_number,pace,pct_off,clean_laps
+2024,1,Bahrain Grand Prix,False,max_verstappen,VER,red_bull,1,94.3146923076923,0.0,52
+2024,1,Bahrain Grand Prix,False,sargeant,SAR,williams,2,95.56983333333334,1.331,48
+2024,1,Bahrain Grand Prix,False,ricciardo,RIC,rb,3,95.638,1.403,51
+2024,1,Bahrain Grand Prix,False,norris,NOR,mclaren,4,95.198,0.937,52
+2024,1,Bahrain Grand Prix,False,gasly,GAS,alpine,10,95.47249999999998,1.228,49
+2024,1,Bahrain Grand Prix,False,perez,PER,red_bull,11,94.71176923076922,0.421,52
+2024,1,Bahrain Grand Prix,False,alonso,ALO,aston_martin,14,94.91269230769231,0.634,52
+2024,1,Bahrain Grand Prix,False,leclerc,LEC,ferrari,16,94.96684615384616,0.691,52
+2024,1,Bahrain Grand Prix,False,stroll,STR,aston_martin,18,96.12815384615384,1.923,52
+2024,1,Bahrain Grand Prix,False,kevin_magnussen,MAG,haas,20,96.05961538461536,1.85,51
+2024,1,Bahrain Grand Prix,False,tsunoda,TSU,rb,22,96.22684615384614,2.027,51
+2024,1,Bahrain Grand Prix,False,albon,ALB,williams,23,95.95338461538462,1.737,51
+2024,1,Bahrain Grand Prix,False,,ZHO,audi,24,96.44569230769231,2.259,51
+2024,1,Bahrain Grand Prix,False,hulkenberg,HUL,haas,27,95.41575,1.167,50
+2024,1,Bahrain Grand Prix,False,ocon,OCO,alpine,31,96.60938461538461,2.433,51
+2024,1,Bahrain Grand Prix,False,hamilton,HAM,mercedes,44,95.13161538461539,0.866,52
+2024,1,Bahrain Grand Prix,False,sainz,SAI,ferrari,55,94.88476923076922,0.604,52
+2024,1,Bahrain Grand Prix,False,russell,RUS,mercedes,63,95.33392307692309,1.081,52
+2024,1,Bahrain Grand Prix,False,bottas,BOT,audi,77,96.54830769230769,2.368,51
+2024,1,Bahrain Grand Prix,False,piastri,PIA,mclaren,81,95.21461538461539,0.954,52
+2024,2,Saudi Arabian Grand Prix,False,max_verstappen,VER,red_bull,1,92.31366666666666,0.145,46
+2024,2,Saudi Arabian Grand Prix,False,sargeant,SAR,williams,2,93.71609090909091,1.667,45
+2024,2,Saudi Arabian Grand Prix,False,ricciardo,RIC,rb,3,93.84181818181818,1.803,44
+2024,2,Saudi Arabian Grand Prix,False,norris,NOR,mclaren,4,92.22854545454545,0.053,44
+2024,2,Saudi Arabian Grand Prix,False,perez,PER,red_bull,11,92.43441666666666,0.276,46
+2024,2,Saudi Arabian Grand Prix,False,alonso,ALO,aston_martin,14,92.54016666666666,0.391,46
+2024,2,Saudi Arabian Grand Prix,False,leclerc,LEC,ferrari,16,92.34250000000002,0.177,46
+2024,2,Saudi Arabian Grand Prix,False,kevin_magnussen,MAG,haas,20,92.94808333333333,0.834,46
+2024,2,Saudi Arabian Grand Prix,False,tsunoda,TSU,rb,22,93.6971818181818,1.646,45
+2024,2,Saudi Arabian Grand Prix,False,albon,ALB,williams,23,92.98949999999998,0.878,46
+2024,2,Saudi Arabian Grand Prix,False,,ZHO,audi,24,93.22009090909091,1.129,43
+2024,2,Saudi Arabian Grand Prix,False,hulkenberg,HUL,haas,27,92.63227272727273,0.491,44
+2024,2,Saudi Arabian Grand Prix,False,ocon,OCO,alpine,31,93.73445454545454,1.687,45
+2024,2,Saudi Arabian Grand Prix,False,bearman,BEA,ferrari,38,92.54441666666666,0.396,46
+2024,2,Saudi Arabian Grand Prix,False,hamilton,HAM,mercedes,44,92.17972727272726,0.0,44
+2024,2,Saudi Arabian Grand Prix,False,russell,RUS,mercedes,63,92.59674999999999,0.452,46
+2024,2,Saudi Arabian Grand Prix,False,bottas,BOT,audi,77,92.96636363636364,0.853,43
+2024,2,Saudi Arabian Grand Prix,False,piastri,PIA,mclaren,81,92.56591666666667,0.419,46
 2024,3,Australian Grand Prix,False,ricciardo,RIC,rb,3,81.52983333333334,1.615,50
 2024,3,Australian Grand Prix,False,norris,NOR,mclaren,4,80.23369230769231,0.0,51
 2024,3,Australian Grand Prix,False,gasly,GAS,alpine,10,81.55215384615386,1.643,51
