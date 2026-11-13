@@ -5,7 +5,7 @@ import streamlit as st
 from app_garage import (default_season, get_constructor_progress, get_constructor_table,
                         get_seasons, sprint_points_included)
 from cards import cards_css, note, standings_rows
-from charts import gap_to_leader, points_heatmap, points_lines, points_per_race, position_bumps
+from charts import gap_to_leader, points_lines, points_per_race, position_bumps
 from predictor import clean_name
 from style import empty_note, stat_strip, team_info
 from ui_kit import kit_css, section
@@ -70,12 +70,11 @@ st.altair_chart(position_bumps(progress), width="stretch", theme=None)
 
 section("Points scored at each race",
             "What each team took home from each weekend, not the running total.")
+note("One row per team, best season first. Each bar is a single Grand Prix, and every "
+     "row is drawn against the same scale, so a tall bar really was a big weekend and "
+     "a gap is a weekend with nothing. The most one team can score is 43 points at a "
+     "normal race, or 58 at a sprint weekend. Tap a bar for the race and the score.")
 st.altair_chart(points_per_race(progress), width="stretch", theme=None)
-
-st.subheader("The season as a grid")
-note("One square per team per race, darker where more points were scored. "
-     "Empty rows of squares are the weekends a team came away with nothing.")
-st.altair_chart(points_heatmap(progress), width="stretch", theme=None)
 
 st.subheader("How far behind the leader")
 note("Zero is the team leading the championship at that point in the season.")

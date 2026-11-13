@@ -17,16 +17,29 @@ def theme():
     return ("#f5f5f7", "#2c2c3a", "#a3a3b2") if dark else ("#15151e", "#d9d9d4", "#55556a")
 
 
-def dress(chart):
-    """Give a chart the app's colours and strip the clutter Altair adds by default."""
+def dress(chart, symbol="square"):
+    """Give a chart the app's colours and strip the clutter Altair adds by default.
+
+    `symbol` is the shape drawn beside each name in the legend, and the default is a
+    square for every chart in the app on purpose. It used to be "stroke", a short
+    line. A stroke symbol takes its colour from the mark's *stroke*, but a bar or a
+    rectangle keeps its colour in its *fill* — so every bar chart in the app printed a
+    legend of names with no colour at all beside them, and there was no way to tell
+    which team was which. A square is drawn with both a fill and a thick outline, so
+    it shows up whichever kind of mark the chart uses.
+    """
     text, grid, muted = theme()
+    if symbol == "stroke":
+        legend = dict(symbolType="stroke", symbolStrokeWidth=4)
+    else:
+        legend = dict(symbolType="square", symbolSize=170, symbolStrokeWidth=3)
     return (chart.properties(height=HEIGHT)
             .configure_view(strokeWidth=0)
             .configure_axis(labelColor=muted, titleColor=muted, gridColor=grid,
                             domainColor=grid, tickColor=grid, labelFontSize=11,
                             titleFontSize=12)
             .configure_legend(labelColor=text, titleColor=muted, labelFontSize=12,
-                              symbolType="stroke", symbolStrokeWidth=4)
+                              **legend)
             .configure_title(color=text))
 
 
@@ -115,31 +128,56 @@ def position_bumps(progress):
     return dress(base.mark_line(strokeWidth=3) + base.mark_circle(size=55))
 
 
-def points_per_race(progress):
-    """How many points each team scored at each race, as stacked bars."""
-    data = with_team_names(progress)
-    scale = team_scale(sorted(progress["constructor"].unique()))
-    chart = (alt.Chart(data[data["points"] > 0]).mark_bar()
-             .encode(x=alt.X("round:O", title="Round"),
-                     y=alt.Y("points:Q", title="Points that race"),
-                     color=alt.Color("Team:N", scale=scale, title=None),
-                     tooltip=["Team", alt.Tooltip("race_name:N", title="Race"),
-                              alt.Tooltip("points:Q", title="Points")]))
-    return dress(chart)
+def points_per_race(progress, row_field="Team", row_label="Driver"):
+    """Points scored at each race: one small bar chart per team, or per driver.
 
+    This was a single stacked bar chart and it was wrong. Stacking piles every team's
+    score for a weekend into one bar, so the bar measured the *whole field's* haul —
+    101 points at a normal Grand Prix, 137 when there is a sprint — and the chart
+    appeared to show teams scoring 140 points in a race. No team can: the most on
+    offer for one team is 43 at a normal weekend and 58 with a sprint. On top of that
+    the legend was unreadable, because a bar's colour is its fill and the legend was
+    drawing stroke symbols, so the names had no colour beside them at all.
 
-def points_heatmap(progress):
-    """A grid of teams against races, shaded by how many points were scored."""
-    data = with_team_names(progress)
-    order = (data.groupby("Team")["points"].sum().sort_values(ascending=False).index.tolist())
-    chart = (alt.Chart(data).mark_rect(stroke=None)
-             .encode(x=alt.X("round:O", title="Round"),
-                     y=alt.Y("Team:N", sort=order, title=None),
-                     color=alt.Color("points:Q", title="Points",
-                                     scale=alt.Scale(scheme="reds")),
-                     tooltip=["Team", alt.Tooltip("race_name:N", title="Race"),
-                              alt.Tooltip("points:Q", title="Points")]))
-    return dress(chart).properties(height=max(220, 26 * len(order)))
+    One row per team fixes both. Every row is drawn against the same scale, so bar
+    heights can be compared straight down the column, and the name sits beside its own
+    row, which means there is no legend to read.
+    """
+    text, grid, muted = theme()
+    data = progress if "Team" in progress.columns else with_team_names(progress)
+    data = data.copy()
+    rows = (data.groupby(row_field, observed=True)["points"].sum()
+            .sort_values(ascending=False))
+    order = rows.index.tolist()
+    ceiling = float(data["points"].max())
+    if not ceiling > 0:                      # also catches an all-empty season (NaN)
+        ceiling = 1.0
+    scale = team_scale(sorted(data["constructor"].dropna().unique()))
+
+    label = row_label if row_field != "Team" else "Team"
+    panel = (alt.Chart(data).mark_bar(cornerRadiusTopLeft=2, cornerRadiusTopRight=2)
+             .encode(x=alt.X("round:O", title="Round",
+                             axis=alt.Axis(labelAngle=0, labelFontSize=9,
+                                           labelOverlap=True)),
+                     y=alt.Y("points:Q", title=None,
+                             scale=alt.Scale(domain=[0, ceiling]),
+                             axis=alt.Axis(values=[0, round(ceiling)], labelFontSize=9)),
+                     color=alt.Color("Team:N", scale=scale, legend=None),
+                     tooltip=[alt.Tooltip(f"{row_field}:N", title=label),
+                              alt.Tooltip("race_name:N", title="Race"),
+                              alt.Tooltip("points:Q", title="Points that race")])
+             .properties(width=alt.Step(16), height=34))
+
+    chart = panel.facet(
+        row=alt.Row(f"{row_field}:N", sort=order, title=None,
+                    header=alt.Header(labelAngle=0, labelAlign="left",
+                                      labelAnchor="middle", labelFontSize=11,
+                                      labelColor=text, labelLimit=150)),
+        spacing=3)
+    return (chart.configure_view(strokeWidth=0)
+            .configure_axis(labelColor=muted, titleColor=muted, gridColor=grid,
+                            domainColor=grid, tickColor=grid, titleFontSize=12)
+            .configure_title(color=text))
 
 
 def gap_to_leader(progress):

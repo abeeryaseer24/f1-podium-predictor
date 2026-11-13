@@ -5,7 +5,7 @@ import streamlit as st
 from app_garage import (default_season, get_driver_progress, get_driver_table, get_seasons,
                         sprint_points_included)
 from cards import cards_css, note, standings_rows
-from charts import dress, team_scale
+from charts import dress, points_per_race, team_scale
 from predictor import clean_name
 from style import empty_note, stat_strip, team_info
 from ui_kit import kit_css, section
@@ -94,12 +94,11 @@ bumps = base.encode(y=alt.Y("position:Q", title="Championship place",
 st.altair_chart(dress(bumps.mark_line(strokeWidth=3) + bumps.mark_circle(size=50)),
                 width="stretch", theme=None)
 
-section("Points scored at each race",
+section(f"Points scored at each race, top {TOP}",
             "What each driver took home from each weekend, not the running total.")
-bars = (alt.Chart(chart_data[chart_data["points"] > 0]).mark_bar()
-        .encode(x=alt.X("round:O", title="Round"),
-                y=alt.Y("points:Q", title="Points that race"),
-                color=alt.Color("Team:N", scale=scale, title=None),
-                tooltip=[alt.Tooltip("driver:N", title="Driver"), "Team",
-                         alt.Tooltip("points:Q", title="Points")]))
-st.altair_chart(dress(bars), width="stretch", theme=None)
+note("One row per driver, best season first, each bar a single Grand Prix. Every row "
+     "uses the same scale, so the bars can be compared straight down the page. The "
+     "most a driver can score is 25 at a normal race, or 33 at a sprint weekend. Tap "
+     "a bar for the race and the score.")
+st.altair_chart(points_per_race(chart_data, row_field="driver"),
+                width="stretch", theme=None)
