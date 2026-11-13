@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2024,3,Australian Grand Prix,False,alpine,81.55215384615386,1.643,99
+2024,3,Australian Grand Prix,False,aston_martin,81.04746153846153,1.014,101
+2024,3,Australian Grand Prix,False,audi,81.67900000000002,1.801,100
+2024,3,Australian Grand Prix,False,ferrari,80.26683333333334,0.041,101
+2024,3,Australian Grand Prix,False,haas,81.56433333333332,1.658,101
+2024,3,Australian Grand Prix,False,mclaren,80.23369230769231,0.0,101
+2024,3,Australian Grand Prix,False,mercedes,80.93424999999999,0.873,62
+2024,3,Australian Grand Prix,False,rb,81.48091666666667,1.554,100
+2024,3,Australian Grand Prix,False,red_bull,80.81558333333334,0.725,50
+2024,3,Australian Grand Prix,False,williams,81.96208333333333,2.154,50
+2024,4,Japanese Grand Prix,False,alpine,96.83463636363636,2.468,90
+2024,4,Japanese Grand Prix,False,aston_martin,95.55349999999999,1.112,89
+2024,4,Japanese Grand Prix,False,audi,97.0449090909091,2.691,45
+2024,4,Japanese Grand Prix,False,ferrari,94.56941666666667,0.071,94
+2024,4,Japanese Grand Prix,False,haas,95.81745454545454,1.392,92
+2024,4,Japanese Grand Prix,False,mclaren,95.45808333333332,1.011,92
+2024,4,Japanese Grand Prix,False,mercedes,94.74341666666668,0.255,92
+2024,4,Japanese Grand Prix,False,rb,96.86336363636362,2.498,45
+2024,4,Japanese Grand Prix,False,red_bull,94.50225,0.0,92
+2024,4,Japanese Grand Prix,False,williams,95.50863636363637,1.065,43
 2024,5,Chinese Grand Prix,False,alpine,100.007,1.234,82
 2024,5,Chinese Grand Prix,False,aston_martin,99.3135,0.532,82
 2024,5,Chinese Grand Prix,False,audi,99.85159999999999,1.077,56
