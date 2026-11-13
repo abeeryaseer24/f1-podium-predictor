@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2023,21,Las Vegas Grand Prix,False,alpine,96.94289999999998,1.045,78
+2023,21,Las Vegas Grand Prix,False,aston_martin,96.81800000000001,0.915,82
+2023,21,Las Vegas Grand Prix,False,audi,98.0718,2.221,80
+2023,21,Las Vegas Grand Prix,False,ferrari,96.04369999999999,0.107,80
+2023,21,Las Vegas Grand Prix,False,haas,97.9002,2.043,73
+2023,21,Las Vegas Grand Prix,False,mclaren,96.22711111111111,0.299,37
+2023,21,Las Vegas Grand Prix,False,mercedes,96.3489,0.426,78
+2023,21,Las Vegas Grand Prix,False,rb,97.7503,1.886,72
+2023,21,Las Vegas Grand Prix,False,red_bull,95.9406,0.0,80
+2023,21,Las Vegas Grand Prix,False,williams,97.9314,2.075,78
+2023,22,Abu Dhabi Grand Prix,False,alpine,89.37830769230769,1.807,108
+2023,22,Abu Dhabi Grand Prix,False,aston_martin,88.60361538461538,0.924,106
+2023,22,Abu Dhabi Grand Prix,False,audi,89.31776923076924,1.738,107
+2023,22,Abu Dhabi Grand Prix,False,ferrari,88.37930769230768,0.669,105
+2023,22,Abu Dhabi Grand Prix,False,haas,89.51407692307694,1.961,105
+2023,22,Abu Dhabi Grand Prix,False,mclaren,88.50715384615384,0.814,106
+2023,22,Abu Dhabi Grand Prix,False,mercedes,88.45284615384615,0.752,106
+2023,22,Abu Dhabi Grand Prix,False,rb,88.74392307692307,1.084,108
+2023,22,Abu Dhabi Grand Prix,False,red_bull,87.79223076923077,0.0,106
+2023,22,Abu Dhabi Grand Prix,False,williams,88.64315384615384,0.969,106
 2024,1,Bahrain Grand Prix,False,alpine,95.47249999999998,1.228,100
 2024,1,Bahrain Grand Prix,False,aston_martin,94.91269230769231,0.634,104
 2024,1,Bahrain Grand Prix,False,audi,96.44569230769231,2.259,102
