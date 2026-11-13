@@ -94,16 +94,14 @@ else:
         "figures": [(f"{row.gain:.2f}%", "gained")],
     } for place, row in enumerate(steps.itertuples(), start=1)])
 
-section("Upgrade notes",
-        "What each team actually brought, written down by hand from the technical reports.")
-if notes.empty:
-    empty_note(f"Nothing has been written down for {season} yet.")
-    note("Add a line to <code>data/upgrades.csv</code> for each package a team brings. "
-         "The columns are "
-         "<code>season, round, constructor, area, description, source</code>, where "
-         "<code>area</code> is something like floor, front wing or sidepods, and "
-         "<code>source</code> is where you read about it.")
-else:
+# The upgrade notes are written by hand, and until some exist there is nothing to show.
+# An empty section with maintenance instructions under it made a working page look
+# broken, so the whole section is simply left out when the file has nothing for this
+# season. How to fill it in is in About → The live system.
+if not notes.empty:
+    section("Upgrade notes",
+            "What each team actually brought, written down by hand from the "
+            "technical reports.")
     show = notes.copy().sort_values("round", ascending=False)
     sheet([("Round", "num"), ("Team", "tag"), ("Area", "text"),
            ("What it was", "wrap"), ("Source", "text")],

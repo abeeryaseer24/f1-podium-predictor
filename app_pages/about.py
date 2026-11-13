@@ -277,3 +277,37 @@ with tabs[4]:
         st.caption(f"Model last trained on {trained}, using every race up to the {last['race_name']} "
                    f"{last['season']} (round {last['round']}).")
     st.markdown(f"[See the robot's runs on GitHub]({GITHUB}/actions)")
+
+    st.subheader("Maintaining the data")
+    st.write("Two parts of the app are not automated. Power unit allocations and aerodynamic "
+             "upgrade packages are published only in team press material and scrutineering "
+             "documents, and no free data source carries either, so both are recorded by hand. "
+             "The reference below is the specification for those files.")
+
+    st.markdown("**`data/power_units.csv` — power unit components**")
+    st.markdown(
+        "Columns: `season, round, driver, constructor, component, note`.\n"
+        "- One row per component fitted. The component each car begins the season with is "
+        "counted automatically, so only subsequent changes are recorded.\n"
+        "- `driver` takes the identifier used throughout the application, for example "
+        "`max_verstappen`.\n"
+        "- `component` must match the part name exactly as it appears in the allowance table "
+        "on the Power Units page.\n"
+        "- The page is withdrawn from the menu while this file is empty, and is restored "
+        "automatically once it contains at least one row.")
+
+    st.markdown("**`data/upgrades.csv` — upgrade packages**")
+    st.markdown(
+        "Columns: `season, round, constructor, area, description, source`.\n"
+        "- One row per package introduced by a team.\n"
+        "- `area` identifies the part of the car, for example floor, front wing or sidepods.\n"
+        "- `source` records the technical report the entry was taken from.\n"
+        "- The Upgrade notes section is omitted for any season with no rows. The measured "
+        "pace steps shown above it are derived from lap data and are unaffected.")
+
+    st.markdown("**Lap-derived pages**")
+    st.write("Pit and Strategy, Tyre Lab, Pit Wall, Race Insights and the Penalties Log are all "
+             "built from the prepared race folders in `data/races/`, which the robot assembles "
+             "from OpenF1. Coverage begins in 2023 and a season appears only once its races have "
+             "been prepared, so these pages open on the most recent season that has data rather "
+             "than on the current one.")

@@ -94,11 +94,6 @@ if not log.empty:
           [[int(r.round), r.Driver, r.component, r.note]
            for r in show_log.sort_values("round", ascending=False).itertuples()])
 
-section("How to keep this up to date",
-        "One line per new part, and the page counts the rest.")
-note("Open <code>data/power_units.csv</code> and add one line for every new part a driver "
-     "takes. The columns are "
-     "<code>season, round, driver, constructor, component, note</code>. "
-     "Use the driver id the rest of the app uses, for example <code>max_verstappen</code>, "
-     "and spell the part exactly as it appears in the rules table above. "
-     "The part the car started the season with is already counted, so only log changes.")
+# The instructions for keeping data/power_units.csv up to date used to sit here, in
+# front of every visitor. They are maintenance notes, not something a reader of the
+# page needs, so they live in About → The live system now.

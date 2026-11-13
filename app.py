@@ -14,6 +14,24 @@ from style import apply_style, hero
 st.set_page_config(page_title="Podium Predictor", page_icon="🏁", layout="wide")
 
 
+def has_rows(name):
+    """True if one of the hand-kept csv files has anything in it beyond its headings.
+
+    Power Units is built entirely from data/power_units.csv. While that file is empty
+    the page can only report that every driver is on their first of every part, which
+    is not information — it is the absence of it. Rather than show an empty page, the
+    menu leaves it out until the file has something in it, and puts it back by itself
+    on the next run once it does.
+    """
+    path = Path(__file__).parent / "data" / f"{name}.csv"
+    try:
+        with path.open(encoding="utf-8") as handle:
+            next(handle, None)                      # the heading row
+            return any(line.strip() for line in handle)
+    except OSError:
+        return False
+
+
 # ---------- the top menu: new pages get added here as they're built ----------
 
 PAGES = {
@@ -32,7 +50,8 @@ PAGES = {
         st.Page("app_pages/team_performance.py", title="Team Performance"),
         st.Page("app_pages/reliability.py", title="Reliability"),
         st.Page("app_pages/pit_strategy.py", title="Pit and Strategy"),
-        st.Page("app_pages/power_units.py", title="Power Units"),
+        *([st.Page("app_pages/power_units.py", title="Power Units")]
+          if has_rows("power_units") else []),
         st.Page("app_pages/upgrades.py", title="Upgrades"),
     ],
     "Drivers": [
