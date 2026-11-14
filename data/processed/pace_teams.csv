@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2023,13,Dutch Grand Prix,False,alpine,74.87790000000001,1.028,82
+2023,13,Dutch Grand Prix,False,aston_martin,74.11619999999999,0.0,84
+2023,13,Dutch Grand Prix,False,audi,75.47783333333334,1.837,86
+2023,13,Dutch Grand Prix,False,ferrari,75.1074,1.337,63
+2023,13,Dutch Grand Prix,False,haas,74.987,1.175,87
+2023,13,Dutch Grand Prix,False,mclaren,74.61400000000002,0.672,84
+2023,13,Dutch Grand Prix,False,mercedes,74.47409999999999,0.483,89
+2023,13,Dutch Grand Prix,False,rb,75.14840000000001,1.393,81
+2023,13,Dutch Grand Prix,False,red_bull,74.20059999999998,0.114,79
+2023,13,Dutch Grand Prix,False,williams,74.86627272727272,1.012,52
+2023,14,Italian Grand Prix,False,alpine,86.25145454545454,0.88,80
+2023,14,Italian Grand Prix,False,aston_martin,86.42999999999999,1.089,95
+2023,14,Italian Grand Prix,False,audi,86.32427272727273,0.965,92
+2023,14,Italian Grand Prix,False,ferrari,85.71075000000002,0.247,96
+2023,14,Italian Grand Prix,False,haas,86.36645454545454,1.014,90
+2023,14,Italian Grand Prix,False,mclaren,85.91618181818183,0.488,93
+2023,14,Italian Grand Prix,False,mercedes,86.01583333333333,0.604,96
+2023,14,Italian Grand Prix,False,rb,86.13545454545455,0.744,45
+2023,14,Italian Grand Prix,False,red_bull,85.49925,0.0,96
+2023,14,Italian Grand Prix,False,williams,86.59166666666665,1.278,95
 2023,15,Singapore Grand Prix,False,alpine,98.9435,1.996,93
 2023,15,Singapore Grand Prix,False,aston_martin,98.36064285714285,1.395,54
 2023,15,Singapore Grand Prix,False,audi,99.16863636363637,2.228,96
