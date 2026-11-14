@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2023,15,Singapore Grand Prix,False,alpine,98.9435,1.996,93
+2023,15,Singapore Grand Prix,False,aston_martin,98.36064285714285,1.395,54
+2023,15,Singapore Grand Prix,False,audi,99.16863636363637,2.228,96
+2023,15,Singapore Grand Prix,False,ferrari,98.42285714285713,1.459,112
+2023,15,Singapore Grand Prix,False,haas,98.6910714285714,1.736,110
+2023,15,Singapore Grand Prix,False,mclaren,98.4125,1.449,111
+2023,15,Singapore Grand Prix,False,mercedes,97.00721428571428,0.0,111
+2023,15,Singapore Grand Prix,False,rb,99.86000000000001,2.941,55
+2023,15,Singapore Grand Prix,False,red_bull,97.22685714285713,0.226,108
+2023,15,Singapore Grand Prix,False,williams,98.55178571428573,1.592,111
+2023,16,Japanese Grand Prix,False,alpine,97.2079090909091,1.564,89
+2023,16,Japanese Grand Prix,False,aston_martin,97.62672727272728,2.001,58
+2023,16,Japanese Grand Prix,False,audi,98.1091,2.505,42
+2023,16,Japanese Grand Prix,False,ferrari,96.82054545454547,1.159,88
+2023,16,Japanese Grand Prix,False,haas,97.56060000000001,1.932,84
+2023,16,Japanese Grand Prix,False,mclaren,96.04127272727273,0.345,89
+2023,16,Japanese Grand Prix,False,mercedes,96.8980909090909,1.24,90
+2023,16,Japanese Grand Prix,False,rb,97.96529999999998,2.355,84
+2023,16,Japanese Grand Prix,False,red_bull,95.71136363636364,0.0,44
+2023,16,Japanese Grand Prix,False,williams,99.62866666666667,4.093,32
 2023,17,Qatar Grand Prix,False,alpine,86.532,1.604,94
 2023,17,Qatar Grand Prix,False,aston_martin,86.35558333333334,1.397,95
 2023,17,Qatar Grand Prix,False,audi,86.69099999999999,1.791,96
