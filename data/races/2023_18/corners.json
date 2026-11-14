@@ -1,0 +1,102 @@
+[
+  {
+    "label": "T1",
+    "i": 36,
+    "source": "official"
+  },
+  {
+    "label": "T2",
+    "i": 57,
+    "source": "official"
+  },
+  {
+    "label": "T3",
+    "i": 73,
+    "source": "official"
+  },
+  {
+    "label": "T4",
+    "i": 77,
+    "source": "official"
+  },
+  {
+    "label": "T5",
+    "i": 83,
+    "source": "official"
+  },
+  {
+    "label": "T6",
+    "i": 90,
+    "source": "official"
+  },
+  {
+    "label": "T7",
+    "i": 107,
+    "source": "official"
+  },
+  {
+    "label": "T8",
+    "i": 118,
+    "source": "official"
+  },
+  {
+    "label": "T9",
+    "i": 125,
+    "source": "official"
+  },
+  {
+    "label": "T10",
+    "i": 139,
+    "source": "official"
+  },
+  {
+    "label": "T11",
+    "i": 165,
+    "source": "official"
+  },
+  {
+    "label": "T12",
+    "i": 235,
+    "source": "official"
+  },
+  {
+    "label": "T13",
+    "i": 258,
+    "source": "official"
+  },
+  {
+    "label": "T14",
+    "i": 266,
+    "source": "official"
+  },
+  {
+    "label": "T15",
+    "i": 285,
+    "source": "official"
+  },
+  {
+    "label": "T16",
+    "i": 303,
+    "source": "official"
+  },
+  {
+    "label": "T17",
+    "i": 311,
+    "source": "official"
+  },
+  {
+    "label": "T18",
+    "i": 318,
+    "source": "official"
+  },
+  {
+    "label": "T19",
+    "i": 331,
+    "source": "official"
+  },
+  {
+    "label": "T20",
+    "i": 354,
+    "source": "official"
+  }
+]

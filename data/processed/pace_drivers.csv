@@ -1,4 +1,41 @@
 season,round,race_name,wet,driver,code,team_id,driver_number,pace,pct_off,clean_laps
+2023,17,Qatar Grand Prix,False,max_verstappen,VER,red_bull,1,85.48333333333335,0.373,47
+2023,17,Qatar Grand Prix,False,sargeant,SAR,williams,2,88.478875,3.89,31
+2023,17,Qatar Grand Prix,False,norris,NOR,mclaren,4,85.16608333333333,0.0,47
+2023,17,Qatar Grand Prix,False,gasly,GAS,alpine,10,86.532,1.604,47
+2023,17,Qatar Grand Prix,False,perez,PER,red_bull,11,86.78491666666666,1.901,47
+2023,17,Qatar Grand Prix,False,alonso,ALO,aston_martin,14,86.35558333333334,1.397,46
+2023,17,Qatar Grand Prix,False,leclerc,LEC,ferrari,16,86.03716666666668,1.023,47
+2023,17,Qatar Grand Prix,False,stroll,STR,aston_martin,18,86.90533333333333,2.042,49
+2023,17,Qatar Grand Prix,False,kevin_magnussen,MAG,haas,20,87.37774999999999,2.597,48
+2023,17,Qatar Grand Prix,False,tsunoda,TSU,rb,22,87.43708333333332,2.667,46
+2023,17,Qatar Grand Prix,False,albon,ALB,williams,23,87.004,2.158,47
+2023,17,Qatar Grand Prix,False,,ZHO,audi,24,86.69099999999999,1.791,47
+2023,17,Qatar Grand Prix,False,hulkenberg,HUL,haas,27,86.99716666666667,2.15,46
+2023,17,Qatar Grand Prix,False,ocon,OCO,alpine,31,86.73016666666666,1.837,47
+2023,17,Qatar Grand Prix,False,lawson,LAW,rb,40,87.95491666666668,3.275,48
+2023,17,Qatar Grand Prix,False,russell,RUS,mercedes,63,85.98583333333335,0.963,46
+2023,17,Qatar Grand Prix,False,bottas,BOT,audi,77,86.95691666666666,2.103,49
+2023,17,Qatar Grand Prix,False,piastri,PIA,mclaren,81,85.26741666666666,0.119,47
+2023,18,United States Grand Prix,False,max_verstappen,VER,red_bull,1,100.26415384615385,0.418,51
+2023,18,United States Grand Prix,False,sargeant,SAR,williams,2,101.55738461538462,1.714,51
+2023,18,United States Grand Prix,False,ricciardo,RIC,rb,3,101.77491666666667,1.931,50
+2023,18,United States Grand Prix,False,norris,NOR,mclaren,4,100.58523076923076,0.74,51
+2023,18,United States Grand Prix,False,gasly,GAS,alpine,10,100.89715384615384,1.052,51
+2023,18,United States Grand Prix,False,perez,PER,red_bull,11,100.45284615384615,0.607,51
+2023,18,United States Grand Prix,False,alonso,ALO,aston_martin,14,101.01209090909092,1.167,44
+2023,18,United States Grand Prix,False,leclerc,LEC,ferrari,16,101.23623076923076,1.392,53
+2023,18,United States Grand Prix,False,stroll,STR,aston_martin,18,100.25653846153847,0.411,51
+2023,18,United States Grand Prix,False,kevin_magnussen,MAG,haas,20,101.93458333333335,2.091,50
+2023,18,United States Grand Prix,False,tsunoda,TSU,rb,22,100.79508333333335,0.95,49
+2023,18,United States Grand Prix,False,albon,ALB,williams,23,101.60430769230769,1.761,51
+2023,18,United States Grand Prix,False,,ZHO,audi,24,102.13841666666666,2.295,50
+2023,18,United States Grand Prix,False,hulkenberg,HUL,haas,27,101.46946153846154,1.625,51
+2023,18,United States Grand Prix,False,hamilton,HAM,mercedes,44,99.95876923076922,0.112,51
+2023,18,United States Grand Prix,False,sainz,SAI,ferrari,55,100.5276923076923,0.682,51
+2023,18,United States Grand Prix,False,russell,RUS,mercedes,63,99.84646153846155,0.0,51
+2023,18,United States Grand Prix,False,bottas,BOT,audi,77,102.22107692307692,2.378,51
+2023,18,United States Grand Prix,False,piastri,PIA,mclaren,81,102.78733333333332,2.945,8
 2023,19,Mexico City Grand Prix,False,max_verstappen,VER,red_bull,1,82.05075,0.0,63
 2023,19,Mexico City Grand Prix,False,sargeant,SAR,williams,2,83.532,1.805,62
 2023,19,Mexico City Grand Prix,False,ricciardo,RIC,rb,3,82.96025,1.108,63

@@ -1,0 +1,25 @@
+{
+ "book": {
+  "offset": {
+   "SOFT": -0.5,
+   "MEDIUM": 0.0,
+   "HARD": 0.4
+  },
+  "wear": {
+   "SOFT": 0.09,
+   "MEDIUM": 0.05,
+   "HARD": 0.03
+  },
+  "life": {
+   "SOFT": 35.0,
+   "MEDIUM": 45.0,
+   "HARD": 55.0
+  },
+  "pit_loss": 21.606500000000004,
+  "first_stop": 0.2777777777777778,
+  "source": "0 earlier races here, 16 in all",
+  "wear_factor": 1.0,
+  "stint_factor": 1.0
+ },
+ "pit_model": null
+}
