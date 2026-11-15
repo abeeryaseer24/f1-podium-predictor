@@ -1,4 +1,23 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2023,11,Hungarian Grand Prix,False,aston_martin,83.01837499999999,1.429,129
+2023,11,Hungarian Grand Prix,False,audi,84.01068749999999,2.642,128
+2023,11,Hungarian Grand Prix,False,ferrari,82.95137499999998,1.347,130
+2023,11,Hungarian Grand Prix,False,haas,84.25756249999999,2.943,128
+2023,11,Hungarian Grand Prix,False,mclaren,82.8311875,1.201,130
+2023,11,Hungarian Grand Prix,False,mercedes,82.23775,0.476,130
+2023,11,Hungarian Grand Prix,False,rb,84.0633125,2.706,128
+2023,11,Hungarian Grand Prix,False,red_bull,81.8485,0.0,130
+2023,11,Hungarian Grand Prix,False,williams,84.10866666666666,2.761,125
+2023,12,Belgian Grand Prix,False,alpine,111.4138,1.26,80
+2023,12,Belgian Grand Prix,False,aston_martin,111.3228,1.178,80
+2023,12,Belgian Grand Prix,False,audi,111.7114,1.531,78
+2023,12,Belgian Grand Prix,False,ferrari,111.06120000000001,0.94,59
+2023,12,Belgian Grand Prix,False,haas,111.9822,1.777,78
+2023,12,Belgian Grand Prix,False,mclaren,111.94760000000001,1.745,39
+2023,12,Belgian Grand Prix,False,mercedes,110.56655555555557,0.49,78
+2023,12,Belgian Grand Prix,False,rb,111.8412,1.649,78
+2023,12,Belgian Grand Prix,False,red_bull,110.0272,0.0,78
+2023,12,Belgian Grand Prix,False,williams,111.07688888888889,0.954,74
 2023,13,Dutch Grand Prix,False,alpine,74.87790000000001,1.028,82
 2023,13,Dutch Grand Prix,False,aston_martin,74.11619999999999,0.0,84
 2023,13,Dutch Grand Prix,False,audi,75.47783333333334,1.837,86
