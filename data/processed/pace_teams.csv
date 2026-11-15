@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2023,9,Austrian Grand Prix,False,alpine,69.393875,1.559,127
+2023,9,Austrian Grand Prix,False,aston_martin,68.89086666666667,0.822,124
+2023,9,Austrian Grand Prix,False,audi,70.06426666666668,2.54,122
+2023,9,Austrian Grand Prix,False,ferrari,69.035875,1.035,126
+2023,9,Austrian Grand Prix,False,haas,70.5004375,3.178,63
+2023,9,Austrian Grand Prix,False,mclaren,69.272125,1.38,125
+2023,9,Austrian Grand Prix,False,mercedes,69.4590625,1.654,128
+2023,9,Austrian Grand Prix,False,rb,70.16633333333334,2.689,122
+2023,9,Austrian Grand Prix,False,red_bull,68.32893333333335,0.0,121
+2023,9,Austrian Grand Prix,False,williams,69.7635625,2.1,127
+2023,10,British Grand Prix,False,alpine,92.51233333333333,1.887,44
+2023,10,British Grand Prix,False,aston_martin,91.80327272727273,1.106,88
+2023,10,British Grand Prix,False,audi,92.12663636363636,1.462,86
+2023,10,British Grand Prix,False,ferrari,91.61659999999999,0.901,84
+2023,10,British Grand Prix,False,haas,92.13080000000001,1.467,72
+2023,10,British Grand Prix,False,mclaren,90.99945454545455,0.221,87
+2023,10,British Grand Prix,False,mercedes,91.19054545454546,0.431,87
+2023,10,British Grand Prix,False,rb,92.47939999999998,1.851,84
+2023,10,British Grand Prix,False,red_bull,90.79890909090909,0.0,87
+2023,10,British Grand Prix,False,williams,91.78099999999999,1.082,86
 2023,11,Hungarian Grand Prix,False,aston_martin,83.01837499999999,1.429,129
 2023,11,Hungarian Grand Prix,False,audi,84.01068749999999,2.642,128
 2023,11,Hungarian Grand Prix,False,ferrari,82.95137499999998,1.347,130
