@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2023,5,Miami Grand Prix,False,alpine,91.61435714285717,1.069,108
+2023,5,Miami Grand Prix,False,aston_martin,91.33285714285715,0.758,108
+2023,5,Miami Grand Prix,False,audi,91.98721428571427,1.48,108
+2023,5,Miami Grand Prix,False,ferrari,91.61778571428572,1.073,108
+2023,5,Miami Grand Prix,False,haas,91.95014285714286,1.439,108
+2023,5,Miami Grand Prix,False,mclaren,92.6612142857143,2.224,107
+2023,5,Miami Grand Prix,False,mercedes,91.24499999999999,0.662,108
+2023,5,Miami Grand Prix,False,rb,91.64307142857142,1.101,108
+2023,5,Miami Grand Prix,False,red_bull,90.64535714285715,0.0,108
+2023,5,Miami Grand Prix,False,williams,92.14085714285714,1.65,107
+2023,6,Monaco Grand Prix,False,alpine,76.90133333333334,0.341,97
+2023,6,Monaco Grand Prix,False,aston_martin,76.96175,0.42,99
+2023,6,Monaco Grand Prix,False,audi,77.38633333333333,0.974,100
+2023,6,Monaco Grand Prix,False,ferrari,76.79541666666667,0.203,97
+2023,6,Monaco Grand Prix,False,haas,77.42775,1.028,97
+2023,6,Monaco Grand Prix,False,mclaren,77.8903846153846,1.632,99
+2023,6,Monaco Grand Prix,False,mercedes,76.68383333333333,0.058,98
+2023,6,Monaco Grand Prix,False,rb,77.96791666666667,1.733,100
+2023,6,Monaco Grand Prix,False,red_bull,76.63966666666668,0.0,96
+2023,6,Monaco Grand Prix,False,williams,77.54054545454545,1.175,92
 2023,7,Spanish Grand Prix,False,alpine,78.84453333333333,1.378,122
 2023,7,Spanish Grand Prix,False,aston_martin,78.60940000000001,1.076,122
 2023,7,Spanish Grand Prix,False,audi,79.03793333333333,1.627,121
