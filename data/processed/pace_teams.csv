@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2023,3,Australian Grand Prix,False,alpine,81.26318181818182,0.597,88
+2023,3,Australian Grand Prix,False,aston_martin,80.85636363636364,0.093,88
+2023,3,Australian Grand Prix,False,audi,82.04427272727273,1.564,87
+2023,3,Australian Grand Prix,False,ferrari,81.03399999999999,0.313,44
+2023,3,Australian Grand Prix,False,haas,81.60863636363636,1.025,87
+2023,3,Australian Grand Prix,False,mclaren,81.47636363636364,0.861,88
+2023,3,Australian Grand Prix,False,mercedes,80.87390909090908,0.115,53
+2023,3,Australian Grand Prix,False,rb,82.22309090909091,1.785,84
+2023,3,Australian Grand Prix,False,red_bull,80.78090909090908,0.0,88
+2023,3,Australian Grand Prix,False,williams,81.9376,1.432,41
+2023,4,Azerbaijan Grand Prix,False,alpine,105.8518,1.062,87
+2023,4,Azerbaijan Grand Prix,False,aston_martin,104.73941666666668,0.0,94
+2023,4,Azerbaijan Grand Prix,False,audi,106.6731,1.846,73
+2023,4,Azerbaijan Grand Prix,False,ferrari,105.02550000000001,0.273,94
+2023,4,Azerbaijan Grand Prix,False,haas,106.67541666666666,1.848,89
+2023,4,Azerbaijan Grand Prix,False,mclaren,106.41236363636364,1.597,89
+2023,4,Azerbaijan Grand Prix,False,mercedes,105.60145454545454,0.823,90
+2023,4,Azerbaijan Grand Prix,False,rb,106.54409090909093,1.723,52
+2023,4,Azerbaijan Grand Prix,False,red_bull,104.80608333333335,0.064,93
+2023,4,Azerbaijan Grand Prix,False,williams,106.61472727272727,1.79,88
 2023,5,Miami Grand Prix,False,alpine,91.61435714285717,1.069,108
 2023,5,Miami Grand Prix,False,aston_martin,91.33285714285715,0.758,108
 2023,5,Miami Grand Prix,False,audi,91.98721428571427,1.48,108
