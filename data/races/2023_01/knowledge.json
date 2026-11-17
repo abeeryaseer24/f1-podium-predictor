@@ -1,0 +1,25 @@
+{
+ "book": {
+  "offset": {
+   "SOFT": -0.5,
+   "MEDIUM": 0.0,
+   "HARD": 0.4
+  },
+  "wear": {
+   "SOFT": 0.09,
+   "MEDIUM": 0.05,
+   "HARD": 0.03
+  },
+  "life": {
+   "SOFT": 35,
+   "MEDIUM": 45,
+   "HARD": 55
+  },
+  "pit_loss": 22.0,
+  "first_stop": 0.4,
+  "source": "typical values",
+  "wear_factor": 1.0,
+  "stint_factor": 1.0
+ },
+ "pit_model": null
+}

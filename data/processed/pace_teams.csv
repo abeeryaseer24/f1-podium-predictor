@@ -1,4 +1,24 @@
 season,round,race_name,wet,constructor,pace,pct_off,clean_laps
+2023,1,Bahrain Grand Prix,False,alpine,96.28133333333334,0.0,83
+2023,1,Bahrain Grand Prix,False,aston_martin,96.81076923076922,0.55,102
+2023,1,Bahrain Grand Prix,False,audi,97.68258333333334,1.455,97
+2023,1,Bahrain Grand Prix,False,ferrari,97.44923076923078,1.213,85
+2023,1,Bahrain Grand Prix,False,haas,97.10933333333332,0.86,98
+2023,1,Bahrain Grand Prix,False,mclaren,96.56960000000001,0.299,52
+2023,1,Bahrain Grand Prix,False,mercedes,97.32915384615384,1.088,102
+2023,1,Bahrain Grand Prix,False,rb,97.30616666666667,1.064,99
+2023,1,Bahrain Grand Prix,False,red_bull,96.63433333333334,0.367,101
+2023,1,Bahrain Grand Prix,False,williams,97.22666666666667,0.982,99
+2023,2,Saudi Arabian Grand Prix,False,alpine,93.83472727272728,1.608,87
+2023,2,Saudi Arabian Grand Prix,False,aston_martin,92.94891666666666,0.649,59
+2023,2,Saudi Arabian Grand Prix,False,audi,94.39136363636362,2.21,83
+2023,2,Saudi Arabian Grand Prix,False,ferrari,93.26254545454547,0.988,87
+2023,2,Saudi Arabian Grand Prix,False,haas,93.93872727272728,1.72,86
+2023,2,Saudi Arabian Grand Prix,False,mclaren,94.64563636363636,2.486,87
+2023,2,Saudi Arabian Grand Prix,False,mercedes,93.02850000000001,0.735,92
+2023,2,Saudi Arabian Grand Prix,False,rb,94.20172727272728,2.005,90
+2023,2,Saudi Arabian Grand Prix,False,red_bull,92.35000000000001,0.0,92
+2023,2,Saudi Arabian Grand Prix,False,williams,94.88972727272727,2.75,66
 2023,3,Australian Grand Prix,False,alpine,81.26318181818182,0.597,88
 2023,3,Australian Grand Prix,False,aston_martin,80.85636363636364,0.093,88
 2023,3,Australian Grand Prix,False,audi,82.04427272727273,1.564,87
