@@ -254,6 +254,7 @@ def simulate(car, track):
         "s": track.s, "time": time, "speed": speed, "speed_kmh": speed * 3.6,
         "long_g": accel / G, "lat_g": lat_g, "mode": mode,
         "downforce_n": downforce, "drag_n": drag, "corner_limit": v_corner,
+        "forward": np.array(fwd), "backward": np.array(bwd),
         "lap_time": float(dt.sum()),
     }
 

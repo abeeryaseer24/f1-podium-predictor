@@ -81,6 +81,8 @@ with tabs[0]:
         {"Page": "Team Radio", "What it shows": "Every published radio message of a race, transcribed and sorted by topic."},
         {"Page": "Model Report Card", "What it shows": "How trustworthy the model's percentages are: calibration, Brier score and finish ranges."},
         {"Page": "Rules Sandbox", "What it shows": "Every title since 1950 recomputed under any points system."},
+        {"Page": "Car DNA", "What it shows": "What each car was good at: corner speeds, top speed, traction, downforce and drag from its fastest lap."},
+        {"Page": "Tyre Physics", "What it shows": "How a tyre grips, slides and overheats, with the real g-g diagram of any lap."},
         {"Page": "Lap Simulator", "What it shows": "Our physics model drives a real circuit in 3D, next to the real fastest lap."},
         {"Page": "Setup Garage", "What it shows": "Change the wing, power, weight or tyres and see the lap time, corner by corner."},
         {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},

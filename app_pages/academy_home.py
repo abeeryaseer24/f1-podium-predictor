@@ -10,7 +10,8 @@ from ui_kit import section
 academy_css()
 
 # Modules that have pages so far. Add a line here when a module goes live.
-LIVE = {"0": "app_pages/academy_m0.py", "1": "app_pages/academy_m1.py", "2": "app_pages/academy_m2.py"}
+LIVE = {"0": "app_pages/academy_m0.py", "1": "app_pages/academy_m1.py", "2": "app_pages/academy_m2.py",
+        "3": "app_pages/academy_m3.py"}
 
 st.markdown("""
 How a modern Formula 1 car works and how a race is engineered, from the tyres up. Every chapter

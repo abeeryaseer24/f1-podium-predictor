@@ -101,6 +101,7 @@ def main():
     # Extra pages, only AFTER the prediction is locked in, so they can never delay or block it.
     # Each one is optional: if it fails, the robot carries on.
     run_soft("src/lapsim.py", "--missing")          # lap simulator calibrations (Simulator, Academy)
+    run_soft("src/car_dna.py", "--missing", "--limit", "2")   # each team's Car DNA from its fastest lap
     if new:
         run_soft("src/report_card.py")              # every driver's chances in the honest test (Report Card)
     # Team radio is transcribed by the workflow AFTER this run has been pushed (see pipeline.yml).

@@ -3,7 +3,7 @@
 Both rounds of ideas merged into one list, de-duplicated and put in build order. Every page
 lives in the existing Streamlit app and looks like it was always there.
 
-Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) and Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) are done.
+Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) and Phase 3 (tyre physics, Tyre Physics, Car DNA, Academy Modules 2–3) are done.
 
 ---
 
@@ -69,7 +69,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 |---|---|---|---|
 | E1 ✅ | `src/lapsim.py` | **Lap-time simulator.** A quasi-steady-state point-mass car on the real 3D track (`track.parquet` x/y/z): curvature → corner speed limit from grip + downforce, forward pass (power, drag, gears), backward pass (braking), elevation and banking. Calibrated per circuit against the real fastest lap and its speed trace. | Nearly everything |
 | E2 | `src/race_engine.py` | **Race engine.** Lap by lap for the whole field: base pace (from E1/E3), tyres (`tyres.py`), fuel burn, pit loss, dirty air, overtaking (M2), safety car hazards (M1), reliability, weather, and rivals that react to each other. Replaces the "nobody else reacts" assumption in `strategy.py`. | Race sim, classic races, RL, games |
-| E3 | `src/car_dna.py` | **Car DNA.** Inverse E1: fit each car's downforce, drag and power to real OpenF1 speed traces, per team per race since 2023. | Car DNA page, E2 pace, counterfactuals |
+| E3 ✅ | `src/car_dna.py` | **Car DNA.** Inverse E1: fit each car's downforce, drag and power to real OpenF1 speed traces, per team per race since 2023. | Car DNA page, E2 pace, counterfactuals |
 | E4 | `src/energy.py` | **Power unit and energy model.** 2026 rules: 50/50 ICE and electric, MGU-K harvest and deploy limits, battery state of charge, active aero modes, overtake mode. Older eras (V10, V8, 2014 hybrid with MGU-H) as presets. | Energy Lab, PU pages, Academy |
 | E5 ✅ | `src/tyre_physics.py` | **Tyre model.** Pacejka magic formula, load sensitivity, a one-node temperature model, wear. Grip for E1 and the Academy. | E1, Tyre Physics, Academy |
 | E6 ✅ | `src/sim3d.py` | **Shared 3D kit** (see design rules). | Every 3D page |
@@ -100,7 +100,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 
 | # | Page / feature | Group | What it is |
 |---|---|---|---|
-| A1 | **Car DNA** | Teams | E3 as a radar per team per race (slow / medium / fast corners, top speed, traction), plus how each upgrade in `upgrades.csv` moved it. |
+| A1 ✅ | **Car DNA** | Teams | E3 as a radar per team per race (slow / medium / fast corners, top speed, traction), plus how each upgrade in `upgrades.csv` moved it. |
 | A2 ✅ | **Where the Race Was Won** | Race | Each winning margin (and any driver's result) split into qualifying, start, pure pace, strategy, pit stops and luck (safety car timing), as a waterfall per race. |
 | A3 ✅ | **Rules Sandbox** | History | Recompute every championship 1950–2026 under any points system, dropped results, no fastest-lap point, sprints everywhere, reversed grids. "Which titles change hands?" |
 | A4 ✅ | **Team Radio** | Race | Radio clips (OpenF1's team_radio list; our own `radio.parquet` is the strategist's calls) transcribed offline with open-source `faster-whisper` in GitHub Actions (free, new races only), sorted by topic (tyres, strategy, damage, complaints) on the race timeline. Test: does radio predict pit stops? Links to OpenF1 audio, never rehosted. |
@@ -273,7 +273,7 @@ Each phase ships something visible and finishes in a working app.
 |---|---|---|
 | **1. Foundations** ✅ | E6 `sim3d.py`, design checks for new pages, E1 lap simulator, S1, S2 · Academy shell (menu, chapter template, depth toggle, glossary) + Modules 0–1 | E1 is the base of everything, and the Academy template is needed by every later module |
 | **2. Quick wins on existing data** ✅ | A2 Where the Race Was Won, A3 Rules Sandbox, A5 Lap One, A9 Report Card, A4 Team Radio | High impact with the data already on disk |
-| **3. Car physics** (in progress: E5, S9 and Academy Module 2 done) | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
+| **3. Car physics** ✅ | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
 | **4. Aero and power** | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |

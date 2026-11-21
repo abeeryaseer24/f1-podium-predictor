@@ -49,6 +49,7 @@ PAGES = {
         st.Page("app_pages/constructor_standings.py", title="Constructor Standings"),
         st.Page("app_pages/team_cards.py", title="Team Cards"),
         st.Page("app_pages/team_performance.py", title="Team Performance"),
+        st.Page("app_pages/car_dna_view.py", title="Car DNA"),
         st.Page("app_pages/reliability.py", title="Reliability"),
         st.Page("app_pages/pit_strategy.py", title="Pit and Strategy"),
         *([st.Page("app_pages/power_units.py", title="Power Units")]
@@ -93,6 +94,7 @@ PAGES = {
         st.Page("app_pages/academy_m0.py", title="Start Here"),
         st.Page("app_pages/academy_m1.py", title="The Car as a System"),
         st.Page("app_pages/academy_m2.py", title="Tyres"),
+        st.Page("app_pages/academy_m3.py", title="Vehicle Dynamics"),
     ],
     "Games": [
         st.Page("app_pages/beat_the_ai.py", title="Beat the AI"),
@@ -153,6 +155,8 @@ TAGLINES = {
     "Rules Sandbox": "Every championship since 1950, recomputed under the points rules you pick.",
     "Tyre Physics": "How a racing tyre grips, slides, overheats and shares its grip, with the real g-g of any lap.",
     "Tyres": "Module 2: how rubber grips, the magic formula, the friction circle, temperature and wear.",
+    "Car DNA": "What each car was good at: corners, top speed, traction, downforce and drag, from its fastest lap.",
+    "Vehicle Dynamics": "Module 3: weight transfer, balance, suspension, ride height, the differential and steering.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",
