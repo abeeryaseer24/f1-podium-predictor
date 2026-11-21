@@ -16,6 +16,8 @@ A Formula 1 machine learning app that runs itself. It predicts the **whole finis
 | **Season Rewind** | A whole season race by race, as the model would have called it. |
 | **Pit Wall** | Any race since 2023 replayed on the real 3D track, with every car, and our strategist calling pit stops on team radio. |
 | **Ghost Lap Duel · Circuit Explorer · Tyre Lab** | Two drivers' fastest laps head to head, every circuit in 3D with real elevation, and tyre wear measured from real laps. |
+| **Lap Simulator · Setup Garage** | A physics lap simulator calibrated on every race's fastest lap: watch it drive the real 3D track beside the real lap, then change the wing, power, weight or tyres and see the lap time corner by corner. |
+| **Engineering Academy** | A course on how an F1 car works, from the tyres up, in three depths, with live demos on the simulator and real data. Modules 0–1 are open; 17 modules are planned. |
 | **Beat the AI** | Visitors pick the podium before the race, share a card, and find out after the race whether they beat the model. |
 | **Be the Race Engineer** | Make the pit calls for a real driver in a real race and try to beat their team and our strategist. |
 | **About** | Everything behind the app, sorted: the model, how it is tested, the strategist, the live system. |
@@ -96,6 +98,7 @@ Rebuild everything, or run the robot by hand:
 ```bash
 python src/data_loader.py && python src/features.py && python src/train.py
 python src/pipeline.py                     # what GitHub Actions runs every 3 hours
+python src/lapsim.py --all                 # calibrate the lap simulator on every prepared race
 python src/checks.py                       # all safety checks
 ```
 

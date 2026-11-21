@@ -180,6 +180,43 @@ def check_strategy_no_future():
                         f"({same:.1%} identical)")
 
 
+def check_lapsim():
+    """The lap simulator's calibrations: every prepared race tried, the usable ones close to reality."""
+    import lapsim
+    print("Checking the lap simulator")
+    calibration = lapsim.load_calibration()
+    folders = sorted(p.name for p in RACES_DIR.glob("*_*") if (p / "track.parquet").exists())
+    usable = {f: c for f, c in calibration.items() if c.get("usable")}
+    check(len(usable) >= 0.8 * len(folders),
+          f"most prepared races have a usable calibration ({len(usable)} of {len(folders)})")
+    far = [f for f, c in usable.items() if abs(c["sim_lap"] - c["real_lap"]) > 0.5]
+    check(not far, "every usable calibration is within half a second of the real lap")
+    rough = [f for f, c in usable.items() if c["speed_rmse_kmh"] > lapsim.MAX_RMSE]
+    check(not rough, f"every usable calibration's speed trace is within {lapsim.MAX_RMSE:.0f} km/h on average")
+    # The engine itself: a known car on a known circuit gives a sensible lap
+    if usable:
+        folder = sorted(usable)[-1]
+        import pandas as pd
+        track = lapsim.build_track(pd.read_parquet(RACES_DIR / folder / "track.parquet"))
+        car = lapsim.calibrated_car(folder, calibration)
+        lap = lapsim.simulate(car, track)["lap_time"]
+        check(abs(lap - usable[folder]["sim_lap"]) < 0.05, f"re-simulating {folder} gives the stored lap time")
+        heavier = lapsim.simulate(lapsim.replace(car, mass=car.mass + 50), track)["lap_time"]
+        check(heavier > lap, "a heavier car is slower")
+
+
+def check_pages():
+    """Every page in the menu has its one-line subtitle."""
+    import re
+    app = (ROOT / "app.py").read_text(encoding="utf-8")
+    titles = re.findall(r'st\.Page\("app_pages/[^"]+", title="([^"]+)"', app)
+    missing = [t for t in titles if t != "Home" and f'"{t}":' not in app]
+    print("Checking the pages")
+    check(not missing, f"every page has a tagline ({', '.join(missing) or 'all present'})")
+    pages = [m for m in re.findall(r'st\.Page\("(app_pages/[^"]+)"', app)]
+    check(all((ROOT / p).exists() for p in pages), "every page in the menu exists")
+
+
 def run_all(min_rows=0):
     check_results(min_rows)
     check_features()
@@ -187,6 +224,8 @@ def run_all(min_rows=0):
     check_predictions()
     check_race_files()
     check_strategy_no_future()
+    check_lapsim()
+    check_pages()
     print("All checks passed.")
 
 

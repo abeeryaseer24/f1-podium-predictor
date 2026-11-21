@@ -90,6 +90,8 @@ def main():
     run("src/corners.py", "--missing")
     # Car and driver pace from those race files, for the Team Performance page.
     run_soft("src/pace.py")
+    # Calibrate the lap simulator on new circuits, for the Simulator and Academy pages.
+    run_soft("src/lapsim.py", "--missing")
     # The strategist's knowledge from earlier races, then strategies for races that need one.
     run("src/history.py", "--missing", "--limit", "5")
     run("src/tyre_book.py")

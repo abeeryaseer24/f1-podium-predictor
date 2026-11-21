@@ -1,0 +1,1782 @@
+{
+ "2023_01": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 548.3054,
+   "wing": 0.7209,
+   "grip": 1.774,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 93.967,
+  "real_lap": 94.02,
+  "speed_rmse_kmh": 11.36,
+  "length_m": 5337.8,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_02": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 483.3325,
+   "wing": 0.0,
+   "grip": 2.923,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 91.752,
+  "real_lap": 91.759,
+  "speed_rmse_kmh": 21.48,
+  "length_m": 6109.1,
+  "air_density": 1.2233,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_03": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 524.4633,
+   "wing": 0.5371,
+   "grip": 2.2966,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 80.035,
+  "real_lap": 80.02,
+  "speed_rmse_kmh": 18.93,
+  "length_m": 5239.3,
+  "air_density": 1.2237,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_04": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 594.8412,
+   "wing": 0.615,
+   "grip": 2.0176,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 103.492,
+  "real_lap": 103.48,
+  "speed_rmse_kmh": 14.29,
+  "length_m": 5955.3,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_05": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 610.457,
+   "wing": 0.6515,
+   "grip": 1.9511,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 88.945,
+  "real_lap": 88.96,
+  "speed_rmse_kmh": 12.28,
+  "length_m": 5347.9,
+  "air_density": 1.2214,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_06": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 624.4763,
+   "wing": 1.0,
+   "grip": 1.7553,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 75.601,
+  "real_lap": 75.641,
+  "speed_rmse_kmh": 14.42,
+  "length_m": 3270.9,
+  "air_density": 1.2165,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_07": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 607.8954,
+   "wing": 0.9003,
+   "grip": 1.9962,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 76.335,
+  "real_lap": 76.38,
+  "speed_rmse_kmh": 16.1,
+  "length_m": 4611.3,
+  "air_density": 1.1998,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_08": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 528.8764,
+   "wing": 0.5398,
+   "grip": 2.0675,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 74.369,
+  "real_lap": 74.381,
+  "speed_rmse_kmh": 9.8,
+  "length_m": 4312.6,
+  "air_density": 1.2229,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_09": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 515.6904,
+   "wing": 0.4958,
+   "grip": 2.3387,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 66.888,
+  "real_lap": 66.92,
+  "speed_rmse_kmh": 15.12,
+  "length_m": 4292.1,
+  "air_density": 1.1219,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_10": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 651.4904,
+   "wing": 1.0,
+   "grip": 1.8379,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 90.272,
+  "real_lap": 90.28,
+  "speed_rmse_kmh": 12.07,
+  "length_m": 5828.1,
+  "air_density": 1.1961,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_11": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 636.5959,
+   "wing": 1.0,
+   "grip": 1.8107,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 80.472,
+  "real_lap": 80.5,
+  "speed_rmse_kmh": 11.75,
+  "length_m": 4327.7,
+  "air_density": 1.1926,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_12": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 601.7238,
+   "wing": 0.7252,
+   "grip": 1.9228,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 107.141,
+  "real_lap": 107.261,
+  "speed_rmse_kmh": 12.82,
+  "length_m": 6947.7,
+  "air_density": 1.1675,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_13": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 449.6366,
+   "wing": 0.3779,
+   "grip": 2.4264,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 73.673,
+  "real_lap": 73.72,
+  "speed_rmse_kmh": 17.15,
+  "length_m": 4212.5,
+  "air_density": 1.2172,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_14": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 572.9419,
+   "wing": 0.491,
+   "grip": 1.8066,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 85.111,
+  "real_lap": 85.121,
+  "speed_rmse_kmh": 12.59,
+  "length_m": 5759.2,
+  "air_density": 1.1978,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_15": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 576.0811,
+   "wing": 0.8456,
+   "grip": 1.7466,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 95.837,
+  "real_lap": 95.851,
+  "speed_rmse_kmh": 11.27,
+  "length_m": 4860.6,
+  "air_density": 1.2222,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_16": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 594.1894,
+   "wing": 0.9129,
+   "grip": 2.046,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 94.093,
+  "real_lap": 94.161,
+  "speed_rmse_kmh": 22.36,
+  "length_m": 5772.2,
+  "air_density": 1.2134,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_17": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 510.9101,
+   "wing": 0.5248,
+   "grip": 2.4409,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 84.357,
+  "real_lap": 84.38,
+  "speed_rmse_kmh": 18.08,
+  "length_m": 5388.7,
+  "air_density": 1.223,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_18": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 499.3145,
+   "wing": 0.698,
+   "grip": 1.9447,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 98.09,
+  "real_lap": 98.14,
+  "speed_rmse_kmh": 16.82,
+  "length_m": 5424.0,
+  "air_density": 1.2054,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_19": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 660.7512,
+   "wing": 0.9732,
+   "grip": 1.7076,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 81.242,
+  "real_lap": 81.27,
+  "speed_rmse_kmh": 12.14,
+  "length_m": 4242.5,
+  "air_density": 0.9426,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_20": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 550.9801,
+   "wing": 0.7224,
+   "grip": 1.9214,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 72.591,
+  "real_lap": 72.58,
+  "speed_rmse_kmh": 9.85,
+  "length_m": 4231.4,
+  "air_density": 1.12,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_21": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 588.663,
+   "wing": 0.5077,
+   "grip": 1.8179,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 95.398,
+  "real_lap": 95.38,
+  "speed_rmse_kmh": 13.0,
+  "length_m": 6151.0,
+  "air_density": 1.1404,
+  "usable": true,
+  "problem": ""
+ },
+ "2023_22": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 584.4966,
+   "wing": 0.7443,
+   "grip": 2.0856,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 87.047,
+  "real_lap": 87.039,
+  "speed_rmse_kmh": 14.11,
+  "length_m": 5231.0,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_01": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 520.7603,
+   "wing": 0.6246,
+   "grip": 1.8816,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 92.592,
+  "real_lap": 92.62,
+  "speed_rmse_kmh": 10.33,
+  "length_m": 5336.7,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_02": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 478.4203,
+   "wing": 0.1412,
+   "grip": 3.0,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 91.524,
+  "real_lap": 91.54,
+  "speed_rmse_kmh": 21.18,
+  "length_m": 6110.6,
+  "air_density": 1.2233,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_03": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 547.6036,
+   "wing": 0.3932,
+   "grip": 2.2664,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 79.686,
+  "real_lap": 79.68,
+  "speed_rmse_kmh": 17.0,
+  "length_m": 5238.6,
+  "air_density": 1.2237,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_04": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 500.6427,
+   "wing": 0.5606,
+   "grip": 2.2019,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 93.743,
+  "real_lap": 93.82,
+  "speed_rmse_kmh": 27.02,
+  "length_m": 5768.0,
+  "air_density": 1.2134,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_05": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 583.4068,
+   "wing": 0.57,
+   "grip": 1.7666,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 97.653,
+  "real_lap": 97.719,
+  "speed_rmse_kmh": 13.17,
+  "length_m": 5373.5,
+  "air_density": 1.2229,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_06": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 646.967,
+   "wing": 0.7881,
+   "grip": 1.8437,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 90.662,
+  "real_lap": 90.719,
+  "speed_rmse_kmh": 12.61,
+  "length_m": 5347.1,
+  "air_density": 1.2214,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_07": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 484.7101,
+   "wing": 0.4373,
+   "grip": 2.4933,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 78.306,
+  "real_lap": 78.34,
+  "speed_rmse_kmh": 15.52,
+  "length_m": 4865.3,
+  "air_density": 1.2119,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_08": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 639.4222,
+   "wing": 1.0,
+   "grip": 1.8147,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 74.307,
+  "real_lap": 74.339,
+  "speed_rmse_kmh": 14.53,
+  "length_m": 3270.9,
+  "air_density": 1.2165,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_09": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 551.5097,
+   "wing": 0.0,
+   "grip": 2.0384,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 74.699,
+  "real_lap": 74.681,
+  "speed_rmse_kmh": 11.93,
+  "length_m": 4311.6,
+  "air_density": 1.2229,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_10": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 546.1846,
+   "wing": 0.4535,
+   "grip": 2.0062,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 77.041,
+  "real_lap": 77.059,
+  "speed_rmse_kmh": 16.63,
+  "length_m": 4611.7,
+  "air_density": 1.1998,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_11": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 529.9211,
+   "wing": 0.5938,
+   "grip": 2.1552,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 67.551,
+  "real_lap": 67.579,
+  "speed_rmse_kmh": 13.66,
+  "length_m": 4291.6,
+  "air_density": 1.1219,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_12": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 672.9127,
+   "wing": 1.0,
+   "grip": 1.9397,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 88.342,
+  "real_lap": 88.38,
+  "speed_rmse_kmh": 9.07,
+  "length_m": 5828.4,
+  "air_density": 1.1961,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_13": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 561.4254,
+   "wing": 0.7653,
+   "grip": 1.8571,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 80.25,
+  "real_lap": 80.26,
+  "speed_rmse_kmh": 11.21,
+  "length_m": 4326.4,
+  "air_density": 1.1926,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_14": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 662.0046,
+   "wing": 0.8432,
+   "grip": 1.9961,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 104.557,
+  "real_lap": 104.601,
+  "speed_rmse_kmh": 16.37,
+  "length_m": 6949.6,
+  "air_density": 1.1675,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_15": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 500.8972,
+   "wing": 0.5231,
+   "grip": 2.2423,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 73.824,
+  "real_lap": 73.859,
+  "speed_rmse_kmh": 18.46,
+  "length_m": 4209.9,
+  "air_density": 1.2172,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_16": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 602.5368,
+   "wing": 0.4015,
+   "grip": 2.0452,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 81.281,
+  "real_lap": 81.3,
+  "speed_rmse_kmh": 14.74,
+  "length_m": 5759.9,
+  "air_density": 1.1978,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_17": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 690.167,
+   "wing": 0.816,
+   "grip": 1.926,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 105.35,
+  "real_lap": 105.38,
+  "speed_rmse_kmh": 23.09,
+  "length_m": 5955.4,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_18": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 540.3162,
+   "wing": 0.6704,
+   "grip": 1.8386,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 94.468,
+  "real_lap": 94.481,
+  "speed_rmse_kmh": 11.93,
+  "length_m": 4861.5,
+  "air_density": 1.2222,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_19": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 529.2172,
+   "wing": 0.6259,
+   "grip": 1.9367,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 97.348,
+  "real_lap": 97.392,
+  "speed_rmse_kmh": 18.73,
+  "length_m": 5425.0,
+  "air_density": 1.2054,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_20": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 709.4151,
+   "wing": 1.0,
+   "grip": 1.8326,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 78.174,
+  "real_lap": 78.22,
+  "speed_rmse_kmh": 13.36,
+  "length_m": 4241.8,
+  "air_density": 0.9426,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_21": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 600.7392,
+   "wing": 0.8093,
+   "grip": 1.5028,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 80.263,
+  "real_lap": 80.261,
+  "speed_rmse_kmh": 11.4,
+  "length_m": 4230.0,
+  "air_density": 1.12,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_22": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 605.3777,
+   "wing": 0.4969,
+   "grip": 1.8605,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 94.585,
+  "real_lap": 94.581,
+  "speed_rmse_kmh": 14.79,
+  "length_m": 6150.5,
+  "air_density": 1.1404,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_23": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 478.2099,
+   "wing": 0.5791,
+   "grip": 2.6643,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 82.506,
+  "real_lap": 82.539,
+  "speed_rmse_kmh": 20.35,
+  "length_m": 5390.7,
+  "air_density": 1.223,
+  "usable": true,
+  "problem": ""
+ },
+ "2024_24": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 654.6583,
+   "wing": 0.8428,
+   "grip": 2.1184,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 84.903,
+  "real_lap": 84.92,
+  "speed_rmse_kmh": 17.5,
+  "length_m": 5229.9,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_01": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 614.3388,
+   "wing": 0.8611,
+   "grip": 1.9853,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 82.162,
+  "real_lap": 82.14,
+  "speed_rmse_kmh": 14.71,
+  "length_m": 5239.9,
+  "air_density": 1.2237,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_02": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 539.8102,
+   "wing": 0.4548,
+   "grip": 1.9168,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 94.979,
+  "real_lap": 95.001,
+  "speed_rmse_kmh": 8.79,
+  "length_m": 5375.4,
+  "air_density": 1.2229,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_03": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 500.6663,
+   "wing": 0.58,
+   "grip": 2.3611,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 90.729,
+  "real_lap": 90.82,
+  "speed_rmse_kmh": 23.66,
+  "length_m": 5772.0,
+  "air_density": 1.2134,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_04": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 528.2705,
+   "wing": 0.6346,
+   "grip": 1.7682,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 94.97,
+  "real_lap": 95.0,
+  "speed_rmse_kmh": 10.41,
+  "length_m": 5337.6,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_05": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 472.1187,
+   "wing": 0.1442,
+   "grip": 2.8331,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 91.56,
+  "real_lap": 91.58,
+  "speed_rmse_kmh": 20.2,
+  "length_m": 6108.9,
+  "air_density": 1.2233,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_06": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 621.0036,
+   "wing": 0.7173,
+   "grip": 1.9123,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 89.648,
+  "real_lap": 89.681,
+  "speed_rmse_kmh": 15.94,
+  "length_m": 5346.8,
+  "air_density": 1.2214,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_07": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 493.2005,
+   "wing": 0.5798,
+   "grip": 2.5213,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 78.023,
+  "real_lap": 78.06,
+  "speed_rmse_kmh": 16.15,
+  "length_m": 4867.2,
+  "air_density": 1.2119,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_08": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 640.6709,
+   "wing": 1.0,
+   "grip": 1.8353,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 73.217,
+  "real_lap": 73.26,
+  "speed_rmse_kmh": 12.57,
+  "length_m": 3269.5,
+  "air_density": 1.2165,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_09": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 611.2724,
+   "wing": 0.8346,
+   "grip": 1.9771,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 75.784,
+  "real_lap": 75.82,
+  "speed_rmse_kmh": 13.9,
+  "length_m": 4612.9,
+  "air_density": 1.1998,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_10": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 484.7661,
+   "wing": 0.0,
+   "grip": 2.2772,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 73.328,
+  "real_lap": 73.3,
+  "speed_rmse_kmh": 9.43,
+  "length_m": 4312.7,
+  "air_density": 1.2229,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_11": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 518.0771,
+   "wing": 0.3324,
+   "grip": 2.1521,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 67.809,
+  "real_lap": 67.841,
+  "speed_rmse_kmh": 15.01,
+  "length_m": 4291.3,
+  "air_density": 1.1219,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_12": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 601.9013,
+   "wing": 0.7477,
+   "grip": 1.9151,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 89.39,
+  "real_lap": 89.44,
+  "speed_rmse_kmh": 12.14,
+  "length_m": 5828.5,
+  "air_density": 1.1961,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_13": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 609.8638,
+   "wing": 0.6983,
+   "grip": 2.1184,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 104.987,
+  "real_lap": 105.06,
+  "speed_rmse_kmh": 21.19,
+  "length_m": 6948.5,
+  "air_density": 1.1675,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_14": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 595.5822,
+   "wing": 0.989,
+   "grip": 1.8795,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 79.213,
+  "real_lap": 79.24,
+  "speed_rmse_kmh": 11.97,
+  "length_m": 4327.1,
+  "air_density": 1.1926,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_15": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 435.1797,
+   "wing": 0.3635,
+   "grip": 2.5316,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 72.328,
+  "real_lap": 72.361,
+  "speed_rmse_kmh": 18.47,
+  "length_m": 4213.1,
+  "air_density": 1.2172,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_16": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 569.3089,
+   "wing": 0.3844,
+   "grip": 2.1653,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 80.922,
+  "real_lap": 80.96,
+  "speed_rmse_kmh": 12.15,
+  "length_m": 5759.6,
+  "air_density": 1.1978,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_17": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 608.609,
+   "wing": 0.6549,
+   "grip": 2.0769,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 102.606,
+  "real_lap": 102.639,
+  "speed_rmse_kmh": 16.38,
+  "length_m": 5955.8,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_18": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 610.2895,
+   "wing": 0.8949,
+   "grip": 1.7709,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 93.742,
+  "real_lap": 93.76,
+  "speed_rmse_kmh": 10.08,
+  "length_m": 4860.5,
+  "air_density": 1.2222,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_19": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 449.9291,
+   "wing": 0.4301,
+   "grip": 2.0829,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 97.54,
+  "real_lap": 97.6,
+  "speed_rmse_kmh": 20.89,
+  "length_m": 5424.0,
+  "air_density": 1.2054,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_20": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 602.7882,
+   "wing": 0.8027,
+   "grip": 1.7753,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 79.851,
+  "real_lap": 79.88,
+  "speed_rmse_kmh": 10.94,
+  "length_m": 4242.9,
+  "air_density": 0.9426,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_21": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 537.7429,
+   "wing": 0.401,
+   "grip": 1.9372,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 72.311,
+  "real_lap": 72.339,
+  "speed_rmse_kmh": 10.42,
+  "length_m": 4230.9,
+  "air_density": 1.12,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_22": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 575.4097,
+   "wing": 0.4531,
+   "grip": 1.9545,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 93.412,
+  "real_lap": 93.44,
+  "speed_rmse_kmh": 12.94,
+  "length_m": 6150.8,
+  "air_density": 1.1404,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_23": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 483.8537,
+   "wing": 0.5358,
+   "grip": 2.5787,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 82.552,
+  "real_lap": 82.58,
+  "speed_rmse_kmh": 18.5,
+  "length_m": 5387.9,
+  "air_density": 1.223,
+  "usable": true,
+  "problem": ""
+ },
+ "2025_24": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 602.4344,
+   "wing": 0.8086,
+   "grip": 2.0846,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 86.768,
+  "real_lap": 86.801,
+  "speed_rmse_kmh": 16.92,
+  "length_m": 5229.7,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_01": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 602.5517,
+   "wing": 0.6508,
+   "grip": 1.9862,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 81.985,
+  "real_lap": 81.979,
+  "speed_rmse_kmh": 17.79,
+  "length_m": 5238.9,
+  "air_density": 1.2237,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_02": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 526.9085,
+   "wing": 0.0,
+   "grip": 2.3855,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 95.596,
+  "real_lap": 95.52,
+  "speed_rmse_kmh": 27.2,
+  "length_m": 5443.6,
+  "air_density": 1.2229,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_03": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 496.8576,
+   "wing": 0.2757,
+   "grip": 2.2519,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 92.228,
+  "real_lap": 92.24,
+  "speed_rmse_kmh": 19.82,
+  "length_m": 5770.1,
+  "air_density": 1.2134,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_04": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 751.6601,
+   "wing": 0.846,
+   "grip": 1.7323,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 91.755,
+  "real_lap": 91.741,
+  "speed_rmse_kmh": 17.0,
+  "length_m": 5347.4,
+  "air_density": 1.2214,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_05": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 543.9514,
+   "wing": 0.0,
+   "grip": 2.1207,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 74.071,
+  "real_lap": 74.081,
+  "speed_rmse_kmh": 13.61,
+  "length_m": 4312.4,
+  "air_density": 1.2229,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_07": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 542.6434,
+   "wing": 0.0,
+   "grip": 2.017,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 79.819,
+  "real_lap": 79.82,
+  "speed_rmse_kmh": 17.93,
+  "length_m": 4611.5,
+  "air_density": 1.1998,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_08": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 557.5849,
+   "wing": 0.0,
+   "grip": 1.9561,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 70.064,
+  "real_lap": 70.041,
+  "speed_rmse_kmh": 17.0,
+  "length_m": 4291.2,
+  "air_density": 1.1219,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_09": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 681.112,
+   "wing": 1.0,
+   "grip": 1.7199,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 91.78,
+  "real_lap": 91.74,
+  "speed_rmse_kmh": 13.36,
+  "length_m": 5827.7,
+  "air_density": 1.1961,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_10": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 644.1846,
+   "wing": 0.8227,
+   "grip": 1.8046,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 108.713,
+  "real_lap": 108.781,
+  "speed_rmse_kmh": 20.13,
+  "length_m": 6947.0,
+  "air_density": 1.1675,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_11": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 300.0,
+   "wing": 1.0,
+   "grip": 1.4548,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 81.55,
+  "real_lap": 81.58,
+  "speed_rmse_kmh": 86.21,
+  "length_m": 3760.2,
+  "air_density": 1.1925,
+  "usable": false,
+  "problem": "the position data jumps 347 m at one point"
+ },
+ "2026_12": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 524.9685,
+   "wing": 0.444,
+   "grip": 2.1723,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 74.127,
+  "real_lap": 74.14,
+  "speed_rmse_kmh": 18.14,
+  "length_m": 4213.5,
+  "air_density": 1.2172,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_13": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 616.811,
+   "wing": 0.6894,
+   "grip": 1.892,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 83.458,
+  "real_lap": 83.481,
+  "speed_rmse_kmh": 15.94,
+  "length_m": 5759.8,
+  "air_density": 1.1978,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_14": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 507.8569,
+   "wing": 0.0,
+   "grip": 2.2951,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 95.426,
+  "real_lap": 95.421,
+  "speed_rmse_kmh": 20.21,
+  "length_m": 5339.5,
+  "air_density": 1.124,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_15": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 632.102,
+   "wing": 0.7644,
+   "grip": 1.9824,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 104.734,
+  "real_lap": 104.779,
+  "speed_rmse_kmh": 20.06,
+  "length_m": 5956.6,
+  "air_density": 1.225,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_16": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 605.8356,
+   "wing": 0.5618,
+   "grip": 1.7759,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 98.235,
+  "real_lap": 98.24,
+  "speed_rmse_kmh": 15.95,
+  "length_m": 5494.1,
+  "air_density": 1.2191,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_17": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 657.2418,
+   "wing": 1.0,
+   "grip": 1.7239,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 95.104,
+  "real_lap": 95.101,
+  "speed_rmse_kmh": 10.59,
+  "length_m": 4859.8,
+  "air_density": 1.2222,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_18": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 475.6221,
+   "wing": 0.0,
+   "grip": 2.0718,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 98.087,
+  "real_lap": 98.12,
+  "speed_rmse_kmh": 21.02,
+  "length_m": 5424.5,
+  "air_density": 1.2054,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_19": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 723.1567,
+   "wing": 0.6805,
+   "grip": 1.7483,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 79.346,
+  "real_lap": 79.34,
+  "speed_rmse_kmh": 12.52,
+  "length_m": 4242.8,
+  "air_density": 0.9426,
+  "usable": true,
+  "problem": ""
+ },
+ "2026_20": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 507.41,
+   "wing": 0.0,
+   "grip": 2.0642,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 72.541,
+  "real_lap": 72.52,
+  "speed_rmse_kmh": 14.27,
+  "length_m": 4231.0,
+  "air_density": 1.12,
+  "usable": true,
+  "problem": ""
+ }
+}

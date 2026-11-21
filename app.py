@@ -68,6 +68,10 @@ PAGES = {
         st.Page("app_pages/race_insights.py", title="Race Insights"),
         st.Page("app_pages/penalties_log.py", title="Penalties Log"),
     ],
+    "Simulator": [
+        st.Page("app_pages/lap_simulator.py", title="Lap Simulator"),
+        st.Page("app_pages/setup_garage.py", title="Setup Garage"),
+    ],
     "History": [
         st.Page("app_pages/history_champions.py", title="Champions"),
         st.Page("app_pages/history_eras.py", title="Eras"),
@@ -77,6 +81,11 @@ PAGES = {
         st.Page("app_pages/history_circuits.py", title="Circuit Profiles"),
         st.Page("app_pages/on_this_day.py", title="On This Day"),
         st.Page("app_pages/head_to_head.py", title="Head to Head"),
+    ],
+    "Academy": [
+        st.Page("app_pages/academy_home.py", title="Engineering Academy"),
+        st.Page("app_pages/academy_m0.py", title="Start Here"),
+        st.Page("app_pages/academy_m1.py", title="The Car as a System"),
     ],
     "Games": [
         st.Page("app_pages/beat_the_ai.py", title="Beat the AI"),
@@ -130,6 +139,11 @@ TAGLINES = {
     "Beat the AI": "Pick the podium before the race. After it, see if you beat our model.",
     "Beat the AI: Constructors": "Which three teams take the most points home? Pick before lights out.",
     "About": "Everything behind the app: the model, how it is tested, and the robot that runs it.",
+    "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
+    "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
+    "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",
+    "Start Here": "Module 0: the physics you need, what makes a car fast, and how to read telemetry.",
+    "The Car as a System": "Module 1: the parts, the rules, what each change is worth, and the compromises.",
 }
 
 

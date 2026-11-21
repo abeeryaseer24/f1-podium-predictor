@@ -33,7 +33,7 @@ def table(rows):
 
 
 tabs = st.tabs(["The project", "The prediction model", "Accuracy and fairness",
-                "Strategist and game", "The live system"])
+                "Strategist and game", "Simulator and Academy", "The live system"])
 
 
 # ---------- 1. the project ----------
@@ -76,6 +76,9 @@ with tabs[0]:
         {"Page": "Penalties Log", "What it shows": "Every stewards' decision of a season, pulled out of the race control messages."},
         {"Page": "Ghost Lap Duel", "What it shows": "Two drivers' fastest laps raced against each other, corner by corner, with the speed, throttle, brake and gear traces."},
         {"Page": "Circuit Explorer", "What it shows": "Every circuit in its real shape and elevation."},
+        {"Page": "Lap Simulator", "What it shows": "Our physics model drives a real circuit in 3D, next to the real fastest lap."},
+        {"Page": "Setup Garage", "What it shows": "Change the wing, power, weight or tyres and see the lap time, corner by corner."},
+        {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},
         {"Page": "Tyre Lab", "What it shows": "How fast each tyre compound wears, measured from real laps."},
         {"Page": "Beat the AI", "What it shows": "Pick the podium before the race, share your card, and see after the race if you beat our model."},
         {"Page": "Be the Race Engineer", "What it shows": "Make the pit calls for a real driver and try to beat their team."},
@@ -250,8 +253,47 @@ with tabs[3]:
         "- **Dry races only, for now.** Rain changes everything about tyres, so wet races can't be played yet.")
 
 
-# ---------- 5. the live system ----------
+# ---------- 5. simulator and academy ----------
 with tabs[4]:
+    import json
+    from pathlib import Path as _Path
+    cal_file = _Path(__file__).resolve().parent.parent / "data" / "processed" / "lapsim_calibration.json"
+    cal = json.loads(cal_file.read_text()) if cal_file.exists() else {}
+    usable = [c for c in cal.values() if c.get("usable")]
+    st.subheader("The lap simulator")
+    st.write("Lap Simulator, Setup Garage and the Academy's demos all run one physics engine. It is a "
+             "quasi-steady-state lap simulator, the kind teams used before full vehicle models: at every point "
+             "of the lap the car is a single point with mass, tyre grip, downforce, drag and power. It finds "
+             "the fastest speed each corner allows, then accelerates out of every corner and brakes into every "
+             "corner as hard as the tyres allow. Tyres share their grip between turning and braking, and grip "
+             "grows more slowly than load.")
+    st.markdown(
+        "- **Real tracks.** Each circuit comes from the race's fastest lap in OpenF1, smoothed into a spline so its "
+        "curvature can be measured, with real elevation and the air density for its altitude.
+"
+        "- **Calibrated on every race.** For each race the wing level, grip and power are tuned until the simulated "
+        "speed trace matches the real fastest lap as closely as possible. Laps whose position data has gaps are "
+        "left out.
+"
+        "- **Checked on every run.** The robot checks that every usable calibration is within half a second of the "
+        "real lap, that the speed trace is close, and that the engine gives the stored answer.")
+    if usable:
+        import statistics
+        table([{"Races calibrated": len(usable), "Left out (bad data)": len(cal) - len(usable),
+                "Typical lap time gap": f"{statistics.median(abs(c['sim_lap'] - c['real_lap']) for c in usable):.3f} s",
+                "Typical speed gap": f"{statistics.median(c['speed_rmse_kmh'] for c in usable):.0f} km/h"}])
+    st.write("Honest note: it is a point mass with no suspension, gears, DRS, energy limits or banking, and wing, "
+             "grip and power trade off against each other in the fit. Read it as a consistent teaching car, not as "
+             "what any team really ran.")
+    st.subheader("The Engineering Academy")
+    st.write("A course on how a Formula 1 car works, from the tyres up, in three depths (Basics, Engineer, Deep "
+             "dive). Its demos run on the lap simulator and the real race data, every chapter says what its models "
+             "leave out, and numbers come from the FIA regulations, published technical material and textbooks, "
+             "listed under each chapter's Deep dive.")
+
+
+# ---------- 6. the live system ----------
+with tabs[5]:
     st.subheader("A robot runs it every 3 hours")
     st.write("Nobody presses a button. Every 3 hours a GitHub Actions robot runs the whole system:")
     st.markdown(
