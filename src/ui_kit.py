@@ -491,7 +491,7 @@ def feed(groups):
     """Messages grouped under the race they came from.
 
     groups = [{"title", "meta", "items": [{"lap", "lap_label", "chip", "colour",
-               "who", "text"}]}]
+               "who", "text", "link" (optional: (url, label))}]}]
     """
     blocks = []
     for group in groups:
@@ -503,6 +503,10 @@ def feed(groups):
                         f'<small>{esc(item.get("lap_label", "lap"))}</small></div>'
                         if lap not in (None, "") else '<div class="lap">—</div>')
             who = f'<span class="who">{esc(item["who"])}</span>' if item.get("who") else ""
+            if item.get("link"):
+                url, label = item["link"]
+                who += (f' <a href="{esc(url)}" target="_blank" rel="noopener" '
+                        f'style="color:var(--pp-red);font-size:.8rem;font-weight:600">{esc(label)}</a>')
             items.append(
                 f'<div class="kt-item">{lap_html}<div class="body">'
                 f'<div class="line1">{chip(item["chip"], colour)}{who}</div>'

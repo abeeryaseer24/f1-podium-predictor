@@ -3,7 +3,7 @@
 Both rounds of ideas merged into one list, de-duplicated and put in build order. Every page
 lives in the existing Streamlit app and looks like it was always there.
 
-Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) is done.
+Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) and Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) are done.
 
 ---
 
@@ -101,14 +101,14 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | # | Page / feature | Group | What it is |
 |---|---|---|---|
 | A1 | **Car DNA** | Teams | E3 as a radar per team per race (slow / medium / fast corners, top speed, traction), plus how each upgrade in `upgrades.csv` moved it. |
-| A2 | **Where the Race Was Won** | Race | Each winning margin (and any driver's result) split into qualifying, start, pure pace, strategy, pit stops and luck (safety car timing), as a waterfall per race. |
-| A3 | **Rules Sandbox** | History | Recompute every championship 1950–2026 under any points system, dropped results, no fastest-lap point, sprints everywhere, reversed grids. "Which titles change hands?" |
-| A4 | **Team Radio** | Race | Radio clips (already in `radio.parquet`) transcribed offline with open-source `faster-whisper` in GitHub Actions (free, new races only), sorted by topic (tyres, strategy, damage, complaints) on the race timeline. Test: does radio predict pit stops? Links to OpenF1 audio, never rehosted. |
-| A5 | **Lap One** | Race | Places gained and lost at the start by grid slot, clean vs dirty side, distance to Turn 1 and circuit (M3). |
+| A2 ✅ | **Where the Race Was Won** | Race | Each winning margin (and any driver's result) split into qualifying, start, pure pace, strategy, pit stops and luck (safety car timing), as a waterfall per race. |
+| A3 ✅ | **Rules Sandbox** | History | Recompute every championship 1950–2026 under any points system, dropped results, no fastest-lap point, sprints everywhere, reversed grids. "Which titles change hands?" |
+| A4 ✅ | **Team Radio** | Race | Radio clips (OpenF1's team_radio list; our own `radio.parquet` is the strategist's calls) transcribed offline with open-source `faster-whisper` in GitHub Actions (free, new races only), sorted by topic (tyres, strategy, damage, complaints) on the race timeline. Test: does radio predict pit stops? Links to OpenF1 audio, never rehosted. |
+| A5 ✅ | **Lap One** | Race | Places gained and lost at the start by grid slot, clean vs dirty side, distance to Turn 1 and circuit (M3). |
 | A6 | **Win Probability** | Race | A live-style win-chance chart through each race, updated lap by lap (M12). |
 | A7 | **Driver Swap** | Drivers | Counterfactuals: any driver in any car, any era (M4 + E2). "Alonso in the 2023 Red Bull." |
 | A8 | **All-Time Ratings** | History | Era-adjusted driver ratings 1950–2026 with uncertainty bands (M4 + M5). The honest GOAT list. |
-| A9 | **Model Report Card** | Predictor | Brier score, log loss, reliability diagrams and conformal ranges for the predictor (M11), added to Scoreboard and About. |
+| A9 ✅ | **Model Report Card** | Predictor | Brier score, log loss, reliability diagrams and conformal ranges for the predictor (M11), added to Scoreboard and About. |
 | A10 | **Failure Watch** | Teams | Cars whose lap times or telemetry looked wrong before they retired, and how early the model flagged them (M9). |
 | A11 | **Driver Market** | Drivers | Who is likely to move seats next season and why (M10). |
 | A12 | **Calendar Planner** | History | Travel distance and freight carbon of the real calendar vs an optimised one (a travelling-salesman problem with fixed-date constraints). |
@@ -272,7 +272,7 @@ Each phase ships something visible and finishes in a working app.
 | Phase | Builds | Why first |
 |---|---|---|
 | **1. Foundations** ✅ | E6 `sim3d.py`, design checks for new pages, E1 lap simulator, S1, S2 · Academy shell (menu, chapter template, depth toggle, glossary) + Modules 0–1 | E1 is the base of everything, and the Academy template is needed by every later module |
-| **2. Quick wins on existing data** | A2 Where the Race Was Won, A3 Rules Sandbox, A5 Lap One, A9 Report Card, A4 Team Radio | High impact with the data already on disk |
+| **2. Quick wins on existing data** ✅ | A2 Where the Race Was Won, A3 Rules Sandbox, A5 Lap One, A9 Report Card, A4 Team Radio | High impact with the data already on disk |
 | **3. Car physics** | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
 | **4. Aero and power** | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |

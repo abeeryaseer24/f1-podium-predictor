@@ -29,6 +29,12 @@ jobs:
       - name: Install libraries
         run: pip install -r requirements.txt matplotlib
 
+      # Speech-to-text for the Team Radio page. Optional: if it can't install, the robot
+      # carries on and only the radio transcripts wait for a later run.
+      - name: Install radio transcription
+        continue-on-error: true
+        run: pip install faster-whisper "av<16"
+
       - name: Run the pipeline
         run: python src/pipeline.py
         env:

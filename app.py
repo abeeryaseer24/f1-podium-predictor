@@ -43,6 +43,7 @@ PAGES = {
         st.Page("app_pages/scoreboard.py", title="Scoreboard"),
         st.Page("app_pages/season_rewind.py", title="Season Rewind"),
         st.Page("app_pages/championship_odds.py", title="Championship Odds"),
+        st.Page("app_pages/model_report_card.py", title="Model Report Card"),
     ],
     "Teams": [
         st.Page("app_pages/constructor_standings.py", title="Constructor Standings"),
@@ -67,6 +68,9 @@ PAGES = {
         st.Page("app_pages/tyre_lab.py", title="Tyre Lab"),
         st.Page("app_pages/race_insights.py", title="Race Insights"),
         st.Page("app_pages/penalties_log.py", title="Penalties Log"),
+        st.Page("app_pages/race_won.py", title="Where the Race Was Won"),
+        st.Page("app_pages/lap_one.py", title="Lap One"),
+        st.Page("app_pages/race_radio.py", title="Team Radio"),
     ],
     "Simulator": [
         st.Page("app_pages/lap_simulator.py", title="Lap Simulator"),
@@ -81,6 +85,7 @@ PAGES = {
         st.Page("app_pages/history_circuits.py", title="Circuit Profiles"),
         st.Page("app_pages/on_this_day.py", title="On This Day"),
         st.Page("app_pages/head_to_head.py", title="Head to Head"),
+        st.Page("app_pages/rules_sandbox.py", title="Rules Sandbox"),
     ],
     "Academy": [
         st.Page("app_pages/academy_home.py", title="Engineering Academy"),
@@ -139,6 +144,11 @@ TAGLINES = {
     "Beat the AI": "Pick the podium before the race. After it, see if you beat our model.",
     "Beat the AI: Constructors": "Which three teams take the most points home? Pick before lights out.",
     "About": "Everything behind the app: the model, how it is tested, and the robot that runs it.",
+    "Where the Race Was Won": "The gap between any two drivers, split into the start, pit stops, safety cars and racing laps.",
+    "Lap One": "Places gained and lost between the grid and the end of the first lap, in every race since 2023.",
+    "Team Radio": "Every published radio message of a race, transcribed and sorted by topic.",
+    "Model Report Card": "Are the model's percentages worth trusting? Graded on races it never saw.",
+    "Rules Sandbox": "Every championship since 1950, recomputed under the points rules you pick.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",

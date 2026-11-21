@@ -205,6 +205,30 @@ def check_lapsim():
         check(heavier > lap, "a heavier car is slower")
 
 
+def check_race_story():
+    """Where the Race Was Won adds up, and the report card covers every tested race."""
+    import race_story
+    print("Checking the race breakdowns and report card")
+    folders = sorted(p.name for p in RACES_DIR.glob("*_*") if (p / "laps.parquet").exists())
+    if folders:
+        folder = folders[-1]
+        data = race_story.load(folder)
+        order = race_story.finishing_order(data[0])
+        totals, per_lap = race_story.breakdown(folder, order[0], order[1], data)
+        check(abs(sum(totals.values()) - per_lap["gap"].iloc[-1]) < 1e-6,
+              f"the parts of the gap add up exactly to the real gap ({folder})")
+        check(per_lap["gap"].iloc[-1] > 0, f"the winner of {folder} is ahead of second place at the flag")
+    probs_file = ROOT / "data" / "predictions" / "backtest_probs.csv"
+    if probs_file.exists():
+        probs = pd.read_csv(probs_file)
+        backtests = pd.read_csv(ROOT / "data" / "predictions" / "backtests.csv")
+        check(len(probs[["season", "round"]].drop_duplicates()) >= len(backtests) - 1,
+              "the report card grades every race in the backtest")
+        check(probs["podium_chance"].between(0, 1).all(), "every podium chance is between 0 and 1")
+        sums = probs.groupby(["season", "round"])["podium_chance"].sum()
+        check(sums.between(2.95, 3.05).all(), "podium chances add up to 3 drivers in every race")
+
+
 def check_pages():
     """Every page in the menu has its one-line subtitle."""
     import re
@@ -215,6 +239,14 @@ def check_pages():
     check(not missing, f"every page has a tagline ({', '.join(missing) or 'all present'})")
     pages = [m for m in re.findall(r'st\.Page\("(app_pages/[^"]+)"', app)]
     check(all((ROOT / p).exists() for p in pages), "every page in the menu exists")
+    import py_compile
+    broken = []
+    for path in [ROOT / "app.py", *sorted((ROOT / "app_pages").glob("*.py")), *sorted((ROOT / "src").rglob("*.py"))]:
+        try:
+            py_compile.compile(str(path), doraise=True)
+        except py_compile.PyCompileError:
+            broken.append(path.name)
+    check(not broken, f"every page and module compiles ({', '.join(broken) or 'all fine'})")
 
 
 def run_all(min_rows=0):
@@ -225,6 +257,7 @@ def run_all(min_rows=0):
     check_race_files()
     check_strategy_no_future()
     check_lapsim()
+    check_race_story()
     check_pages()
     print("All checks passed.")
 

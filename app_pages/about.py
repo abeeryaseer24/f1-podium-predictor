@@ -76,6 +76,11 @@ with tabs[0]:
         {"Page": "Penalties Log", "What it shows": "Every stewards' decision of a season, pulled out of the race control messages."},
         {"Page": "Ghost Lap Duel", "What it shows": "Two drivers' fastest laps raced against each other, corner by corner, with the speed, throttle, brake and gear traces."},
         {"Page": "Circuit Explorer", "What it shows": "Every circuit in its real shape and elevation."},
+        {"Page": "Where the Race Was Won", "What it shows": "The gap between any two drivers, split into the start, pit stops, safety cars and racing laps."},
+        {"Page": "Lap One", "What it shows": "Places gained and lost on the first lap, with the best starters measured fairly."},
+        {"Page": "Team Radio", "What it shows": "Every published radio message of a race, transcribed and sorted by topic."},
+        {"Page": "Model Report Card", "What it shows": "How trustworthy the model's percentages are: calibration, Brier score and finish ranges."},
+        {"Page": "Rules Sandbox", "What it shows": "Every title since 1950 recomputed under any points system."},
         {"Page": "Lap Simulator", "What it shows": "Our physics model drives a real circuit in 3D, next to the real fastest lap."},
         {"Page": "Setup Garage", "What it shows": "Change the wing, power, weight or tyres and see the lap time, corner by corner."},
         {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},
@@ -93,6 +98,7 @@ with tabs[0]:
         {"Part": "Web app", "Tools": "Streamlit, Altair charts"},
         {"Part": "3D replays and games", "Tools": "Three.js, running inside the page"},
         {"Part": "Beat the AI picks", "Tools": "Supabase database, reached only from the app's server"},
+        {"Part": "Team radio transcripts", "Tools": "faster-whisper, an open-source speech-to-text model run on the robot"},
         {"Part": "Automation", "Tools": "GitHub Actions robot every 3 hours, with safety checks"},
     ])
 
@@ -168,6 +174,8 @@ with tabs[1]:
 
 # ---------- 3. accuracy and fairness ----------
 with tabs[2]:
+    st.info("The **Model Report Card** page grades the model's percentages themselves (not just its picks): "
+            "calibration, Brier score against a grid-only baseline, and how far off a prediction can be.")
     st.subheader("Every season, tested fairly")
     st.write("Each season was predicted by a model trained only on the seasons before it, so it never saw "
              "those results. \"The grid\" means guessing that the race finishes in starting order, a tough "
@@ -269,12 +277,10 @@ with tabs[4]:
              "grows more slowly than load.")
     st.markdown(
         "- **Real tracks.** Each circuit comes from the race's fastest lap in OpenF1, smoothed into a spline so its "
-        "curvature can be measured, with real elevation and the air density for its altitude.
-"
+        "curvature can be measured, with real elevation and the air density for its altitude.\n"
         "- **Calibrated on every race.** For each race the wing level, grip and power are tuned until the simulated "
         "speed trace matches the real fastest lap as closely as possible. Laps whose position data has gaps are "
-        "left out.
-"
+        "left out.\n"
         "- **Checked on every run.** The robot checks that every usable calibration is within half a second of the "
         "real lap, that the speed trace is close, and that the engine gives the stored answer.")
     if usable:
