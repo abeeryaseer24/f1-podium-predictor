@@ -75,6 +75,7 @@ PAGES = {
     "Simulator": [
         st.Page("app_pages/lap_simulator.py", title="Lap Simulator"),
         st.Page("app_pages/setup_garage.py", title="Setup Garage"),
+        st.Page("app_pages/tyre_science.py", title="Tyre Physics"),
     ],
     "History": [
         st.Page("app_pages/history_champions.py", title="Champions"),
@@ -91,6 +92,7 @@ PAGES = {
         st.Page("app_pages/academy_home.py", title="Engineering Academy"),
         st.Page("app_pages/academy_m0.py", title="Start Here"),
         st.Page("app_pages/academy_m1.py", title="The Car as a System"),
+        st.Page("app_pages/academy_m2.py", title="Tyres"),
     ],
     "Games": [
         st.Page("app_pages/beat_the_ai.py", title="Beat the AI"),
@@ -149,6 +151,8 @@ TAGLINES = {
     "Team Radio": "Every published radio message of a race, transcribed and sorted by topic.",
     "Model Report Card": "Are the model's percentages worth trusting? Graded on races it never saw.",
     "Rules Sandbox": "Every championship since 1950, recomputed under the points rules you pick.",
+    "Tyre Physics": "How a racing tyre grips, slides, overheats and shares its grip, with the real g-g of any lap.",
+    "Tyres": "Module 2: how rubber grips, the magic formula, the friction circle, temperature and wear.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",

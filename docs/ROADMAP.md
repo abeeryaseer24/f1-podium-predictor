@@ -71,7 +71,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | E2 | `src/race_engine.py` | **Race engine.** Lap by lap for the whole field: base pace (from E1/E3), tyres (`tyres.py`), fuel burn, pit loss, dirty air, overtaking (M2), safety car hazards (M1), reliability, weather, and rivals that react to each other. Replaces the "nobody else reacts" assumption in `strategy.py`. | Race sim, classic races, RL, games |
 | E3 | `src/car_dna.py` | **Car DNA.** Inverse E1: fit each car's downforce, drag and power to real OpenF1 speed traces, per team per race since 2023. | Car DNA page, E2 pace, counterfactuals |
 | E4 | `src/energy.py` | **Power unit and energy model.** 2026 rules: 50/50 ICE and electric, MGU-K harvest and deploy limits, battery state of charge, active aero modes, overtake mode. Older eras (V10, V8, 2014 hybrid with MGU-H) as presets. | Energy Lab, PU pages, Academy |
-| E5 | `src/tyre_physics.py` | **Tyre model.** Pacejka magic formula, load sensitivity, a one-node temperature model, wear. Grip for E1 and the Academy. | E1, Tyre Physics, Academy |
+| E5 ✅ | `src/tyre_physics.py` | **Tyre model.** Pacejka magic formula, load sensitivity, a one-node temperature model, wear. Grip for E1 and the Academy. | E1, Tyre Physics, Academy |
 | E6 ✅ | `src/sim3d.py` | **Shared 3D kit** (see design rules). | Every 3D page |
 
 ---
@@ -88,7 +88,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | S6 | **Wind Tunnel** | A browser CFD toy (WebGL lattice-Boltzmann) round a wing profile and a car silhouette. Change the angle of attack, see the pressure and the wake, and read lift and drag. |
 | S7 | **Dirty Air Lab** | Downforce lost behind another car at 0.5 / 1 / 2 s, for the 2017–21 cars vs 2022+ vs 2026, and what that does to overtaking. |
 | S8 | **Porpoising Lab** | A spring-mass car with ground-effect downforce. Lower the ride height and watch it start bouncing (2022). Adjust stiffness and floor design to stop it. |
-| S9 | **Tyre Physics** | Pacejka curves, the friction circle, g-g diagrams from real telemetry, and a temperature window toy (graining vs blistering). |
+| S9 ✅ | **Tyre Physics** | Pacejka curves, the friction circle, g-g diagrams from real telemetry, and a temperature window toy (graining vs blistering). |
 | S10 | **Power Units Through the Eras** | 3.0 V10, 2.4 V8, 2014 V6 hybrid, 2026. Each has a thermodynamic model, an energy-flow Sankey and **synthesized engine sound** (Web Audio, made from rpm and firing order), plus an rpm slider. |
 | S11 | **Rain Crossover** | When to switch inters to slicks (and back) as the track dries, tested against real wet races (`weather.parquet` + laps). |
 | S12 | **Engine Penalty Planner** | When to take new power unit components across a season for the cheapest grid penalties (builds on `power_units.csv`). |
@@ -273,7 +273,7 @@ Each phase ships something visible and finishes in a working app.
 |---|---|---|
 | **1. Foundations** ✅ | E6 `sim3d.py`, design checks for new pages, E1 lap simulator, S1, S2 · Academy shell (menu, chapter template, depth toggle, glossary) + Modules 0–1 | E1 is the base of everything, and the Academy template is needed by every later module |
 | **2. Quick wins on existing data** ✅ | A2 Where the Race Was Won, A3 Rules Sandbox, A5 Lap One, A9 Report Card, A4 Team Radio | High impact with the data already on disk |
-| **3. Car physics** | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
+| **3. Car physics** (in progress: E5, S9 and Academy Module 2 done) | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
 | **4. Aero and power** | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
