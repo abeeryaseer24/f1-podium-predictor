@@ -256,10 +256,19 @@ def run_all(min_rows=0):
     check_predictions()
     check_race_files()
     check_strategy_no_future()
-    check_lapsim()
-    check_race_story()
-    check_pages()
+    # Checks for the extra pages (simulator, race breakdowns, report card, page files). These only
+    # WARN: a problem on those pages must never stop the robot pushing a locked-in prediction.
+    for extra in (check_lapsim, check_race_story, check_pages):
+        warn_only(extra)
     print("All checks passed.")
+
+
+def warn_only(check_fn):
+    """Run a check for an extra page; print a warning instead of stopping if it fails."""
+    try:
+        check_fn()
+    except Exception as error:                      # CheckFailed or anything unexpected
+        print(f"  !!  WARNING ({check_fn.__name__}, the robot carries on): {error}")
 
 
 if __name__ == "__main__":

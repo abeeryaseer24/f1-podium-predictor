@@ -15,7 +15,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45          # the prediction is pushed first; the radio steps after it have their own limits
     steps:
       - name: Get the code
         uses: actions/checkout@v4
@@ -28,12 +28,6 @@ jobs:
 
       - name: Install libraries
         run: pip install -r requirements.txt matplotlib
-
-      # Speech-to-text for the Team Radio page. Optional: if it can't install, the robot
-      # carries on and only the radio transcripts wait for a later run.
-      - name: Install radio transcription
-        continue-on-error: true
-        run: pip install faster-whisper "av<16"
 
       - name: Run the pipeline
         run: python src/pipeline.py
@@ -50,5 +44,31 @@ jobs:
             echo "Nothing changed, nothing to save."
           else
             git commit -m "Pipeline update $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git push
+          fi
+
+      # ---- Team radio transcripts: only AFTER the prediction above has been pushed. ----
+      # Every step below is optional and time-limited, so it can never delay or undo the
+      # locked-in prediction. If anything fails, the transcripts just wait for a later run.
+      - name: Install radio transcription
+        continue-on-error: true
+        timeout-minutes: 4
+        run: pip install faster-whisper "av<16"
+
+      - name: Transcribe team radio
+        continue-on-error: true
+        timeout-minutes: 6
+        run: python src/team_radio.py --missing --limit 3
+
+      - name: Save radio transcripts
+        continue-on-error: true
+        timeout-minutes: 2
+        run: |
+          git add data/races/*/team_radio.parquet || true
+          if git diff --cached --quiet; then
+            echo "No new transcripts."
+          else
+            git commit -m "Team radio transcripts $(date -u '+%Y-%m-%d %H:%M') UTC"
+            git pull --rebase
             git push
           fi

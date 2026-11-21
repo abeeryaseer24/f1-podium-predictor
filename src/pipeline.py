@@ -78,8 +78,6 @@ def main():
         check_results(min_rows=rows_before)
         run("src/features.py")
         run("src/train.py")
-        # Every driver's chances in the honest test, for the Model Report Card page.
-        run_soft("src/report_card.py")
         # Sprint points, for the championship tables on the Teams and Drivers pages.
         run_soft("src/sprint_loader.py")
         # The archive behind the History pages. Only the current season is re-downloaded.
@@ -92,10 +90,6 @@ def main():
     run("src/corners.py", "--missing")
     # Car and driver pace from those race files, for the Team Performance page.
     run_soft("src/pace.py")
-    # Calibrate the lap simulator on new circuits, for the Simulator and Academy pages.
-    run_soft("src/lapsim.py", "--missing")
-    # Real team radio for the Team Radio page: transcribed on the robot with an open-source model.
-    run_soft("src/team_radio.py", "--missing", "--limit", "3")
     # The strategist's knowledge from earlier races, then strategies for races that need one.
     run("src/history.py", "--missing", "--limit", "5")
     run("src/tyre_book.py")
@@ -103,6 +97,13 @@ def main():
    
     # 2. Lock in the next race's prediction if qualifying is done.
     run("src/log_prediction.py", "--season", str(SEASON))
+
+    # Extra pages, only AFTER the prediction is locked in, so they can never delay or block it.
+    # Each one is optional: if it fails, the robot carries on.
+    run_soft("src/lapsim.py", "--missing")          # lap simulator calibrations (Simulator, Academy)
+    if new:
+        run_soft("src/report_card.py")              # every driver's chances in the honest test (Report Card)
+    # Team radio is transcribed by the workflow AFTER this run has been pushed (see pipeline.yml).
 
     # 3. Final safety checks on everything.
     print("\nFinal safety checks")
