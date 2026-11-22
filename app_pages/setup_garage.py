@@ -7,7 +7,7 @@ import streamlit as st
 import app_sim as A
 from sim3d import lap_view
 from style import stat_strip
-from ui_kit import diverge, section, sheet
+from ui_kit import diverge, section
 
 folder = A.pick_race("garage")
 track = A.get_track(folder)
@@ -136,8 +136,8 @@ rows = []
 for label, changed in changes:
     t = A.run_car(folder, A.car_key(changed))["lap_time"]
     gain = t - yours["lap_time"]
-    rows.append((label, f"{gain:+.3f}s", ("#1fd6a0", "faster") if gain < 0 else ("#e4544a", "slower")
-                 if gain > 0 else ("#8a8a96", "no change")))
-sheet([("Change", "text"), ("Lap time", "num"), ("", "tag")], rows)
+    rows.append({"name": label, "sub": f"{gain:+.3f}s a lap", "value": round(-gain * 1000),
+                 "colour": "#1fd6a0" if gain < 0 else "#e4544a"})
+diverge(rows, left_label="Slower (ms per lap)", right_label="Faster (ms per lap)")
 st.caption("Each row starts from your current setup, so the numbers change as you move the sliders. "
            "The wing row is the classic trade: more downforce in the corners, more drag on the straights.")

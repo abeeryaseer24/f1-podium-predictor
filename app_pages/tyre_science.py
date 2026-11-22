@@ -12,14 +12,19 @@ from style import stat_strip
 from ui_kit import section
 
 text, grid, muted = theme()
+def learn(what, chapter, title):
+    """One line saying what the tool shows, and where the Academy explains it."""
+    left, right = st.columns([3, 2], vertical_alignment="center")
+    left.caption(what)
+    right.page_link("app_pages/academy_m2.py", label=f"Learn it: Academy {chapter} {title}",
+                    icon=":material/school:", query_params={"ch": chapter})
+
+
 tabs = st.tabs(["The magic formula", "Load sensitivity", "The friction circle", "The temperature window"])
 
 # ---------- 1. magic formula ----------
 with tabs[0]:
-    st.markdown("A tyre only makes cornering force when it **slips**: the wheel points a few degrees away "
-                "from where the car is actually going. Force rises almost in a straight line, peaks, then "
-                "falls away as the tyre starts to slide. Engineers describe that curve with Pacejka's "
-                "*magic formula*.")
+    learn("Force against slip: shape the curve.", "2.3", "The magic formula")
     c1, c2, c3 = st.columns(3)
     load = c1.slider("Load on the tyre (N)", 500, 8000, 2000, step=100, key="tp_load",
                      help="About 2,000 N is a quarter of the car's weight. Downforce adds thousands more at speed.")
@@ -47,15 +52,11 @@ with tabs[0]:
     dot = alt.Chart(data.iloc[[peak_i]]).mark_point(filled=True, size=120, color="#e10600").encode(
         x="Slip angle (°):Q", y="Force (kN):Q")
     st.altair_chart(dress(curve + dot).properties(height=320), use_container_width=True)
-    st.latex(r"F = D\,\sin\!\Big(C\,\arctan\big(Bx - E\,(Bx - \arctan Bx)\big)\Big)")
-    st.caption("D is the peak force (grip × load), x the slip angle. Shape values are typical of a racing "
-               "slick, not Pirelli's data, which is confidential.")
+    st.caption("Typical racing-slick shape, not Pirelli data.")
 
 # ---------- 2. load sensitivity ----------
 with tabs[1]:
-    st.markdown("Press a tyre down harder and it grips harder, but **not in proportion**. Each extra newton "
-                "of load buys a little less grip than the one before. That is why downforce has diminishing "
-                "returns, and why moving load from one tyre to another (weight transfer) always costs grip.")
+    learn("Grip against load, and what weight transfer costs.", "2.5", "Load sensitivity")
     k2 = st.slider("Load sensitivity", 0.0, 0.3, 0.12, step=0.01, key="tp_k2",
                    help="0 means grip grows exactly in step with load.")
     loads = np.linspace(500, 9000, 200)
@@ -81,9 +82,7 @@ with tabs[1]:
 
 # ---------- 3. friction circle ----------
 with tabs[2]:
-    st.markdown("A tyre has **one** budget of grip. Brake hard and there is less left for turning; turn hard "
-                "and there is less left for braking. Plot sideways g against braking and acceleration g for a "
-                "whole lap and the dots fill a rough circle: the car's limit. This is the real fastest lap.")
+    learn("The real fastest lap as a g-g diagram.", "2.4", "The friction circle and g-g diagrams")
     folder = A.pick_race("tyre_gg")
     track = A.get_track(folder)
     gg = T.real_gg(get_race_file(folder, "track"), track)
@@ -112,15 +111,12 @@ with tabs[2]:
         ("Braking, near the limit", f"{brake95:.1f} g", "hardest 1 % of the lap", False),
         ("Accelerating, best", f"{np.percentile(gg['long_g'], 99):.1f} g", "power-limited above low speed", False),
     ])
-    st.caption(f"{get_race_info(folder)['race_name']} {get_race_info(folder)['season']}. Measured from about four "
-               "speed and position samples a second, so single dots are noisy; the shape is what matters. "
-               "Fast corners reach higher g because downforce grows with speed.")
+    st.caption(f"{get_race_info(folder)['race_name']} {get_race_info(folder)['season']} · about 4 samples a second, "
+               "so single dots are noisy.")
 
 # ---------- 4. temperature ----------
 with tabs[3]:
-    st.markdown("Rubber grips best inside a **temperature window**. Too cold and it's hard and slippery; too "
-                "hot and it goes greasy and wears fast. The driver controls the temperature by how hard they "
-                "push: sliding the tyre heats it. This toy model runs a 25-lap stint.")
+    learn("A 25-lap stint: how hard the driver pushes sets the tyre temperature.", "2.6", "Temperature and pressure")
     c1, c2 = st.columns(2)
     push = c1.slider("How hard the driver pushes", 0.75, 1.05, 0.95, step=0.01, key="tp_push",
                      help="1.00 = on the limit in every corner. Below that, the driver is managing the tyres.")
@@ -152,6 +148,4 @@ with tabs[3]:
         ("Grip, mid-stint", f"{mine['grip'][12]:.0%}", "of the best possible", False),
         ("Tread used after 25 laps", f"{mine['wear'][-1]:.0%}", "illustrative", False),
     ])
-    st.caption("A teaching model with made-up but sensible constants: one temperature for the whole tread, "
-               "heated by sliding and cooled by air and track. Real tyres have surface and core temperatures "
-               "that behave differently, and the window depends on the compound.")
+    st.caption("Teaching model with illustrative constants.")

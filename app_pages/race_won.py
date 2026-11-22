@@ -8,7 +8,7 @@ import race_story as R
 from app_data import get_prepared_races
 from charts import dress, theme
 from style import stat_strip
-from ui_kit import section, sheet
+from ui_kit import board, section
 
 BUCKET_COLOURS = {"Start (lap 1)": "#2b6cff", "Pit stops": "#e8b33a", "Safety car laps": "#a3a3b2",
                   "Racing laps": "#e10600"}
@@ -125,9 +125,11 @@ if len(table):
     rows = []
     for _, r in table.iterrows():
         d = who.get(int(r["driver_number"]), {})
-        rows.append([f"P{int(r['position'])}", (d.get("colour") or "#8a8a96", d.get("code", "?")),
-                     *[f"{round(-r[k], 1) + 0.0:+.1f}" for k in R.BUCKETS], f"{round(-r['total'], 1) + 0.0:+.1f}"])
-    sheet([("", "text"), ("Driver", "tag"), *[(k, "num") for k in R.BUCKETS], ("Total (s)", "num")], rows)
+        signed = lambda v: (round(-v, 1) + 0.0, f"{round(-v, 1) + 0.0:+.1f}s")
+        rows.append({"colour": d.get("colour") or "#8a8a96",
+                     "cells": [(str(d.get("name", d.get("code", "?"))).title(), f"P{int(r['position'])} · {d.get('team', '')}"),
+                               *[signed(r[k]) for k in R.BUCKETS], signed(r["total"])]})
+    board([("Driver", "label"), *[(k, "delta") for k in R.BUCKETS], ("Total", "delta")], rows)
 
 with st.expander("How this is worked out"):
     st.markdown(f"""

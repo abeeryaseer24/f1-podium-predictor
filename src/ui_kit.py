@@ -110,6 +110,37 @@ KIT_CSS = """<style>
   font-size:.72rem;font-weight:700;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap}
 .kt-chips{display:flex;flex-wrap:wrap;gap:6px;margin:.1rem 0 .3rem}
 
+/* ---------- the board: a designed results table ---------- */
+.kt-boardwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--pp-border);
+  border-radius:16px;background:linear-gradient(180deg,var(--pp-panel),var(--pp-panel2));margin:.3rem 0 1.1rem}
+.kt-board{border-collapse:separate;border-spacing:0 4px;width:100%;font-size:.86rem;padding:2px 8px 6px}
+.kt-board thead th{color:var(--pp-muted);font-weight:700;font-size:.66rem;text-transform:uppercase;
+  letter-spacing:.6px;padding:10px 10px 4px;text-align:left;white-space:nowrap}
+.kt-board thead th.r{text-align:right}
+.kt-board tbody tr td{background:var(--pp-bg);padding:0 10px;height:44px;white-space:nowrap;
+  border-top:1px solid var(--pp-border);border-bottom:1px solid var(--pp-border)}
+.kt-board tbody tr td:first-child{border-left:1px solid var(--pp-border);border-radius:10px 0 0 10px;
+  padding-left:0;position:relative}
+.kt-board tbody tr td:last-child{border-right:1px solid var(--pp-border);border-radius:0 10px 10px 0}
+.kt-board tbody tr:hover td{background:var(--pp-panel2)}
+.kt-board .edge{position:absolute;left:0;top:7px;bottom:7px;width:5px;border-radius:0 4px 4px 0}
+.kt-board .rank{font-family:'Saira Condensed',sans-serif;font-weight:800;font-size:1.15rem;
+  color:var(--pp-muted);padding-left:16px;min-width:46px;display:inline-block}
+.kt-board .rank.p1{color:#d8b45a}.kt-board .rank.p2{color:#b9bcc4}.kt-board .rank.p3{color:#b07a4a}
+.kt-board .lbl b{display:block;color:var(--pp-text);font-weight:700;font-size:.9rem;line-height:1.15}
+.kt-board .lbl small{display:block;color:var(--pp-muted);font-size:.72rem;margin-top:1px}
+.kt-board .lbl{padding-left:16px}
+.kt-board tbody td:first-child>span:not(.edge):not(.rank):not(.pill),.kt-board tbody td:first-child>.tagcell{margin-left:16px}
+.kt-board .num{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;color:var(--pp-text)}
+.kt-board .pill{display:inline-block;min-width:58px;text-align:center;padding:4px 9px;border-radius:999px;
+  font-variant-numeric:tabular-nums;font-weight:700;font-size:.8rem}
+.kt-board .barcell{position:relative;min-width:120px}
+.kt-board .barcell i{position:absolute;left:0;top:9px;bottom:9px;border-radius:6px;display:block}
+.kt-board .barcell span{position:relative;font-weight:700;font-variant-numeric:tabular-nums;padding-left:8px;
+  color:var(--pp-text)}
+.kt-board .tagcell{display:inline-flex;align-items:center;gap:7px;font-weight:600;color:var(--pp-text)}
+.kt-board .tagcell i{width:10px;height:10px;border-radius:3px;display:inline-block}
+
 /* ---------- the heat grid ---------- */
 .kt-heatwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--pp-border);
   border-radius:14px;background:var(--pp-panel);margin:.2rem 0 .5rem}
@@ -569,6 +600,82 @@ def sheet(columns, rows):
     st.markdown(f'<div class="kt-sheetwrap"><table class="kt-sheet"><thead><tr>{head}</tr>'
                 f'</thead><tbody>{"".join(body)}</tbody></table></div>',
                 unsafe_allow_html=True)
+
+
+def board(columns, rows, ranked=False):
+    """A designed results table: team-coloured edge, coloured cells, bars and pills.
+
+    columns = [(heading, kind)] where kind is one of
+      "label"  (title, subtitle)            bold name with a small line under it
+      "text"   str                           plain text
+      "num"    str                           right-aligned number
+      "bar"    (value, text)                 a bar in the row's colour, scaled to the column's biggest value
+      "delta"  number or (number, text)      green pill if > 0, red if < 0
+      "scale"  (value, text) or value        coloured pill: red to green within the column (higher is better)
+      "scale_low" same, but lower is better
+      "tag"    (colour, text)                a coloured square and a name
+    rows = [{"colour": team colour (optional), "cells": [...]}]
+    ranked=True puts a big position number (gold, silver, bronze for the top three) first.
+    """
+    kinds = [k for _, k in columns]
+
+    def value_of(cell):
+        return float(cell[0] if isinstance(cell, (tuple, list)) else cell)
+
+    spans = {}
+    for i, kind in enumerate(kinds):
+        if kind in ("bar", "scale", "scale_low"):
+            vals = [value_of(r["cells"][i]) for r in rows if r["cells"][i] is not None]
+            spans[i] = (min(vals, default=0.0), max(vals, default=1.0))
+    head = ('<th></th>' if ranked else "") + "".join(
+        f'<th class="{"r" if k in ("num", "delta", "scale", "scale_low") else ""}">{esc(h)}</th>'
+        for h, k in columns)
+    body = []
+    for n, row in enumerate(rows, start=1):
+        colour = row.get("colour") or "#8a8a96"
+        cells = []
+        if ranked:
+            medal = f" p{n}" if n <= 3 else ""
+            cells.append(f'<td><span class="edge" style="background:{colour}"></span>'
+                         f'<span class="rank{medal}">{n}</span></td>')
+        for i, (kind, cell) in enumerate(zip(kinds, row["cells"])):
+            first = (i == 0 and not ranked)
+            edge = f'<span class="edge" style="background:{colour}"></span>' if first else ""
+            if cell is None:
+                cells.append(f'<td>{edge}<span style="color:var(--pp-muted)">–</span></td>')
+            elif kind == "label":
+                title, sub = cell if isinstance(cell, (tuple, list)) else (cell, "")
+                cells.append(f'<td>{edge}<div class="lbl"><b>{esc(title)}</b>'
+                             f'{f"<small>{esc(sub)}</small>" if sub else ""}</div></td>')
+            elif kind == "bar":
+                lo, hi = spans[i]
+                v, text = cell
+                share = max(0.04, abs(float(v)) / (max(abs(lo), abs(hi)) or 1))
+                cells.append(f'<td class="barcell">{edge}<i style="width:{share * 100:.0f}%;'
+                             f'background:linear-gradient(90deg,{fade(colour, .55)},{fade(colour, .12)})"></i>'
+                             f'<span>{esc(text)}</span></td>')
+            elif kind == "delta":
+                v, text = cell if isinstance(cell, (tuple, list)) else (cell, f"{float(cell):+g}")
+                tone = GOOD if float(v) > 0 else POOR if float(v) < 0 else "#8a8a96"
+                cells.append(f'<td class="num">{edge}<span class="pill" style="background:{fade(tone, .16)};'
+                             f'color:{tone};box-shadow:inset 0 0 0 1px {fade(tone, .35)}">{esc(text)}</span></td>')
+            elif kind in ("scale", "scale_low"):
+                v, text = cell if isinstance(cell, (tuple, list)) else (cell, f"{float(cell):g}")
+                lo, hi = spans[i]
+                good = (float(v) - lo) / ((hi - lo) or 1)
+                tone = scale_colour(good, flip=(kind == "scale_low"))
+                cells.append(f'<td class="num">{edge}<span class="pill" style="background:{fade(tone, .18)};'
+                             f'color:{tone}">{esc(text)}</span></td>')
+            elif kind == "tag":
+                c, text = cell
+                cells.append(f'<td>{edge}<span class="tagcell"><i style="background:{c}"></i>{esc(text)}</span></td>')
+            elif kind == "num":
+                cells.append(f'<td class="num">{edge}{esc(cell)}</td>')
+            else:
+                cells.append(f'<td>{edge}<span style="color:var(--pp-text)">{esc(cell)}</span></td>')
+        body.append(f"<tr>{''.join(cells)}</tr>")
+    st.markdown(f'<div class="kt-boardwrap"><table class="kt-board"><thead><tr>{head}</tr></thead>'
+                f'<tbody>{"".join(body)}</tbody></table></div>', unsafe_allow_html=True)
 
 
 # ---------- a card you open by tapping it ----------

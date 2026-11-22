@@ -4,9 +4,24 @@ import streamlit as st
 import rules
 from app_archive import require_history
 from style import stat_strip
-from ui_kit import GOOD, league, section, sheet
+from ui_kit import GOOD, board, league, section
 
 require_history()
+
+PALETTE = ["#e10600", "#27f4d2", "#ff8000", "#3671c6", "#e8b33a", "#64c4ff", "#b6babd", "#229971",
+           "#c04dff", "#ff87bc", "#52e252", "#2b4562"]
+
+
+def colour_for(team):
+    """The same colour for the same team name every time (historical teams have no official colour here)."""
+    known = {"ferrari": "#e8002d", "mclaren": "#ff8000", "mercedes": "#27f4d2", "red bull": "#3671c6",
+             "williams": "#64c4ff", "lotus": "#ffd23f", "brabham": "#229971", "renault": "#ffd800",
+             "benetton": "#4dc94f", "tyrrell": "#2b4562", "brm": "#52e252", "cooper": "#2b6cff"}
+    name = str(team).lower()
+    for key, colour in known.items():
+        if key in name:
+            return colour
+    return PALETTE[sum(map(ord, name)) % len(PALETTE)]
 
 
 @st.cache_data(ttl=3600)
@@ -51,9 +66,12 @@ stat_strip([
 
 if len(changed):
     section("Titles that change hands", "Seasons where these rules crown a different champion.")
-    sheet([("Season", "text"), ("Real champion", "text"), ("Under these rules", "tag"), ("Margin", "num")],
-          [[str(r.season), f"{r.real_name} ({r.real_team})", (GOOD, f"{r.new_name} ({r.new_team})"),
-            f"{r.margin:g}" if r.margin else "countback"] for r in changed.itertuples()])
+    board([("Season", "label"), ("Real champion", "label"), ("Under these rules", "label"), ("Margin", "bar")],
+          [{"colour": colour_for(r.new_team),
+            "cells": [(str(r.season), "level, decided on countback" if not r.margin else f"won by {r.margin:g} pts"),
+                      (r.real_name, r.real_team), (f"{r.new_name} ★", r.new_team),
+                      (max(float(r.margin), 0.5), f"{r.margin:g} pts" if r.margin else "countback")]}
+           for r in changed.itertuples()])
 else:
     section("Titles that change hands")
     st.caption("None: every champion stays the same under these rules.")
@@ -73,8 +91,11 @@ season = st.selectbox("Season", sorted(out["season"].tolist(), reverse=True))
 table = tables[tables["season"] == season].head(10)
 real_row = out[out["season"] == season].iloc[0]
 st.caption(f"Real champion: **{real_row['real_name']}** ({real_row['real_team']}).")
-sheet([("", "text"), ("Driver", "text"), ("Team", "text"), ("Wins", "num"), ("Points", "num")],
-      [[f"P{int(r.rank)}", r.driver_name, r.team, int(r.wins), f"{r.points:g}"] for r in table.itertuples()])
+board([("Driver", "label"), ("Wins", "num"), ("Points", "bar")],
+      [{"colour": colour_for(r.team), "cells": [(r.driver_name + (" ★" if r.driver_name == real_row["real_name"] else ""), r.team),
+                                                int(r.wins), (r.points, f"{r.points:g}")]}
+       for r in table.itertuples()], ranked=True)
+st.caption("★ marks the real champion.")
 
 with st.expander("What this can't reproduce"):
     st.markdown("""

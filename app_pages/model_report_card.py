@@ -8,7 +8,7 @@ import streamlit as st
 import report_card as R
 from charts import dress, theme
 from style import stat_strip
-from ui_kit import GOOD, POOR, section, sheet
+from ui_kit import GOOD, POOR, board, section
 
 FILE = Path(__file__).resolve().parent.parent / "data" / "predictions" / "backtest_probs.csv"
 
@@ -63,11 +63,15 @@ st.altair_chart(dress(diag + pts).properties(height=360), use_container_width=Tr
 # ---------- by season ----------
 section("Season by season", "Brier score for podium chances (lower is better), against the grid baseline.")
 table = R.by_season(probs)
-sheet([("Season", "text"), ("Races", "num"), ("Model", "num"), ("Grid baseline", "num"), ("Skill", "tag"),
-       ("Log loss", "num"), ("Winner Brier", "num")],
-      [[str(r.season), r.races, f"{r.brier:.4f}", f"{r.grid_brier:.4f}",
-        (GOOD if r.skill > 0 else POOR, f"{r.skill:+.1%}"), f"{r.log_loss:.3f}", f"{r.win_brier:.4f}"]
+board([("Season", "label"), ("Model", "scale_low"), ("Grid baseline", "scale_low"), ("Skill vs grid", "delta"),
+       ("Log loss", "scale_low"), ("Winner Brier", "scale_low")],
+      [{"colour": GOOD if r.skill > 0 else POOR,
+        "cells": [(str(r.season), f"{r.races} races" + (" · so far" if r.season == table["season"].max() else "")),
+                  (r.brier, f"{r.brier:.4f}"), (r.grid_brier, f"{r.grid_brier:.4f}"), (r.skill, f"{r.skill:+.1%}"),
+                  (r.log_loss, f"{r.log_loss:.3f}"), (r.win_brier, f"{r.win_brier:.4f}")]}
        for r in table.itertuples()])
+st.caption("Pills run green to red within each column (lower is better for every score). "
+           "The edge is green where the model beat the grid baseline that season.")
 
 # ---------- finish ranges ----------
 section("How far off can a prediction be?", "For each predicted position, the range of real finishes that "

@@ -6,7 +6,7 @@ import streamlit as st
 import race_story as R
 from charts import dress, theme
 from style import stat_strip
-from ui_kit import GOOD, POOR, diverge, section, sheet
+from ui_kit import GOOD, POOR, board, diverge, section
 
 MIN_STARTS = 10
 
@@ -93,8 +93,10 @@ if place == "Every circuit":
 # ---------- biggest moves ----------
 section("The biggest opening laps", "Most places gained between the grid and the end of lap 1.")
 top = d.sort_values(["gained", "season"], ascending=[False, False]).head(12)
-sheet([("Race", "text"), ("Driver", "tag"), ("Grid", "num"), ("After lap 1", "num"), ("Gained", "num")],
-      [[f"{r.race_name} {r.season}", (r.colour, r.code), r.grid, r.after_lap1, f"+{r.gained}"] for r in top.itertuples()])
+board([("Driver", "label"), ("Grid", "num"), ("After lap 1", "num"), ("Places gained", "bar")],
+      [{"colour": r.colour, "cells": [(str(r.name).title(), f"{r.race_name} {r.season} · {r.team}"),
+                                      f"P{r.grid}", f"P{r.after_lap1}", (r.gained, f"+{r.gained}")]}
+       for r in top.itertuples()], ranked=True)
 
 with st.expander("How this is worked out"):
     st.markdown("""
