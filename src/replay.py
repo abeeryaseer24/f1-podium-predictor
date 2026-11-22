@@ -165,4 +165,4 @@ def build_replay(folder):
     return {"race_name": info["race_name"], "season": info["season"], "laps": total_laps,
             "duration": int(len(ticks) - 1), "lapTimes": lap_times, "cars": cars,
             "events": events, "status": status,
-            "rain": rain_timeline(folder, base, start, end), "tod": time_of_day(info["race_name"])}
+            "rain": rain_timeline(folder, base, start, end), "tod": time_of_day(info.get("location", ""))}

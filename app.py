@@ -156,6 +156,7 @@ PAGES = {
         st.Page("app_pages/academy_m7.py", title="Brakes"),
         st.Page("app_pages/academy_m11.py", title="Race Engineering"),
         st.Page("app_pages/academy_m12.py", title="Strategy"),
+        st.Page("app_pages/academy_m13.py", title="Circuits"),
     ],
     "Games": [
         st.Page("app_pages/beat_the_ai.py", title="Beat the AI"),
@@ -239,6 +240,7 @@ TAGLINES = {
     "Rain Crossover": "In wet races, when slicks became faster than intermediates, and who switched at the right moment.",
     "Race Engineering": "Module 11: the weekend, run plans, setup, parc fermé, qualifying and the driver–engineer radio.",
     "Strategy": "Module 12: stops, degradation, the undercut, safety cars, game theory, Monte Carlo, RL and wet races.",
+    "Circuits": "Module 13: how circuits differ, a 3D tour of every circuit corner by corner, history and designing your own.",
     "All-Time Ratings": "Every driver since 1950 with the car taken out, against their own era or on one scale.",
     "Driver Swap": "Put any driver from any era in any car, and replay that season 2,000 times.",
     "Ask the Pit Wall": "Ask anything about F1 since 1950 in plain English, answered from our own archive.",

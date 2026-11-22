@@ -1,7 +1,7 @@
 """Time of day and rain for the 3D views (sim3d.py lap views and the Pit Wall replay).
 
 Python decides the starting conditions:
-  time_of_day(race_name)   "night" for the races run after dark, "dusk" for Abu Dhabi, else "day"
+  time_of_day(location)    "night" for the venues raced after dark, "dusk" for Abu Dhabi, else "day"
   rain_timeline(folder)    [[seconds from the replay start, raining 0/1], ...] from the race's own
                            weather feed (OpenF1's rainfall flag, about once a minute)
 and ENV_JS draws them inside the Three.js page:
@@ -18,15 +18,16 @@ import pandas as pd
 
 RACES_DIR = Path(__file__).resolve().parent.parent / "data" / "races"
 
-NIGHT = ("Bahrain", "Saudi", "Singapore", "Las Vegas", "Qatar")
-DUSK = ("Abu Dhabi",)
+# By venue, not race name: a race keeps its name when it moves (2026 had a Bahrain Grand Prix in Kuala Lumpur).
+NIGHT = ("Sakhir", "Jeddah", "Marina Bay", "Las Vegas", "Lusail")
+DUSK = ("Yas Island", "Yas Marina")
 
 
-def time_of_day(race_name):
-    name = str(race_name)
-    if any(k in name for k in NIGHT):
+def time_of_day(location):
+    place = str(location)
+    if any(k in place for k in NIGHT):
         return "night"
-    if any(k in name for k in DUSK):
+    if any(k in place for k in DUSK):
         return "dusk"
     return "day"
 
@@ -51,7 +52,7 @@ def rain_timeline(folder, base=0.0, start=None, end=None):
 def env_for(folder):
     """Starting conditions for a circuit's simulator views (the simulator is a dry-weather model)."""
     info = json.loads((RACES_DIR / folder / "info.json").read_text(encoding="utf-8"))
-    return {"tod": time_of_day(info["race_name"]), "rain": False}
+    return {"tod": time_of_day(info.get("location", "")), "rain": False}
 
 
 # The buttons the templates add to their #views bar.

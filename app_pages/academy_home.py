@@ -14,7 +14,8 @@ LIVE = {"0": "app_pages/academy_m0.py", "1": "app_pages/academy_m1.py", "2": "ap
         "3": "app_pages/academy_m3.py",
         "4": "app_pages/academy_m4.py",
         "5": "app_pages/academy_m5.py", "6": "app_pages/academy_m6.py", "7": "app_pages/academy_m7.py",
-        "11": "app_pages/academy_m11.py", "12": "app_pages/academy_m12.py"}
+        "11": "app_pages/academy_m11.py", "12": "app_pages/academy_m12.py",
+        "13": "app_pages/academy_m13.py"}
 
 st.markdown("""
 How a modern Formula 1 car works and how a race is engineered, from the tyres up. Every chapter

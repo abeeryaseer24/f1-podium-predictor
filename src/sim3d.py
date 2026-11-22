@@ -21,9 +21,10 @@ from scene_env import ENV_BUTTONS, ENV_JS
 THREE_URL = "https://cdn.jsdelivr.net/npm/three@0.160.0"
 
 
-def lap_view(track, cars, labels=None, dark=True, height=560, lift=4, note="", env=None):
+def lap_view(track, cars, labels=None, dark=True, height=560, lift=4, note="", env=None, view="overview"):
     """A 3D lap with cars, play controls, a follow camera and a live timing box.
-    env = {"tod": "day" | "dusk" | "night", "rain": bool} sets the starting conditions (scene_env.py)."""
+    env = {"tod": "day" | "dusk" | "night", "rain": bool} sets the starting conditions (scene_env.py).
+    view = "overview", "follow" or "onboard" is the camera it opens with."""
     data = {
         "dark": dark,
         "x": np.round(track["x"], 1).tolist(),
@@ -39,6 +40,7 @@ def lap_view(track, cars, labels=None, dark=True, height=560, lift=4, note="", e
         "lift": lift,
         "note": note,
         "env": env or {"tod": "day", "rain": False},
+        "view": view,
     }
     page = (LAP_TEMPLATE.replace("__DATA__", json.dumps(data)).replace("__THREE__", THREE_URL)
             .replace("__ENV_JS__", ENV_JS).replace("__ENV_BUTTONS__", ENV_BUTTONS))
@@ -287,6 +289,7 @@ function onboardStep(p) {
 btnO.onclick = () => { setView("overview"); overview(); };
 btnF.onclick = () => setView("follow");
 document.getElementById("onboard").onclick = () => setView("onboard");
+if (D.view && D.view !== "overview") setView(D.view);
 function onboardHook(on) {      // overview cars are drawn huge so they show from far away
   cars.forEach((c, i) => { c.group.scale.setScalar(on ? 0.3 : 1); c.group.visible = !(on && i === 0);
                            c.tag.style.visibility = on && i === 0 ? "hidden" : ""; });
@@ -347,8 +350,12 @@ resize();
     document.getElementById("v" + i).textContent = done ? "Lap " + fmt(c.end) : Math.round(speedAt(c, t)) + " km/h";
   });
   if (onboard.on && cars.length) {
-    const c = cars[0];
-    onboardStep(pointAt(sAt(c, Math.min(clock, c.end))));
+    const c = cars[0], s = sAt(c, Math.min(clock, c.end)), p = pointAt(s);
+    const d = pointAt(s + step * 4).sub(p); d.y = 0;          // the track's own heading, even when paused
+    if (d.lengthSq() > 1e-8) onboard.dir.copy(d.normalize());
+    onboard.prev = null;
+    onboardStep(p);
+    cars.forEach((o, i) => { if (i > 0) o.group.visible = o.group.position.distanceTo(p) > 2.5; });  // not in your lap
   } else if (follow && cars.length) {
     const c = cars[0], s = sAt(c, Math.min(clock, c.end));
     const p = pointAt(s), behind = pointAt(s - step * 12);
