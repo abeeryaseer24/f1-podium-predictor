@@ -3,6 +3,7 @@ import streamlit as st
 
 import app_sim as A
 from app_data import get_race_file, get_race_info
+from scene_env import env_for
 from sim3d import lap_view
 from style import stat_strip
 from ui_kit import section
@@ -34,7 +35,7 @@ lap_view(
     A.three_track(track, [A.MODE_COLOURS[m] for m in sim["mode"]], A.MODE_LEGEND),
     [A.sim_car(sim, "SIM", A.SIM_COLOUR),
      {"name": "REAL", "colour": real_colour, "t": real_t, "s": real_s}],
-    labels=A.corner_labels(folder, track), dark=st.session_state.dark,
+    labels=A.corner_labels(folder, track), dark=st.session_state.dark, env=env_for(folder),
     note="Hills shown 4× higher",
 )
 

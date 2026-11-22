@@ -16,11 +16,14 @@ import json
 import numpy as np
 import streamlit.components.v1 as components
 
+from scene_env import ENV_BUTTONS, ENV_JS
+
 THREE_URL = "https://cdn.jsdelivr.net/npm/three@0.160.0"
 
 
-def lap_view(track, cars, labels=None, dark=True, height=560, lift=4, note=""):
-    """A 3D lap with cars, play controls, a follow camera and a live timing box."""
+def lap_view(track, cars, labels=None, dark=True, height=560, lift=4, note="", env=None):
+    """A 3D lap with cars, play controls, a follow camera and a live timing box.
+    env = {"tod": "day" | "dusk" | "night", "rain": bool} sets the starting conditions (scene_env.py)."""
     data = {
         "dark": dark,
         "x": np.round(track["x"], 1).tolist(),
@@ -35,8 +38,10 @@ def lap_view(track, cars, labels=None, dark=True, height=560, lift=4, note=""):
         "labels": labels or [],
         "lift": lift,
         "note": note,
+        "env": env or {"tod": "day", "rain": False},
     }
-    page = LAP_TEMPLATE.replace("__DATA__", json.dumps(data)).replace("__THREE__", THREE_URL)
+    page = (LAP_TEMPLATE.replace("__DATA__", json.dumps(data)).replace("__THREE__", THREE_URL)
+            .replace("__ENV_JS__", ENV_JS).replace("__ENV_BUTTONS__", ENV_BUTTONS))
     components.html(page, height=height)
 
 
@@ -94,7 +99,7 @@ LAP_TEMPLATE = r"""<!doctype html>
 <div id="app">
   <div id="stage">
     <div id="hud"><div id="clock">0:00.000</div><div id="rows"></div></div>
-    <div id="views"><button id="overview" class="on">Overview</button><button id="follow">Follow</button></div>
+    <div id="views"><button id="overview" class="on">Overview</button><button id="follow">Follow</button><button id="onboard">Onboard</button>__ENV_BUTTONS__</div>
     <div id="legend"></div>
     <div id="note"></div>
   </div>
@@ -184,6 +189,9 @@ const startLine = new THREE.Mesh(new THREE.BoxGeometry(W * 2.3, 0.25, 0.6), new 
 startLine.position.copy(pts[0]);
 startLine.lookAt(pts[1]);
 scene.add(startLine);
+__ENV_JS__
+const weather = makeWeather({ scene, ground, grid: gridHelper, edges: [left, right], road: ribbon, T,
+                              target: () => controls.target });
 
 // ---------- legend and note ----------
 document.getElementById("legend").innerHTML =
@@ -253,8 +261,44 @@ function overview() {          // pull back on narrow screens so the whole circu
   camera.position.set(0, 70 * f, 95 * f); controls.target.set(0, 0, 0); controls.update();
 }
 const btnO = document.getElementById("overview"), btnF = document.getElementById("follow");
-btnO.onclick = () => { follow = false; btnO.classList.add("on"); btnF.classList.remove("on"); overview(); };
-btnF.onclick = () => { follow = true; btnF.classList.add("on"); btnO.classList.remove("on"); };
+
+// ---------- onboard camera: just behind the car at its height, looking down the road ----------
+// The heading comes from the car's own movement (smoothed), so the view rides the real elevation.
+const onboard = { on: false, dir: new THREE.Vector3(1, 0, 0), prev: null, minD: controls.minDistance };
+function setView(mode) {
+  follow = mode === "follow"; onboard.on = mode === "onboard";
+  for (const id of ["overview", "follow", "onboard"]) document.getElementById(id).classList.toggle("on", id === mode);
+  controls.enabled = !onboard.on;
+  controls.minDistance = onboard.on ? 0 : onboard.minD;
+  camera.fov = onboard.on ? 68 : 45; camera.updateProjectionMatrix();
+  if (typeof onboardHook === "function") onboardHook(onboard.on);
+  onboard.prev = null;
+}
+function onboardStep(p) {
+  if (onboard.prev) {
+    const d = p.clone().sub(onboard.prev); d.y = 0;
+    if (d.lengthSq() > 1e-8) onboard.dir.lerp(d.normalize(), 0.18).normalize();
+  }
+  onboard.prev = p.clone();
+  const cam = p.clone().addScaledVector(onboard.dir, -2.4).add(new THREE.Vector3(0, 0.95, 0));
+  const look = p.clone().addScaledVector(onboard.dir, 10).add(new THREE.Vector3(0, 0.35, 0));
+  camera.position.lerp(cam, 0.4); controls.target.lerp(look, 0.4);
+}
+btnO.onclick = () => { setView("overview"); overview(); };
+btnF.onclick = () => setView("follow");
+document.getElementById("onboard").onclick = () => setView("onboard");
+function onboardHook(on) {      // overview cars are drawn huge so they show from far away
+  cars.forEach((c, i) => { c.group.scale.setScalar(on ? 0.3 : 1); c.group.visible = !(on && i === 0);
+                           c.tag.style.visibility = on && i === 0 ? "hidden" : ""; });
+}
+
+// ---------- time of day and rain ----------
+const todSel = document.getElementById("tod"), rainBtn = document.getElementById("rainBtn");
+todSel.value = D.env.tod; weather.setTod(D.env.tod);
+weather.setRain(D.env.rain); rainBtn.classList.toggle("on", !!D.env.rain);
+todSel.onchange = () => weather.setTod(todSel.value);
+rainBtn.onclick = () => { weather.setRain(!weather.raining); rainBtn.classList.toggle("on", weather.raining); };
+let weatherLast = performance.now();
 
 // ---------- playback ----------
 let clock = 0, playing = false, last = null;
@@ -279,7 +323,7 @@ function resize() {
   const w = stage.clientWidth, h = stage.clientHeight;
   if (!w || !h) return;
   renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
-  if (!moved && !follow) overview();
+  if (!moved && !follow && !onboard.on) overview();
 }
 new ResizeObserver(resize).observe(stage);
 resize();
@@ -302,13 +346,17 @@ resize();
     const done = clock >= c.end;
     document.getElementById("v" + i).textContent = done ? "Lap " + fmt(c.end) : Math.round(speedAt(c, t)) + " km/h";
   });
-  if (follow && cars.length) {
+  if (onboard.on && cars.length) {
+    const c = cars[0];
+    onboardStep(pointAt(sAt(c, Math.min(clock, c.end))));
+  } else if (follow && cars.length) {
     const c = cars[0], s = sAt(c, Math.min(clock, c.end));
     const p = pointAt(s), behind = pointAt(s - step * 12);
     const want = behind.clone().add(new THREE.Vector3(0, 6, 0));
     camera.position.lerp(want, 0.12);
     controls.target.lerp(p, 0.2);
   }
+  weather.step((now - weatherLast) / 1000); weatherLast = now;
   controls.update();
   renderer.render(scene, camera);
   labels.forEach(L => place(L.el, L.pos));

@@ -5,6 +5,7 @@ import numpy as np
 import streamlit as st
 
 import app_sim as A
+from scene_env import env_for
 from sim3d import lap_view
 from style import stat_strip
 from ui_kit import diverge, section
@@ -96,7 +97,7 @@ ghost = "#f5f5f7" if st.session_state.dark else "#15151e"
 lap_view(A.three_track(track, colours, [("You're faster", "#1fd6a0"), ("You're slower", "#e4544a"),
                                         ("About the same", "#8a8a96")]),
          [A.sim_car(yours, "YOU", A.SIM_COLOUR), A.sim_car(ref, "BASE", ghost)],
-         labels=A.corner_labels(folder, track), dark=st.session_state.dark, height=520)
+         labels=A.corner_labels(folder, track), dark=st.session_state.dark, env=env_for(folder), height=520)
 
 # ---------- corner by corner ----------
 marks = A.corner_marks(folder, track)

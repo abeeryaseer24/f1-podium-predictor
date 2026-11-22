@@ -14,6 +14,7 @@ import pandas as pd
 from scipy.spatial import cKDTree
 
 from predictor import RACES_DIR
+from scene_env import rain_timeline, time_of_day
 
 TRACK_POINTS = 1500               # the track line is resampled to this many evenly spaced points
 NOISY_FLAGS = {"BLUE", "CLEAR", "GREEN", "YELLOW", "DOUBLE YELLOW"}
@@ -163,4 +164,5 @@ def build_replay(folder):
     events, status = race_events(control, base, end)
     return {"race_name": info["race_name"], "season": info["season"], "laps": total_laps,
             "duration": int(len(ticks) - 1), "lapTimes": lap_times, "cars": cars,
-            "events": events, "status": status}
+            "events": events, "status": status,
+            "rain": rain_timeline(folder, base, start, end), "tod": time_of_day(info["race_name"])}

@@ -5,13 +5,16 @@ import json
 
 import streamlit.components.v1 as components
 
+from scene_env import ENV_BUTTONS, ENV_JS
+
 from track3d import THREE_URL
 
 
 def pit_wall_view(data, track, strategy=None, dark=True, height=720, game=None):
     payload = dict(data, dark=dark, strategy=strategy, game=game,
                    points=track[["x", "y", "z"]].round(1).values.tolist())
-    page = TEMPLATE.replace("__DATA__", json.dumps(payload)).replace("__THREE__", THREE_URL)
+    page = (TEMPLATE.replace("__DATA__", json.dumps(payload)).replace("__THREE__", THREE_URL)
+            .replace("__ENV_JS__", ENV_JS).replace("__ENV_BUTTONS__", ENV_BUTTONS))
     components.html(page, height=height)
 
 
@@ -174,8 +177,8 @@ TEMPLATE = r"""<!doctype html>
       <div id="hud"><div id="lap">Lap 1</div><div id="clock">0:00</div></div>
       <div id="status"></div>
       <div id="views">
-        <button id="overview" class="on">Overview</button><button id="follow">Follow</button>
-        <button id="verdictBtn">Strategist verdict</button>
+        <button id="overview" class="on">Overview</button><button id="follow">Follow</button><button id="onboard">Onboard</button>
+        __ENV_BUTTONS__<button id="verdictBtn">Strategist verdict</button>
       </div>
       <div id="radio"><div id="hint">Tap a driver to hear their team radio</div></div>
       <div id="ticker"></div>
@@ -282,6 +285,13 @@ const startLine = new THREE.Mesh(new THREE.BoxGeometry(W * 2.3, 0.25, 0.6), new 
 startLine.position.copy(samples[0]);
 startLine.lookAt(samples[0].clone().add(curve.getTangent(0)));
 scene.add(startLine);
+__ENV_JS__
+const weather = makeWeather({ scene, ground, grid, edges: [leftEdge, rightEdge], road: ribbonGeo, T,
+                              target: () => controls.target });
+// Rain follows the race's own weather feed until the visitor presses the button.
+const RAIN = D.rain || [];
+let rainManual = null;
+function rainingAt(t) { let r = 0; for (const [at, v] of RAIN) { if (at <= t) r = v; else break; } return !!r; }
 
 // ---------- labels ----------
 function makeLabel(text) {
@@ -351,9 +361,34 @@ const overviewBtn = document.getElementById("overview"), followBtn = document.ge
 function resetView() { camera.position.set(0, 70, 95); controls.target.set(0, 0, 0); controls.update(); }
 let order = cars.slice();
 const focusCar = () => selected || order[0];
-overviewBtn.onclick = () => { follow = false; overviewBtn.classList.add("on"); followBtn.classList.remove("on"); resetView(); };
+
+// ---------- onboard camera: just behind the car at its height, looking down the road ----------
+// The heading comes from the car's own movement (smoothed), so the view rides the real elevation.
+const onboard = { on: false, dir: new THREE.Vector3(1, 0, 0), prev: null, minD: controls.minDistance };
+function setView(mode) {
+  follow = mode === "follow"; onboard.on = mode === "onboard";
+  for (const id of ["overview", "follow", "onboard"]) document.getElementById(id).classList.toggle("on", id === mode);
+  controls.enabled = !onboard.on;
+  controls.minDistance = onboard.on ? 0 : onboard.minD;
+  camera.fov = onboard.on ? 68 : 45; camera.updateProjectionMatrix();
+  if (typeof onboardHook === "function") onboardHook(onboard.on);
+  onboard.prev = null;
+}
+function onboardStep(p) {
+  if (onboard.prev) {
+    const d = p.clone().sub(onboard.prev); d.y = 0;
+    if (d.lengthSq() > 1e-8) onboard.dir.lerp(d.normalize(), 0.18).normalize();
+  }
+  onboard.prev = p.clone();
+  const cam = p.clone().addScaledVector(onboard.dir, -2.4).add(new THREE.Vector3(0, 0.95, 0));
+  const look = p.clone().addScaledVector(onboard.dir, 10).add(new THREE.Vector3(0, 0.35, 0));
+  camera.position.lerp(cam, 0.4); controls.target.lerp(look, 0.4);
+}
+overviewBtn.onclick = () => { setView("overview"); resetView(); };
+document.getElementById("onboard").onclick = () => setView("onboard");
+function onboardHook(on) { cars.forEach(c => c.mesh.scale.setScalar(on ? 0.3 : 1)); }
 followBtn.onclick = () => {
-  follow = true; followBtn.classList.add("on"); overviewBtn.classList.remove("on");
+  setView("follow");
   const p = focusCar().mesh.position;
   controls.target.copy(p);
   camera.position.copy(p.clone().add(new THREE.Vector3(0, 22, 30)));
@@ -928,9 +963,17 @@ new ResizeObserver(resize).observe(stage);
 resize();
 
 let lastBoard = 0;
+const todSel = document.getElementById("tod"), rainBtn = document.getElementById("rainBtn");
+todSel.value = D.tod || "day"; weather.setTod(todSel.value);
+todSel.onchange = () => weather.setTod(todSel.value);
+rainBtn.onclick = () => { rainManual = !weather.raining; };
+if (RAIN.length) rainBtn.title = "Follows the real race weather until you press it";
 (function frame() {
   const now = performance.now(), dt = (now - lastFrame) / 1000;
   lastFrame = now;
+  const wantRain = rainManual === null ? rainingAt(time) : rainManual;
+  if (wantRain !== weather.raining) { weather.setRain(wantRain); rainBtn.classList.toggle("on", wantRain); }
+  weather.step(dt);
   if (playing) {
     time = Math.min(END, time + dt * parseFloat(speedSel.value));
     if (time >= END) {
@@ -952,7 +995,9 @@ let lastBoard = 0;
     c.mesh.visible = (!isOut(c, time) || time - c.out < 30) && !c.hidden;
   }
   if (now - lastBoard > 200) { updateBoard(); updateHud(); updateStrat(); lastBoard = now; }
-  if (follow) {
+  if (onboard.on) {
+    onboardStep(focusCar().mesh.position);
+  } else if (follow) {
     const move = focusCar().mesh.position.clone().sub(controls.target).multiplyScalar(0.12);
     controls.target.add(move);
     camera.position.add(move);

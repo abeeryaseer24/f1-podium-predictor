@@ -310,7 +310,7 @@ DUEL_TEMPLATE = r"""<!doctype html>
 <div id="app">
   <div id="stage">
     <div id="hud"><div id="clock">0:00.000</div><div id="gap">Press Play</div></div>
-    <div id="views"><button id="overview" class="on">Overview</button><button id="follow">Follow</button></div>
+    <div id="views"><button id="overview" class="on">Overview</button><button id="follow">Follow</button><button id="onboard">Onboard</button></div>
     <div id="key"></div>
   </div>
   <div id="controls">
@@ -462,9 +462,34 @@ let follow = false;
 const overviewBtn = document.getElementById("overview"), followBtn = document.getElementById("follow");
 function resetView() { camera.position.set(0, 70, 95); controls.target.set(0, 0, 0); controls.update(); }
 function leader() { return cars[0].f >= cars[1].f ? cars[0] : cars[1]; }
-overviewBtn.onclick = () => { follow = false; overviewBtn.classList.add("on"); followBtn.classList.remove("on"); resetView(); };
+
+// ---------- onboard camera: just behind the car at its height, looking down the road ----------
+// The heading comes from the car's own movement (smoothed), so the view rides the real elevation.
+const onboard = { on: false, dir: new THREE.Vector3(1, 0, 0), prev: null, minD: controls.minDistance };
+function setView(mode) {
+  follow = mode === "follow"; onboard.on = mode === "onboard";
+  for (const id of ["overview", "follow", "onboard"]) document.getElementById(id).classList.toggle("on", id === mode);
+  controls.enabled = !onboard.on;
+  controls.minDistance = onboard.on ? 0 : onboard.minD;
+  camera.fov = onboard.on ? 68 : 45; camera.updateProjectionMatrix();
+  if (typeof onboardHook === "function") onboardHook(onboard.on);
+  onboard.prev = null;
+}
+function onboardStep(p) {
+  if (onboard.prev) {
+    const d = p.clone().sub(onboard.prev); d.y = 0;
+    if (d.lengthSq() > 1e-8) onboard.dir.lerp(d.normalize(), 0.18).normalize();
+  }
+  onboard.prev = p.clone();
+  const cam = p.clone().addScaledVector(onboard.dir, -2.4).add(new THREE.Vector3(0, 0.95, 0));
+  const look = p.clone().addScaledVector(onboard.dir, 10).add(new THREE.Vector3(0, 0.35, 0));
+  camera.position.lerp(cam, 0.4); controls.target.lerp(look, 0.4);
+}
+overviewBtn.onclick = () => { setView("overview"); resetView(); };
+document.getElementById("onboard").onclick = () => setView("onboard");
+function onboardHook(on) { cars.forEach(c => c.dot.scale.setScalar(on ? 0.3 : 1)); }
 followBtn.onclick = () => {
-  follow = true; followBtn.classList.add("on"); overviewBtn.classList.remove("on");
+  setView("follow");
   const p = leader().dot.position;
   controls.target.copy(p);
   camera.position.copy(p.clone().add(new THREE.Vector3(0, 22, 30)));
@@ -577,7 +602,9 @@ resize();
     c.trailGeo.setFromPoints(c.trail);
     placeLabel(c.el, s.p.clone().add(new THREE.Vector3(0, 2.4, 0)));
   }
-  if (follow) {
+  if (onboard.on) {
+    onboardStep(leader().dot.position);
+  } else if (follow) {
     const move = leader().dot.position.clone().sub(controls.target).multiplyScalar(0.12);
     controls.target.add(move);
     camera.position.add(move);

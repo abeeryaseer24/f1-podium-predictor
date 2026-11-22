@@ -7,6 +7,7 @@ import streamlit as st
 import app_sim as A
 import energy as E
 from charts import dress
+from scene_env import env_for
 from sim3d import lap_view
 from style import stat_strip
 from ui_kit import board, section
@@ -81,7 +82,7 @@ def car_of(r, name, colour):
             "s": np.r_[r["s"], r["s"][-1] + (r["s"][1] - r["s"][0])]}
 lap_view(A.three_track(track, [PHASE_COLOURS[p] for p in yours["phase"]], PHASE_LEGEND),
          [car_of(yours, "YOU", "#e10600"), car_of(base, "ALL", ghost)],
-         labels=A.corner_labels(folder, track), dark=st.session_state.dark, height=500)
+         labels=A.corner_labels(folder, track), dark=st.session_state.dark, env=env_for(folder), height=500)
 
 # ---------- battery ----------
 section("The battery round the lap", "Charge in the battery (MJ) and the car's speed, against distance.")
