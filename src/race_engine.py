@@ -128,8 +128,12 @@ def tyre_cost(comps, comp, age):
     return c["offset"] + max(c["wear"], 0.0) * age + CLIFF_RATE * over * (over + 1) / 2
 
 
-def simulate(race, runs=300, strategies=None, force_sc_lap=None, sc_enabled=True, seed=0, pace_offsets=None):
-    """Run the race `runs` times. Returns positions (runs x drivers, 0 = retired/unclassified) and laps led."""
+def simulate(race, runs=300, strategies=None, force_sc_lap=None, sc_enabled=True, seed=0, pace_offsets=None,
+             start_lap=0, start_state=None):
+    """Run the race `runs` times. Returns positions (runs x drivers, 0 = retired/unclassified).
+
+    start_lap / start_state restart the race after a given lap from its real state:
+    start_state = {driver: race time at the end of that lap} (drivers missing from it have retired)."""
     rng = np.random.default_rng(seed)
     drv = race["drivers"]
     n, L = len(drv), race["laps"]
@@ -152,12 +156,18 @@ def simulate(race, runs=300, strategies=None, force_sc_lap=None, sc_enabled=True
     # Start: grid order, 0.25 s apart, lap 1 slower and messier
     cum = np.tile(np.arange(n) * 0.25, (runs, 1)).astype(float)
     alive = np.ones((runs, n), dtype=bool)
+    if start_state:
+        for j, d in enumerate(drv):
+            if d in start_state:
+                cum[:, j] = start_state[d]
+            else:
+                alive[:, j] = False
     sc_left = np.zeros(runs, dtype=int)
     hazard = race["sc_rate"] / max(L, 1) if sc_enabled else 0.0
     diff = race["difficulty"]
     threshold = 0.25 + 2.0 * (diff - 0.4)          # pace advantage (s/lap) for a 50 % pass chance
-    order = np.tile(np.arange(n), (runs, 1))       # running order (indices into drivers)
-    for lap in range(1, L + 1):
+    order = np.argsort(np.where(alive, cum, np.inf), axis=1)      # running order (indices into drivers)
+    for lap in range(start_lap + 1, L + 1):
         # safety cars
         new_sc = (rng.random(runs) < hazard) & (sc_left == 0) & (lap > 1) & (lap < L - 2)
         if force_sc_lap is not None and lap == force_sc_lap:
@@ -220,6 +230,30 @@ def summary(race, positions):
                      "points": float(((pos >= 1) & (pos <= 10)).mean()), "dnf": float((pos == 0).mean()),
                      "real": race["real_pos"].get(d)})
     return pd.DataFrame(rows).sort_values("expected").reset_index(drop=True)
+
+
+def real_state(folder, lap):
+    """{driver: race time at the end of `lap`} from the real lap data (relative to the leader)."""
+    laps = R.load(folder)[0]
+    ends = R.lap_end_times(laps)
+    if lap not in ends.columns:
+        return {}
+    col = ends[lap].dropna()
+    return {int(d): float(t - col.min()) for d, t in col.items()}
+
+
+def win_odds(race, every=2, runs=200):
+    """Win chance of every driver after every `every` laps, restarting from the real state each time."""
+    rows = []
+    for lap in range(0, race["laps"] - 1, every):
+        state = real_state(race["folder"], lap) if lap > 0 else None
+        if lap > 0 and not state:
+            continue
+        pos = simulate(race, runs=runs, start_lap=lap, start_state=state, seed=lap)
+        for j, d in enumerate(race["drivers"]):
+            rows.append({"lap": lap, "driver_number": d, "win": float((pos[:, j] == 1).mean()),
+                         "podium": float(((pos[:, j] >= 1) & (pos[:, j] <= 3)).mean())})
+    return pd.DataFrame(rows)
 
 
 def agreement(table):

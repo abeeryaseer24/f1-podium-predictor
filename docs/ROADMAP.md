@@ -90,7 +90,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | S8 ✅ | **Porpoising Lab** | A spring-mass car with ground-effect downforce. Lower the ride height and watch it start bouncing (2022). Adjust stiffness and floor design to stop it. |
 | S9 ✅ | **Tyre Physics** | Pacejka curves, the friction circle, g-g diagrams from real telemetry, and a temperature window toy (graining vs blistering). |
 | S10 ✅ | **Power Units Through the Eras** (Engine Room) | 3.0 V10, 2.4 V8, 2014 V6 hybrid, 2026. Each has a thermodynamic model, an energy-flow Sankey and **synthesized engine sound** (Web Audio, made from rpm and firing order), plus an rpm slider. |
-| S11 | **Rain Crossover** | When to switch inters to slicks (and back) as the track dries, tested against real wet races (`weather.parquet` + laps). |
+| S11 ✅ | **Rain Crossover** | When to switch inters to slicks (and back) as the track dries, tested against real wet races (`weather.parquet` + laps). |
 | S12 ✅ | **Engine Penalty Planner** | When to take new power unit components across a season for the cheapest grid penalties (builds on `power_units.csv`). |
 | S13 | **Series Compare** | The same circuit lapped by F1, F2, F3, Formula E and an IndyCar-style car on E1, showing where the time goes. |
 
@@ -105,7 +105,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | A3 ✅ | **Rules Sandbox** | History | Recompute every championship 1950–2026 under any points system, dropped results, no fastest-lap point, sprints everywhere, reversed grids. "Which titles change hands?" |
 | A4 ✅ | **Team Radio** | Race | Radio clips (OpenF1's team_radio list; our own `radio.parquet` is the strategist's calls) transcribed offline with open-source `faster-whisper` in GitHub Actions (free, new races only), sorted by topic (tyres, strategy, damage, complaints) on the race timeline. Test: does radio predict pit stops? Links to OpenF1 audio, never rehosted. |
 | A5 ✅ | **Lap One** | Race | Places gained and lost at the start by grid slot, clean vs dirty side, distance to Turn 1 and circuit (M3). |
-| A6 | **Win Probability** | Race | A live-style win-chance chart through each race, updated lap by lap (M12). |
+| A6 ✅ | **Win Probability** | Race | A live-style win-chance chart through each race, updated lap by lap (M12). |
 | A7 | **Driver Swap** | Drivers | Counterfactuals: any driver in any car, any era (M4 + E2). "Alonso in the 2023 Red Bull." |
 | A8 | **All-Time Ratings** | History | Era-adjusted driver ratings 1950–2026 with uncertainty bands (M4 + M5). The honest GOAT list. |
 | A9 ✅ | **Model Report Card** | Predictor | Brier score, log loss, reliability diagrams and conformal ranges for the predictor (M11), added to Scoreboard and About. |
