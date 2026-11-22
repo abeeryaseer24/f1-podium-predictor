@@ -85,6 +85,7 @@ with tabs[0]:
         {"Page": "Tyre Physics", "What it shows": "How a tyre grips, slides and overheats, with the real g-g diagram of any lap."},
         {"Page": "Lap Simulator", "What it shows": "Our physics model drives a real circuit in 3D, next to the real fastest lap."},
         {"Page": "Setup Garage", "What it shows": "Change the wing, power, weight or tyres and see the lap time, corner by corner."},
+        {"Page": "Circuit Designer", "What it shows": "Draw your own circuit and the lap simulator drives it as you draw."},
         {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},
         {"Page": "Tyre Lab", "What it shows": "How fast each tyre compound wears, measured from real laps."},
         {"Page": "Beat the AI", "What it shows": "Pick the podium before the race, share your card, and see after the race if you beat our model."},

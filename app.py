@@ -119,6 +119,7 @@ PAGES = {
     "Simulator": [
         st.Page("app_pages/lap_simulator.py", title="Lap Simulator"),
         st.Page("app_pages/setup_garage.py", title="Setup Garage"),
+        st.Page("app_pages/circuit_designer_view.py", title="Circuit Designer"),
         st.Page("app_pages/race_simulator.py", title="Race Simulator"),
         st.Page("app_pages/ai_strategist.py", title="AI Strategist"),
         st.Page("app_pages/tyre_science.py", title="Tyre Physics"),
@@ -248,6 +249,7 @@ TAGLINES = {
     "Race Films": "The story of any race since 2023, written from its data and read aloud by your browser.",
     "AI Strategist": "A reinforcement-learning agent learns pit strategy by trial and error, then takes on the real teams.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
+    "Circuit Designer": "Draw your own circuit. The lap simulator drives it as you draw.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",
     "Start Here": "Module 0: the physics you need, what makes a car fast, and how to read telemetry.",
