@@ -84,11 +84,16 @@ jobs:
         timeout-minutes: 4
         run: python src/ai_driver.py --missing
 
+      - name: Refresh the circuit tours
+        continue-on-error: true
+        timeout-minutes: 4
+        run: python src/circuit_tours.py
+
       - name: Save driving styles
         continue-on-error: true
         timeout-minutes: 2
         run: |
-          git add data/processed/style data/processed/style_model.json data/processed/style_game.parquet data/processed/ai_driver || true
+          git add data/processed/style data/processed/style_model.json data/processed/style_game.parquet data/processed/ai_driver data/processed/circuit_tours.json || true
           if git diff --cached --quiet; then
             echo "No new driving styles."
           else
