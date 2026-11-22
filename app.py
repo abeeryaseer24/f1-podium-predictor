@@ -7,7 +7,45 @@ from pathlib import Path
 import streamlit as st
 
 # Let every page find the files inside src/
-sys.path.append(str(Path(__file__).parent / "src"))
+SRC = (Path(__file__).parent / "src").resolve()
+sys.path.append(str(SRC))
+
+
+def forget_changed_modules():
+    """Make every run use the files in src/ as they are on disk now.
+
+    Streamlit Cloud keeps one Python process alive across deploys: it pulls the new
+    code and reruns the pages, but anything already imported from src/ stays in memory
+    as the old version. A page that needs something added to a shared file since then
+    (a new table helper in ui_kit, say) fails with an ImportError while older pages
+    keep working. Each module is stamped with its file's modified time; if the file
+    has changed since, or the module predates the stamp, it is dropped so the next
+    import reads it fresh.
+    """
+    for name, module in list(sys.modules.items()):
+        path = getattr(module, "__file__", None)
+        if not path or Path(path).resolve().parent != SRC:
+            continue
+        try:
+            mtime = Path(path).stat().st_mtime
+        except OSError:
+            continue
+        if getattr(module, "__src_mtime__", None) != mtime:
+            del sys.modules[name]
+
+
+def stamp_modules():
+    """Record the file time of every src/ module imported during this run."""
+    for module in list(sys.modules.values()):
+        path = getattr(module, "__file__", None)
+        if path and Path(path).resolve().parent == SRC and not hasattr(module, "__src_mtime__"):
+            try:
+                module.__src_mtime__ = Path(path).stat().st_mtime
+            except OSError:
+                pass
+
+
+forget_changed_modules()
 import ui_kit
 from style import apply_style, hero
 
@@ -230,7 +268,10 @@ ui_kit.kit_css()
 
 # ---------- the chosen page ----------
 
-page.run()
+try:
+    page.run()
+finally:
+    stamp_modules()
 
 # Two things Streamlit cannot be told in Python: dropdowns should be tapped rather than
 # typed into, and a chart tooltip opened by a finger has no mouse to leave, so it used
