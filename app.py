@@ -118,6 +118,7 @@ PAGES = {
         st.Page("app_pages/beat_the_ai.py", title="Beat the AI"),
         st.Page("app_pages/beat_the_ai_teams.py", title="Beat the AI: Constructors"),
         st.Page("app_pages/race_engineer.py", title="Be the Race Engineer"),
+        st.Page("app_pages/classic_races.py", title="Classic Races"),
         st.Page("app_pages/f1_quiz.py", title="F1 Quiz"),
     ],
     "About": [
@@ -193,6 +194,7 @@ TAGLINES = {
     "Strategy": "Module 12: stops, degradation, the undercut, safety cars, game theory, Monte Carlo, RL and wet races.",
     "All-Time Ratings": "Every driver since 1950 with the car taken out, against their own era or on one scale.",
     "Driver Swap": "Put any driver from any era in any car, and replay that season 2,000 times.",
+    "Classic Races": "Famous Grands Prix since 1996. Take control of one car's strategy and try to beat history.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",

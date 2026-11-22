@@ -143,6 +143,8 @@ def simulate(race, runs=300, strategies=None, force_sc_lap=None, sc_enabled=True
     # Per-lap tyre and pit plan for every driver (same in every run)
     tyre = np.zeros((L + 1, n))
     pit_lap = np.zeros((L + 1, n), dtype=bool)
+    fuel_lap = np.tile(np.arange(L + 1)[:, None], (1, n)).astype(float)   # laps of fuel burned
+    refuel = bool(race.get("refuel"))
     for j, d in enumerate(drv):
         stints = strategies.get(d) or [(race["ref"] or "MEDIUM", L)]
         lap0 = 1
@@ -150,6 +152,8 @@ def simulate(race, runs=300, strategies=None, force_sc_lap=None, sc_enabled=True
             end = min(end, L) if k < len(stints) - 1 else L
             for lap in range(lap0, end + 1):
                 tyre[lap, j] = tyre_cost(race["compounds"], comp, lap - lap0)
+                if refuel:                       # refuelling era: the car is refilled at every stop
+                    fuel_lap[lap, j] = lap - lap0
             if k < len(stints) - 1:
                 pit_lap[end, j] = True
             lap0 = end + 1
@@ -170,12 +174,13 @@ def simulate(race, runs=300, strategies=None, force_sc_lap=None, sc_enabled=True
     for lap in range(start_lap + 1, L + 1):
         # safety cars
         new_sc = (rng.random(runs) < hazard) & (sc_left == 0) & (lap > 1) & (lap < L - 2)
-        if force_sc_lap is not None and lap == force_sc_lap:
+        forced = force_sc_lap if isinstance(force_sc_lap, (list, tuple, set)) else ([force_sc_lap] if force_sc_lap else [])
+        if lap in forced:
             new_sc |= sc_left == 0
         sc_left[new_sc] = SC_LAPS
         under_sc = sc_left > 0
         # intended lap times
-        t = base[None, :] + form + race["fuel"] * lap + tyre[lap][None, :] + rng.normal(0, NOISE, (runs, n))
+        t = base[None, :] + form + race["fuel"] * fuel_lap[lap][None, :] + tyre[lap][None, :] + rng.normal(0, NOISE, (runs, n))
         if lap == 1:
             t += 2.0 + rng.normal(0, 0.8, (runs, n))
         stop = pit_lap[lap][None, :] * np.where(under_sc, SC_FACTOR["SC"], 1.0)[:, None] * race["pit_loss"]
