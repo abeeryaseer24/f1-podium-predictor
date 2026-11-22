@@ -99,6 +99,7 @@ PAGES = {
         st.Page("app_pages/academy_m1.py", title="The Car as a System"),
         st.Page("app_pages/academy_m2.py", title="Tyres"),
         st.Page("app_pages/academy_m3.py", title="Vehicle Dynamics"),
+        st.Page("app_pages/academy_m4.py", title="Aerodynamics"),
     ],
     "Games": [
         st.Page("app_pages/beat_the_ai.py", title="Beat the AI"),
@@ -165,6 +166,7 @@ TAGLINES = {
     "Porpoising Lab": "Why ground-effect cars bounced in 2022. Tune the floor and springs until it stops.",
     "Dirty Air Lab": "How much downforce a car loses following another, and why the 2022 rules changed it.",
     "Engine Room": "F1 engines from the 1980s turbos to 2026, with their sound synthesised live. Rev them, or drive a real lap.",
+    "Aerodynamics": "Module 4: pressure, wings, the floor, the diffuser, vortices, dirty air, porpoising and active aero.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",
