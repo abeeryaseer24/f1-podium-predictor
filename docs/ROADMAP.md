@@ -68,7 +68,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | # | Module | What it is | Feeds |
 |---|---|---|---|
 | E1 ✅ | `src/lapsim.py` | **Lap-time simulator.** A quasi-steady-state point-mass car on the real 3D track (`track.parquet` x/y/z): curvature → corner speed limit from grip + downforce, forward pass (power, drag, gears), backward pass (braking), elevation and banking. Calibrated per circuit against the real fastest lap and its speed trace. | Nearly everything |
-| E2 | `src/race_engine.py` | **Race engine.** Lap by lap for the whole field: base pace (from E1/E3), tyres (`tyres.py`), fuel burn, pit loss, dirty air, overtaking (M2), safety car hazards (M1), reliability, weather, and rivals that react to each other. Replaces the "nobody else reacts" assumption in `strategy.py`. | Race sim, classic races, RL, games |
+| E2 ✅ | `src/race_engine.py` | **Race engine.** Lap by lap for the whole field: base pace (from E1/E3), tyres (`tyres.py`), fuel burn, pit loss, dirty air, overtaking (M2), safety car hazards (M1), reliability, weather, and rivals that react to each other. Replaces the "nobody else reacts" assumption in `strategy.py`. | Race sim, classic races, RL, games |
 | E3 ✅ | `src/car_dna.py` | **Car DNA.** Inverse E1: fit each car's downforce, drag and power to real OpenF1 speed traces, per team per race since 2023. | Car DNA page, E2 pace, counterfactuals |
 | E4 ✅ | `src/energy.py` | **Power unit and energy model.** 2026 rules: 50/50 ICE and electric, MGU-K harvest and deploy limits, battery state of charge, active aero modes, overtake mode. Older eras (V10, V8, 2014 hybrid with MGU-H) as presets. | Energy Lab, PU pages, Academy |
 | E5 ✅ | `src/tyre_physics.py` | **Tyre model.** Pacejka magic formula, load sensitivity, a one-node temperature model, wear. Grip for E1 and the Academy. | E1, Tyre Physics, Academy |
@@ -83,7 +83,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | S1 ✅ | **Lap Simulator** | Pick a circuit, watch the simulated car lap it in 3D next to the real pole lap, and see the speed trace overlay and where they disagree. |
 | S2 ✅ | **Setup Garage** | Wing level, ride height, mass, power, brake bias, tyre compound → lap time and per-corner gains and losses. "A Monza wing at Monaco costs 1.8 s." Shows sensitivities: what 10 kg, 10 points of downforce and 10 kW are each worth at this track. |
 | S3 ✅ | **Energy Lab 2026** | Battery state of charge round a lap, clipping on straights, harvest zones. Game: place your own deploy and harvest zones and try to beat the default lap. |
-| S4 | **Race Simulator** | Run any race on E2 with your own changes (safety car on lap 20, rain from lap 35, a car's pace +0.3 s) and get the result distribution over 1,000 runs. |
+| S4 ✅ | **Race Simulator** | Run any race on E2 with your own changes (safety car on lap 20, rain from lap 35, a car's pace +0.3 s) and get the result distribution over 1,000 runs. |
 | S5 | **Circuit Designer** | Draw a track (spline editor). E1 laps it, E2 races it, and you get a rating: lap time, top speed, overtaking chance, tyre wear, "processional / strategy race / chaos". Share a link to your track. |
 | S6 ✅ | **Wind Tunnel** | A browser CFD toy (WebGL lattice-Boltzmann) round a wing profile and a car silhouette. Change the angle of attack, see the pressure and the wake, and read lift and drag. |
 | S7 ✅ | **Dirty Air Lab** | Downforce lost behind another car at 0.5 / 1 / 2 s, for the 2017–21 cars vs 2022+ vs 2026, and what that does to overtaking. |
@@ -275,7 +275,7 @@ Each phase ships something visible and finishes in a working app.
 | **2. Quick wins on existing data** ✅ | A2 Where the Race Was Won, A3 Rules Sandbox, A5 Lap One, A9 Report Card, A4 Team Radio | High impact with the data already on disk |
 | **3. Car physics** ✅ | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
 | **4. Aero and power** ✅ | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
-| **5. Race engine** | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
+| **5. Race engine** (in progress: race engine and Race Simulator done, with data-derived safety-car and overtaking models) | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
 | **7. AI showcase** | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |

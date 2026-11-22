@@ -77,6 +77,7 @@ PAGES = {
     "Simulator": [
         st.Page("app_pages/lap_simulator.py", title="Lap Simulator"),
         st.Page("app_pages/setup_garage.py", title="Setup Garage"),
+        st.Page("app_pages/race_simulator.py", title="Race Simulator"),
         st.Page("app_pages/tyre_science.py", title="Tyre Physics"),
         st.Page("app_pages/energy_lab.py", title="Energy Lab"),
         st.Page("app_pages/wind_tunnel_view.py", title="Wind Tunnel"),
@@ -179,6 +180,7 @@ TAGLINES = {
     "Wind Tunnel": "A live airflow simulation in your browser: wings, flaps, separation and the wake.",
     "Engine Penalty Planner": "Where to fit new power units for the cheapest grid penalties, circuit by circuit.",
     "3D Part Explorer": "Rotate the car, the wings, the power unit and a wheel corner. Explode them and tap any part.",
+    "Race Simulator": "Replay a real Grand Prix 400 times, then change a strategy, force a safety car, or find pace.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",

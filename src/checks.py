@@ -229,6 +229,18 @@ def check_race_story():
         check(sums.between(2.95, 3.05).all(), "podium chances add up to 3 drivers in every race")
 
 
+def check_race_engine():
+    """The race engine replays the latest prepared race and roughly agrees with the real result."""
+    import race_engine
+    print("Checking the race engine")
+    folders = sorted(p.name for p in RACES_DIR.glob("*_*") if (p / "laps.parquet").exists())
+    race = race_engine.build(folders[-1])
+    table = race_engine.summary(race, race_engine.simulate(race, runs=150))
+    check(abs(table["win"].sum() - 1) < 0.15, "win chances add up to about one winner per race")
+    agree = race_engine.agreement(table)
+    check(agree > 0.5, f"replaying {folders[-1]} with the real strategies agrees with the real result ({agree:.2f})")
+
+
 def check_pages():
     """Every page in the menu has its one-line subtitle."""
     import re
@@ -258,7 +270,7 @@ def run_all(min_rows=0):
     check_strategy_no_future()
     # Checks for the extra pages (simulator, race breakdowns, report card, page files). These only
     # WARN: a problem on those pages must never stop the robot pushing a locked-in prediction.
-    for extra in (check_lapsim, check_race_story, check_pages):
+    for extra in (check_lapsim, check_race_story, check_race_engine, check_pages):
         warn_only(extra)
     print("All checks passed.")
 
