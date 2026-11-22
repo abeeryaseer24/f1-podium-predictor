@@ -209,8 +209,9 @@ out, which tyre), sees what happens in a simulated race, and gradually learns wh
 results. Given a good enough race simulator, an RL agent can play millions of races, far more than any human
 strategist ever sees.
 
-Research groups and some teams have explored RL for pit-stop decisions. It's on this project's roadmap too:
-an agent trained inside our race engine, compared with our Monte Carlo strategist and the real teams.
+Research groups and some teams have explored RL for pit-stop decisions. This project's **AI Strategist** page
+does it too: an agent learns every race's strategy from simulated races built from that race's data, then
+takes on the real winner's stops.
 """,
        """
 **How it works.** At each lap the agent sees a *state* (tyre age, gaps, laps left, safety car or not) and
@@ -232,9 +233,11 @@ helps engineers trust (or challenge) its recommendations, and spot where it's ex
         ("The biggest risk with RL strategy is…", ["it's too slow", "it exploits errors in the simulator", "it's illegal", "it's expensive"], 1,
          "Only as good as the simulator."),
         ("A policy is…", ["a rule book from the FIA", "the map from states to actions", "a tyre", "insurance"], 1, "What the agent learns."),
-        ("Is an RL strategist on this project's roadmap?", ["No", "Yes, trained inside our race engine", "Only for quizzes", "Never"], 1,
-         "Phase 7.")],
-       sources=SOURCES + ["Schulman, J. et al. (2017). Proximal Policy Optimization Algorithms. arXiv:1707.06347."]),
+        ("Where can you see an RL strategist in this app?", ["Nowhere", "The AI Strategist page", "Only in quizzes", "The About page"], 1,
+         "Trained on every race.")],
+       data=[("AI Strategist", "A policy-search agent trained on every race, against the real teams.")],
+       sources=SOURCES + ["Schulman, J. et al. (2017). Proximal Policy Optimization Algorithms. arXiv:1707.06347.",
+                          "Rubinstein, R. & Kroese, D. (2004). The Cross-Entropy Method. Springer."]),
 
     ch("12.8", "Wet races and crossovers", "When to switch from intermediates to slicks, or back.",
        """

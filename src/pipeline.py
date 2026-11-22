@@ -102,6 +102,7 @@ def main():
     # Each one is optional: if it fails, the robot carries on.
     run_soft("src/lapsim.py", "--missing")          # lap simulator calibrations (Simulator, Academy)
     run_soft("src/car_dna.py", "--missing", "--limit", "2")   # each team's Car DNA from its fastest lap
+    run_soft("src/rl_strategist.py", "--missing", "--limit", "2")   # the AI strategist learns each new race
     if new:
         run_soft("src/report_card.py")              # every driver's chances in the honest test (Report Card)
         run_soft("src/eras.py")                     # driver-vs-car ratings since 1950 (All-Time Ratings, Driver Swap)

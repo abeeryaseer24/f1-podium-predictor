@@ -125,7 +125,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | M3 | Lap one | Ordinal model on grid slot, side, distance to Turn 1 | A5, predictor feature |
 | M4 ✅ | Driver vs car | Bayesian hierarchical or TrueSkill-through-time, 1950–2026 | A7, A8 |
 | M5 | Pre-1996 pace | Bayesian pace from finishing gaps and laps down | A8, classic races |
-| M6 | RL strategist | PPO or MCTS trained inside E2. Compared with the Monte Carlo strategist and the real teams. A policy map (box or stay by tyre age and gap). | Pit Wall, Race Engineer, C1 |
+| M6 ✅ | RL strategist | PPO or MCTS trained inside E2. Compared with the Monte Carlo strategist and the real teams. A policy map (box or stay by tyre age and gap). | Pit Wall, Race Engineer, C1 |
 | M7 | AI driver | Imitation learning on telemetry, driving E1 | G9 |
 | M8 | Who's driving? | Classifier on one lap's throttle, brake and steering traces | G4, Drivers |
 | M9 | Failure early warning | Anomaly detection on laps and telemetry | A10 |
@@ -277,7 +277,7 @@ Each phase ships something visible and finishes in a working app.
 | **4. Aero and power** ✅ | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** ✅ (safety cars and overtaking use data-derived rates; fuller ML versions of M1/M2 are still open) | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** ✅ (M5 pre-1996 pace not built: the archive has finishing orders but no time gaps before 1996, so the era ratings cover those years from finishing order instead) | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
-| **7. AI showcase** | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
+| **7. AI showcase** (in progress: RL strategist and AI Strategist page done) | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
 | **10. Games and polish** | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
