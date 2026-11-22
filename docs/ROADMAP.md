@@ -109,10 +109,10 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | A7 ✅ | **Driver Swap** | Drivers | Counterfactuals: any driver in any car, any era (M4 + E2). "Alonso in the 2023 Red Bull." |
 | A8 ✅ | **All-Time Ratings** | History | Era-adjusted driver ratings 1950–2026 with uncertainty bands (M4 + M5). The honest GOAT list. |
 | A9 ✅ | **Model Report Card** | Predictor | Brier score, log loss, reliability diagrams and conformal ranges for the predictor (M11), added to Scoreboard and About. |
-| A10 | **Failure Watch** | Teams | Cars whose lap times or telemetry looked wrong before they retired, and how early the model flagged them (M9). |
+| A10 ✅ | **Failure Watch** | Teams | Cars whose lap times or telemetry looked wrong before they retired, and how early the model flagged them (M9). |
 | A11 | **Driver Market** | Drivers | Who is likely to move seats next season and why (M10). |
 | A12 | **Calendar Planner** | History | Travel distance and freight carbon of the real calendar vs an optimised one (a travelling-salesman problem with fixed-date constraints). |
-| A13 | **Ask the Pit Wall** (free version) | Home / About | Three free pieces, no paid API: **(1) Question Builder**: about 60 question patterns with slots ("who gained the most places at {circuit} in {season}?"). The visitor types freely and fuzzy matching (`rapidfuzz`) plus a driver/team/circuit/season name list picks the pattern and fills the slots, or they build the question from dropdowns. Every answer is a real pandas query with a table and chart, so it's never made up. **(2) Race reports**: after each race the pipeline finds the "story beats" (decisive pit stop, biggest climber, safety car winner and loser, teammate battle, fastest lap, a record broken), scores how interesting each is, and writes them up from varied sentence templates. **(3) Optional polish**: a small open-source model (e.g. a 1–3B instruct model through `llama.cpp`, CPU-only) runs once per race in GitHub Actions to smooth the template text. The facts come only from the template, and the check refuses any number that isn't in the data. |
+| A13 ✅ | **Ask the Pit Wall** (free version) | Home / About | Three free pieces, no paid API: **(1) Question Builder**: about 60 question patterns with slots ("who gained the most places at {circuit} in {season}?"). The visitor types freely and fuzzy matching (`rapidfuzz`) plus a driver/team/circuit/season name list picks the pattern and fills the slots, or they build the question from dropdowns. Every answer is a real pandas query with a table and chart, so it's never made up. **(2) Race reports**: after each race the pipeline finds the "story beats" (decisive pit stop, biggest climber, safety car winner and loser, teammate battle, fastest lap, a record broken), scores how interesting each is, and writes them up from varied sentence templates. **(3) Optional polish**: a small open-source model (e.g. a 1–3B instruct model through `llama.cpp`, CPU-only) runs once per race in GitHub Actions to smooth the template text. The facts come only from the template, and the check refuses any number that isn't in the data. |
 
 ---
 
@@ -128,7 +128,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | M6 ✅ | RL strategist | PPO or MCTS trained inside E2. Compared with the Monte Carlo strategist and the real teams. A policy map (box or stay by tyre age and gap). | Pit Wall, Race Engineer, C1 |
 | M7 | AI driver | Imitation learning on telemetry, driving E1 | G9 |
 | M8 | Who's driving? | Classifier on one lap's throttle, brake and steering traces | G4, Drivers |
-| M9 | Failure early warning | Anomaly detection on laps and telemetry | A10 |
+| M9 ✅ | Failure early warning | Anomaly detection on laps and telemetry | A10 |
 | M10 | Driver market | Classification on contract, form and teammate gap | A11 |
 | M11 | Calibration | Reliability curves, conformal prediction | A9 |
 | M12 | In-race win probability | E2 restarted from each lap's state | A6 |
@@ -277,7 +277,7 @@ Each phase ships something visible and finishes in a working app.
 | **4. Aero and power** ✅ | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** ✅ (safety cars and overtaking use data-derived rates; fuller ML versions of M1/M2 are still open) | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** ✅ (M5 pre-1996 pace not built: the archive has finishing orders but no time gaps before 1996, so the era ratings cover those years from finishing order instead) | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
-| **7. AI showcase** (in progress: RL strategist and AI Strategist page done) | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
+| **7. AI showcase** (in progress: AI Strategist, Failure Watch and Ask the Pit Wall done) | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
 | **10. Games and polish** | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |

@@ -56,6 +56,7 @@ PAGES = {
           if has_rows("power_units") else []),
         st.Page("app_pages/upgrades.py", title="Upgrades"),
         st.Page("app_pages/penalty_planner.py", title="Engine Penalty Planner"),
+        st.Page("app_pages/failure_watch_view.py", title="Failure Watch"),
     ],
     "Drivers": [
         st.Page("app_pages/driver_standings.py", title="Driver Standings"),
@@ -101,6 +102,7 @@ PAGES = {
         st.Page("app_pages/rules_sandbox.py", title="Rules Sandbox"),
         st.Page("app_pages/all_time_ratings.py", title="All-Time Ratings"),
         st.Page("app_pages/driver_swap.py", title="Driver Swap"),
+        st.Page("app_pages/ask_pit_wall.py", title="Ask the Pit Wall"),
     ],
     "Academy": [
         st.Page("app_pages/academy_home.py", title="Engineering Academy"),
@@ -189,6 +191,7 @@ TAGLINES = {
     "Brakes": "Module 7: carbon-carbon brakes, brake-by-wire, bias, cooling, and the numbers behind a braking zone.",
     "Wind Tunnel": "A live airflow simulation in your browser: wings, flaps, separation and the wake.",
     "Engine Penalty Planner": "Where to fit new power units for the cheapest grid penalties, circuit by circuit.",
+    "Failure Watch": "Did a car's lap times warn of trouble before it retired? An honest early-warning test.",
     "3D Part Explorer": "Rotate the car, the wings, the power unit and a wheel corner. Explode them and tap any part.",
     "Race Simulator": "Replay a real Grand Prix 400 times, then change a strategy, force a safety car, or find pace.",
     "Win Probability": "How every driver's chances moved through a real race, replayed from each lap's real positions.",
@@ -197,6 +200,7 @@ TAGLINES = {
     "Strategy": "Module 12: stops, degradation, the undercut, safety cars, game theory, Monte Carlo, RL and wet races.",
     "All-Time Ratings": "Every driver since 1950 with the car taken out, against their own era or on one scale.",
     "Driver Swap": "Put any driver from any era in any car, and replay that season 2,000 times.",
+    "Ask the Pit Wall": "Ask anything about F1 since 1950 in plain English, answered from our own archive.",
     "Classic Races": "Famous Grands Prix since 1996. Take control of one car's strategy and try to beat history.",
     "Race Director": "Real incidents from race control. Make the stewards' call, then see what they decided.",
     "Race Films": "The story of any race since 2023, written from its data and read aloud by your browser.",
