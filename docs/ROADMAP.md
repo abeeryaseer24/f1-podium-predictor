@@ -153,8 +153,8 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 
 | # | Page | What it is |
 |---|---|---|
-| C1 | **Classic Races** | Famous races since 1996 (Jolpica lap times; pit stops from about 2011), each with a case file, a 3D replay and **take control**: run one car's strategy on E2 and try to beat history. Starter set: Abu Dhabi 2021, Hungary 2021, Brazil 2008, Japan 2005, Germany 2019, Silverstone 2022, Monaco 2024. |
-| C2 | **Race Director** | Replay real incidents. You call the safety car, VSC, red flag and penalties, and get compared with the real decisions (race control feed + Penalties Log). |
+| C1 ✅ | **Classic Races** | Famous races since 1996 (Jolpica lap times; pit stops from about 2011), each with a case file, a 3D replay and **take control**: run one car's strategy on E2 and try to beat history. Starter set: Abu Dhabi 2021, Hungary 2021, Brazil 2008, Japan 2005, Germany 2019, Silverstone 2022, Monaco 2024. |
+| C2 ✅ | **Race Director** | Replay real incidents. You call the safety car, VSC, red flag and penalties, and get compared with the real decisions (race control feed + Penalties Log). |
 | C3 | **Race Films** | A script built from the same story beats as the A13 race reports, a timeline, the 3D replay and a voice-over from the browser's free Web Speech API (or Piper TTS audio made in Actions). |
 | C4 | **Replay Commentary** | Event-driven commentary over the Pit Wall replay, with no AI service: each event in the replay (overtake, pit stop, safety car, fastest lap, retirement, gap closing under 1 s) triggers a line from a phrase bank, with variety and a cooldown so it doesn't repeat itself. Spoken with Web Speech. |
 
@@ -276,7 +276,7 @@ Each phase ships something visible and finishes in a working app.
 | **3. Car physics** ✅ | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
 | **4. Aero and power** ✅ | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** ✅ (safety cars and overtaking use data-derived rates; fuller ML versions of M1/M2 are still open) | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
-| **6. History playable** (in progress: driver-vs-car model, All-Time Ratings and Driver Swap done) | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
+| **6. History playable** (in progress: driver-vs-car model, All-Time Ratings, Driver Swap, Classic Races and Race Director done; left: Race Films, pre-1996 pace) | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
 | **7. AI showcase** | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
