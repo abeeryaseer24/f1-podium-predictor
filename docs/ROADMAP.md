@@ -70,7 +70,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | E1 ✅ | `src/lapsim.py` | **Lap-time simulator.** A quasi-steady-state point-mass car on the real 3D track (`track.parquet` x/y/z): curvature → corner speed limit from grip + downforce, forward pass (power, drag, gears), backward pass (braking), elevation and banking. Calibrated per circuit against the real fastest lap and its speed trace. | Nearly everything |
 | E2 | `src/race_engine.py` | **Race engine.** Lap by lap for the whole field: base pace (from E1/E3), tyres (`tyres.py`), fuel burn, pit loss, dirty air, overtaking (M2), safety car hazards (M1), reliability, weather, and rivals that react to each other. Replaces the "nobody else reacts" assumption in `strategy.py`. | Race sim, classic races, RL, games |
 | E3 ✅ | `src/car_dna.py` | **Car DNA.** Inverse E1: fit each car's downforce, drag and power to real OpenF1 speed traces, per team per race since 2023. | Car DNA page, E2 pace, counterfactuals |
-| E4 | `src/energy.py` | **Power unit and energy model.** 2026 rules: 50/50 ICE and electric, MGU-K harvest and deploy limits, battery state of charge, active aero modes, overtake mode. Older eras (V10, V8, 2014 hybrid with MGU-H) as presets. | Energy Lab, PU pages, Academy |
+| E4 ✅ | `src/energy.py` | **Power unit and energy model.** 2026 rules: 50/50 ICE and electric, MGU-K harvest and deploy limits, battery state of charge, active aero modes, overtake mode. Older eras (V10, V8, 2014 hybrid with MGU-H) as presets. | Energy Lab, PU pages, Academy |
 | E5 ✅ | `src/tyre_physics.py` | **Tyre model.** Pacejka magic formula, load sensitivity, a one-node temperature model, wear. Grip for E1 and the Academy. | E1, Tyre Physics, Academy |
 | E6 ✅ | `src/sim3d.py` | **Shared 3D kit** (see design rules). | Every 3D page |
 
@@ -82,7 +82,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 |---|---|---|
 | S1 ✅ | **Lap Simulator** | Pick a circuit, watch the simulated car lap it in 3D next to the real pole lap, and see the speed trace overlay and where they disagree. |
 | S2 ✅ | **Setup Garage** | Wing level, ride height, mass, power, brake bias, tyre compound → lap time and per-corner gains and losses. "A Monza wing at Monaco costs 1.8 s." Shows sensitivities: what 10 kg, 10 points of downforce and 10 kW are each worth at this track. |
-| S3 | **Energy Lab 2026** | Battery state of charge round a lap, clipping on straights, harvest zones. Game: place your own deploy and harvest zones and try to beat the default lap. |
+| S3 ✅ | **Energy Lab 2026** | Battery state of charge round a lap, clipping on straights, harvest zones. Game: place your own deploy and harvest zones and try to beat the default lap. |
 | S4 | **Race Simulator** | Run any race on E2 with your own changes (safety car on lap 20, rain from lap 35, a car's pace +0.3 s) and get the result distribution over 1,000 runs. |
 | S5 | **Circuit Designer** | Draw a track (spline editor). E1 laps it, E2 races it, and you get a rating: lap time, top speed, overtaking chance, tyre wear, "processional / strategy race / chaos". Share a link to your track. |
 | S6 | **Wind Tunnel** | A browser CFD toy (WebGL lattice-Boltzmann) round a wing profile and a car silhouette. Change the angle of attack, see the pressure and the wake, and read lift and drag. |
