@@ -86,8 +86,8 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | S4 | **Race Simulator** | Run any race on E2 with your own changes (safety car on lap 20, rain from lap 35, a car's pace +0.3 s) and get the result distribution over 1,000 runs. |
 | S5 | **Circuit Designer** | Draw a track (spline editor). E1 laps it, E2 races it, and you get a rating: lap time, top speed, overtaking chance, tyre wear, "processional / strategy race / chaos". Share a link to your track. |
 | S6 | **Wind Tunnel** | A browser CFD toy (WebGL lattice-Boltzmann) round a wing profile and a car silhouette. Change the angle of attack, see the pressure and the wake, and read lift and drag. |
-| S7 | **Dirty Air Lab** | Downforce lost behind another car at 0.5 / 1 / 2 s, for the 2017–21 cars vs 2022+ vs 2026, and what that does to overtaking. |
-| S8 | **Porpoising Lab** | A spring-mass car with ground-effect downforce. Lower the ride height and watch it start bouncing (2022). Adjust stiffness and floor design to stop it. |
+| S7 ✅ | **Dirty Air Lab** | Downforce lost behind another car at 0.5 / 1 / 2 s, for the 2017–21 cars vs 2022+ vs 2026, and what that does to overtaking. |
+| S8 ✅ | **Porpoising Lab** | A spring-mass car with ground-effect downforce. Lower the ride height and watch it start bouncing (2022). Adjust stiffness and floor design to stop it. |
 | S9 ✅ | **Tyre Physics** | Pacejka curves, the friction circle, g-g diagrams from real telemetry, and a temperature window toy (graining vs blistering). |
 | S10 | **Power Units Through the Eras** | 3.0 V10, 2.4 V8, 2014 V6 hybrid, 2026. Each has a thermodynamic model, an energy-flow Sankey and **synthesized engine sound** (Web Audio, made from rpm and firing order), plus an rpm slider. |
 | S11 | **Rain Crossover** | When to switch inters to slicks (and back) as the track dries, tested against real wet races (`weather.parquet` + laps). |
