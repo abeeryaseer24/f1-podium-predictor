@@ -19,9 +19,10 @@ A Formula 1 machine learning app that runs itself. It predicts the **whole finis
 | **Where the Race Was Won · Lap One · Team Radio** | Any two drivers' gap split into the start, pit stops, safety cars and racing laps; places gained on lap one, measured fairly; and every published radio message transcribed (open-source Whisper) and sorted by topic. |
 | **Model Report Card · Rules Sandbox** | How trustworthy the model's percentages are (calibration, Brier score against a grid baseline, finish ranges), and every title since 1950 recomputed under any points system. |
 | **Car DNA** | Each team's fastest race lap measured: slow, medium and fast corner speeds, top speed and traction from the telemetry, plus downforce, drag and power from fitting the lap simulator. |
+| **Energy Lab · Porpoising Lab · Dirty Air Lab · Engine Room** | The battery round a lap (harvest, deploy, clipping) with your own deployment plan; why ground-effect cars bounced; what following another car costs; and F1 engines through the eras with their sound synthesised live. |
 | **Tyre Physics** | The magic formula, load sensitivity, the friction circle with the real g-g of any lap, and a tyre temperature window you control. |
 | **Lap Simulator · Setup Garage** | A physics lap simulator calibrated on every race's fastest lap: watch it drive the real 3D track beside the real lap, then change the wing, power, weight or tyres and see the lap time corner by corner. |
-| **Engineering Academy** | A course on how an F1 car works, from the tyres up, in three depths, with live demos on the simulator and real data. Modules 0–3 are open; 17 modules are planned. |
+| **Engineering Academy** | A course on how an F1 car works, from the tyres up, in three depths, with live demos on the simulator and real data. Modules 0–7 are open; 17 modules are planned. |
 | **Beat the AI** | Visitors pick the podium before the race, share a card, and find out after the race whether they beat the model. |
 | **Be the Race Engineer** | Make the pit calls for a real driver in a real race and try to beat their team and our strategist. |
 | **About** | Everything behind the app, sorted: the model, how it is tested, the strategist, the live system. |

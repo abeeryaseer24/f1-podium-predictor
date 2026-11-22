@@ -12,7 +12,8 @@ academy_css()
 # Modules that have pages so far. Add a line here when a module goes live.
 LIVE = {"0": "app_pages/academy_m0.py", "1": "app_pages/academy_m1.py", "2": "app_pages/academy_m2.py",
         "3": "app_pages/academy_m3.py",
-        "4": "app_pages/academy_m4.py"}
+        "4": "app_pages/academy_m4.py",
+        "5": "app_pages/academy_m5.py", "6": "app_pages/academy_m6.py", "7": "app_pages/academy_m7.py"}
 
 st.markdown("""
 How a modern Formula 1 car works and how a race is engineered, from the tyres up. Every chapter

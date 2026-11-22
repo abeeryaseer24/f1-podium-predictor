@@ -274,7 +274,7 @@ Each phase ships something visible and finishes in a working app.
 | **1. Foundations** ✅ | E6 `sim3d.py`, design checks for new pages, E1 lap simulator, S1, S2 · Academy shell (menu, chapter template, depth toggle, glossary) + Modules 0–1 | E1 is the base of everything, and the Academy template is needed by every later module |
 | **2. Quick wins on existing data** ✅ | A2 Where the Race Was Won, A3 Rules Sandbox, A5 Lap One, A9 Report Card, A4 Team Radio | High impact with the data already on disk |
 | **3. Car physics** ✅ | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
-| **4. Aero and power** | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
+| **4. Aero and power** (done: energy model, Energy Lab, Porpoising Lab, Dirty Air Lab, Engine Room, Academy Modules 4–7; left: Wind Tunnel, Engine Penalty Planner) | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
 | **7. AI showcase** | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
