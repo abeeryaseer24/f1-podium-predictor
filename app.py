@@ -109,6 +109,8 @@ PAGES = {
         st.Page("app_pages/academy_m5.py", title="Power Unit"),
         st.Page("app_pages/academy_m6.py", title="Transmission"),
         st.Page("app_pages/academy_m7.py", title="Brakes"),
+        st.Page("app_pages/academy_m11.py", title="Race Engineering"),
+        st.Page("app_pages/academy_m12.py", title="Strategy"),
     ],
     "Games": [
         st.Page("app_pages/beat_the_ai.py", title="Beat the AI"),
@@ -185,6 +187,8 @@ TAGLINES = {
     "Race Simulator": "Replay a real Grand Prix 400 times, then change a strategy, force a safety car, or find pace.",
     "Win Probability": "How every driver's chances moved through a real race, replayed from each lap's real positions.",
     "Rain Crossover": "In wet races, when slicks became faster than intermediates, and who switched at the right moment.",
+    "Race Engineering": "Module 11: the weekend, run plans, setup, parc fermé, qualifying and the driver–engineer radio.",
+    "Strategy": "Module 12: stops, degradation, the undercut, safety cars, game theory, Monte Carlo, RL and wet races.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",
