@@ -3,7 +3,7 @@
 Both rounds of ideas merged into one list, de-duplicated and put in build order. Every page
 lives in the existing Streamlit app and looks like it was always there.
 
-Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) and Phase 3 (tyre physics, Tyre Physics, Car DNA, Academy Modules 2–3) are done.
+Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) Phase 3 (tyre physics, Tyre Physics, Car DNA, Academy Modules 2–3) and Phase 4 (energy model, Energy Lab, Wind Tunnel, Porpoising and Dirty Air Labs, Engine Room, Engine Penalty Planner, Academy Modules 4–7) are done.
 
 ---
 
@@ -85,13 +85,13 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | S3 ✅ | **Energy Lab 2026** | Battery state of charge round a lap, clipping on straights, harvest zones. Game: place your own deploy and harvest zones and try to beat the default lap. |
 | S4 | **Race Simulator** | Run any race on E2 with your own changes (safety car on lap 20, rain from lap 35, a car's pace +0.3 s) and get the result distribution over 1,000 runs. |
 | S5 | **Circuit Designer** | Draw a track (spline editor). E1 laps it, E2 races it, and you get a rating: lap time, top speed, overtaking chance, tyre wear, "processional / strategy race / chaos". Share a link to your track. |
-| S6 | **Wind Tunnel** | A browser CFD toy (WebGL lattice-Boltzmann) round a wing profile and a car silhouette. Change the angle of attack, see the pressure and the wake, and read lift and drag. |
+| S6 ✅ | **Wind Tunnel** | A browser CFD toy (WebGL lattice-Boltzmann) round a wing profile and a car silhouette. Change the angle of attack, see the pressure and the wake, and read lift and drag. |
 | S7 ✅ | **Dirty Air Lab** | Downforce lost behind another car at 0.5 / 1 / 2 s, for the 2017–21 cars vs 2022+ vs 2026, and what that does to overtaking. |
 | S8 ✅ | **Porpoising Lab** | A spring-mass car with ground-effect downforce. Lower the ride height and watch it start bouncing (2022). Adjust stiffness and floor design to stop it. |
 | S9 ✅ | **Tyre Physics** | Pacejka curves, the friction circle, g-g diagrams from real telemetry, and a temperature window toy (graining vs blistering). |
 | S10 ✅ | **Power Units Through the Eras** (Engine Room) | 3.0 V10, 2.4 V8, 2014 V6 hybrid, 2026. Each has a thermodynamic model, an energy-flow Sankey and **synthesized engine sound** (Web Audio, made from rpm and firing order), plus an rpm slider. |
 | S11 | **Rain Crossover** | When to switch inters to slicks (and back) as the track dries, tested against real wet races (`weather.parquet` + laps). |
-| S12 | **Engine Penalty Planner** | When to take new power unit components across a season for the cheapest grid penalties (builds on `power_units.csv`). |
+| S12 ✅ | **Engine Penalty Planner** | When to take new power unit components across a season for the cheapest grid penalties (builds on `power_units.csv`). |
 | S13 | **Series Compare** | The same circuit lapped by F1, F2, F3, Formula E and an IndyCar-style car on E1, showing where the time goes. |
 
 ---
@@ -274,7 +274,7 @@ Each phase ships something visible and finishes in a working app.
 | **1. Foundations** ✅ | E6 `sim3d.py`, design checks for new pages, E1 lap simulator, S1, S2 · Academy shell (menu, chapter template, depth toggle, glossary) + Modules 0–1 | E1 is the base of everything, and the Academy template is needed by every later module |
 | **2. Quick wins on existing data** ✅ | A2 Where the Race Was Won, A3 Rules Sandbox, A5 Lap One, A9 Report Card, A4 Team Radio | High impact with the data already on disk |
 | **3. Car physics** ✅ | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
-| **4. Aero and power** (done: energy model, Energy Lab, Porpoising Lab, Dirty Air Lab, Engine Room, Academy Modules 4–7; left: Wind Tunnel, Engine Penalty Planner) | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
+| **4. Aero and power** ✅ | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
 | **7. AI showcase** | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |

@@ -55,6 +55,7 @@ PAGES = {
         *([st.Page("app_pages/power_units.py", title="Power Units")]
           if has_rows("power_units") else []),
         st.Page("app_pages/upgrades.py", title="Upgrades"),
+        st.Page("app_pages/penalty_planner.py", title="Engine Penalty Planner"),
     ],
     "Drivers": [
         st.Page("app_pages/driver_standings.py", title="Driver Standings"),
@@ -78,6 +79,7 @@ PAGES = {
         st.Page("app_pages/setup_garage.py", title="Setup Garage"),
         st.Page("app_pages/tyre_science.py", title="Tyre Physics"),
         st.Page("app_pages/energy_lab.py", title="Energy Lab"),
+        st.Page("app_pages/wind_tunnel_view.py", title="Wind Tunnel"),
         st.Page("app_pages/porpoising_lab.py", title="Porpoising Lab"),
         st.Page("app_pages/dirty_air_lab.py", title="Dirty Air Lab"),
         st.Page("app_pages/engine_room.py", title="Engine Room"),
@@ -173,6 +175,8 @@ TAGLINES = {
     "Power Unit": "Module 5: thermodynamics, combustion, turbos, fuel flow, energy recovery, the battery and the 2026 engine.",
     "Transmission": "Module 6: the seamless-shift gearbox, gear ratios, the clutch and the drivetrain.",
     "Brakes": "Module 7: carbon-carbon brakes, brake-by-wire, bias, cooling, and the numbers behind a braking zone.",
+    "Wind Tunnel": "A live airflow simulation in your browser: wings, flaps, separation and the wake.",
+    "Engine Penalty Planner": "Where to fit new power units for the cheapest grid penalties, circuit by circuit.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",
