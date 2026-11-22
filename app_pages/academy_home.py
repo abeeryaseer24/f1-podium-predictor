@@ -22,8 +22,8 @@ physics engines as the Simulator pages, and links to the real race data in the r
 """)
 left, right = st.columns(2)
 left.page_link(LIVE["0"], label="Start the course: Module 0", icon=":material/school:", use_container_width=True)
-right.page_link("app_pages/lap_simulator.py", label="See the lap simulator the course uses",
-                icon=":material/speed:", use_container_width=True)
+right.page_link("app_pages/academy_parts.py", label="Take the car apart in 3D",
+                icon=":material/view_in_ar:", use_container_width=True)
 
 total = sum(len(chapters) for _, _, chapters in CURRICULUM)
 live_chapters = sum(len(chapters) for n, _, chapters in CURRICULUM if n in LIVE)

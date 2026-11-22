@@ -212,8 +212,8 @@ def car_anatomy():
   {circles}
 </svg>"""
     st.markdown(f'<div class="ac-figure">{svg}</div>', unsafe_allow_html=True)
-    st.caption("Our own simplified drawing of a generic modern car, not any team's. A 3D version you can "
-               "take apart is coming to the Academy.")
+    st.caption("Our own simplified drawing of a generic modern car, not any team's.")
+    st.page_link("app_pages/academy_parts.py", label="Take it apart in 3D: the Part Explorer", icon=":material/view_in_ar:")
     st.markdown("".join(f'<div class="ac-term"><b>{n} · {name}</b><span>{what}</span></div>'
                         for n, name, what in ANATOMY), unsafe_allow_html=True)
 

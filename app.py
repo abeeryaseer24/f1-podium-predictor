@@ -97,6 +97,7 @@ PAGES = {
     ],
     "Academy": [
         st.Page("app_pages/academy_home.py", title="Engineering Academy"),
+        st.Page("app_pages/academy_parts.py", title="3D Part Explorer"),
         st.Page("app_pages/academy_m0.py", title="Start Here"),
         st.Page("app_pages/academy_m1.py", title="The Car as a System"),
         st.Page("app_pages/academy_m2.py", title="Tyres"),
@@ -177,6 +178,7 @@ TAGLINES = {
     "Brakes": "Module 7: carbon-carbon brakes, brake-by-wire, bias, cooling, and the numbers behind a braking zone.",
     "Wind Tunnel": "A live airflow simulation in your browser: wings, flaps, separation and the wake.",
     "Engine Penalty Planner": "Where to fit new power units for the cheapest grid penalties, circuit by circuit.",
+    "3D Part Explorer": "Rotate the car, the wings, the power unit and a wheel corner. Explode them and tap any part.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",
