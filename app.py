@@ -80,6 +80,7 @@ PAGES = {
         st.Page("app_pages/energy_lab.py", title="Energy Lab"),
         st.Page("app_pages/porpoising_lab.py", title="Porpoising Lab"),
         st.Page("app_pages/dirty_air_lab.py", title="Dirty Air Lab"),
+        st.Page("app_pages/engine_room.py", title="Engine Room"),
     ],
     "History": [
         st.Page("app_pages/history_champions.py", title="Champions"),
@@ -163,6 +164,7 @@ TAGLINES = {
     "Energy Lab": "The battery round a lap: harvest, deploy, clip. Pick where to deploy and beat the default.",
     "Porpoising Lab": "Why ground-effect cars bounced in 2022. Tune the floor and springs until it stops.",
     "Dirty Air Lab": "How much downforce a car loses following another, and why the 2022 rules changed it.",
+    "Engine Room": "F1 engines from the 1980s turbos to 2026, with their sound synthesised live. Rev them, or drive a real lap.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",

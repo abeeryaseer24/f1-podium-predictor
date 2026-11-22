@@ -89,7 +89,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | S7 ✅ | **Dirty Air Lab** | Downforce lost behind another car at 0.5 / 1 / 2 s, for the 2017–21 cars vs 2022+ vs 2026, and what that does to overtaking. |
 | S8 ✅ | **Porpoising Lab** | A spring-mass car with ground-effect downforce. Lower the ride height and watch it start bouncing (2022). Adjust stiffness and floor design to stop it. |
 | S9 ✅ | **Tyre Physics** | Pacejka curves, the friction circle, g-g diagrams from real telemetry, and a temperature window toy (graining vs blistering). |
-| S10 | **Power Units Through the Eras** | 3.0 V10, 2.4 V8, 2014 V6 hybrid, 2026. Each has a thermodynamic model, an energy-flow Sankey and **synthesized engine sound** (Web Audio, made from rpm and firing order), plus an rpm slider. |
+| S10 ✅ | **Power Units Through the Eras** (Engine Room) | 3.0 V10, 2.4 V8, 2014 V6 hybrid, 2026. Each has a thermodynamic model, an energy-flow Sankey and **synthesized engine sound** (Web Audio, made from rpm and firing order), plus an rpm slider. |
 | S11 | **Rain Crossover** | When to switch inters to slicks (and back) as the track dries, tested against real wet races (`weather.parquet` + laps). |
 | S12 | **Engine Penalty Planner** | When to take new power unit components across a season for the cheapest grid penalties (builds on `power_units.csv`). |
 | S13 | **Series Compare** | The same circuit lapped by F1, F2, F3, Formula E and an IndyCar-style car on E1, showing where the time goes. |
