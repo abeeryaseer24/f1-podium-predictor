@@ -4721,7 +4721,7 @@ season,round,race_name,circuit,date,driver,constructor,grid,finish_position,stat
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,leclerc,ferrari,3,4,Finished,12.0,3.0
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,norris,mclaren,6,5,Finished,10.0,6.0
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,russell,mercedes,2,6,Finished,8.0,2.0
-2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,lawson,rb,22,7,Finished,6.0,8.0
+2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,lawson,rb,22,7,Finished,6.0,22.0
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,bortoleto,audi,13,8,Finished,4.0,13.0
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,hadjar,red_bull,7,9,Finished,2.0,7.0
 2026,19,Mexico City Grand Prix,rodriguez,2026-11-01,ryo_hirakawa,haas,18,10,Finished,1.0,18.0
@@ -4759,3 +4759,25 @@ season,round,race_name,circuit,date,driver,constructor,grid,finish_position,stat
 2026,20,Brazilian Grand Prix,interlagos,2026-11-08,rafael_camara,haas,11,20,Lapped,0.0,13.0
 2026,20,Brazilian Grand Prix,interlagos,2026-11-08,stroll,aston_martin,16,21,Retired,0.0,19.0
 2026,20,Brazilian Grand Prix,interlagos,2026-11-08,bottas,cadillac,17,22,Did not start,0.0,20.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,max_verstappen,red_bull,1,1,Finished,25.0,2.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,norris,mclaren,3,2,Finished,18.0,4.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,piastri,mclaren,17,3,Finished,15.0,7.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,antonelli,mercedes,6,4,Finished,12.0,1.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,gasly,alpine,8,5,Finished,10.0,9.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,colapinto,alpine,9,6,Finished,8.0,10.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,hamilton,ferrari,11,7,Finished,6.0,12.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,sainz,williams,20,8,Finished,4.0,14.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,russell,mercedes,2,9,Finished,2.0,3.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,leclerc,ferrari,10,10,Finished,1.0,11.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,hulkenberg,audi,12,11,Finished,0.0,13.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,bortoleto,audi,13,12,Finished,0.0,15.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,bearman,haas,22,13,Finished,0.0,22.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,lawson,rb,7,14,Finished,0.0,8.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,hadjar,red_bull,4,15,Finished,0.0,5.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,rafael_camara,haas,15,16,Finished,0.0,17.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,stroll,aston_martin,21,17,Finished,0.0,20.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,bottas,cadillac,19,18,Finished,0.0,21.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,alonso,aston_martin,18,19,Retired,0.0,19.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,arvid_lindblad,rb,5,20,Retired,0.0,6.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,perez,cadillac,16,21,Retired,0.0,18.0
+2026,21,Las Vegas Grand Prix,vegas,2026-11-22,albon,williams,14,22,Did not start,0.0,16.0

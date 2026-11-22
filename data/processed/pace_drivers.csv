@@ -1722,3 +1722,24 @@ season,round,race_name,wet,driver,code,team_id,driver_number,pace,pct_off,clean_
 2026,20,Brazilian Grand Prix,False,russell,RUS,mercedes,63,74.17949999999999,0.909,41
 2026,20,Brazilian Grand Prix,False,piastri,PIA,mclaren,81,73.9145,0.548,41
 2026,20,Brazilian Grand Prix,False,bearman,BEA,haas,87,75.22590000000001,2.332,39
+2026,21,Las Vegas Grand Prix,False,norris,NOR,mclaren,1,96.64500000000001,0.438,42
+2026,21,Las Vegas Grand Prix,False,max_verstappen,VER,red_bull,3,96.74419999999999,0.541,42
+2026,21,Las Vegas Grand Prix,False,bortoleto,BOR,audi,5,97.4736,1.299,42
+2026,21,Las Vegas Grand Prix,False,hadjar,HAD,red_bull,6,96.22330000000001,0.0,40
+2026,21,Las Vegas Grand Prix,False,gasly,GAS,alpine,10,96.6149,0.407,42
+2026,21,Las Vegas Grand Prix,False,perez,PER,cadillac,11,99.4435,3.347,16
+2026,21,Las Vegas Grand Prix,False,antonelli,ANT,mercedes,12,96.7679,0.566,42
+2026,21,Las Vegas Grand Prix,False,alonso,ALO,aston_martin,14,99.0188,2.905,41
+2026,21,Las Vegas Grand Prix,False,leclerc,LEC,ferrari,16,96.84909999999999,0.65,42
+2026,21,Las Vegas Grand Prix,False,stroll,STR,aston_martin,18,99.21099999999998,3.105,42
+2026,21,Las Vegas Grand Prix,False,hulkenberg,HUL,audi,27,97.3157,1.135,42
+2026,21,Las Vegas Grand Prix,False,lawson,LAW,rb,30,96.33529999999999,0.116,42
+2026,21,Las Vegas Grand Prix,False,arvid_lindblad,LIN,rb,41,98.0065,1.853,17
+2026,21,Las Vegas Grand Prix,False,colapinto,COL,alpine,43,96.7645,0.562,42
+2026,21,Las Vegas Grand Prix,False,hamilton,HAM,ferrari,44,96.75559999999999,0.553,41
+2026,21,Las Vegas Grand Prix,False,rafael_camara,CAM,haas,51,98.2427,2.099,41
+2026,21,Las Vegas Grand Prix,False,sainz,SAI,williams,55,97.13340000000001,0.946,42
+2026,21,Las Vegas Grand Prix,False,russell,RUS,mercedes,63,96.78560000000002,0.584,41
+2026,21,Las Vegas Grand Prix,False,bottas,BOT,cadillac,77,99.1706,3.063,42
+2026,21,Las Vegas Grand Prix,False,piastri,PIA,mclaren,81,96.6117,0.404,42
+2026,21,Las Vegas Grand Prix,False,bearman,BEA,haas,87,97.5343,1.362,42

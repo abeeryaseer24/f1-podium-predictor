@@ -1778,5 +1778,25 @@
   "air_density": 1.12,
   "usable": true,
   "problem": ""
+ },
+ "2026_21": {
+  "car": {
+   "mass": 820.0,
+   "power_kw": 621.158,
+   "wing": 0.6016,
+   "grip": 1.8095,
+   "load_sensitivity": 0.12,
+   "rear_share": 0.56,
+   "rolling": 0.012,
+   "downforce_scale": 1.0,
+   "drag_scale": 1.0
+  },
+  "sim_lap": 95.557,
+  "real_lap": 95.559,
+  "speed_rmse_kmh": 23.0,
+  "length_m": 6152.6,
+  "air_density": 1.1404,
+  "usable": true,
+  "problem": ""
  }
 }
