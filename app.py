@@ -97,6 +97,8 @@ PAGES = {
         st.Page("app_pages/on_this_day.py", title="On This Day"),
         st.Page("app_pages/head_to_head.py", title="Head to Head"),
         st.Page("app_pages/rules_sandbox.py", title="Rules Sandbox"),
+        st.Page("app_pages/all_time_ratings.py", title="All-Time Ratings"),
+        st.Page("app_pages/driver_swap.py", title="Driver Swap"),
     ],
     "Academy": [
         st.Page("app_pages/academy_home.py", title="Engineering Academy"),
@@ -189,6 +191,8 @@ TAGLINES = {
     "Rain Crossover": "In wet races, when slicks became faster than intermediates, and who switched at the right moment.",
     "Race Engineering": "Module 11: the weekend, run plans, setup, parc fermé, qualifying and the driver–engineer radio.",
     "Strategy": "Module 12: stops, degradation, the undercut, safety cars, game theory, Monte Carlo, RL and wet races.",
+    "All-Time Ratings": "Every driver since 1950 with the car taken out, against their own era or on one scale.",
+    "Driver Swap": "Put any driver from any era in any car, and replay that season 2,000 times.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
     "Setup Garage": "Change the wing, the power, the weight or the tyres, and see what each is worth here.",
     "Engineering Academy": "How a Formula 1 car works, from the tyres up. Three depths, live demos, real data.",

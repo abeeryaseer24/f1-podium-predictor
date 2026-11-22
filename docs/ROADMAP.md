@@ -106,8 +106,8 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | A4 ✅ | **Team Radio** | Race | Radio clips (OpenF1's team_radio list; our own `radio.parquet` is the strategist's calls) transcribed offline with open-source `faster-whisper` in GitHub Actions (free, new races only), sorted by topic (tyres, strategy, damage, complaints) on the race timeline. Test: does radio predict pit stops? Links to OpenF1 audio, never rehosted. |
 | A5 ✅ | **Lap One** | Race | Places gained and lost at the start by grid slot, clean vs dirty side, distance to Turn 1 and circuit (M3). |
 | A6 ✅ | **Win Probability** | Race | A live-style win-chance chart through each race, updated lap by lap (M12). |
-| A7 | **Driver Swap** | Drivers | Counterfactuals: any driver in any car, any era (M4 + E2). "Alonso in the 2023 Red Bull." |
-| A8 | **All-Time Ratings** | History | Era-adjusted driver ratings 1950–2026 with uncertainty bands (M4 + M5). The honest GOAT list. |
+| A7 ✅ | **Driver Swap** | Drivers | Counterfactuals: any driver in any car, any era (M4 + E2). "Alonso in the 2023 Red Bull." |
+| A8 ✅ | **All-Time Ratings** | History | Era-adjusted driver ratings 1950–2026 with uncertainty bands (M4 + M5). The honest GOAT list. |
 | A9 ✅ | **Model Report Card** | Predictor | Brier score, log loss, reliability diagrams and conformal ranges for the predictor (M11), added to Scoreboard and About. |
 | A10 | **Failure Watch** | Teams | Cars whose lap times or telemetry looked wrong before they retired, and how early the model flagged them (M9). |
 | A11 | **Driver Market** | Drivers | Who is likely to move seats next season and why (M10). |
@@ -123,7 +123,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | M1 | Safety car hazard | Survival model per lap, circuit and conditions | E2, strategist, S4 |
 | M2 | Overtaking | Logistic / gradient boosting on pace gap, DRS or overtake mode, tyre offset, circuit | E2 |
 | M3 | Lap one | Ordinal model on grid slot, side, distance to Turn 1 | A5, predictor feature |
-| M4 | Driver vs car | Bayesian hierarchical or TrueSkill-through-time, 1950–2026 | A7, A8 |
+| M4 ✅ | Driver vs car | Bayesian hierarchical or TrueSkill-through-time, 1950–2026 | A7, A8 |
 | M5 | Pre-1996 pace | Bayesian pace from finishing gaps and laps down | A8, classic races |
 | M6 | RL strategist | PPO or MCTS trained inside E2. Compared with the Monte Carlo strategist and the real teams. A policy map (box or stay by tyre age and gap). | Pit Wall, Race Engineer, C1 |
 | M7 | AI driver | Imitation learning on telemetry, driving E1 | G9 |
@@ -276,7 +276,7 @@ Each phase ships something visible and finishes in a working app.
 | **3. Car physics** ✅ | E5 tyres, E3 Car DNA, A1, S9 · Academy Modules 2–3 | Fills E1 with real grip and real cars |
 | **4. Aero and power** ✅ | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** ✅ (safety cars and overtaking use data-derived rates; fuller ML versions of M1/M2 are still open) | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
-| **6. History playable** | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
+| **6. History playable** (in progress: driver-vs-car model, All-Time Ratings and Driver Swap done) | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
 | **7. AI showcase** | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |

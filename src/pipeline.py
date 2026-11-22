@@ -104,6 +104,7 @@ def main():
     run_soft("src/car_dna.py", "--missing", "--limit", "2")   # each team's Car DNA from its fastest lap
     if new:
         run_soft("src/report_card.py")              # every driver's chances in the honest test (Report Card)
+        run_soft("src/eras.py")                     # driver-vs-car ratings since 1950 (All-Time Ratings, Driver Swap)
     # Team radio is transcribed by the workflow AFTER this run has been pushed (see pipeline.yml).
 
     # 3. Final safety checks on everything.
