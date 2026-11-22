@@ -143,9 +143,10 @@ an overtaking chance. Monza added its chicanes in the 1970s for exactly this rea
 abused for time, which is why track-limits rules appeared.
 """,
        """
-**Measuring history.** Before 1996 our archive has finishing orders but no lap times, and before 2023 no
-position data, so the old circuits can't yet be driven by the simulator. Their shapes exist in open map data
-(OpenStreetMap), and drawing them in 3D is on the roadmap.
+**Rebuilding them.** There's no telemetry from the old days, but the roads are still mapped. The Historic
+Circuits page rebuilds the Nordschleife from OpenStreetMap with real elevation, and the
+lap simulator drives a 1975, a 2001 and a 2026 car round them. Each older car has one tuned number (its tyre
+grip), set so it matches a real pole lap of its era; everything else is the same physics as today's circuits.
 
 **The trade-off.** Safety improvements made racing far less lethal; critics argue that wide asphalt run-off
 also made mistakes cheaper. Circuit designers now mix gravel back in at key corners.
@@ -158,7 +159,8 @@ also made mistakes cheaper. Circuit designers now mix gravel back in at key corn
          "Cuts speed, adds a braking zone."),
         ("A downside of asphalt run-off is…", ["it's expensive", "mistakes cost less time", "it's slippery", "nothing"], 1,
          "Track limits.")],
-       data=[("Circuit Profiles", "Every track that has held a Grand Prix, and who has won there."),
+       data=[("Historic Circuits", "The Nordschleife in 3D, with three eras of car racing round."),
+             ("Circuit Profiles", "Every track that has held a Grand Prix, and who has won there."),
              ("Eras", "How the sport changed decade by decade.")],
        terms=["lap simulator"], sources=SOURCES),
 

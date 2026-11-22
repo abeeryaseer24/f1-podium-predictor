@@ -1,0 +1,94 @@
+{
+ "eras": {
+  "1975": {
+   "label": "1975 car",
+   "colour": "#e8b33a",
+   "fit": [
+    "nordschleife",
+    196.4
+   ],
+   "benchmark": "Niki Lauda's 1975 pole, 6:58.6 on the 22.8 km Grand Prix layout (196.4 km/h)",
+   "car": {
+    "mass": 680,
+    "power_kw": 340,
+    "wing": 0.0,
+    "grip": 1.672,
+    "load_sensitivity": 0.12,
+    "rear_share": 0.56,
+    "rolling": 0.012,
+    "downforce_scale": 0.5,
+    "drag_scale": 1.1
+   },
+   "fitted": true
+  },
+  "2001": {
+   "label": "2001 car",
+   "colour": "#27f4d2",
+   "fit": [
+    "hockenheim",
+    250.4
+   ],
+   "benchmark": "Juan Pablo Montoya's 2001 pole, 1:38.117 on the 6.825 km layout (250.4 km/h)",
+   "car": {
+    "mass": 650,
+    "power_kw": 610,
+    "wing": 0.0,
+    "grip": 1.7,
+    "load_sensitivity": 0.12,
+    "rear_share": 0.56,
+    "rolling": 0.012,
+    "downforce_scale": 0.95,
+    "drag_scale": 0.95
+   },
+   "fitted": false
+  },
+  "2026": {
+   "label": "2026 car",
+   "colour": "#e10600",
+   "fit": null,
+   "benchmark": "the middle of every 2026 car calibrated to a real circuit",
+   "car": {
+    "mass": 820.0,
+    "power_kw": 602.5517,
+    "wing": 0.5618,
+    "grip": 1.9824,
+    "load_sensitivity": 0.12,
+    "rear_share": 0.56,
+    "rolling": 0.012,
+    "downforce_scale": 1.0,
+    "drag_scale": 1.0
+   },
+   "fitted": false
+  }
+ },
+ "circuits": {
+  "nordschleife": {
+   "name": "N\u00fcrburgring Nordschleife",
+   "years": "Grand Prix venue 1951\u20131976",
+   "note": "Today's 20.8 km loop. The Grand Prix layout also used the old pit straight, now under the modern circuit, for 22.8 km.",
+   "record": "Fastest lap ever: Timo Bernhard, Porsche 919 Evo, 5:19.546 (2018).",
+   "length_km": 20.693,
+   "climb_m": 289,
+   "laps": {
+    "1975": {
+     "lap": 379.27,
+     "avg_kmh": 196.4,
+     "top_kmh": 295,
+     "wing": 0.0
+    },
+    "2001": {
+     "lap": 325.29,
+     "avg_kmh": 229.0,
+     "top_kmh": 371,
+     "wing": 0.0
+    },
+    "2026": {
+     "lap": 310.19,
+     "avg_kmh": 240.2,
+     "top_kmh": 349,
+     "wing": 0.4
+    }
+   }
+  }
+ }
+}
