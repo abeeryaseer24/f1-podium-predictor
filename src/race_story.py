@@ -73,7 +73,8 @@ def neutral_laps(laps, control):
         end = lead[nums[i + 1]] if i + 1 < len(nums) else start + 120
         checks = np.linspace(start, end, 5)
         window = control[(control["t"] >= start) & (control["t"] <= end)]["message"].fillna("").str.upper()
-        deployed = window.str.contains("SAFETY CAR DEPLOYED|VSC DEPLOYED|RED FLAG").any()
+        # RED FLAG, not "RED FLAG": "CHEQUERED FLAG" contains those letters
+        deployed = window.str.contains(r"SAFETY CAR DEPLOYED|VSC DEPLOYED|RED FLAG", regex=True).any()
         if deployed or any(neutralised(control, t) for t in checks):
             out.add(int(lap))
     return out
