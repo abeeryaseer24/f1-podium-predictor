@@ -90,6 +90,8 @@ with tabs[0]:
         {"Page": "Beat the AI", "What it shows": "Pick the podium before the race, share your card, and see after the race if you beat our model."},
         {"Page": "Be the Race Engineer", "What it shows": "Make the pit calls for a real driver and try to beat their team."},
         {"Page": "Beat the AI: Constructors", "What it shows": "Pick the three teams that will score the most points at the next race, then see your pick against our model's."},
+        {"Page": "Guess the Driver", "What it shows": "Two teammates' laps from one race: name whose is whose from the telemetry, against a model that learned each driver's habits."},
+        {"Page": "Race the AI Driver", "What it shows": "Drive a real circuit yourself on the lap simulator's physics, against an AI driver learned from real laps."},
         {"Page": "F1 Quiz", "What it shows": "Ten questions written from the archive itself, with a score and a share card. No two quizzes are the same."},
     ])
 

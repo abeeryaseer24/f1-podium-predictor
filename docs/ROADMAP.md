@@ -3,7 +3,7 @@
 Both rounds of ideas merged into one list, de-duplicated and put in build order. Every page
 lives in the existing Streamlit app and looks like it was always there.
 
-Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) Phase 3 (tyre physics, Tyre Physics, Car DNA, Academy Modules 2–3) and Phase 4 (energy model, Energy Lab, Wind Tunnel, Porpoising and Dirty Air Labs, Engine Room, Engine Penalty Planner, Academy Modules 4–7) Phase 5 (race engine, Race Simulator, Win Probability, Rain Crossover, Academy Modules 11–12) and Phase 6 (All-Time Ratings, Driver Swap, Classic Races, Race Director, Race Films) are done, plus the 3D Part Explorer.
+Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) Phase 3 (tyre physics, Tyre Physics, Car DNA, Academy Modules 2–3) and Phase 4 (energy model, Energy Lab, Wind Tunnel, Porpoising and Dirty Air Labs, Engine Room, Engine Penalty Planner, Academy Modules 4–7) Phase 5 (race engine, Race Simulator, Win Probability, Rain Crossover, Academy Modules 11–12) and Phase 6 (All-Time Ratings, Driver Swap, Classic Races, Race Director, Race Films) and Phase 7 (AI Strategist, Failure Watch, Ask the Pit Wall, Guess the Driver, Race the AI Driver) are done, plus the 3D Part Explorer.
 
 ---
 
@@ -126,8 +126,8 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | M4 ✅ | Driver vs car | Bayesian hierarchical or TrueSkill-through-time, 1950–2026 | A7, A8 |
 | M5 | Pre-1996 pace | Bayesian pace from finishing gaps and laps down | A8, classic races |
 | M6 ✅ | RL strategist | PPO or MCTS trained inside E2. Compared with the Monte Carlo strategist and the real teams. A policy map (box or stay by tyre age and gap). | Pit Wall, Race Engineer, C1 |
-| M7 | AI driver | Imitation learning on telemetry, driving E1 | G9 |
-| M8 | Who's driving? | Classifier on one lap's throttle, brake and steering traces | G4, Drivers |
+| M7 ✅ | AI driver | Imitation learning on telemetry, driving E1 | G9 |
+| M8 ✅ | Who's driving? | Classifier on one lap's throttle, brake and steering traces | G4, Drivers |
 | M9 ✅ | Failure early warning | Anomaly detection on laps and telemetry | A10 |
 | M10 | Driver market | Classification on contract, form and teammate gap | A11 |
 | M11 | Calibration | Reliability curves, conformal prediction | A9 |
@@ -167,12 +167,12 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | G1 | **Team Principal** | A full season: budget cap, wind-tunnel hours by championship position, upgrade timing, driver market, race weekends on E2. |
 | G2 | **Strategy Duel** | Two visitors run strategy on the same real race at the same time (Supabase, which is already set up). |
 | G3 | **Prediction Market** | Trade race outcomes with play money. Crowd prices vs the model. |
-| G4 | **Guess the Driver** | See one lap of telemetry and name the driver. Then see what M8 guessed. |
+| G4 ✅ | **Guess the Driver** | See one lap of telemetry and name the driver. Then see what M8 guessed. |
 | G5 | **Pit Crew** | A reaction-timed pit stop against each team's real stop-time distribution. |
 | G6 | **Qualifying Game** | Q1 to Q3: pick your run timing, tow and track evolution. |
 | G7 | **Fantasy Optimizer** | An integer program that picks a budget-capped fantasy team from the model's predicted points. |
 | G8 | **Energy Challenge** | The game half of S3, with a leaderboard per circuit. |
-| G9 | **Race the AI Driver** | Your ghost lap from the Setup Garage vs M7. |
+| G9 ✅ | **Race the AI Driver** | Drive the lap yourself in the browser on E1's physics, against M7 and the real fastest lap. |
 
 ---
 
@@ -277,7 +277,7 @@ Each phase ships something visible and finishes in a working app.
 | **4. Aero and power** ✅ | E4 energy, S3, S6, S7, S8, S10, S12 · Academy Modules 4–7 | The flagship engineering content |
 | **5. Race engine** ✅ (safety cars and overtaking use data-derived rates; fuller ML versions of M1/M2 are still open) | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** ✅ (M5 pre-1996 pace not built: the archive has finishing orders but no time gaps before 1996, so the era ratings cover those years from finishing order instead) | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
-| **7. AI showcase** (in progress: AI Strategist, Failure Watch and Ask the Pit Wall done) | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
+| **7. AI showcase** ✅ | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
 | **10. Games and polish** | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |

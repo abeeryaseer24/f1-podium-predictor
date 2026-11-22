@@ -241,6 +241,29 @@ def check_race_engine():
     check(agree > 0.5, f"replaying {folders[-1]} with the real strategies agrees with the real result ({agree:.2f})")
 
 
+def check_driving_style():
+    """Guess the Driver: the model beats a coin on unseen races, and every game round has two teammates."""
+    import json
+    import pandas as pd
+    print("Checking the driving-style model")
+    model = json.loads((ROOT / "data" / "processed" / "style_model.json").read_text(encoding="utf-8"))
+    check(model["score"]["lap_accuracy"] > 0.5, f"it names teammates better than a coin on unseen races "
+          f"({model['score']['lap_accuracy']:.0%})")
+    game = pd.read_parquet(ROOT / "data" / "processed" / "style_game.parquet")
+    check((game.groupby(["folder", "team"])["driver"].nunique() == 2).all(), "every game round has both teammates")
+
+
+def check_ai_driver():
+    """Race the AI Driver: on circuits it never saw, the learned driver follows the real lap more
+    closely than the simulator does, and its laps are believable."""
+    import json
+    print("Checking the AI driver")
+    r = json.loads((ROOT / "data" / "processed" / "ai_driver.json").read_text(encoding="utf-8"))
+    check(r["ai_rmse"] < r["sim_rmse"], f"it follows real laps more closely than the simulator "
+          f"({r['ai_rmse']:.1f} vs {r['sim_rmse']:.1f} km/h)")
+    check(abs(r["ai_gap"]) < 3, f"its lap times are within 3 s of the real ones ({r['ai_gap']:+.2f} s)")
+
+
 def check_pages():
     """Every page in the menu has its one-line subtitle."""
     import re
@@ -270,7 +293,7 @@ def run_all(min_rows=0):
     check_strategy_no_future()
     # Checks for the extra pages (simulator, race breakdowns, report card, page files). These only
     # WARN: a problem on those pages must never stop the robot pushing a locked-in prediction.
-    for extra in (check_lapsim, check_race_story, check_race_engine, check_pages):
+    for extra in (check_lapsim, check_race_story, check_race_engine, check_driving_style, check_ai_driver, check_pages):
         warn_only(extra)
     print("All checks passed.")
 

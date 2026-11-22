@@ -162,6 +162,8 @@ PAGES = {
         st.Page("app_pages/race_engineer.py", title="Be the Race Engineer"),
         st.Page("app_pages/classic_races.py", title="Classic Races"),
         st.Page("app_pages/race_director.py", title="Race Director"),
+        st.Page("app_pages/guess_the_driver.py", title="Guess the Driver"),
+        st.Page("app_pages/race_the_ai.py", title="Race the AI Driver"),
         st.Page("app_pages/f1_quiz.py", title="F1 Quiz"),
     ],
     "About": [
@@ -241,6 +243,8 @@ TAGLINES = {
     "Ask the Pit Wall": "Ask anything about F1 since 1950 in plain English, answered from our own archive.",
     "Classic Races": "Famous Grands Prix since 1996. Take control of one car's strategy and try to beat history.",
     "Race Director": "Real incidents from race control. Make the stewards' call, then see what they decided.",
+    "Guess the Driver": "Two teammates' laps from the same race. Spot whose is whose from the telemetry, then see the AI's call.",
+    "Race the AI Driver": "Drive a real circuit yourself, against a driver our AI learned from real laps.",
     "Race Films": "The story of any race since 2023, written from its data and read aloud by your browser.",
     "AI Strategist": "A reinforcement-learning agent learns pit strategy by trial and error, then takes on the real teams.",
     "Lap Simulator": "Our physics model drives a real circuit, next to the real fastest lap.",
