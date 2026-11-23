@@ -171,7 +171,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | G4 ✅ | **Guess the Driver** | See one lap of telemetry and name the driver. Then see what M8 guessed. |
 | G5 ✅ | **Pit Crew** | A reaction-timed pit stop against each team's real stop-time distribution. |
 | G6 ✅ | **Qualifying Game** | Q1 to Q3: pick your run timing, tow and track evolution. |
-| G7 | **Fantasy Optimizer** | An integer program that picks a budget-capped fantasy team from the model's predicted points. |
+| G7 ✅ | **Fantasy Optimizer** | An integer program that picks a budget-capped fantasy team from the model's predicted points. |
 | G8 ✅ | **Energy Challenge** | The game half of S3, with a leaderboard per circuit. |
 | G9 ✅ | **Race the AI Driver** | Drive the lap yourself in the browser on E1's physics, against M7 and the real fastest lap. |
 
@@ -281,7 +281,7 @@ Each phase ships something visible and finishes in a working app.
 | **7. AI showcase** ✅ | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** (in progress: P1, P2, S5 and Academy Module 13 done; P4 historic circuits left) | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** ✅ (L1–L5, M14 and S13, from Wikipedia's season and round articles) | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
-| **10. Games and polish** (in progress: A12 Calendar Planner, G5 Pit Crew, G6 Qualifying Game, G8 Energy Challenge and C4 Replay Commentary done) | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
+| **10. Games and polish** (in progress: A12 Calendar Planner, G5 Pit Crew, G6 Qualifying Game, G7 Fantasy Optimizer, G8 Energy Challenge and C4 Replay Commentary done) | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
 
 ## 11. Risks to watch
 
