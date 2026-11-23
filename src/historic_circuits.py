@@ -5,6 +5,12 @@ through the free Overpass API and kept in data/historic/osm_<key>.json:
   Nordschleife   the route relation of today's Nordschleife, its ways already in lap order
   Hockenheim     the 1965-2001 layout: the forest section is kept in OpenStreetMap as abandoned raceway
                  ways, joined to the parts of the current track the old one shared
+  Spa            the 14 km 1950-1970 layout ran on public roads, which are still there: today's circuit to
+                 Les Combes, then the N62 down through Burnenville to Malmedy, the N68 Masta straight to the
+                 Stavelot hairpin, the N640 back up to today's circuit at Courbe Paul Frere, and on through
+                 Blanchimont. The lap is routed through those roads by shortest paths between waypoints
+                 (14.6 km against the real 14.1: today's roads don't follow the old line exactly)
+Kyalami's 1967-85 layout isn't in OpenStreetMap (much of it is now built over), so it isn't rebuilt.
 The ways are stitched end to end into one closed loop, turned into metres and evened out every 5 m.
 
 THE HEIGHTS come from OpenTopoData's free public API (the EU-DEM 25 m model in Europe), sampled every
@@ -45,6 +51,14 @@ CIRCUITS = {
                    # pieces that were never part of the 1994-2001 Grand Prix lap
                    "skip": ["Boxengasse", "Rallycross", "Quartermile", "Kleiner Kurs", "Schikanenvariante",
                             "1932-1968", "ohne Schikane", "pitlane"]},
+    "spa": {"query": '[out:json][timeout:180];(way(50.385,5.93,50.455,6.05)["highway"~"^(primary|secondary|tertiary|'
+                     'unclassified|residential|raceway|service)$"];way(50.385,5.93,50.455,6.05)["abandoned:highway"];);out geom;',
+            "kind": "waypoints", "link": 130.0, "link_roads": ["Route de l'Eau Rouge", "Route de Spa"],
+            "skip": ["Pit Lane", "Kart", "Campus", "Support", "Moto"],
+            # La Source, Eau Rouge, Raidillon, Kemmel (named raceway), Les Combes, Burnenville (the N62), Masta,
+            # the Stavelot hairpin, up the N640, Blanchimont and back to La Source
+            "waypoints": ["La Source", "Eau Rouge", "Raidillon", "Kemmel", (50.4290, 5.9776), "N62",
+                          (50.4140, 5.9838), (50.4029, 5.9478), (50.4119, 5.9508), "Blanchimont", "La Source"]},
 }
 
 
@@ -234,6 +248,70 @@ def stitch_via_old_section(elements, cfg):
     return loop
 
 
+def stitch_via_waypoints(elements, cfg):
+    """A lap on public roads and raceway: shortest paths between waypoints in lap order. Roads are weighted
+    so main roads and raceway are preferred; old roads listed in cfg["link_roads"] are joined to the nearest
+    raceway within cfg["link"] metres (where the old track met today's circuit, the join isn't mapped)."""
+    import heapq
+    cost = {"raceway": 1.0, "primary": 1.0, "secondary": 1.0, "tertiary": 1.3, "unclassified": 1.6, "residential": 3.0,
+            "service": 4.0}
+    ways = [w for w in elements if w["type"] == "way" and w.get("geometry")]
+    lat0 = ways[0]["geometry"][0]["lat"]
+    metres = lambda a, b: math.hypot((a[0] - b[0]) * 111_320, (a[1] - b[1]) * 111_320 * math.cos(math.radians(lat0)))
+    skip = lambda t: any(k in t.get("name", "") for k in cfg.get("skip", []))
+    graph, race, old, named, n62 = {}, set(), set(), {}, []
+    for w in ways:
+        t = w.get("tags", {})
+        hw = t.get("highway")
+        if hw not in cost or skip(t):
+            continue
+        pts = [(g["lat"], g["lon"]) for g in w["geometry"]]
+        for a, b in zip(pts, pts[1:]):
+            d = metres(a, b)
+            graph.setdefault(a, []).append((b, d * cost[hw]))
+            graph.setdefault(b, []).append((a, d * cost[hw]))
+        if hw == "raceway":
+            race.update(pts)
+            named.setdefault(t.get("name"), pts[len(pts) // 2])
+        if t.get("name") in cfg.get("link_roads", []):
+            old.update(pts)
+        if t.get("name") == "Route de Spa" and t.get("ref") == "N62":
+            n62 += pts
+    for a in old:
+        for b in race:
+            d = metres(a, b)
+            if d < cfg.get("link", 100.0):
+                graph[a].append((b, d))
+                graph[b].append((a, d))
+    named["N62"] = sorted(n62)[len(n62) // 2] if n62 else None
+    nodes = list(graph)
+    nearest = lambda p: min(nodes, key=lambda n: metres(n, p))
+
+    def path(src, dst):
+        dist, prev, todo = {src: 0.0}, {}, [(0.0, src)]
+        while todo:
+            d, u = heapq.heappop(todo)
+            if u == dst:
+                break
+            if d > dist[u]:
+                continue
+            for v, w in graph[u]:
+                if d + w < dist.get(v, 1e18):
+                    dist[v], prev[v] = d + w, u
+                    heapq.heappush(todo, (d + w, v))
+        out = [dst]
+        while out[-1] != src:
+            out.append(prev[out[-1]])
+        return out[::-1]
+
+    points = [named[w] if isinstance(w, str) else w for w in cfg["waypoints"]]
+    loop = []
+    for a, b in zip(points, points[1:]):
+        p = path(nearest(a), nearest(b))
+        loop += p if not loop else p[1:]
+    return loop[:-1]
+
+
 def _d(a, b):
     return (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2
 
@@ -288,8 +366,13 @@ def heights(xe, ye, latlon_of, every=25.0):
 
 def build(key):
     raw = json.loads((HIST / f"osm_{key}.json").read_text(encoding="utf-8"))
-    loop = (stitch_in_order([m for m in raw["elements"][0]["members"] if m["type"] == "way"])
-            if CIRCUITS[key]["kind"] == "relation" else stitch_via_old_section(raw["elements"], CIRCUITS[key]))
+    kind = CIRCUITS[key]["kind"]
+    if kind == "relation":
+        loop = stitch_in_order([m for m in raw["elements"][0]["members"] if m["type"] == "way"])
+    elif kind == "waypoints":
+        loop = stitch_via_waypoints(raw["elements"], CIRCUITS[key])
+    else:
+        loop = stitch_via_old_section(raw["elements"], CIRCUITS[key])
     lat0 = float(np.mean([p[0] for p in loop]))
     lon0 = float(np.mean([p[1] for p in loop]))
     x, y, _ = to_metres(loop)
@@ -337,6 +420,11 @@ FACTS = {
                    "note": "The long forest straights with three chicanes, replaced in 2002 by today's shorter track. "
                            "The forest section is now woodland again.",
                    "record": ""},
+    "spa": {"name": "Spa-Francorchamps, old layout", "years": "Grand Prix layout 1950–1970",
+            "note": "Public roads closed for racing: down through Burnenville and Malmedy, flat out along the Masta straight "
+                    "to the Stavelot hairpin, and back up through Blanchimont. Routed along today's roads, which don't "
+                    "follow the old line exactly (14.6 km against the real 14.1).",
+            "record": "Fastest lap ever: Henri Pescarolo, Matra MS670, 3:13.4 in the 1973 Spa 1000 km (about 262 km/h)."},
 }
 
 

@@ -117,6 +117,34 @@
      "wing": 0.4
     }
    }
+  },
+  "spa": {
+   "name": "Spa-Francorchamps, old layout",
+   "years": "Grand Prix layout 1950\u20131970",
+   "note": "Public roads closed for racing: down through Burnenville and Malmedy, flat out along the Masta straight to the Stavelot hairpin, and back up through Blanchimont. Routed along today's roads, which don't follow the old line exactly (14.6 km against the real 14.1).",
+   "record": "Fastest lap ever: Henri Pescarolo, Matra MS670, 3:13.4 in the 1973 Spa 1000 km (about 262 km/h).",
+   "length_km": 14.517,
+   "climb_m": 175,
+   "laps": {
+    "1975": {
+     "lap": 216.39,
+     "avg_kmh": 241.5,
+     "top_kmh": 294,
+     "wing": 0.0
+    },
+    "2001": {
+     "lap": 171.73,
+     "avg_kmh": 304.3,
+     "top_kmh": 370,
+     "wing": 0.0
+    },
+    "2026": {
+     "lap": 178.17,
+     "avg_kmh": 293.3,
+     "top_kmh": 361,
+     "wing": 0.1
+    }
+   }
   }
  }
 }

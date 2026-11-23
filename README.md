@@ -30,7 +30,7 @@ A Formula 1 machine learning app that runs itself. It predicts the **whole finis
 | **All-Time Ratings · Driver Swap** | A driver-vs-car model fitted on every race since 1950, ranking drivers with the car taken out (against their own era or on one scale), and putting any driver in any car to replay that season. |
 | **Win Probability · Rain Crossover** | Every driver's odds through a real race, replayed from each lap's real positions; and in wet races, when slicks beat intermediates and who switched at the right time. |
 | **Race Simulator · 3D Part Explorer** | A whole Grand Prix replayed 400 times lap by lap (tyres, fuel, pit stops, overtaking, safety cars, retirements) so you can change a strategy and see the odds move; and the car, its wings, power unit, a wheel corner and the floor in 3D, explodable part by part. |
-| **Historic Circuits** | The Nordschleife and the old Hockenheim (1970s–2001, with its forest straights) rebuilt from OpenStreetMap (© OpenStreetMap contributors, ODbL) with real elevation, and a 1975, a 2001 and a 2026 car racing round it on the lap simulator, each older car tuned to a real pole lap of its era. |
+| **Historic Circuits** | The Nordschleife, the old Hockenheim (1970s–2001, with its forest straights) and the 14 km old Spa (1950–1970, on public roads through Burnenville, Masta and Stavelot) rebuilt from OpenStreetMap (© OpenStreetMap contributors, ODbL) with real elevation, and a 1975, a 2001 and a 2026 car racing round it on the lap simulator, each older car tuned to a real pole lap of its era. |
 | **Feeder Series · Superlicence Calculator** | Formula 2 (and GP2), Formula 3 (and GP3) and F1 Academy since 2005, read from Wikipedia's season articles (CC BY-SA 4.0): every championship, every champion and who reached F1; and the FIA Super Licence points, with a path planner and who on the ladder has the 40 points. |
 | **Scouting Report** | Which F2/GP2 and F3/GP3 records turned into F1 careers: a logistic regression on each driver's feeder record, tested on eras it never saw (it ranks who reaches F1 with an AUC of about 0.92, and its percentages hold up), plus who looks next and the closest past records. |
 | **Career Mode** | From F4 at 15 to F1: pick a team and how hard to push each season; every year is a real driver-season from the same kind of seat, the Super Licence uses the FIA's table, F1 teams judge you with the Scouting Report's model, and the money has to last. |
@@ -49,7 +49,7 @@ A Formula 1 machine learning app that runs itself. It predicts the **whole finis
 | **Energy Lab · Porpoising Lab · Dirty Air Lab · Engine Room** | The battery round a lap (harvest, deploy, clipping) with your own deployment plan; why ground-effect cars bounced; what following another car costs; and F1 engines through the eras with their sound synthesised live. |
 | **Tyre Physics** | The magic formula, load sensitivity, the friction circle with the real g-g of any lap, and a tyre temperature window you control. |
 | **Lap Simulator · Setup Garage** | A physics lap simulator calibrated on every race's fastest lap: watch it drive the real 3D track beside the real lap, then change the wing, power, weight or tyres and see the lap time corner by corner. |
-| **Engineering Academy** | A course on how an F1 car works, from the tyres up, in three depths, with live demos on the simulator and real data. Modules 0–7 and 11–13 are open (Module 13 rides every circuit in 3D, corner by corner); 17 modules are planned. |
+| **Engineering Academy** | A course on how an F1 car works, from the tyres up, in three depths, with live demos on the simulator and real data. All 17 modules are open, from tyres and aerodynamics to the cost cap, the history of F1 engineering and a capstone where you design a car and race it. |
 | **Beat the AI** | Visitors pick the podium before the race, share a card, and find out after the race whether they beat the model. |
 | **Be the Race Engineer** | Make the pit calls for a real driver in a real race and try to beat their team and our strategist. |
 | **About** | Everything behind the app, sorted: the model, how it is tested, the strategist, the live system. |
@@ -72,12 +72,12 @@ Each season below was predicted by a model trained **only on the seasons before 
 
 | Season | Races | Podium drivers right per race: model | grid | old model | Winners called: model | grid | Places off (whole order): model | grid |
 |---|---|---|---|---|---|---|---|---|
-| 2026 (so far) | 19 | **1.95** | 1.84 | 1.84 | **74%** | 68% | 3.47 | 3.47 |
+| 2026 (so far) | 21 | **1.86** | 1.81 | 1.81 | **76%** | 71% | **3.46** | 3.64 |
 | 2025 | 24 | **2.42** | 2.25 | 2.29 | 58% | **67%** | **3.24** | 3.34 |
 | 2024 | 24 | **2.08** | 2.00 | 1.96 | **50%** | 46% | **2.78** | 2.90 |
 | 2023 | 22 | 1.73 | **1.91** | 1.91 | 64% | 64% | **3.46** | 3.75 |
 | 2022 | 22 | **2.18** | 1.91 | 1.95 | 41% | **45%** | **3.65** | 3.94 |
-| **All** | 111 | **2.07** | 1.98 | 1.99 | 57% | 58% | **3.32** | 3.48 |
+| **All** | 113 | **2.06** | 1.98 | 1.99 | 58% | 58% | **3.31** | 3.50 |
 
 **Honest reading:** the model beats the grid on podium picks in four of five seasons and is better or level on the whole order every season, but the edge is small, and in 2023 the grid was better. Qualifying already tells you most of what matters on Sunday. From São Paulo 2026 onwards, the Scoreboard tracks predictions locked in before each race, which is the most honest test of all.
 

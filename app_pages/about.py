@@ -85,7 +85,7 @@ with tabs[0]:
         {"Page": "Tyre Physics", "What it shows": "How a tyre grips, slides and overheats, with the real g-g diagram of any lap."},
         {"Page": "Lap Simulator", "What it shows": "Our physics model drives a real circuit in 3D, next to the real fastest lap."},
         {"Page": "Setup Garage", "What it shows": "Change the wing, power, weight or tyres and see the lap time, corner by corner."},
-        {"Page": "Historic Circuits", "What it shows": "The Nordschleife and the old Hockenheim in 3D from OpenStreetMap, with three eras of car racing round."},
+        {"Page": "Historic Circuits", "What it shows": "The Nordschleife, the old Hockenheim and the old Spa in 3D from OpenStreetMap, with three eras of car racing round."},
         {"Page": "Feeder Series", "What it shows": "F2, F3 and F1 Academy since 2005: every championship, and who reached F1."},
         {"Page": "Superlicence Calculator", "What it shows": "The FIA Super Licence points, a path planner, and who on the ladder has them."},
         {"Page": "Scouting Report", "What it shows": "Which feeder records turned into F1 careers, tested honestly, and who looks next."},
