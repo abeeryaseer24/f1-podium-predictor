@@ -41,6 +41,7 @@ A Formula 1 machine learning app that runs itself. It predicts the **whole finis
 | **Energy Challenge** | The game half of the Energy Lab: set a deploy window on every straight of a 2026 lap, beat deploying everywhere and then the engineer's plan (found by a search over the windows), and post the lap to that circuit's leaderboard. |
 | **Fantasy Optimizer** | The best five drivers and two constructors within a budget for the next race, chosen by an integer program from expected points (the predictor's race replayed 20,000 times, retirements included), with our own form-based prices. Replayed over whole seasons out of sample it scores about 2 to 3 times an average affordable team. |
 | **Driver Market** | Each driver's chance of keeping their seat, changing team or leaving F1 next season, with the reasons: a multinomial logistic regression on every driver-season since 1980 (age, experience, form, the teammate battle, the team's results; renamed teams count as the same team), tested season by season out of sample. |
+| **Prediction Market** | Trade who wins the next race with play money against an automated market maker (the logarithmic market scoring rule) that opens at our model's win chances, so the board shows where the crowd disagrees with the model; a season table adds up profit. |
 | **Circuit Designer** | Draw your own circuit by dragging points; the lap simulator, running in the browser, drives it as you draw with a typical calibrated car of the season: lap time, top speed, braking zones and overtaking spots. |
 | **Wind Tunnel · Engine Penalty Planner** | A live 2D airflow simulation (lattice-Boltzmann) running in the browser, and where to fit new power units for the cheapest grid penalties, from how much a grid place costs at each circuit. |
 | **Energy Lab · Porpoising Lab · Dirty Air Lab · Engine Room** | The battery round a lap (harvest, deploy, clipping) with your own deployment plan; why ground-effect cars bounced; what following another car costs; and F1 engines through the eras with their sound synthesised live. |
@@ -139,11 +140,20 @@ url = "https://your-project.supabase.co"
 key = "your-secret-key"
 ```
 
-The Energy Challenge leaderboard needs one more table, created once in the Supabase SQL editor:
+The Energy Challenge leaderboard needs another table, created once in the Supabase SQL editor:
 
 ```sql
 create table energy_scores (player text not null, folder text not null, mode text not null,
   lap_time double precision not null, plan jsonb not null, nickname text, updated_at timestamptz,
   primary key (player, folder, mode));
 alter table energy_scores enable row level security;
+```
+
+And the Prediction Market keeps its trades in a third:
+
+```sql
+create table market_trades (id bigint generated always as identity primary key, player text not null,
+  season int not null, round int not null, driver text not null, shares double precision not null,
+  cost double precision not null, nickname text, created_at timestamptz default now());
+alter table market_trades enable row level security;
 ```
