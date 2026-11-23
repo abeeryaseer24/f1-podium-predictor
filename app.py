@@ -101,6 +101,7 @@ PAGES = {
         st.Page("app_pages/driver_cards.py", title="Driver Cards"),
         st.Page("app_pages/driver_ratings.py", title="Driver Ratings"),
         st.Page("app_pages/teammate_battles.py", title="Teammate Battles"),
+        st.Page("app_pages/driver_market.py", title="Driver Market"),
     ],
        "Race": [
         st.Page("app_pages/pit_wall.py", title="Pit Wall"),
@@ -223,6 +224,7 @@ TAGLINES = {
     "Series Compare": "One circuit lapped by an F1, F2, F3, Formula E and IndyCar-style car, and where the time goes.",
     "Calendar Planner": "How far F1 travels in a season, its estimated freight carbon, and a shorter order for the same races.",
     "Pit Crew": "Run a pit stop yourself: jack, four wheels, a safe release. Then see where it ranks among the real stops.",
+    "Driver Market": "Who is likely to keep their seat, change team or leave F1 next season, from the results alone, and why.",
     "Fantasy Optimizer": "The best fantasy team within budget for the next race, picked by an integer program from the model's predictions, and how it would have done all season.",
     "Energy Challenge": "Set where the battery deploys on every straight of a 2026 lap, beat the engineer's plan and post it to the circuit's leaderboard.",
     "Qualifying Game": "Q1, Q2 and Q3 against the real laps of a real session: pick your run, your tow and how hard to push.",

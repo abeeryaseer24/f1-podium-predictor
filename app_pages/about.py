@@ -97,6 +97,7 @@ with tabs[0]:
         {"Page": "Qualifying Game", "What it shows": "Q1 to Q3 against the real laps of a real session."},
         {"Page": "Energy Challenge", "What it shows": "Plan the battery round a 2026 lap, beat the engineer and post it to the circuit's leaderboard."},
         {"Page": "Fantasy Optimizer", "What it shows": "The best budget-capped fantasy team from the model's predictions, and how it does over a season."},
+        {"Page": "Driver Market", "What it shows": "Who is likely to stay, move team or leave F1 next season, and why."},
         {"Page": "Circuit Designer", "What it shows": "Draw your own circuit and the lap simulator drives it as you draw."},
         {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},
         {"Page": "Tyre Lab", "What it shows": "How fast each tyre compound wears, measured from real laps."},
