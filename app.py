@@ -119,6 +119,7 @@ PAGES = {
     "Simulator": [
         st.Page("app_pages/lap_simulator.py", title="Lap Simulator"),
         st.Page("app_pages/setup_garage.py", title="Setup Garage"),
+        st.Page("app_pages/series_compare.py", title="Series Compare"),
         st.Page("app_pages/circuit_designer_view.py", title="Circuit Designer"),
         st.Page("app_pages/race_simulator.py", title="Race Simulator"),
         st.Page("app_pages/ai_strategist.py", title="AI Strategist"),
@@ -134,6 +135,7 @@ PAGES = {
         st.Page("app_pages/superlicence.py", title="Superlicence Calculator"),
         st.Page("app_pages/scouting_report.py", title="Scouting Report"),
         st.Page("app_pages/career_mode.py", title="Career Mode"),
+        st.Page("app_pages/other_series.py", title="Other Series"),
     ],
     "History": [
         st.Page("app_pages/history_champions.py", title="Champions"),
@@ -212,6 +214,8 @@ TAGLINES = {
     "Superlicence Calculator": "The points a driver needs for Formula 1, a path of your own, and who on the ladder has them.",
     "Scouting Report": "Which feeder-series records turned into Formula 1 careers, tested honestly, and who looks next.",
     "Career Mode": "From Formula 4 at 15 to Formula 1, one season at a time, every year drawn from a real one.",
+    "Other Series": "Formula E and IndyCar: every championship, and which of their drivers raced in F1.",
+    "Series Compare": "One circuit lapped by an F1, F2, F3, Formula E and IndyCar-style car, and where the time goes.",
     "On This Day": "The Grands Prix that were run on today's date, in any year.",
     "Head to Head": "Any two drivers from any era, side by side.",
     "F1 Quiz": "Ten questions, straight from the record books. No two quizzes are the same.",

@@ -1302,3 +1302,953 @@ F1A,2026,20,Autumn Fisher,,0.0,3,0,0,F1 Academy
 F1A,2026,21,Zoe Florescu,,0.0,2,0,0,F1 Academy
 F1A,2026,22,Alexia Danielsson,,0.0,3,0,0,F1 Academy
 F1A,2026,23,Shi Wei,,0.0,2,0,0,F1 Academy
+FE,2015,1,Nelson Piquet Jr.,China Racing Formula E Team (rounds 1–6) NEXTEV TCR Formula E Team (rounds 7–11),144.0,11,2,5,Formula E
+FE,2015,2,Sébastien Buemi,Team e.dams Renault,143.0,11,3,5,Formula E
+FE,2015,3,Lucas di Grassi,Audi Sport ABT Formula E Team,133.0,11,1,6,Formula E
+FE,2015,4,Jérôme d'Ambrosio,Dragon Racing Formula E Team,113.0,11,1,3,Formula E
+FE,2015,5,Sam Bird,Virgin Racing Formula E Team,103.0,11,2,3,Formula E
+FE,2015,6,Nicolas Prost,Team e.dams Renault,88.0,11,1,2,Formula E
+FE,2015,7,Jean-Éric Vergne,Andretti Autosport Formula E Team,70.0,9,0,2,Formula E
+FE,2015,8,António Félix da Costa,Amlin Aguri,51.0,8,1,1,Formula E
+FE,2015,9,Loïc Duval,Dragon Racing Formula E Team,42.0,7,0,2,Formula E
+FE,2015,10,Bruno Senna,Mahindra Racing Formula E Team,40.0,11,0,0,Formula E
+FE,2015,11,Daniel Abt,Audi Sport ABT Formula E Team,32.0,11,0,1,Formula E
+FE,2015,12,Nick Heidfeld,Venturi Formula E Team,31.0,11,0,1,Formula E
+FE,2015,13,Jaime Alguersuari,Virgin Racing Formula E Team,30.0,9,0,0,Formula E
+FE,2015,14,Stéphane Sarrazin,Venturi Formula E Team,22.0,11,0,0,Formula E
+FE,2015,15,Scott Speed,Andretti Autosport Formula E Team,18.0,4,0,1,Formula E
+FE,2015,16,Franck Montagny,Andretti Autosport Formula E Team,18.0,2,0,1,Formula E
+FE,2015,17,Karun Chandhok,Mahindra Racing Formula E Team,18.0,11,0,0,Formula E
+FE,2015,18,Charles Pic,China Racing Formula E Team (rounds 1–6) NEXTEV TCR Formula E Team (rounds 7–11),16.0,5,0,0,Formula E
+FE,2015,19,Oriol Servià,Dragon Racing Formula E Team,16.0,4,0,0,Formula E
+FE,2015,20,Jarno Trulli,Trulli Formula E Team,15.0,11,0,0,Formula E
+FE,2015,21,Salvador Durán,Amlin Aguri,13.0,9,0,0,Formula E
+FE,2015,22,Oliver Turvey,China Racing Formula E Team (rounds 1–6) NEXTEV TCR Formula E Team (rounds 7–11),4.0,2,0,0,Formula E
+FE,2015,23,Vitantonio Liuzzi,Trulli Formula E Team,2.0,5,0,0,Formula E
+FE,2015,24,Takuma Sato,Amlin Aguri,2.0,1,0,0,Formula E
+FE,2015,25,Justin Wilson,Andretti Autosport Formula E Team,1.0,1,0,0,Formula E
+FE,2015,26,Ho-Pin Tung,China Racing Formula E Team (rounds 1–6) NEXTEV TCR Formula E Team (rounds 7–11),0.0,3,0,0,Formula E
+FE,2015,27,Simona de Silvestro,Andretti Autosport Formula E Team,0.0,2,0,0,Formula E
+FE,2015,28,Antonio García,China Racing Formula E Team (rounds 1–6) NEXTEV TCR Formula E Team (rounds 7–11),0.0,2,0,0,Formula E
+FE,2015,29,Michela Cerruti,Trulli Formula E Team,0.0,4,0,0,Formula E
+FE,2015,30,Marco Andretti,Andretti Autosport Formula E Team,0.0,1,0,0,Formula E
+FE,2015,31,Matthew Brabham,Andretti Autosport Formula E Team,0.0,2,0,0,Formula E
+FE,2015,32,Fabio Leimer,Virgin Racing Formula E Team,0.0,2,0,0,Formula E
+FE,2015,33,Alex Fontana,Trulli Formula E Team,0.0,2,0,0,Formula E
+FE,2015,34,Katherine Legge,Amlin Aguri,0.0,2,0,0,Formula E
+FE,2015,35,Sakon Yamamoto,Amlin Aguri,0.0,2,0,0,Formula E
+FE,2016,1,Sébastien Buemi,Renault e.Dams,155.0,10,3,6,Formula E
+FE,2016,2,Lucas di Grassi,ABT Schaeffler Audi Sport,153.0,10,3,7,Formula E
+FE,2016,3,Nicolas Prost,Renault e.Dams,115.0,10,2,3,Formula E
+FE,2016,4,Sam Bird,DS Virgin Racing Formula E Team,88.0,10,1,2,Formula E
+FE,2016,5,Jérôme d'Ambrosio,Dragon Racing,83.0,10,1,3,Formula E
+FE,2016,6,Stéphane Sarrazin,Venturi Formula E Team,70.0,10,0,1,Formula E
+FE,2016,7,Daniel Abt,ABT Schaeffler Audi Sport,68.0,10,0,3,Formula E
+FE,2016,8,Loïc Duval,Dragon Racing,60.0,10,0,0,Formula E
+FE,2016,9,Jean-Éric Vergne,DS Virgin Racing Formula E Team,56.0,10,0,2,Formula E
+FE,2016,10,Nick Heidfeld,Mahindra Racing Formula E Team,53.0,9,0,1,Formula E
+FE,2016,11,Bruno Senna,Mahindra Racing Formula E Team,52.0,10,0,1,Formula E
+FE,2016,12,Robin Frijns,Amlin Andretti Formula E Team,45.0,10,0,1,Formula E
+FE,2016,13,António Félix da Costa,Team Aguri,28.0,9,0,0,Formula E
+FE,2016,14,Oliver Turvey,NEXTEV TCR Formula E Team,11.0,10,0,0,Formula E
+FE,2016,15,Nelson Piquet Jr.,NEXTEV TCR Formula E Team,8.0,10,0,0,Formula E
+FE,2016,16,Mike Conway,Venturi Formula E Team,7.0,7,0,0,Formula E
+FE,2016,17,Nathanaël Berthon,Team Aguri,4.0,3,0,0,Formula E
+FE,2016,18,Simona de Silvestro,Amlin Andretti Formula E Team,4.0,10,0,0,Formula E
+FE,2016,19,Ma Qinghua,Team Aguri,0.0,4,0,0,Formula E
+FE,2016,20,Jacques Villeneuve,Venturi Formula E Team,0.0,3,0,0,Formula E
+FE,2016,21,Oliver Rowland,Mahindra Racing Formula E Team,0.0,1,0,0,Formula E
+FE,2016,22,Salvador Durán,Team Aguri,0.0,4,0,0,Formula E
+FE,2016,23,René Rast,Team Aguri,0.0,1,0,0,Formula E
+FE,2017,1,Lucas di Grassi,ABT Schaeffler Audi Sport,181.0,12,2,7,Formula E
+FE,2017,2,Sébastien Buemi,Renault e.Dams,157.0,10,6,6,Formula E
+FE,2017,3,Felix Rosenqvist,Mahindra Racing,127.0,12,1,5,Formula E
+FE,2017,4,Sam Bird,DS Virgin Racing,122.0,12,2,4,Formula E
+FE,2017,5,Jean-Éric Vergne,Techeetah,117.0,12,1,5,Formula E
+FE,2017,6,Nico Prost,Renault e.Dams,93.0,12,0,0,Formula E
+FE,2017,7,Nick Heidfeld,Mahindra Racing,88.0,12,0,5,Formula E
+FE,2017,8,Daniel Abt,ABT Schaeffler Audi Sport,67.0,12,0,0,Formula E
+FE,2017,9,José María López,DS Virgin Racing,65.0,10,0,2,Formula E
+FE,2017,10,Stéphane Sarrazin,Techeetah,36.0,12,0,2,Formula E
+FE,2017,11,Nelson Piquet Jr.,NEXTEV NIO,33.0,12,0,0,Formula E
+FE,2017,12,Oliver Turvey,NEXTEV NIO,26.0,12,0,0,Formula E
+FE,2017,13,Robin Frijns,MS Amlin Andretti Formula E,24.0,12,0,0,Formula E
+FE,2017,14,Mitch Evans,Panasonic Jaguar Racing,22.0,12,0,0,Formula E
+FE,2017,15,Loïc Duval,Faraday Future Dragon Racing,20.0,11,0,0,Formula E
+FE,2017,16,Pierre Gasly,Renault e.Dams,18.0,2,0,0,Formula E
+FE,2017,17,Maro Engel,Venturi Formula E Team,16.0,11,0,0,Formula E
+FE,2017,18,Jérôme d'Ambrosio,Faraday Future Dragon Racing,13.0,12,0,0,Formula E
+FE,2017,19,Tom Dillmann,Venturi Formula E Team,12.0,7,0,0,Formula E
+FE,2017,20,António Félix da Costa,MS Amlin Andretti Formula E,10.0,12,0,0,Formula E
+FE,2017,21,Adam Carroll,Panasonic Jaguar Racing,5.0,12,0,0,Formula E
+FE,2017,22,Esteban Gutiérrez,Techeetah,5.0,3,0,0,Formula E
+FE,2017,23,Alex Lynn,DS Virgin Racing,3.0,2,0,0,Formula E
+FE,2017,24,Mike Conway,Faraday Future Dragon Racing,0.0,1,0,0,Formula E
+FE,2017,25,Ma Qinghua,Techeetah,0.0,3,0,0,Formula E
+FE,2018,1,Jean-Éric Vergne,Techeetah,198.0,12,4,6,Formula E
+FE,2018,2,Lucas di Grassi,Audi Sport ABT Schaeffler,144.0,12,2,7,Formula E
+FE,2018,3,Sam Bird,DS Virgin Racing,143.0,12,2,6,Formula E
+FE,2018,4,Sébastien Buemi,Renault e.Dams,125.0,12,0,4,Formula E
+FE,2018,5,Daniel Abt,Audi Sport ABT Schaeffler,120.0,12,2,4,Formula E
+FE,2018,6,Felix Rosenqvist,Mahindra Racing,96.0,12,2,2,Formula E
+FE,2018,7,Mitch Evans,Panasonic Jaguar Racing,68.0,12,0,1,Formula E
+FE,2018,8,André Lotterer,Techeetah,64.0,12,0,2,Formula E
+FE,2018,9,Nelson Piquet Jr.,Panasonic Jaguar Racing,51.0,12,0,0,Formula E
+FE,2018,10,Oliver Turvey,Nio Formula E Team,46.0,11,0,1,Formula E
+FE,2018,11,Nick Heidfeld,Mahindra Racing,42.0,12,0,1,Formula E
+FE,2018,12,Maro Engel,Venturi Formula E Team,31.0,12,0,0,Formula E
+FE,2018,13,Edoardo Mortara,Venturi Formula E Team,29.0,9,0,1,Formula E
+FE,2018,14,Jérôme d'Ambrosio,Dragon Racing,27.0,12,0,1,Formula E
+FE,2018,15,António Félix da Costa,MS&AD Andretti Formula E,20.0,12,0,0,Formula E
+FE,2018,16,Alex Lynn,DS Virgin Racing,17.0,12,0,0,Formula E
+FE,2018,17,José María López,Dragon Racing,14.0,10,0,0,Formula E
+FE,2018,18,Tom Dillmann,Venturi Formula E Team,12.0,3,0,0,Formula E
+FE,2018,19,Nicolas Prost,Renault e.Dams,8.0,12,0,0,Formula E
+FE,2018,20,Tom Blomqvist,MS&AD Andretti Formula E,4.0,6,0,0,Formula E
+FE,2018,21,Luca Filippi,Nio Formula E Team,1.0,11,0,0,Formula E
+FE,2018,22,Stéphane Sarrazin,MS&AD Andretti Formula E,0.0,4,0,0,Formula E
+FE,2018,23,Ma Qinghua,Nio Formula E Team,0.0,2,0,0,Formula E
+FE,2018,24,Kamui Kobayashi,MS&AD Andretti Formula E,0.0,2,0,0,Formula E
+FE,2018,25,Neel Jani,Dragon Racing,0.0,2,0,0,Formula E
+FE,2019,1,Jean-Éric Vergne,DS Techeetah,136.0,13,3,5,Formula E
+FE,2019,2,Sébastien Buemi,Nissan e.dams,119.0,13,1,4,Formula E
+FE,2019,3,Lucas di Grassi,Audi Sport ABT Schaeffler Formula E Team,108.0,13,2,3,Formula E
+FE,2019,4,Robin Frijns,Envision Virgin Racing,106.0,13,2,4,Formula E
+FE,2019,5,Mitch Evans,Panasonic Jaguar Racing,105.0,13,1,3,Formula E
+FE,2019,6,António Félix da Costa,BMW i Andretti Motorsport,99.0,13,1,4,Formula E
+FE,2019,7,Daniel Abt,Audi Sport ABT Schaeffler Formula E Team,95.0,13,0,2,Formula E
+FE,2019,8,André Lotterer,DS Techeetah,86.0,13,0,2,Formula E
+FE,2019,9,Sam Bird,Envision Virgin Racing,85.0,13,1,2,Formula E
+FE,2019,10,Oliver Rowland,Nissan e.dams,71.0,13,0,2,Formula E
+FE,2019,11,Jérôme d'Ambrosio,Mahindra Racing,67.0,13,1,2,Formula E
+FE,2019,12,Pascal Wehrlein,Mahindra Racing,58.0,12,0,1,Formula E
+FE,2019,13,Alexander Sims,BMW i Andretti Motorsport,57.0,13,0,1,Formula E
+FE,2019,14,Edoardo Mortara,Venturi Formula E Team,52.0,13,1,2,Formula E
+FE,2019,15,Felipe Massa,Venturi Formula E Team,36.0,13,0,1,Formula E
+FE,2019,16,Stoffel Vandoorne,HWA Racelab,35.0,13,0,1,Formula E
+FE,2019,17,Maximilian Günther,GEOX Dragon,20.0,10,0,0,Formula E
+FE,2019,18,Alex Lynn,Panasonic Jaguar Racing,10.0,7,0,0,Formula E
+FE,2019,19,Gary Paffett,HWA Racelab,9.0,13,0,0,Formula E
+FE,2019,20,Oliver Turvey,Nio Formula E Team,7.0,13,0,0,Formula E
+FE,2019,21,José María López,GEOX Dragon,3.0,13,0,0,Formula E
+FE,2019,22,Nelson Piquet Jr.,Panasonic Jaguar Racing,1.0,6,0,0,Formula E
+FE,2019,23,Tom Dillmann,Nio Formula E Team,0.0,13,0,0,Formula E
+FE,2019,24,Felipe Nasr,GEOX Dragon,0.0,3,0,0,Formula E
+FE,2020,1,António Félix da Costa,DS Techeetah,158.0,11,3,6,Formula E
+FE,2020,2,Stoffel Vandoorne,Mercedes-Benz EQ Formula E Team,87.0,11,1,3,Formula E
+FE,2020,3,Jean-Éric Vergne,DS Techeetah,86.0,11,1,3,Formula E
+FE,2020,4,Sébastien Buemi,Nissan e.dams,84.0,11,0,4,Formula E
+FE,2020,5,Oliver Rowland,Nissan e.dams,83.0,11,1,1,Formula E
+FE,2020,6,Lucas di Grassi,Audi Sport ABT Schaeffler Formula E Team,77.0,11,0,2,Formula E
+FE,2020,7,Mitch Evans,Panasonic Jaguar Racing,71.0,11,1,2,Formula E
+FE,2020,8,André Lotterer,TAG Heuer Porsche Formula E Team,71.0,11,0,2,Formula E
+FE,2020,9,Maximilian Günther,BMW i Andretti Motorsport,69.0,11,2,3,Formula E
+FE,2020,10,Sam Bird,Envision Virgin Racing,63.0,11,1,2,Formula E
+FE,2020,11,Nyck de Vries,Mercedes-Benz EQ Formula E Team,60.0,11,0,1,Formula E
+FE,2020,12,Robin Frijns,Envision Virgin Racing,58.0,11,0,2,Formula E
+FE,2020,13,Alexander Sims,BMW i Andretti Motorsport,49.0,11,1,1,Formula E
+FE,2020,14,Edoardo Mortara,ROKiT Venturi Racing,41.0,11,0,0,Formula E
+FE,2020,15,René Rast,Audi Sport ABT Schaeffler Formula E Team,29.0,6,0,1,Formula E
+FE,2020,16,Jérôme d'Ambrosio,Mahindra Racing,19.0,11,0,0,Formula E
+FE,2020,17,Alex Lynn,Mahindra Racing,16.0,6,0,0,Formula E
+FE,2020,18,Pascal Wehrlein,Mahindra Racing,14.0,5,0,0,Formula E
+FE,2020,19,James Calado,Panasonic Jaguar Racing,10.0,9,0,0,Formula E
+FE,2020,20,Neel Jani,TAG Heuer Porsche Formula E Team,8.0,11,0,0,Formula E
+FE,2020,21,Daniel Abt,Audi Sport ABT Schaeffler Formula E Team,8.0,11,0,0,Formula E
+FE,2020,22,Felipe Massa,ROKiT Venturi Racing,3.0,11,0,0,Formula E
+FE,2020,23,Brendon Hartley,GEOX Dragon,2.0,5,0,0,Formula E
+FE,2020,24,Oliver Turvey,Nio 333 FE Team,0.0,11,0,0,Formula E
+FE,2020,25,Nico Müller,GEOX Dragon,0.0,11,0,0,Formula E
+FE,2020,26,Tom Blomqvist,Panasonic Jaguar Racing,0.0,2,0,0,Formula E
+FE,2020,27,Sérgio Sette Câmara,GEOX Dragon,0.0,6,0,0,Formula E
+FE,2020,28,Ma Qinghua,Nio 333 FE Team,0.0,5,0,0,Formula E
+FE,2021,1,Nyck de Vries,Mercedes-EQ Formula E Team,99.0,15,2,4,Formula E
+FE,2021,2,Edoardo Mortara,ROKiT Venturi Racing,92.0,15,1,4,Formula E
+FE,2021,3,Jake Dennis,BMW i Andretti Motorsport,91.0,15,2,2,Formula E
+FE,2021,4,Mitch Evans,Jaguar Racing,90.0,15,0,5,Formula E
+FE,2021,5,Robin Frijns,Envision Virgin Racing,89.0,15,0,2,Formula E
+FE,2021,6,Sam Bird,Jaguar Racing,87.0,15,2,3,Formula E
+FE,2021,7,Lucas di Grassi,Audi Sport ABT Schaeffler Formula E Team,87.0,15,2,3,Formula E
+FE,2021,8,António Félix da Costa,DS Techeetah,86.0,15,1,3,Formula E
+FE,2021,9,Stoffel Vandoorne,Mercedes-EQ Formula E Team,82.0,15,1,3,Formula E
+FE,2021,10,Jean-Éric Vergne,DS Techeetah,80.0,15,1,2,Formula E
+FE,2021,11,Pascal Wehrlein,TAG Heuer Porsche Formula E Team,79.0,15,0,1,Formula E
+FE,2021,12,Alex Lynn,Mahindra Racing,78.0,15,1,3,Formula E
+FE,2021,13,René Rast,Audi Sport ABT Schaeffler Formula E Team,78.0,15,0,1,Formula E
+FE,2021,14,Oliver Rowland,Nissan e.dams,77.0,15,0,2,Formula E
+FE,2021,15,Nick Cassidy,Envision Virgin Racing,76.0,15,0,2,Formula E
+FE,2021,16,Maximilian Günther,BMW i Andretti Motorsport,66.0,15,1,1,Formula E
+FE,2021,17,André Lotterer,TAG Heuer Porsche Formula E Team,58.0,15,0,1,Formula E
+FE,2021,18,Norman Nato,ROKiT Venturi Racing,54.0,15,1,1,Formula E
+FE,2021,19,Alexander Sims,Mahindra Racing,54.0,15,0,1,Formula E
+FE,2021,20,Nico Müller,Dragon / Penske Autosport,30.0,7,0,1,Formula E
+FE,2021,21,Sébastien Buemi,Nissan e.dams,20.0,15,0,0,Formula E
+FE,2021,22,Sérgio Sette Câmara,Dragon / Penske Autosport,16.0,15,0,0,Formula E
+FE,2021,23,Oliver Turvey,Nio 333 FE Team,13.0,15,0,0,Formula E
+FE,2021,24,Tom Blomqvist,Nio 333 FE Team,6.0,15,0,0,Formula E
+FE,2021,25,Joel Eriksson,Dragon / Penske Autosport,1.0,8,0,0,Formula E
+FE,2022,1,Stoffel Vandoorne,Mercedes-EQ Formula E Team,213.0,16,1,8,Formula E
+FE,2022,2,Mitch Evans,Jaguar TCS Racing,180.0,16,4,7,Formula E
+FE,2022,3,Edoardo Mortara,ROKiT Venturi Racing,169.0,16,4,6,Formula E
+FE,2022,4,Jean-Éric Vergne,DS Techeetah,144.0,16,0,5,Formula E
+FE,2022,5,Lucas di Grassi,ROKiT Venturi Racing,126.0,16,1,4,Formula E
+FE,2022,6,Jake Dennis,Avalanche Andretti Formula E,126.0,16,1,4,Formula E
+FE,2022,7,Robin Frijns,Envision Racing,126.0,16,0,4,Formula E
+FE,2022,8,António Félix da Costa,DS Techeetah,122.0,16,1,2,Formula E
+FE,2022,9,Nyck de Vries,Mercedes-EQ Formula E Team,106.0,16,2,3,Formula E
+FE,2022,10,Pascal Wehrlein,TAG Heuer Porsche Formula E Team,71.0,16,1,1,Formula E
+FE,2022,11,Nick Cassidy,Envision Racing,68.0,16,1,2,Formula E
+FE,2022,12,André Lotterer,TAG Heuer Porsche Formula E Team,63.0,16,0,1,Formula E
+FE,2022,13,Sam Bird,Jaguar TCS Racing,51.0,14,0,0,Formula E
+FE,2022,14,Oliver Rowland,Mahindra Racing,32.0,16,0,1,Formula E
+FE,2022,15,Sébastien Buemi,Nissan e.dams,30.0,16,0,0,Formula E
+FE,2022,16,Oliver Askew,Avalanche Andretti Formula E,24.0,16,0,0,Formula E
+FE,2022,17,Alexander Sims,Mahindra Racing,14.0,16,0,0,Formula E
+FE,2022,18,Oliver Turvey,NIO 333 Formula E Team,6.0,16,0,0,Formula E
+FE,2022,19,Maximilian Günther,Nissan e.dams,6.0,16,0,0,Formula E
+FE,2022,20,Sérgio Sette Câmara,Dragon / Penske Autosport,2.0,16,0,0,Formula E
+FE,2022,21,Dan Ticktum,NIO 333 Formula E Team,1.0,16,0,0,Formula E
+FE,2022,22,Norman Nato,Jaguar TCS Racing,0.0,2,0,0,Formula E
+FE,2022,23,Antonio Giovinazzi,Dragon / Penske Autosport,0.0,16,0,0,Formula E
+FE,2022,24,Sacha Fenestraz,Dragon / Penske Autosport,0.0,1,0,0,Formula E
+FE,2023,1,Jake Dennis,Avalanche Andretti Formula E,229.0,16,2,11,Formula E
+FE,2023,2,Nick Cassidy,Envision Racing,199.0,16,4,8,Formula E
+FE,2023,3,Mitch Evans,Jaguar TCS Racing,197.0,16,4,7,Formula E
+FE,2023,4,Pascal Wehrlein,TAG Heuer Porsche Formula E Team,149.0,16,3,4,Formula E
+FE,2023,5,Jean-Éric Vergne,DS Penske,107.0,16,1,3,Formula E
+FE,2023,6,Sébastien Buemi,Envision Racing,105.0,16,0,1,Formula E
+FE,2023,7,Maximilian Günther,Maserati MSG Racing,101.0,16,1,4,Formula E
+FE,2023,8,Sam Bird,Jaguar TCS Racing,95.0,16,0,4,Formula E
+FE,2023,9,António Félix da Costa,TAG Heuer Porsche Formula E Team,93.0,16,1,3,Formula E
+FE,2023,10,Norman Nato,Nissan Formula E Team,63.0,16,0,1,Formula E
+FE,2023,11,Stoffel Vandoorne,DS Penske,56.0,16,0,0,Formula E
+FE,2023,12,Jake Hughes,NEOM McLaren Formula E Team,48.0,16,0,0,Formula E
+FE,2023,13,René Rast,NEOM McLaren Formula E Team,40.0,16,0,1,Formula E
+FE,2023,14,Edoardo Mortara,Maserati MSG Racing,39.0,16,0,0,Formula E
+FE,2023,15,Lucas di Grassi,Mahindra Racing,32.0,16,0,1,Formula E
+FE,2023,16,Sacha Fenestraz,Nissan Formula E Team,32.0,16,0,0,Formula E
+FE,2023,17,Dan Ticktum,NIO 333 Racing,28.0,16,0,0,Formula E
+FE,2023,18,André Lotterer,Avalanche Andretti Formula E,23.0,14,0,0,Formula E
+FE,2023,19,Nico Müller,ABT CUPRA Formula E Team,15.0,16,0,0,Formula E
+FE,2023,20,Sérgio Sette Câmara,NIO 333 Racing,14.0,16,0,0,Formula E
+FE,2023,21,Oliver Rowland,Mahindra Racing,9.0,9,0,0,Formula E
+FE,2023,22,Robin Frijns,ABT CUPRA Formula E Team,6.0,12,0,0,Formula E
+FE,2023,23,Roberto Merhi,Mahindra Racing,0.0,7,0,0,Formula E
+FE,2023,24,Kelvin van der Linde,ABT CUPRA Formula E Team,0.0,4,0,0,Formula E
+FE,2023,25,David Beckmann,Avalanche Andretti Formula E,0.0,2,0,0,Formula E
+FE,2024,1,Pascal Wehrlein,TAG Heuer Porsche Formula E Team,198.0,16,3,5,Formula E
+FE,2024,2,Mitch Evans,Jaguar TCS Racing,192.0,16,2,6,Formula E
+FE,2024,3,Nick Cassidy,Jaguar TCS Racing,176.0,16,2,8,Formula E
+FE,2024,4,Oliver Rowland,Nissan Formula E Team,156.0,16,2,7,Formula E
+FE,2024,5,Jean-Éric Vergne,DS Penske,139.0,16,0,3,Formula E
+FE,2024,6,António Félix da Costa,TAG Heuer Porsche Formula E Team,134.0,16,4,4,Formula E
+FE,2024,7,Jake Dennis,Andretti Formula E,122.0,16,1,4,Formula E
+FE,2024,8,Maximilian Günther,Maserati MSG Racing,73.0,16,1,2,Formula E
+FE,2024,9,Robin Frijns,Envision Racing,66.0,14,0,3,Formula E
+FE,2024,10,Stoffel Vandoorne,DS Penske,61.0,16,0,1,Formula E
+FE,2024,11,Sébastien Buemi,Envision Racing,53.0,14,0,2,Formula E
+FE,2024,12,Nico Müller,ABT CUPRA Formula E Team,52.0,14,0,0,Formula E
+FE,2024,13,Sam Bird,NEOM McLaren Formula E Team,48.0,14,1,1,Formula E
+FE,2024,14,Jake Hughes,NEOM McLaren Formula E Team,48.0,16,0,1,Formula E
+FE,2024,15,Norman Nato,Andretti Formula E,47.0,16,0,1,Formula E
+FE,2024,16,Edoardo Mortara,Mahindra Racing,29.0,16,0,0,Formula E
+FE,2024,17,Sacha Fenestraz,Nissan Formula E Team,26.0,16,0,0,Formula E
+FE,2024,18,Nyck de Vries,Mahindra Racing,18.0,14,0,0,Formula E
+FE,2024,19,Dan Ticktum,ERT Formula E Team,12.0,16,0,0,Formula E
+FE,2024,20,Sérgio Sette Câmara,ERT Formula E Team,11.0,16,0,0,Formula E
+FE,2024,21,Jehan Daruvala,Maserati MSG Racing,8.0,16,0,0,Formula E
+FE,2024,22,Taylor Barnard,NEOM McLaren Formula E Team,5.0,3,0,0,Formula E
+FE,2024,23,Lucas di Grassi,ABT CUPRA Formula E Team,4.0,16,0,0,Formula E
+FE,2024,24,Joel Eriksson,Envision Racing,2.0,2,0,0,Formula E
+FE,2024,25,Kelvin van der Linde,ABT CUPRA Formula E Team,0.0,2,0,0,Formula E
+FE,2024,26,Jordan King,Mahindra Racing,0.0,2,0,0,Formula E
+FE,2024,27,Paul Aron,Envision Racing,0.0,2,0,0,Formula E
+FE,2024,28,Caio Collet,Nissan Formula E Team,0.0,2,0,0,Formula E
+FE,2025,1,Oliver Rowland,Nissan Formula E Team,184.0,16,4,7,Formula E
+FE,2025,2,Nick Cassidy,Jaguar TCS Racing,153.0,16,4,5,Formula E
+FE,2025,3,Pascal Wehrlein,TAG Heuer Porsche Formula E Team,145.0,16,1,6,Formula E
+FE,2025,4,Taylor Barnard,Neom McLaren Formula E Team,112.0,16,0,5,Formula E
+FE,2025,5,António Félix da Costa,TAG Heuer Porsche Formula E Team,111.0,16,0,4,Formula E
+FE,2025,6,Jean-Éric Vergne,DS Penske,99.0,16,0,2,Formula E
+FE,2025,7,Jake Dennis,Andretti Formula E,93.0,16,0,2,Formula E
+FE,2025,8,Nyck de Vries,Mahindra Racing,92.0,14,0,3,Formula E
+FE,2025,9,Edoardo Mortara,Mahindra Racing,88.0,16,0,2,Formula E
+FE,2025,10,Maximilian Günther,DS Penske,85.0,16,2,2,Formula E
+FE,2025,11,Dan Ticktum,Cupra Kiro,85.0,16,1,2,Formula E
+FE,2025,12,Sébastien Buemi,Envision Racing,84.0,16,1,3,Formula E
+FE,2025,13,Mitch Evans,Jaguar TCS Racing,74.0,16,2,2,Formula E
+FE,2025,14,Stoffel Vandoorne,Maserati MSG Racing,62.0,16,1,1,Formula E
+FE,2025,15,Nico Müller,Andretti Formula E,48.0,16,0,0,Formula E
+FE,2025,16,Jake Hughes,Maserati MSG Racing,40.0,16,0,1,Formula E
+FE,2025,17,Lucas di Grassi,Lola Yamaha ABT Formula E Team,32.0,16,0,1,Formula E
+FE,2025,18,Sam Bird,Neom McLaren Formula E Team,31.0,16,0,0,Formula E
+FE,2025,19,Robin Frijns,Envision Racing,23.0,16,0,0,Formula E
+FE,2025,20,Norman Nato,Nissan Formula E Team,21.0,14,0,0,Formula E
+FE,2025,21,Felipe Drugovich,Mahindra Racing,6.0,2,0,0,Formula E
+FE,2025,22,Sérgio Sette Câmara,Nissan Formula E Team,2.0,2,0,0,Formula E
+FE,2025,23,David Beckmann,Cupra Kiro,1.0,16,0,0,Formula E
+FE,2025,24,Zane Maloney,Lola Yamaha ABT Formula E Team,0.0,16,0,0,Formula E
+FE,2026,1,Pascal Wehrlein,Porsche Formula E Team,169.0,17,3,6,Formula E
+FE,2026,2,Jake Dennis,Andretti Formula E,164.0,17,2,6,Formula E
+FE,2026,3,Mitch Evans,Jaguar TCS Racing,160.0,17,2,5,Formula E
+FE,2026,4,Oliver Rowland,Nissan Formula E Team,137.0,17,1,6,Formula E
+FE,2026,5,Edoardo Mortara,Mahindra Racing,137.0,17,0,3,Formula E
+FE,2026,6,António Félix da Costa,Jaguar TCS Racing,128.0,17,2,5,Formula E
+FE,2026,7,Nyck de Vries,Mahindra Racing,115.0,17,2,4,Formula E
+FE,2026,8,Nick Cassidy,Citroën Racing,114.0,17,1,5,Formula E
+FE,2026,9,Nico Müller,Porsche Formula E Team,102.0,17,1,2,Formula E
+FE,2026,10,Sébastien Buemi,Envision Racing,97.0,17,0,1,Formula E
+FE,2026,11,Taylor Barnard,DS Penske,68.0,17,1,1,Formula E
+FE,2026,12,Jean-Éric Vergne,Citroën Racing,68.0,17,0,1,Formula E
+FE,2026,13,Pepe Martí,Cupra Kiro,66.0,17,0,2,Formula E
+FE,2026,14,Felipe Drugovich,Andretti Formula E,65.0,17,0,1,Formula E
+FE,2026,15,Dan Ticktum,Cupra Kiro,62.0,17,1,1,Formula E
+FE,2026,16,Joel Eriksson,Envision Racing,55.0,17,0,1,Formula E
+FE,2026,17,Lucas di Grassi,Lola Yamaha ABT Formula E Team,32.0,17,1,1,Formula E
+FE,2026,18,Maximilian Günther,DS Penske,23.0,17,0,0,Formula E
+FE,2026,19,Norman Nato,Nissan Formula E Team,20.0,17,0,0,Formula E
+FE,2026,20,Zane Maloney,Lola Yamaha ABT Formula E Team,3.0,17,0,0,Formula E
+INDY,2010,1,Dario Franchitti,Chip Ganassi Racing,602.0,17,3,10,IndyCar
+INDY,2010,2,Will Power,Team Penske,597.0,17,5,9,IndyCar
+INDY,2010,3,Scott Dixon,Chip Ganassi Racing,547.0,17,3,5,IndyCar
+INDY,2010,4,Hélio Castroneves,Team Penske,531.0,17,3,5,IndyCar
+INDY,2010,5,Ryan Briscoe,Team Penske,482.0,17,1,3,IndyCar
+INDY,2010,6,Tony Kanaan,Andretti Autosport,453.0,17,1,3,IndyCar
+INDY,2010,7,Ryan Hunter-Reay,Andretti Autosport,445.0,17,1,3,IndyCar
+INDY,2010,8,Marco Andretti,Andretti Autosport,392.0,17,0,3,IndyCar
+INDY,2010,9,Dan Wheldon,Panther Racing,388.0,17,0,3,IndyCar
+INDY,2010,10,Danica Patrick,Andretti Autosport,367.0,17,0,2,IndyCar
+INDY,2010,11,Justin Wilson,Dreyer & Reinbold Racing,361.0,17,0,2,IndyCar
+INDY,2010,12,Vítor Meira,A. J. Foyt Enterprises,310.0,17,0,1,IndyCar
+INDY,2010,13,Alex Tagliani,FAZZT Race Team,302.0,17,0,0,IndyCar
+INDY,2010,14,Raphael Matos,de Ferran Dragon Racing,290.0,17,0,0,IndyCar
+INDY,2010,15,Mario Moraes,KV Racing Technology,287.0,17,0,0,IndyCar
+INDY,2010,16,Alex Lloyd RY,,266.0,17,0,0,IndyCar
+INDY,2010,17,E. J. Viso,KV Racing Technology,262.0,17,0,1,IndyCar
+INDY,2010,18,Hideki Mutoh,Newman/Haas Racing Newman/Haas/Lanigan Racing,250.0,17,0,0,IndyCar
+INDY,2010,19,Simona de Silvestro R,HVM Racing,242.0,17,0,0,IndyCar
+INDY,2010,20,Graham Rahal,Sarah Fisher Racing,235.0,12,0,0,IndyCar
+INDY,2010,21,Takuma Sato R,KV Racing Technology,214.0,17,0,0,IndyCar
+INDY,2010,22,Bertrand Baguette R,Conquest Racing,213.0,15,0,0,IndyCar
+INDY,2010,23,Milka Duno,Dale Coyne Racing,184.0,17,0,0,IndyCar
+INDY,2010,24,Mario Romancini R,Conquest Racing,149.0,11,0,0,IndyCar
+INDY,2010,25,Mike Conway,Dreyer & Reinbold Racing,110.0,6,0,0,IndyCar
+INDY,2010,26,Sarah Fisher,Sarah Fisher Racing,92.0,7,0,0,IndyCar
+INDY,2010,27,Paul Tracy,KV Racing Technology,91.0,6,0,0,IndyCar
+INDY,2010,28,Ed Carpenter,Panther Racing,90.0,4,0,1,IndyCar
+INDY,2010,29,Tomas Scheckter,Dreyer & Reinbold Racing,89.0,6,0,0,IndyCar
+INDY,2010,30,Ana Beatriz R,Dreyer & Reinbold Racing,55.0,4,0,0,IndyCar
+INDY,2010,31,Jay Howard R,Sarah Fisher Racing,44.0,5,0,0,IndyCar
+INDY,2010,32,John Andretti,Andretti Autosport,35.0,2,0,0,IndyCar
+INDY,2010,33,Sebastián Saavedra R,Conquest Racing,29.0,2,0,0,IndyCar
+INDY,2010,34,Adam Carroll R,Andretti Autosport,26.0,2,0,0,IndyCar
+INDY,2010,35,J. R. Hildebrand R,Dreyer & Reinbold Racing,26.0,2,0,0,IndyCar
+INDY,2010,36,Davey Hamilton,de Ferran Dragon Racing,26.0,2,0,0,IndyCar
+INDY,2010,37,Francesco Dracone R,Conquest Racing,24.0,2,0,0,IndyCar
+INDY,2010,38,Townsend Bell,Sam Schmidt Motorsports,18.0,1,0,0,IndyCar
+INDY,2010,39,Bruno Junqueira,FAZZT Race Team,13.0,1,0,0,IndyCar
+INDY,2010,40,Roger Yasukawa,Conquest Racing,12.0,1,0,0,IndyCar
+INDY,2011,1,Dario Franchitti,Chip Ganassi Racing,573.0,18,4,9,IndyCar
+INDY,2011,2,Will Power,Team Penske,555.0,18,6,9,IndyCar
+INDY,2011,3,Scott Dixon,Chip Ganassi Racing,518.0,18,2,9,IndyCar
+INDY,2011,4,Oriol Servià,Newman/Haas Racing,425.0,18,0,3,IndyCar
+INDY,2011,5,Tony Kanaan,KV Racing Technology—Lotus,366.0,18,0,3,IndyCar
+INDY,2011,6,Ryan Briscoe,Team Penske,364.0,18,0,4,IndyCar
+INDY,2011,7,Ryan Hunter-Reay,Andretti Autosport,347.0,18,1,3,IndyCar
+INDY,2011,8,Marco Andretti,Andretti Autosport,337.0,18,1,2,IndyCar
+INDY,2011,9,Graham Rahal,Chip Ganassi Racing,320.0,18,0,3,IndyCar
+INDY,2011,10,Danica Patrick,Andretti Autosport,314.0,18,0,0,IndyCar
+INDY,2011,11,Hélio Castroneves,Team Penske,312.0,18,0,2,IndyCar
+INDY,2011,12,James Hinchcliffe RY,,302.0,17,0,0,IndyCar
+INDY,2011,13,Takuma Sato,KV Racing Technology—Lotus,297.0,18,0,0,IndyCar
+INDY,2011,14,J. R. Hildebrand R,Panther Racing,296.0,18,0,1,IndyCar
+INDY,2011,15,Alex Tagliani,Sam Schmidt Motorsports,296.0,17,0,0,IndyCar
+INDY,2011,16,Vítor Meira,A. J. Foyt Enterprises,287.0,18,0,0,IndyCar
+INDY,2011,17,Mike Conway,Andretti Autosport,260.0,18,1,1,IndyCar
+INDY,2011,18,E. J. Viso,KV Racing Technology—Lotus,241.0,18,0,0,IndyCar
+INDY,2011,19,Charlie Kimball R,Chip Ganassi Racing,233.0,18,0,0,IndyCar
+INDY,2011,20,Simona de Silvestro,HVM Racing,225.0,17,0,0,IndyCar
+INDY,2011,21,Ana Beatriz R,Dreyer & Reinbold Racing,212.0,17,0,0,IndyCar
+INDY,2011,22,James Jakes R,Dale Coyne Racing,189.0,18,0,0,IndyCar
+INDY,2011,23,Sébastien Bourdais,Dale Coyne Racing,188.0,10,0,0,IndyCar
+INDY,2011,24,Justin Wilson,Dreyer & Reinbold Racing,183.0,12,0,0,IndyCar
+INDY,2011,25,Sebastián Saavedra R,Conquest Racing,178.0,16,0,0,IndyCar
+INDY,2011,26,Ed Carpenter,Sarah Fisher Racing,175.0,11,1,1,IndyCar
+INDY,2011,27,Alex Lloyd,Dale Coyne Racing,85.0,8,0,0,IndyCar
+INDY,2011,28,Dan Wheldon,Sam Schmidt Motorsports,75.0,3,1,1,IndyCar
+INDY,2011,29,Paul Tracy,Dreyer & Reinbold Racing,68.0,7,0,0,IndyCar
+INDY,2011,30,Raphael Matos,AFS Racing,67.0,5,0,0,IndyCar
+INDY,2011,31,Simon Pagenaud R,HVM Racing,56.0,3,0,0,IndyCar
+INDY,2011,32,Tomas Scheckter,SH Racing,52.0,4,0,0,IndyCar
+INDY,2011,33,Martin Plowman R,AFS / Sam Schmidt Motorsports,49.0,3,0,0,IndyCar
+INDY,2011,34,Buddy Rice,Panther Racing,42.0,3,0,0,IndyCar
+INDY,2011,35,Townsend Bell,Sam Schmidt Motorsports,40.0,3,0,0,IndyCar
+INDY,2011,36,Giorgio Pantano R,Dreyer & Reinbold Racing,37.0,3,0,0,IndyCar
+INDY,2011,37,Wade Cunningham R,Sam Schmidt Motorsports,36.0,4,0,0,IndyCar
+INDY,2011,38,Pippa Mann R,Rahal Letterman Lanigan Racing,32.0,4,0,0,IndyCar
+INDY,2011,39,Bertrand Baguette,Rahal Letterman Lanigan Racing,30.0,1,0,0,IndyCar
+INDY,2011,40,Jay Howard,Sam Schmidt Motorsports,27.0,4,0,0,IndyCar
+INDY,2011,41,Davey Hamilton,Dreyer & Reinbold Racing,26.0,4,0,0,IndyCar
+INDY,2011,42,John Andretti,Andretti Autosport,16.0,1,0,0,IndyCar
+INDY,2011,43,Hideki Mutoh,AFS / Sam Schmidt Motorsports,12.0,1,0,0,IndyCar
+INDY,2011,44,João Paulo de Oliveira,,10.0,1,0,0,IndyCar
+INDY,2011,45,Ho-Pin Tung R,Dragon Racing,10.0,2,0,0,IndyCar
+INDY,2011,46,Dillon Battistini R,Conquest Racing,10.0,1,0,0,IndyCar
+INDY,2011,47,Bruno Junqueira,A. J. Foyt Enterprises,4.0,1,0,0,IndyCar
+INDY,2012,1,Ryan Hunter-Reay,Andretti Autosport,468.0,15,4,6,IndyCar
+INDY,2012,2,Will Power,Team Penske,465.0,15,3,6,IndyCar
+INDY,2012,3,Scott Dixon,Chip Ganassi Racing,435.0,15,2,6,IndyCar
+INDY,2012,4,Hélio Castroneves,Team Penske,431.0,15,2,3,IndyCar
+INDY,2012,5,Simon Pagenaud RY,,387.0,15,0,4,IndyCar
+INDY,2012,6,Ryan Briscoe,Team Penske,370.0,15,1,3,IndyCar
+INDY,2012,7,Dario Franchitti,Chip Ganassi Racing,363.0,15,1,4,IndyCar
+INDY,2012,8,James Hinchcliffe,Andretti Autosport,358.0,15,0,2,IndyCar
+INDY,2012,9,Tony Kanaan,KV Racing Technology with SH,351.0,15,0,3,IndyCar
+INDY,2012,10,Graham Rahal,Chip Ganassi Racing,333.0,15,0,1,IndyCar
+INDY,2012,11,J. R. Hildebrand,Panther Racing,294.0,15,0,0,IndyCar
+INDY,2012,12,Rubens Barrichello R,,289.0,15,0,0,IndyCar
+INDY,2012,13,Oriol Servià,Dreyer & Reinbold Racing Panther/Dreyer & Reinbold Racing,287.0,15,0,0,IndyCar
+INDY,2012,14,Takuma Sato,Rahal Letterman Lanigan Racing,281.0,15,0,2,IndyCar
+INDY,2012,15,Justin Wilson,Dale Coyne Racing,278.0,15,1,1,IndyCar
+INDY,2012,16,Marco Andretti,Andretti Autosport,278.0,15,0,1,IndyCar
+INDY,2012,17,Alex Tagliani,Team Barracuda – BHA,272.0,14,0,0,IndyCar
+INDY,2012,18,Ed Carpenter,Ed Carpenter Racing,261.0,15,1,1,IndyCar
+INDY,2012,19,Charlie Kimball,Chip Ganassi Racing,260.0,14,0,1,IndyCar
+INDY,2012,20,E. J. Viso,KV Racing Technology,244.0,15,0,0,IndyCar
+INDY,2012,21,Mike Conway,A. J. Foyt Enterprises,233.0,14,0,1,IndyCar
+INDY,2012,22,James Jakes,Dale Coyne Racing,232.0,15,0,0,IndyCar
+INDY,2012,23,Josef Newgarden R,Sarah Fisher Hartman Racing,200.0,14,0,0,IndyCar
+INDY,2012,24,Simona de Silvestro,Lotus–HVM Racing,182.0,15,0,0,IndyCar
+INDY,2012,25,Sébastien Bourdais,Dragon Racing,173.0,11,0,0,IndyCar
+INDY,2012,26,Katherine Legge R,Dragon Racing,137.0,10,0,0,IndyCar
+INDY,2012,27,Sebastián Saavedra,AFS Racing / Andretti Autosport,41.0,3,0,0,IndyCar
+INDY,2012,28,Wade Cunningham R,A. J. Foyt Enterprises,29.0,2,0,0,IndyCar
+INDY,2012,29,Ana Beatriz,Andretti Autosport / Conquest Racing,28.0,2,0,0,IndyCar
+INDY,2012,30,Townsend Bell,Schmidt–Hamilton Motorsports,26.0,1,0,0,IndyCar
+INDY,2012,31,Giorgio Pantano R,Chip Ganassi Racing,16.0,1,0,0,IndyCar
+INDY,2012,32,Michel Jourdain Jr.,Rahal Letterman Lanigan Racing,16.0,1,0,0,IndyCar
+INDY,2012,33,Bryan Clauson R,Sarah Fisher Hartman Racing,13.0,1,0,0,IndyCar
+INDY,2012,34,Jean Alesi R,Lotus–Fan Force United,13.0,1,0,0,IndyCar
+INDY,2012,35,Bruno Junqueira,Sarah Fisher Hartman Racing,12.0,1,0,0,IndyCar
+INDY,2013,1,Scott Dixon,Chip Ganassi Racing,577.0,19,4,6,IndyCar
+INDY,2013,2,Hélio Castroneves,Team Penske,550.0,19,1,5,IndyCar
+INDY,2013,3,Simon Pagenaud,Schmidt Hamilton Motorsports,508.0,19,2,3,IndyCar
+INDY,2013,4,Will Power,Team Penske,498.0,19,3,4,IndyCar
+INDY,2013,5,Marco Andretti,Andretti Autosport,484.0,19,0,2,IndyCar
+INDY,2013,6,Justin Wilson,Dale Coyne Racing,472.0,19,0,4,IndyCar
+INDY,2013,7,Ryan Hunter-Reay,Andretti Autosport,469.0,19,2,6,IndyCar
+INDY,2013,8,James Hinchcliffe,Andretti Autosport,449.0,19,3,4,IndyCar
+INDY,2013,9,Charlie Kimball,Chip Ganassi Racing,427.0,19,1,2,IndyCar
+INDY,2013,10,Dario Franchitti,Chip Ganassi Racing,418.0,18,0,4,IndyCar
+INDY,2013,11,Tony Kanaan,KV Racing Technology,397.0,19,1,4,IndyCar
+INDY,2013,12,Sébastien Bourdais,Dragon Racing,370.0,19,0,3,IndyCar
+INDY,2013,13,Simona de Silvestro,KV Racing Technology,362.0,19,0,1,IndyCar
+INDY,2013,14,Josef Newgarden,Sarah Fisher Hartman Racing,348.0,19,0,1,IndyCar
+INDY,2013,15,E. J. Viso,Team Venezuela / Andretti Autosport / HVM,340.0,18,0,0,IndyCar
+INDY,2013,16,Ed Carpenter,Ed Carpenter Racing,333.0,19,0,1,IndyCar
+INDY,2013,17,Takuma Sato,A. J. Foyt Enterprises,322.0,19,1,2,IndyCar
+INDY,2013,18,Graham Rahal,Rahal Letterman Lanigan Racing,319.0,19,0,1,IndyCar
+INDY,2013,19,James Jakes,Rahal Letterman Lanigan Racing,294.0,19,0,1,IndyCar
+INDY,2013,20,Tristan Vautier RY,,266.0,19,0,0,IndyCar
+INDY,2013,21,Sebastián Saavedra,Dragon Racing,236.0,19,0,0,IndyCar
+INDY,2013,22,Oriol Servià,Panther Dreyer & Reinbold Racing,233.0,12,0,0,IndyCar
+INDY,2013,23,Mike Conway,Rahal Letterman Lanigan Racing,185.0,7,1,2,IndyCar
+INDY,2013,24,Alex Tagliani,Chip Ganassi Racing,180.0,14,0,0,IndyCar
+INDY,2013,25,J. R. Hildebrand,Panther Racing,112.0,7,0,0,IndyCar
+INDY,2013,26,Ryan Briscoe,Panther Racing,100.0,7,0,0,IndyCar
+INDY,2013,27,A. J. Allmendinger,Team Penske,79.0,6,0,0,IndyCar
+INDY,2013,28,Carlos Muñoz R,Panther Racing,74.0,3,0,1,IndyCar
+INDY,2013,29,Ana Beatriz,Dale Coyne Racing,72.0,7,0,0,IndyCar
+INDY,2013,30,Luca Filippi R,Barracuda Racing,53.0,4,0,0,IndyCar
+INDY,2013,31,Pippa Mann,Dale Coyne Racing,34.0,4,0,0,IndyCar
+INDY,2013,32,James Davison R,Dale Coyne Racing,27.0,2,0,0,IndyCar
+INDY,2013,33,Stefan Wilson R,Dale Coyne Racing,14.0,1,0,0,IndyCar
+INDY,2013,34,Conor Daly R,A. J. Foyt Enterprises,11.0,1,0,0,IndyCar
+INDY,2013,35,Townsend Bell,Panther Racing,10.0,1,0,0,IndyCar
+INDY,2013,36,Lucas Luhr R,Sarah Fisher Hartman Racing,8.0,1,0,0,IndyCar
+INDY,2013,37,Katherine Legge,Schmidt Peterson Motorsports,8.0,1,0,0,IndyCar
+INDY,2013,38,Buddy Lazier,Lazier Partners Racing,8.0,1,0,0,IndyCar
+INDY,2014,1,Will Power,Team Penske,671.0,18,3,7,IndyCar
+INDY,2014,2,Hélio Castroneves,Team Penske,609.0,18,1,6,IndyCar
+INDY,2014,3,Scott Dixon,Chip Ganassi Racing,604.0,18,2,4,IndyCar
+INDY,2014,4,Juan Pablo Montoya,Team Penske,586.0,18,1,4,IndyCar
+INDY,2014,5,Simon Pagenaud,Schmidt Peterson Motorsports,565.0,18,2,3,IndyCar
+INDY,2014,6,Ryan Hunter-Reay,Andretti Autosport,563.0,18,3,6,IndyCar
+INDY,2014,7,Tony Kanaan,Chip Ganassi Racing,544.0,18,1,6,IndyCar
+INDY,2014,8,Carlos Muñoz RY,,483.0,18,0,3,IndyCar
+INDY,2014,9,Marco Andretti,Andretti Autosport,463.0,18,0,2,IndyCar
+INDY,2014,10,Sébastien Bourdais,KVSH Racing,461.0,18,1,2,IndyCar
+INDY,2014,11,Ryan Briscoe,Chip Ganassi Racing,461.0,18,0,0,IndyCar
+INDY,2014,12,James Hinchcliffe,Andretti Autosport,456.0,18,0,1,IndyCar
+INDY,2014,13,Josef Newgarden,Sarah Fisher Hartman Racing,406.0,18,0,1,IndyCar
+INDY,2014,14,Charlie Kimball,Chip Ganassi Racing,402.0,18,0,1,IndyCar
+INDY,2014,15,Justin Wilson,Dale Coyne Racing,395.0,18,0,0,IndyCar
+INDY,2014,16,Mikhail Aleshin R,Schmidt Peterson Motorsports,372.0,18,0,1,IndyCar
+INDY,2014,17,Jack Hawksworth R,Bryan Herta Autosport,366.0,18,0,1,IndyCar
+INDY,2014,18,Takuma Sato,A. J. Foyt Enterprises,350.0,18,0,0,IndyCar
+INDY,2014,19,Graham Rahal,Rahal Letterman Lanigan Racing,345.0,18,0,1,IndyCar
+INDY,2014,20,Carlos Huertas R,Dale Coyne Racing,314.0,18,1,1,IndyCar
+INDY,2014,21,Sebastián Saavedra,KV AFS Racing,291.0,18,0,0,IndyCar
+INDY,2014,22,Ed Carpenter,Ed Carpenter Racing,262.0,6,1,2,IndyCar
+INDY,2014,23,Mike Conway,Ed Carpenter Racing,252.0,12,2,2,IndyCar
+INDY,2014,24,Oriol Servià,Rahal Letterman Lanigan Racing,88.0,4,0,0,IndyCar
+INDY,2014,25,Kurt Busch R,Andretti Autosport,80.0,1,0,0,IndyCar
+INDY,2014,26,J. R. Hildebrand,Ed Carpenter Racing,66.0,1,0,0,IndyCar
+INDY,2014,27,Sage Karam R,Dreyer & Reinbold - Kingdom Racing,57.0,1,0,0,IndyCar
+INDY,2014,28,Luca Filippi R,Rahal Letterman Lanigan Racing,46.0,4,0,0,IndyCar
+INDY,2014,29,James Davison R,KV Racing Technology,34.0,1,0,0,IndyCar
+INDY,2014,30,Jacques Villeneuve,Schmidt Peterson Motorsports,29.0,1,0,0,IndyCar
+INDY,2014,31,Alex Tagliani,Sarah Fisher Hartman Racing,28.0,1,0,0,IndyCar
+INDY,2014,32,Townsend Bell,KV Racing Technology,22.0,1,0,0,IndyCar
+INDY,2014,33,Pippa Mann,Dale Coyne Racing,21.0,1,0,0,IndyCar
+INDY,2014,34,Martin Plowman R,A. J. Foyt Enterprises,18.0,2,0,0,IndyCar
+INDY,2014,35,Buddy Lazier,Lazier Partners Racing,11.0,1,0,0,IndyCar
+INDY,2014,36,Franck Montagny R,Andretti Autosport,8.0,1,0,0,IndyCar
+INDY,2015,1,Scott Dixon,Chip Ganassi Racing,556.0,16,3,4,IndyCar
+INDY,2015,2,Juan Pablo Montoya,Team Penske,556.0,16,2,5,IndyCar
+INDY,2015,3,Will Power,Team Penske,493.0,16,1,3,IndyCar
+INDY,2015,4,Graham Rahal,Rahal Letterman Lanigan Racing,490.0,16,2,6,IndyCar
+INDY,2015,5,Hélio Castroneves,Team Penske,453.0,16,0,5,IndyCar
+INDY,2015,6,Ryan Hunter-Reay,Andretti Autosport,436.0,16,2,3,IndyCar
+INDY,2015,7,Josef Newgarden,CFH Racing,431.0,16,2,4,IndyCar
+INDY,2015,8,Tony Kanaan,Chip Ganassi Racing,431.0,16,0,3,IndyCar
+INDY,2015,9,Marco Andretti,Andretti Autosport,429.0,16,0,2,IndyCar
+INDY,2015,10,Sébastien Bourdais,KVSH Racing,406.0,16,2,2,IndyCar
+INDY,2015,11,Simon Pagenaud,Team Penske,384.0,16,0,2,IndyCar
+INDY,2015,12,Charlie Kimball,Chip Ganassi Racing,372.0,16,0,2,IndyCar
+INDY,2015,13,Carlos Muñoz,Andretti Autosport,349.0,16,1,1,IndyCar
+INDY,2015,14,Takuma Sato,A. J. Foyt Enterprises,323.0,16,0,1,IndyCar
+INDY,2015,15,Gabby Chaves RY,,281.0,16,0,0,IndyCar
+INDY,2015,16,James Jakes,Schmidt Peterson Motorsports,257.0,16,0,1,IndyCar
+INDY,2015,17,Jack Hawksworth,A. J. Foyt Enterprises,256.0,16,0,0,IndyCar
+INDY,2015,18,Ryan Briscoe,Schmidt Peterson Motorsports,205.0,8,0,0,IndyCar
+INDY,2015,19,Stefano Coletti R,KV Racing Technology,203.0,16,0,0,IndyCar
+INDY,2015,20,Sage Karam R,Chip Ganassi Racing,197.0,12,0,1,IndyCar
+INDY,2015,21,Luca Filippi,CFH Racing,182.0,10,0,1,IndyCar
+INDY,2015,22,Tristan Vautier,Dale Coyne Racing,172.0,11,0,0,IndyCar
+INDY,2015,23,James Hinchcliffe,Schmidt Peterson Motorsports,129.0,6,1,1,IndyCar
+INDY,2015,24,Justin Wilson,Andretti Autosport,108.0,6,0,1,IndyCar
+INDY,2015,25,Sebastián Saavedra,Chip Ganassi Racing,96.0,5,0,0,IndyCar
+INDY,2015,26,Rodolfo González R,Dale Coyne Racing,94.0,6,0,0,IndyCar
+INDY,2015,27,Ed Carpenter,CFH Racing,88.0,6,0,0,IndyCar
+INDY,2015,28,Conor Daly R,Schmidt Peterson Motorsports,81.0,5,0,0,IndyCar
+INDY,2015,29,Pippa Mann,Dale Coyne Racing,76.0,6,0,0,IndyCar
+INDY,2015,30,Simona de Silvestro,Andretti Autosport,66.0,3,0,0,IndyCar
+INDY,2015,31,J. R. Hildebrand,CFH Racing,57.0,2,0,0,IndyCar
+INDY,2015,32,Oriol Servià,Rahal Letterman Lanigan Racing,46.0,2,0,0,IndyCar
+INDY,2015,33,Mikhail Aleshin,Schmidt Peterson Motorsports,40.0,1,0,0,IndyCar
+INDY,2015,34,Francesco Dracone R,Dale Coyne Racing,38.0,5,0,0,IndyCar
+INDY,2015,35,Townsend Bell,Dreyer & Reinbold - Kingdom Racing,32.0,1,0,0,IndyCar
+INDY,2015,36,Carlos Huertas,Dale Coyne Racing,31.0,4,0,0,IndyCar
+INDY,2015,37,Alex Tagliani,A. J. Foyt Enterprises,27.0,1,0,0,IndyCar
+INDY,2015,38,James Davison R,Dale Coyne Racing,10.0,1,0,0,IndyCar
+INDY,2015,39,Bryan Clauson R,KVSH Racing / Jonathan Byrd's Racing,10.0,1,0,0,IndyCar
+INDY,2016,1,Simon Pagenaud,Team Penske,659.0,16,5,8,IndyCar
+INDY,2016,2,Will Power,Team Penske,532.0,16,4,7,IndyCar
+INDY,2016,3,Hélio Castroneves,Team Penske,504.0,16,0,4,IndyCar
+INDY,2016,4,Josef Newgarden,Ed Carpenter Racing,502.0,16,1,4,IndyCar
+INDY,2016,5,Graham Rahal,Rahal Letterman Lanigan Racing,484.0,16,1,4,IndyCar
+INDY,2016,6,Scott Dixon,Chip Ganassi Racing,477.0,16,2,4,IndyCar
+INDY,2016,7,Tony Kanaan,Chip Ganassi Racing,461.0,16,0,2,IndyCar
+INDY,2016,8,Juan Pablo Montoya,Team Penske,433.0,16,1,3,IndyCar
+INDY,2016,9,Charlie Kimball,Chip Ganassi Racing,433.0,16,0,0,IndyCar
+INDY,2016,10,Carlos Muñoz,Andretti Autosport,432.0,16,0,2,IndyCar
+INDY,2016,11,Alexander Rossi RY,,430.0,16,1,1,IndyCar
+INDY,2016,12,Ryan Hunter-Reay,Andretti Autosport,428.0,16,0,3,IndyCar
+INDY,2016,13,James Hinchcliffe,Schmidt Peterson Motorsports,416.0,16,0,3,IndyCar
+INDY,2016,14,Sébastien Bourdais,KVSH Racing,404.0,16,1,1,IndyCar
+INDY,2016,15,Mikhail Aleshin,Schmidt Peterson Motorsports,347.0,16,0,1,IndyCar
+INDY,2016,16,Marco Andretti,Andretti Autosport,339.0,16,0,0,IndyCar
+INDY,2016,17,Takuma Sato,A. J. Foyt Enterprises,320.0,16,0,0,IndyCar
+INDY,2016,18,Conor Daly R,Dale Coyne Racing,313.0,16,0,1,IndyCar
+INDY,2016,19,Max Chilton R,Chip Ganassi Racing,267.0,16,0,0,IndyCar
+INDY,2016,20,Jack Hawksworth,A. J. Foyt Enterprises,229.0,16,0,0,IndyCar
+INDY,2016,21,Spencer Pigot R,Rahal Letterman Lanigan Racing,165.0,10,0,0,IndyCar
+INDY,2016,22,Gabby Chaves,Dale Coyne Racing,121.0,7,0,0,IndyCar
+INDY,2016,23,J. R. Hildebrand,Ed Carpenter Racing,84.0,2,0,0,IndyCar
+INDY,2016,24,Oriol Servià,Team Penske,72.0,2,0,0,IndyCar
+INDY,2016,25,Ed Carpenter,Ed Carpenter Racing,67.0,5,0,0,IndyCar
+INDY,2016,26,Luca Filippi,Dale Coyne Racing,61.0,5,0,0,IndyCar
+INDY,2016,27,Townsend Bell,Andretti Autosport,55.0,1,0,0,IndyCar
+INDY,2016,28,R. C. Enerson R,Dale Coyne Racing,55.0,3,0,0,IndyCar
+INDY,2016,29,Pippa Mann,Dale Coyne Racing,46.0,2,0,0,IndyCar
+INDY,2016,30,Matthew Brabham R,Pirtek Team Murray,37.0,2,0,0,IndyCar
+INDY,2016,31,Alex Tagliani,A. J. Foyt Enterprises,35.0,2,0,0,IndyCar
+INDY,2016,32,Sage Karam,Dreyer & Reinbold Racing,22.0,1,0,0,IndyCar
+INDY,2016,33,Bryan Clauson R,Dale Coyne / Jonathan Byrd's Racing,21.0,1,0,0,IndyCar
+INDY,2016,34,Stefan Wilson R,KVSH Racing,14.0,1,0,0,IndyCar
+INDY,2016,35,Buddy Lazier,Lazier Burns Racing,12.0,1,0,0,IndyCar
+INDY,2017,1,Josef Newgarden,Team Penske,642.0,17,4,9,IndyCar
+INDY,2017,2,Simon Pagenaud,Team Penske,629.0,17,2,6,IndyCar
+INDY,2017,3,Scott Dixon,Chip Ganassi Racing,621.0,17,1,7,IndyCar
+INDY,2017,4,Hélio Castroneves,Team Penske,598.0,17,1,3,IndyCar
+INDY,2017,5,Will Power,Team Penske,562.0,17,3,7,IndyCar
+INDY,2017,6,Graham Rahal,Rahal Letterman Lanigan Racing,522.0,17,2,3,IndyCar
+INDY,2017,7,Alexander Rossi,Andretti Herta Autosport with Curb Agajanian,494.0,17,1,3,IndyCar
+INDY,2017,8,Takuma Sato,Andretti Autosport,441.0,17,1,1,IndyCar
+INDY,2017,9,Ryan Hunter-Reay,Andretti Autosport,421.0,17,0,3,IndyCar
+INDY,2017,10,Tony Kanaan,Chip Ganassi Racing,403.0,17,0,1,IndyCar
+INDY,2017,11,Max Chilton,Chip Ganassi Racing,396.0,17,0,0,IndyCar
+INDY,2017,12,Marco Andretti,Andretti Autosport,388.0,17,0,0,IndyCar
+INDY,2017,13,James Hinchcliffe,Schmidt Peterson Motorsports,376.0,17,1,3,IndyCar
+INDY,2017,14,Ed Jones RY,,354.0,17,0,1,IndyCar
+INDY,2017,15,J. R. Hildebrand,Ed Carpenter Racing,347.0,16,0,2,IndyCar
+INDY,2017,16,Carlos Muñoz,A. J. Foyt Enterprises,328.0,17,0,0,IndyCar
+INDY,2017,17,Charlie Kimball,Chip Ganassi Racing,327.0,17,0,0,IndyCar
+INDY,2017,18,Conor Daly,A. J. Foyt Enterprises,305.0,17,0,0,IndyCar
+INDY,2017,19,Mikhail Aleshin,Schmidt Peterson Motorsports,237.0,12,0,0,IndyCar
+INDY,2017,20,Spencer Pigot,Juncos Racing,218.0,12,0,0,IndyCar
+INDY,2017,21,Sébastien Bourdais,Dale Coyne Racing,214.0,9,1,2,IndyCar
+INDY,2017,22,Ed Carpenter,Ed Carpenter Racing,169.0,6,0,0,IndyCar
+INDY,2017,23,Gabby Chaves,Harding Racing,98.0,3,0,0,IndyCar
+INDY,2017,24,Juan Pablo Montoya,Team Penske,93.0,2,0,0,IndyCar
+INDY,2017,25,Esteban Gutiérrez R,Dale Coyne Racing,91.0,7,0,0,IndyCar
+INDY,2017,26,Sebastián Saavedra,Schmidt Peterson Motorsports,80.0,4,0,0,IndyCar
+INDY,2017,27,Oriol Servià,Rahal Letterman Lanigan Racing,61.0,3,0,0,IndyCar
+INDY,2017,28,Jack Harvey R,Schmidt Peterson Motorsports,57.0,3,0,0,IndyCar
+INDY,2017,29,Fernando Alonso R,McLaren-Honda-Andretti,47.0,1,0,0,IndyCar
+INDY,2017,30,Pippa Mann,Dale Coyne Racing,32.0,1,0,0,IndyCar
+INDY,2017,31,Zachary Claman DeMelo R,Rahal Letterman Lanigan Racing,26.0,1,0,0,IndyCar
+INDY,2017,32,Jay Howard,Schmidt Peterson Motorsports,24.0,1,0,0,IndyCar
+INDY,2017,33,Zach Veach R,Ed Carpenter Racing,23.0,2,0,0,IndyCar
+INDY,2017,34,Sage Karam,Dreyer & Reinbold Racing,23.0,1,0,0,IndyCar
+INDY,2017,35,James Davison R,Dale Coyne Racing,21.0,1,0,0,IndyCar
+INDY,2017,36,Tristan Vautier,Dale Coyne Racing,15.0,1,0,0,IndyCar
+INDY,2017,37,Buddy Lazier,Lazier Partners Racing,14.0,1,0,0,IndyCar
+INDY,2018,1,Scott Dixon,Chip Ganassi Racing,678.0,17,3,9,IndyCar
+INDY,2018,2,Alexander Rossi,Andretti Autosport,621.0,17,3,8,IndyCar
+INDY,2018,3,Will Power,Team Penske,582.0,17,3,8,IndyCar
+INDY,2018,4,Ryan Hunter-Reay,Andretti Autosport,566.0,17,2,6,IndyCar
+INDY,2018,5,Josef Newgarden,Team Penske,560.0,17,3,3,IndyCar
+INDY,2018,6,Simon Pagenaud,Team Penske,492.0,17,0,2,IndyCar
+INDY,2018,7,Sébastien Bourdais,Dale Coyne Racing with Vasser Sullivan,425.0,17,1,2,IndyCar
+INDY,2018,8,Graham Rahal,Rahal Letterman Lanigan Racing,392.0,17,0,1,IndyCar
+INDY,2018,9,Marco Andretti,Andretti Herta Autosport with Curb-Agajanian,392.0,17,0,0,IndyCar
+INDY,2018,10,James Hinchcliffe,Schmidt Peterson Motorsports,391.0,17,1,2,IndyCar
+INDY,2018,11,Robert Wickens RY,,391.0,14,0,4,IndyCar
+INDY,2018,12,Takuma Sato,Rahal Letterman Lanigan Racing,351.0,17,1,2,IndyCar
+INDY,2018,13,Ed Jones,Chip Ganassi Racing,343.0,17,0,2,IndyCar
+INDY,2018,14,Spencer Pigot,Ed Carpenter Racing,325.0,17,0,1,IndyCar
+INDY,2018,15,Zach Veach R,Andretti Autosport,313.0,17,0,0,IndyCar
+INDY,2018,16,Tony Kanaan,A. J. Foyt Enterprises,312.0,17,0,0,IndyCar
+INDY,2018,17,Charlie Kimball,Carlin,287.0,17,0,0,IndyCar
+INDY,2018,18,Matheus Leist R,A. J. Foyt Enterprises,253.0,17,0,0,IndyCar
+INDY,2018,19,Max Chilton,Carlin,223.0,17,0,0,IndyCar
+INDY,2018,20,Ed Carpenter,Ed Carpenter Racing,187.0,6,0,1,IndyCar
+INDY,2018,21,Gabby Chaves,Harding Racing,187.0,13,0,0,IndyCar
+INDY,2018,22,Jordan King R,Ed Carpenter Racing,175.0,11,0,0,IndyCar
+INDY,2018,23,Zachary Claman DeMelo R,Dale Coyne Racing,122.0,9,0,0,IndyCar
+INDY,2018,24,Jack Harvey R,Michael Shank Racing with Schmidt Peterson Meyer Shank Racing with Schmidt Peterson,103.0,6,0,0,IndyCar
+INDY,2018,25,Carlos Muñoz,Schmidt Peterson Motorsports,95.0,3,0,0,IndyCar
+INDY,2018,26,Pietro Fittipaldi R,Dale Coyne Racing,91.0,6,0,0,IndyCar
+INDY,2018,27,Santino Ferrucci R,Dale Coyne Racing,66.0,4,0,0,IndyCar
+INDY,2018,28,René Binder R,Juncos Racing,61.0,6,0,0,IndyCar
+INDY,2018,29,Conor Daly,Harding Racing,58.0,4,0,0,IndyCar
+INDY,2018,30,Kyle Kaiser R,Juncos Racing,45.0,4,0,0,IndyCar
+INDY,2018,31,Patricio O'Ward R,Harding Racing,44.0,1,0,0,IndyCar
+INDY,2018,32,Hélio Castroneves,Team Penske,40.0,2,0,0,IndyCar
+INDY,2018,33,J. R. Hildebrand,Dreyer & Reinbold Racing,38.0,1,0,0,IndyCar
+INDY,2018,34,Stefan Wilson R,Andretti Autosport,31.0,1,0,0,IndyCar
+INDY,2018,35,Oriol Servià,Scuderia Corsa with RLL,27.0,1,0,0,IndyCar
+INDY,2018,36,Alfonso Celis Jr. R,Juncos Racing,23.0,2,0,0,IndyCar
+INDY,2018,37,Colton Herta R,Harding Racing,20.0,1,0,0,IndyCar
+INDY,2018,38,Danica Patrick,Ed Carpenter Racing,13.0,1,0,0,IndyCar
+INDY,2018,39,Jay Howard,SPM / AFS Racing,12.0,1,0,0,IndyCar
+INDY,2018,40,Sage Karam,Dreyer & Reinbold Racing,10.0,1,0,0,IndyCar
+INDY,2018,41,James Davison R,Foyt with Byrd / Hollinger / Belardi,10.0,1,0,0,IndyCar
+INDY,2019,1,Josef Newgarden,Team Penske,641.0,17,4,7,IndyCar
+INDY,2019,2,Simon Pagenaud,Team Penske,616.0,17,3,4,IndyCar
+INDY,2019,3,Alexander Rossi,Andretti Autosport,608.0,17,2,7,IndyCar
+INDY,2019,4,Scott Dixon,Chip Ganassi Racing,578.0,17,2,10,IndyCar
+INDY,2019,5,Will Power,Team Penske,550.0,17,2,6,IndyCar
+INDY,2019,6,Felix Rosenqvist RY,,425.0,17,0,2,IndyCar
+INDY,2019,7,Colton Herta R,Harding Steinbrenner Racing,420.0,17,2,2,IndyCar
+INDY,2019,8,Ryan Hunter-Reay,Andretti Autosport,420.0,17,0,2,IndyCar
+INDY,2019,9,Takuma Sato,Rahal Letterman Lanigan Racing,415.0,17,2,4,IndyCar
+INDY,2019,10,Graham Rahal,Rahal Letterman Lanigan Racing,389.0,17,0,1,IndyCar
+INDY,2019,11,Sébastien Bourdais,Dale Coyne Racing with Vasser Sullivan,387.0,17,0,1,IndyCar
+INDY,2019,12,James Hinchcliffe,Arrow Schmidt Peterson Motorsports,370.0,17,0,1,IndyCar
+INDY,2019,13,Santino Ferrucci R,Dale Coyne Racing,351.0,17,0,0,IndyCar
+INDY,2019,14,Spencer Pigot,Ed Carpenter Racing,335.0,17,0,0,IndyCar
+INDY,2019,15,Tony Kanaan,A. J. Foyt Enterprises,304.0,17,0,1,IndyCar
+INDY,2019,16,Marco Andretti,Andretti Herta Autosport w/ Marco Andretti & Curb-Agajanian,303.0,17,0,0,IndyCar
+INDY,2019,17,Marcus Ericsson R,Arrow Schmidt Peterson Motorsports,290.0,16,0,1,IndyCar
+INDY,2019,18,Zach Veach,Andretti Autosport,271.0,17,0,0,IndyCar
+INDY,2019,19,Matheus Leist,A. J. Foyt Enterprises,261.0,17,0,0,IndyCar
+INDY,2019,20,Ed Jones,Ed Carpenter Racing Scuderia Corsa,217.0,13,0,0,IndyCar
+INDY,2019,21,Jack Harvey,Meyer Shank Racing with Arrow Schmidt Peterson,186.0,10,0,1,IndyCar
+INDY,2019,22,Max Chilton,Carlin,184.0,13,0,0,IndyCar
+INDY,2019,23,Ed Carpenter,Ed Carpenter Racing,161.0,5,0,1,IndyCar
+INDY,2019,24,Conor Daly,Carlin,149.0,7,0,0,IndyCar
+INDY,2019,25,Charlie Kimball,Carlin,117.0,7,0,0,IndyCar
+INDY,2019,26,Patricio O'Ward R,Carlin,115.0,8,0,0,IndyCar
+INDY,2019,27,Sage Karam,Dreyer & Reinbold Racing,39.0,3,0,0,IndyCar
+INDY,2019,28,James Davison R,Dale Coyne Racing with Byrd/Hollinger/Belardi,36.0,1,0,0,IndyCar
+INDY,2019,29,Hélio Castroneves,Team Penske,33.0,2,0,0,IndyCar
+INDY,2019,30,Ben Hanley R,DragonSpeed,31.0,3,0,0,IndyCar
+INDY,2019,31,Pippa Mann,Clauson-Marshall Racing,28.0,1,0,0,IndyCar
+INDY,2019,32,Kyle Kaiser R,Juncos Racing,22.0,2,0,0,IndyCar
+INDY,2019,33,J. R. Hildebrand,Dreyer & Reinbold Racing,20.0,1,0,0,IndyCar
+INDY,2019,34,Oriol Servià,MotoGator Team Stange Racing with Arrow Schmidt Peterson,16.0,1,0,0,IndyCar
+INDY,2019,35,R. C. Enerson R,Carlin,13.0,1,0,0,IndyCar
+INDY,2019,36,Jordan King,Rahal Letterman Lanigan Racing,12.0,1,0,0,IndyCar
+INDY,2020,1,Scott Dixon,Chip Ganassi Racing,537.0,14,4,7,IndyCar
+INDY,2020,2,Josef Newgarden,Team Penske,521.0,14,4,6,IndyCar
+INDY,2020,3,Colton Herta,Andretti Harding Steinbrenner Autosport,421.0,14,1,2,IndyCar
+INDY,2020,4,Pato O'Ward,Arrow McLaren SP,416.0,14,0,4,IndyCar
+INDY,2020,5,Will Power,Team Penske,396.0,14,2,5,IndyCar
+INDY,2020,6,Graham Rahal,Rahal Letterman Lanigan Racing,377.0,14,0,3,IndyCar
+INDY,2020,7,Takuma Sato,Rahal Letterman Lanigan Racing,348.0,14,1,2,IndyCar
+INDY,2020,8,Simon Pagenaud,Team Penske,339.0,14,1,3,IndyCar
+INDY,2020,9,Alexander Rossi,Andretti Autosport,317.0,14,0,5,IndyCar
+INDY,2020,10,Ryan Hunter-Reay,Andretti Autosport,315.0,14,0,1,IndyCar
+INDY,2020,11,Felix Rosenqvist,Chip Ganassi Racing,306.0,14,1,1,IndyCar
+INDY,2020,12,Marcus Ericsson,Chip Ganassi Racing,291.0,14,0,0,IndyCar
+INDY,2020,13,Santino Ferrucci,Dale Coyne Racing with Vasser Sullivan,290.0,14,0,0,IndyCar
+INDY,2020,14,Rinus VeeKay RY,,289.0,14,0,1,IndyCar
+INDY,2020,15,Jack Harvey,Meyer Shank Racing,288.0,14,0,0,IndyCar
+INDY,2020,16,Álex Palou R,Dale Coyne Racing with Team Goh,238.0,14,0,1,IndyCar
+INDY,2020,17,Conor Daly,Ed Carpenter Racing,237.0,14,0,0,IndyCar
+INDY,2020,18,Charlie Kimball,A. J. Foyt Enterprises,218.0,14,0,0,IndyCar
+INDY,2020,19,Oliver Askew R,Arrow McLaren SP,195.0,12,0,1,IndyCar
+INDY,2020,20,Marco Andretti,Andretti Herta Autosport w/ Marco & Curb-Agajanian,176.0,14,0,0,IndyCar
+INDY,2020,21,Zach Veach,Andretti Autosport,166.0,11,0,0,IndyCar
+INDY,2020,22,Max Chilton,Carlin,147.0,9,0,0,IndyCar
+INDY,2020,23,James Hinchcliffe,Andretti Autosport,138.0,6,0,0,IndyCar
+INDY,2020,24,Tony Kanaan,A. J. Foyt Enterprises,106.0,6,0,0,IndyCar
+INDY,2020,25,Ed Carpenter,Ed Carpenter Racing,81.0,6,0,0,IndyCar
+INDY,2020,26,Dalton Kellett R,A. J. Foyt Enterprises,67.0,8,0,0,IndyCar
+INDY,2020,27,Hélio Castroneves,Team Penske,57.0,3,0,0,IndyCar
+INDY,2020,28,Sébastien Bourdais,A. J. Foyt Enterprises,53.0,3,0,0,IndyCar
+INDY,2020,29,Sage Karam,Dreyer & Reinbold Racing,32.0,4,0,0,IndyCar
+INDY,2020,30,J. R. Hildebrand,Dreyer & Reinbold Racing,28.0,1,0,0,IndyCar
+INDY,2020,31,Fernando Alonso R,Arrow McLaren SP,18.0,1,0,0,IndyCar
+INDY,2020,32,Spencer Pigot,RLL with Citrone/Buhl Autosport,17.0,2,0,0,IndyCar
+INDY,2020,33,Ben Hanley R,DragonSpeed USA,14.0,1,0,0,IndyCar
+INDY,2020,34,James Davison R,"Dale Coyne Racing w/ Rick Ware Racing, Byrd & Belardi",10.0,1,0,0,IndyCar
+INDY,2020,35,Scott McLaughlin R,Team Penske,8.0,1,0,0,IndyCar
+INDY,2021,1,Álex Palou,Chip Ganassi Racing,549.0,16,3,8,IndyCar
+INDY,2021,2,Josef Newgarden,Team Penske,511.0,16,2,6,IndyCar
+INDY,2021,3,Pato O'Ward,Arrow McLaren SP,487.0,16,2,5,IndyCar
+INDY,2021,4,Scott Dixon,Chip Ganassi Racing,481.0,16,1,5,IndyCar
+INDY,2021,5,Colton Herta,Andretti Autosport w/ Curb-Agajanian,455.0,16,3,5,IndyCar
+INDY,2021,6,Marcus Ericsson,Chip Ganassi Racing,435.0,16,2,3,IndyCar
+INDY,2021,7,Graham Rahal,Rahal Letterman Lanigan Racing,389.0,16,0,1,IndyCar
+INDY,2021,8,Simon Pagenaud,Team Penske,383.0,16,0,2,IndyCar
+INDY,2021,9,Will Power,Team Penske,357.0,16,1,4,IndyCar
+INDY,2021,10,Alexander Rossi,Andretti Autosport,332.0,16,0,1,IndyCar
+INDY,2021,11,Takuma Sato,Rahal Letterman Lanigan Racing,324.0,16,0,0,IndyCar
+INDY,2021,12,Rinus VeeKay,Ed Carpenter Racing,308.0,15,1,2,IndyCar
+INDY,2021,13,Jack Harvey,Meyer Shank Racing,308.0,16,0,0,IndyCar
+INDY,2021,14,Scott McLaughlin RY,,305.0,16,0,1,IndyCar
+INDY,2021,15,Romain Grosjean R,Dale Coyne Racing with Rick Ware Racing,272.0,13,0,3,IndyCar
+INDY,2021,16,Sébastien Bourdais,A. J. Foyt Enterprises,258.0,16,0,0,IndyCar
+INDY,2021,17,Ryan Hunter-Reay,Andretti Autosport,256.0,16,0,0,IndyCar
+INDY,2021,18,Conor Daly,Ed Carpenter Racing,235.0,16,0,0,IndyCar
+INDY,2021,19,Ed Jones,Dale Coyne Racing with Vasser Sullivan,233.0,16,0,0,IndyCar
+INDY,2021,20,James Hinchcliffe,Andretti Steinbrenner Autosport,220.0,16,0,1,IndyCar
+INDY,2021,21,Felix Rosenqvist,Arrow McLaren SP,205.0,14,0,0,IndyCar
+INDY,2021,22,Hélio Castroneves,Meyer Shank Racing,158.0,6,1,1,IndyCar
+INDY,2021,23,Dalton Kellett,A. J. Foyt Enterprises,148.0,16,0,0,IndyCar
+INDY,2021,24,Santino Ferrucci,Rahal Letterman Lanigan Racing,146.0,5,0,0,IndyCar
+INDY,2021,25,Max Chilton,Carlin,134.0,12,0,0,IndyCar
+INDY,2021,26,Jimmie Johnson R,Chip Ganassi Racing,108.0,12,0,0,IndyCar
+INDY,2021,27,Ed Carpenter,Ed Carpenter Racing,107.0,4,0,0,IndyCar
+INDY,2021,28,Tony Kanaan,Chip Ganassi Racing,96.0,4,0,0,IndyCar
+INDY,2021,29,Oliver Askew,Rahal Letterman Lanigan Racing,61.0,5,0,0,IndyCar
+INDY,2021,30,Sage Karam,Dreyer & Reinbold Racing,53.0,1,0,0,IndyCar
+INDY,2021,31,Juan Pablo Montoya,Arrow McLaren SP,53.0,2,0,0,IndyCar
+INDY,2021,32,Pietro Fittipaldi,Dale Coyne Racing with Rick Ware Racing,34.0,3,0,0,IndyCar
+INDY,2021,33,J. R. Hildebrand,A. J. Foyt Enterprises,30.0,1,0,0,IndyCar
+INDY,2021,34,Cody Ware R,Dale Coyne Racing with Rick Ware Racing,26.0,3,0,0,IndyCar
+INDY,2021,35,Marco Andretti,Andretti Herta-Haupert w/ Marco & Curb-Agajanian,22.0,1,0,0,IndyCar
+INDY,2021,36,Charlie Kimball,A. J. Foyt Enterprises,20.0,3,0,0,IndyCar
+INDY,2021,37,Christian Lundgaard R,Rahal Letterman Lanigan Racing,19.0,1,0,0,IndyCar
+INDY,2021,38,Callum Ilott R,Juncos Hollinger Racing,18.0,3,0,0,IndyCar
+INDY,2021,39,Ryan Norman R,Dale Coyne Racing with Rick Ware Racing,10.0,1,0,0,IndyCar
+INDY,2021,40,Simona de Silvestro,Paretta Autosport,10.0,1,0,0,IndyCar
+INDY,2021,41,Stefan Wilson R,Andretti Autosport,10.0,1,0,0,IndyCar
+INDY,2021,42,Kevin Magnussen R,Arrow McLaren SP,7.0,1,0,0,IndyCar
+INDY,2021,43,R. C. Enerson R,Top Gun Racing,5.0,2,0,0,IndyCar
+INDY,2022,1,Will Power,Team Penske,560.0,17,1,9,IndyCar
+INDY,2022,2,Josef Newgarden,Team Penske,544.0,17,5,6,IndyCar
+INDY,2022,3,Scott Dixon,Chip Ganassi Racing,521.0,17,2,4,IndyCar
+INDY,2022,4,Scott McLaughlin,Team Penske,510.0,17,3,7,IndyCar
+INDY,2022,5,Álex Palou,Chip Ganassi Racing,510.0,17,1,6,IndyCar
+INDY,2022,6,Marcus Ericsson,Chip Ganassi Racing,506.0,17,1,3,IndyCar
+INDY,2022,7,Pato O'Ward,Arrow McLaren SP,480.0,17,2,4,IndyCar
+INDY,2022,8,Felix Rosenqvist,Arrow McLaren SP,393.0,17,0,1,IndyCar
+INDY,2022,9,Alexander Rossi,Andretti Autosport,381.0,17,1,3,IndyCar
+INDY,2022,10,Colton Herta,Andretti Autosport with Curb-Agajanian,381.0,17,1,2,IndyCar
+INDY,2022,11,Graham Rahal,Rahal Letterman Lanigan Racing,345.0,17,0,0,IndyCar
+INDY,2022,12,Rinus VeeKay,Ed Carpenter Racing,331.0,17,0,1,IndyCar
+INDY,2022,13,Romain Grosjean,Andretti Autosport,328.0,17,0,1,IndyCar
+INDY,2022,14,Christian Lundgaard RY,,323.0,17,0,1,IndyCar
+INDY,2022,15,Simon Pagenaud,Meyer Shank Racing,314.0,17,0,1,IndyCar
+INDY,2022,16,David Malukas R,Dale Coyne Racing with HMD Motorsports,305.0,17,0,1,IndyCar
+INDY,2022,17,Conor Daly,Ed Carpenter Racing,267.0,17,0,0,IndyCar
+INDY,2022,18,Hélio Castroneves,Meyer Shank Racing,263.0,17,0,0,IndyCar
+INDY,2022,19,Takuma Sato,Dale Coyne Racing with Rick Ware Racing,258.0,17,0,0,IndyCar
+INDY,2022,20,Callum Ilott R,Juncos Hollinger Racing,219.0,16,0,0,IndyCar
+INDY,2022,21,Jimmie Johnson,Chip Ganassi Racing,214.0,17,0,0,IndyCar
+INDY,2022,22,Jack Harvey,Rahal Letterman Lanigan Racing,209.0,17,0,0,IndyCar
+INDY,2022,23,Devlin DeFrancesco R,Andretti Steinbrenner Autosport,206.0,17,0,0,IndyCar
+INDY,2022,24,Kyle Kirkwood R,A. J. Foyt Enterprises,183.0,17,0,0,IndyCar
+INDY,2022,25,Dalton Kellett,A. J. Foyt Enterprises,133.0,17,0,0,IndyCar
+INDY,2022,26,Tony Kanaan,Chip Ganassi Racing,78.0,1,0,1,IndyCar
+INDY,2022,27,Ed Carpenter,Ed Carpenter Racing,75.0,5,0,0,IndyCar
+INDY,2022,28,Santino Ferrucci,Rahal Letterman Lanigan Racing,71.0,3,0,0,IndyCar
+INDY,2022,29,Tatiana Calderón R,A. J. Foyt Enterprises,58.0,7,0,0,IndyCar
+INDY,2022,30,J. R. Hildebrand,A. J. Foyt Enterprises,53.0,2,0,0,IndyCar
+INDY,2022,31,Juan Pablo Montoya,Arrow McLaren SP,44.0,2,0,0,IndyCar
+INDY,2022,32,Simona de Silvestro,Paretta Autosport,34.0,4,0,0,IndyCar
+INDY,2022,33,Marco Andretti,Andretti Herta Autosport with Marco Andretti and Curb-Agajanian,17.0,1,0,0,IndyCar
+INDY,2022,34,Sage Karam,Dreyer & Reinbold Racing,14.0,1,0,0,IndyCar
+INDY,2022,35,Stefan Wilson R,DragonSpeed / Cusick Motorsports,10.0,1,0,0,IndyCar
+INDY,2023,1,Álex Palou,Chip Ganassi Racing,656.0,17,5,10,IndyCar
+INDY,2023,2,Scott Dixon,Chip Ganassi Racing,578.0,17,3,6,IndyCar
+INDY,2023,3,Scott McLaughlin,Team Penske,488.0,17,1,4,IndyCar
+INDY,2023,4,Pato O'Ward,Arrow McLaren,484.0,17,0,7,IndyCar
+INDY,2023,5,Josef Newgarden,Team Penske,479.0,17,4,5,IndyCar
+INDY,2023,6,Marcus Ericsson,Chip Ganassi Racing,438.0,17,1,3,IndyCar
+INDY,2023,7,Will Power,Team Penske,425.0,17,0,4,IndyCar
+INDY,2023,8,Christian Lundgaard,Rahal Letterman Lanigan Racing,390.0,17,1,1,IndyCar
+INDY,2023,9,Alexander Rossi,Arrow McLaren,375.0,17,0,1,IndyCar
+INDY,2023,10,Colton Herta,Andretti Autosport with Curb-Agajanian,356.0,17,0,1,IndyCar
+INDY,2023,11,Kyle Kirkwood,Andretti Autosport,352.0,17,2,2,IndyCar
+INDY,2023,12,Felix Rosenqvist,Arrow McLaren,324.0,17,0,2,IndyCar
+INDY,2023,13,Romain Grosjean,Andretti Autosport,296.0,17,0,2,IndyCar
+INDY,2023,14,Rinus VeeKay,Ed Carpenter Racing,277.0,17,0,0,IndyCar
+INDY,2023,15,Graham Rahal,Rahal Letterman Lanigan Racing,276.0,17,0,1,IndyCar
+INDY,2023,16,Callum Ilott,Juncos Hollinger Racing,266.0,17,0,0,IndyCar
+INDY,2023,17,David Malukas,Dale Coyne Racing with HMD Motorsports,265.0,17,0,1,IndyCar
+INDY,2023,18,Hélio Castroneves,Meyer Shank Racing,217.0,17,0,0,IndyCar
+INDY,2023,19,Santino Ferrucci,A. J. Foyt Enterprises,214.0,17,0,1,IndyCar
+INDY,2023,20,Marcus Armstrong RY,,214.0,12,0,0,IndyCar
+INDY,2023,21,Agustín Canapino R,Juncos Hollinger Racing,180.0,17,0,0,IndyCar
+INDY,2023,22,Devlin DeFrancesco,Andretti Steinbrenner Autosport,177.0,17,0,0,IndyCar
+INDY,2023,23,Sting Ray Robb R,Dale Coyne Racing with Rick Ware Racing,147.0,17,0,0,IndyCar
+INDY,2023,24,Jack Harvey,Rahal Letterman Lanigan Racing,146.0,14,0,0,IndyCar
+INDY,2023,25,Conor Daly,Rahal Letterman Lanigan Racing,134.0,11,0,0,IndyCar
+INDY,2023,26,Ryan Hunter-Reay,Ed Carpenter Racing,131.0,11,0,0,IndyCar
+INDY,2023,27,Benjamin Pedersen R,A. J. Foyt Enterprises,129.0,17,0,0,IndyCar
+INDY,2023,28,Simon Pagenaud,Meyer Shank Racing,88.0,9,0,0,IndyCar
+INDY,2023,29,Takuma Sato,Chip Ganassi Racing,70.0,5,0,0,IndyCar
+INDY,2023,30,Ed Carpenter,Ed Carpenter Racing,46.0,5,0,0,IndyCar
+INDY,2023,31,Linus Lundqvist R,Meyer Shank Racing,35.0,3,0,0,IndyCar
+INDY,2023,32,Tony Kanaan,Arrow McLaren,18.0,1,0,0,IndyCar
+INDY,2023,33,Jüri Vips R,Rahal Letterman Lanigan Racing,18.0,2,0,0,IndyCar
+INDY,2023,34,Tom Blomqvist R,Meyer Shank Racing,16.0,3,0,0,IndyCar
+INDY,2023,35,Marco Andretti,Andretti Herta Autosport with Marco Andretti and Curb-Agajanian,13.0,1,0,0,IndyCar
+INDY,2023,36,R. C. Enerson R,Abel Motorsports,5.0,1,0,0,IndyCar
+INDY,2023,37,Katherine Legge,Rahal Letterman Lanigan Racing,5.0,1,0,0,IndyCar
+INDY,2024,1,Álex Palou,Chip Ganassi Racing,544.0,18,3,7,IndyCar
+INDY,2024,2,Colton Herta,Andretti Global with Curb-Agajanian,513.0,18,2,6,IndyCar
+INDY,2024,3,Scott McLaughlin,Team Penske,505.0,18,3,8,IndyCar
+INDY,2024,4,Will Power,Team Penske,498.0,18,3,7,IndyCar
+INDY,2024,5,Pato O'Ward,Arrow McLaren,460.0,18,3,6,IndyCar
+INDY,2024,6,Scott Dixon,Chip Ganassi Racing,456.0,18,2,5,IndyCar
+INDY,2024,7,Kyle Kirkwood,Andretti Global,420.0,18,0,1,IndyCar
+INDY,2024,8,Josef Newgarden,Team Penske,401.0,18,2,6,IndyCar
+INDY,2024,9,Santino Ferrucci,A. J. Foyt Enterprises,367.0,18,0,0,IndyCar
+INDY,2024,10,Alexander Rossi,Arrow McLaren,366.0,18,0,1,IndyCar
+INDY,2024,11,Christian Lundgaard,Rahal Letterman Lanigan Racing,312.0,18,0,1,IndyCar
+INDY,2024,12,Felix Rosenqvist,Meyer Shank Racing,306.0,18,0,1,IndyCar
+INDY,2024,13,Rinus VeeKay,Ed Carpenter Racing,300.0,18,0,0,IndyCar
+INDY,2024,14,Marcus Armstrong,Chip Ganassi Racing,298.0,18,0,1,IndyCar
+INDY,2024,15,Marcus Ericsson,Andretti Global,297.0,18,0,1,IndyCar
+INDY,2024,16,Linus Lundqvist RY,,279.0,18,0,2,IndyCar
+INDY,2024,17,Romain Grosjean,Juncos Hollinger Racing,260.0,18,0,0,IndyCar
+INDY,2024,18,Graham Rahal,Rahal Letterman Lanigan Racing,251.0,18,0,0,IndyCar
+INDY,2024,19,Pietro Fittipaldi,Rahal Letterman Lanigan Racing,186.0,18,0,0,IndyCar
+INDY,2024,20,Sting Ray Robb,A. J. Foyt Enterprises,185.0,18,0,0,IndyCar
+INDY,2024,21,Kyffin Simpson R,Chip Ganassi Racing,182.0,18,0,0,IndyCar
+INDY,2024,22,Christian Rasmussen R,Ed Carpenter Racing,163.0,15,0,0,IndyCar
+INDY,2024,23,Nolan Siegel R,Juncos Hollinger Racing,154.0,14,0,0,IndyCar
+INDY,2024,24,David Malukas,Meyer Shank Racing,148.0,10,0,0,IndyCar
+INDY,2024,25,Jack Harvey,Dale Coyne Racing,143.0,15,0,0,IndyCar
+INDY,2024,26,Conor Daly,Juncos Hollinger Racing,119.0,7,0,1,IndyCar
+INDY,2024,27,Agustín Canapino,Juncos Hollinger Racing,109.0,12,0,0,IndyCar
+INDY,2024,28,Théo Pourchaire R,Arrow McLaren,91.0,6,0,0,IndyCar
+INDY,2024,29,Katherine Legge,Dale Coyne Racing with Rick Ware Racing,61.0,7,0,0,IndyCar
+INDY,2024,30,Tom Blomqvist R,Meyer Shank Racing,46.0,6,0,0,IndyCar
+INDY,2024,31,Toby Sowery R,Dale Coyne Racing with Rick Ware Racing,45.0,3,0,0,IndyCar
+INDY,2024,32,Ed Carpenter,Ed Carpenter Racing,45.0,4,0,0,IndyCar
+INDY,2024,33,Callum Ilott,Arrow McLaren,39.0,3,0,0,IndyCar
+INDY,2024,34,Luca Ghiotto R,Dale Coyne Racing with Rick Ware Racing,27.0,4,0,0,IndyCar
+INDY,2024,35,Hélio Castroneves,Meyer Shank Racing,26.0,3,0,0,IndyCar
+INDY,2024,36,Kyle Larson R,Arrow McLaren/Rick Hendrick,21.0,1,0,0,IndyCar
+INDY,2024,37,Takuma Sato,Rahal Letterman Lanigan Racing,19.0,1,0,0,IndyCar
+INDY,2024,38,Tristan Vautier,Dale Coyne Racing with Rick Ware Racing,12.0,1,0,0,IndyCar
+INDY,2024,39,Jüri Vips R,Rahal Letterman Lanigan Racing,11.0,1,0,0,IndyCar
+INDY,2024,40,Colin Braun R,Dale Coyne Racing with Rick Ware Racing,10.0,2,0,0,IndyCar
+INDY,2024,41,Hunter McElrea R,Dale Coyne Racing,6.0,1,0,0,IndyCar
+INDY,2024,42,Ryan Hunter-Reay,DRR-Cusick Motorsports,6.0,1,0,0,IndyCar
+INDY,2024,43,Marco Andretti,Andretti Herta with Marco and Curb-Agajanian,5.0,1,0,0,IndyCar
+INDY,2025,1,Álex Palou,Chip Ganassi Racing,711.0,17,8,13,IndyCar
+INDY,2025,2,Pato O'Ward,Arrow McLaren,515.0,17,2,6,IndyCar
+INDY,2025,3,Scott Dixon,Chip Ganassi Racing,452.0,17,1,3,IndyCar
+INDY,2025,4,Kyle Kirkwood,Andretti Global,433.0,17,3,3,IndyCar
+INDY,2025,5,Christian Lundgaard,Arrow McLaren,431.0,17,0,6,IndyCar
+INDY,2025,6,Felix Rosenqvist,Meyer Shank Racing with Curb-Agajanian,372.0,17,0,1,IndyCar
+INDY,2025,7,Colton Herta,Andretti Global,372.0,17,0,2,IndyCar
+INDY,2025,8,Marcus Armstrong,Meyer Shank Racing with Curb-Agajanian,364.0,17,0,1,IndyCar
+INDY,2025,9,Will Power,Team Penske,357.0,17,1,3,IndyCar
+INDY,2025,10,Scott McLaughlin,Team Penske,356.0,17,0,3,IndyCar
+INDY,2025,11,David Malukas,A. J. Foyt Enterprises,318.0,17,0,1,IndyCar
+INDY,2025,12,Josef Newgarden,Team Penske,316.0,17,1,3,IndyCar
+INDY,2025,13,Christian Rasmussen,Ed Carpenter Racing,313.0,17,1,2,IndyCar
+INDY,2025,14,Rinus VeeKay,Dale Coyne Racing,305.0,17,0,1,IndyCar
+INDY,2025,15,Alexander Rossi,Ed Carpenter Racing,297.0,17,0,0,IndyCar
+INDY,2025,16,Santino Ferrucci,A. J. Foyt Enterprises,293.0,17,0,2,IndyCar
+INDY,2025,17,Kyffin Simpson,Chip Ganassi Racing,282.0,17,0,1,IndyCar
+INDY,2025,18,Conor Daly,Juncos Hollinger Racing,268.0,17,0,0,IndyCar
+INDY,2025,19,Graham Rahal,Rahal Letterman Lanigan Racing,260.0,17,0,0,IndyCar
+INDY,2025,20,Marcus Ericsson,Andretti Global,234.0,17,0,0,IndyCar
+INDY,2025,21,Callum Ilott,PREMA Racing,218.0,17,0,0,IndyCar
+INDY,2025,22,Nolan Siegel,Arrow McLaren,213.0,17,0,0,IndyCar
+INDY,2025,23,Louis Foster RY,Rahal Letterman Lanigan Racing,213.0,17,0,0,IndyCar
+INDY,2025,24,Robert Shwartzman R,PREMA Racing,211.0,17,0,0,IndyCar
+INDY,2025,25,Sting Ray Robb,Juncos Hollinger Racing,181.0,17,0,0,IndyCar
+INDY,2025,26,Devlin DeFrancesco,Rahal Letterman Lanigan Racing,171.0,17,0,0,IndyCar
+INDY,2025,27,Jacob Abel R,Dale Coyne Racing,123.0,17,0,0,IndyCar
+INDY,2025,28,Takuma Sato,Rahal Letterman Lanigan Racing,36.0,1,0,0,IndyCar
+INDY,2025,29,Hélio Castroneves,Meyer Shank Racing with Curb-Agajanian,20.0,1,0,0,IndyCar
+INDY,2025,30,Ed Carpenter,Ed Carpenter Racing,16.0,1,0,0,IndyCar
+INDY,2025,31,Jack Harvey,Dreyer & Reinbold Racing Cusick Motorsports,12.0,1,0,0,IndyCar
+INDY,2025,32,Ryan Hunter-Reay,Dreyer & Reinbold Racing Cusick Motorsports,10.0,1,0,0,IndyCar
+INDY,2025,33,Kyle Larson R,Arrow McLaren/Rick Hendrick,6.0,1,0,0,IndyCar
+INDY,2025,34,Marco Andretti,Andretti Global,5.0,1,0,0,IndyCar
+INDY,2026,1,Álex Palou,Chip Ganassi Racing,631.0,18,6,7,IndyCar
+INDY,2026,2,Kyle Kirkwood,Andretti Global,545.0,18,2,6,IndyCar
+INDY,2026,3,Christian Lundgaard,Arrow McLaren,535.0,18,2,7,IndyCar
+INDY,2026,4,Pato O'Ward,Arrow McLaren,522.0,18,3,3,IndyCar
+INDY,2026,5,David Malukas,Team Penske,514.0,18,0,6,IndyCar
+INDY,2026,6,Scott McLaughlin,Team Penske,483.0,18,1,4,IndyCar
+INDY,2026,7,Marcus Ericsson,Andretti Global,429.0,18,1,2,IndyCar
+INDY,2026,8,Josef Newgarden,Team Penske,423.0,18,2,3,IndyCar
+INDY,2026,9,Felix Rosenqvist,Meyer Shank Racing with Curb-Agajanian,412.0,18,1,3,IndyCar
+INDY,2026,10,Rinus VeeKay,Juncos Hollinger Racing,378.0,18,0,1,IndyCar
+INDY,2026,11,Will Power,Andretti Global,368.0,18,0,5,IndyCar
+INDY,2026,12,Scott Dixon,Chip Ganassi Racing,331.0,18,0,1,IndyCar
+INDY,2026,13,Kyffin Simpson,Chip Ganassi Racing,327.0,18,0,0,IndyCar
+INDY,2026,14,Marcus Armstrong,Meyer Shank Racing with Curb-Agajanian,320.0,18,0,0,IndyCar
+INDY,2026,15,Alexander Rossi,Ed Carpenter Racing,307.0,18,0,1,IndyCar
+INDY,2026,16,Graham Rahal,Rahal Letterman Lanigan Racing,302.0,18,0,3,IndyCar
+INDY,2026,17,Santino Ferrucci,A. J. Foyt Enterprises,280.0,18,0,0,IndyCar
+INDY,2026,18,Louis Foster,Rahal Letterman Lanigan Racing,267.0,18,0,0,IndyCar
+INDY,2026,19,Romain Grosjean,Dale Coyne Racing,259.0,18,0,1,IndyCar
+INDY,2026,20,Nolan Siegel,Arrow McLaren,259.0,18,0,0,IndyCar
+INDY,2026,21,Christian Rasmussen,Ed Carpenter Racing,245.0,18,0,1,IndyCar
+INDY,2026,22,Dennis Hauger RY,Dale Coyne Racing,228.0,18,0,0,IndyCar
+INDY,2026,23,Mick Schumacher R,Rahal Letterman Lanigan Racing,213.0,18,0,0,IndyCar
+INDY,2026,24,Caio Collet R,A. J. Foyt Enterprises,203.0,18,0,0,IndyCar
+INDY,2026,25,Sting Ray Robb,Juncos Hollinger Racing,182.0,18,0,0,IndyCar
+INDY,2026,26,Conor Daly,Dreyer & Reinbold Racing,24.0,1,0,0,IndyCar
+INDY,2026,27,Takuma Sato,Rahal Letterman Lanigan Racing,20.0,1,0,0,IndyCar
+INDY,2026,28,Jack Harvey,Dreyer & Reinbold Racing,8.0,1,0,0,IndyCar
+INDY,2026,29,Jacob Abel,Abel Motorsports,6.0,1,0,0,IndyCar
+INDY,2026,30,Hélio Castroneves,Meyer Shank Racing with Curb-Agajanian,5.0,1,0,0,IndyCar
+INDY,2026,31,Ed Carpenter,Ed Carpenter Racing,5.0,1,0,0,IndyCar
+INDY,2026,32,Ryan Hunter-Reay,Arrow McLaren,5.0,1,0,0,IndyCar
+INDY,2026,33,Katherine Legge,HMD Motorsports with A. J. Foyt Racing,5.0,1,0,0,IndyCar

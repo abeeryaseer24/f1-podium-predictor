@@ -10,6 +10,7 @@ THE SERIES, newest name first:
   F2   FIA Formula 2 (2017-) and its predecessor GP2 (2005-2016)
   F3   FIA Formula 3 (2019-) and GP3 (2010-2018)
   F1A  F1 Academy (2023-)
+  FE   Formula E (2014-15 onwards, by the year each season ends) and INDY, IndyCar (2010-): the Other Series
 
 SAVED (data/ladder/):
   standings.csv  series, season, pos, driver, team, points, races, wins, podiums
@@ -45,8 +46,14 @@ SEASONS = (
     + [("F3", y, f"{y} GP3 Series", "GP3") for y in range(2010, 2019)]
     + [("F3", y, f"{y} FIA Formula 3 Championship", "F3") for y in range(2019, LAST + 1)]
     + [("F1A", y, f"{y} F1 Academy season", "F1 Academy") for y in range(2023, LAST + 1)]
+    # Other series (L5). A season can be listed under more than one title over the years.
+    + [("FE", y, [f"{y - 1}–{str(y)[2:]} Formula E World Championship", f"{y - 1}–{str(y)[2:]} Formula E season"],
+        "Formula E") for y in range(2015, LAST + 1)]
+    + [("INDY", y, [f"{y} IndyCar Series", f"{y} Verizon IndyCar Series", f"{y} IZOD IndyCar Series"], "IndyCar")
+       for y in range(2010, LAST + 1)]
 )
 SERIES_NAMES = {"F2": "Formula 2", "F3": "Formula 3", "F1A": "F1 Academy"}
+OTHER_NAMES = {"FE": "Formula E", "INDY": "IndyCar"}
 
 
 # ---------- fetching ----------
@@ -214,7 +221,8 @@ def superlicence_table():
 # ---------- for the pages ----------
 
 # Which row of the Super Licence table each of our series uses (GP2 and GP3 counted as F2 and F3)
-SL_ROW = {"F2": "FIA Formula 2 Championship", "F3": "FIA Formula 3 Championship", "F1A": "F1 Academy"}
+SL_ROW = {"F2": "FIA Formula 2 Championship", "F3": "FIA Formula 3 Championship", "F1A": "F1 Academy",
+          "FE": "FIA Formula E World Championship", "INDY": "IndyCar Series"}
 SL_NEEDED = 40          # points over the previous three seasons
 
 
@@ -254,13 +262,16 @@ def main():
     args = ap.parse_args()
     sys.stdout.reconfigure(encoding="utf-8")
     S, R, T = [], [], []
-    for series, season, title, label in SEASONS:
+    for series, season, titles, label in SEASONS:
         html = None
-        if args.parse:
-            path = CACHE / (re.sub(r"[^A-Za-z0-9]+", "_", title) + ".html")
-            html = path.read_text(encoding="utf-8") if path.exists() else None
-        else:
-            html = fetch(title, refresh=args.refresh and season == LAST)
+        for title in ([titles] if isinstance(titles, str) else titles):
+            if args.parse:
+                path = CACHE / (re.sub(r"[^A-Za-z0-9]+", "_", title) + ".html")
+                html = path.read_text(encoding="utf-8") if path.exists() else None
+            else:
+                html = fetch(title, refresh=args.refresh and season == LAST)
+            if html and championship(tables(html), "Driver") is not None:
+                break
         if not html:
             print(f"{label} {season}: no page")
             continue

@@ -1,0 +1,780 @@
+{
+ "cars": {
+  "F2": {
+   "label": "Formula 2",
+   "colour": "#3a7bd5",
+   "fit": true,
+   "car": {
+    "mass": 800,
+    "power_kw": 430,
+    "downforce_scale": 0.6,
+    "drag_scale": 0.85,
+    "grip": 1.925
+   },
+   "source": "Dallara F2 2024: about 800 kg with driver, a 3.4-litre turbo V6 of about 620 hp"
+  },
+  "F3": {
+   "label": "Formula 3",
+   "colour": "#c0392b",
+   "fit": true,
+   "car": {
+    "mass": 690,
+    "power_kw": 260,
+    "downforce_scale": 0.42,
+    "drag_scale": 0.7,
+    "grip": 1.923
+   },
+   "source": "Dallara F3 2019: about 690 kg with driver, a 3.4-litre V6 of about 380 hp"
+  },
+  "FE": {
+   "label": "Formula E",
+   "colour": "#1fd6a0",
+   "fit": false,
+   "car": {
+    "mass": 860,
+    "power_kw": 340,
+    "downforce_scale": 0.35,
+    "drag_scale": 0.75,
+    "grip": 1.35
+   },
+   "source": "Gen3: 350 kW in qualifying, about 860 kg with driver, grooved all-weather tyres"
+  },
+  "Indy": {
+   "label": "IndyCar",
+   "colour": "#e8b33a",
+   "fit": false,
+   "car": {
+    "mass": 850,
+    "power_kw": 520,
+    "downforce_scale": 0.7,
+    "drag_scale": 1.05,
+    "grip": 1.75
+   },
+   "source": "Dallara IR-18 road-course kit: about 700 hp, about 850 kg with driver and fuel"
+  }
+ },
+ "check": {
+  "F2": {
+   "mean_abs_pct": 2.59,
+   "circuits": 16,
+   "poles": 48
+  },
+  "F3": {
+   "mean_abs_pct": 2.7,
+   "circuits": 10,
+   "poles": 29
+  }
+ },
+ "poles": [
+  {
+   "series": "F2",
+   "folder": "2023_01",
+   "place": "Sakhir",
+   "season": 2023,
+   "pole": 100.903,
+   "predicted": 96.91,
+   "error_pct": -3.957
+  },
+  {
+   "series": "F2",
+   "folder": "2024_01",
+   "place": "Sakhir",
+   "season": 2024,
+   "pole": 101.915,
+   "predicted": 97.004,
+   "error_pct": -4.819
+  },
+  {
+   "series": "F2",
+   "folder": "2025_04",
+   "place": "Sakhir",
+   "season": 2025,
+   "pole": 104.008,
+   "predicted": 97.309,
+   "error_pct": -6.441
+  },
+  {
+   "series": "F2",
+   "folder": "2023_02",
+   "place": "Jeddah",
+   "season": 2023,
+   "pole": 101.326,
+   "predicted": 108.316,
+   "error_pct": 6.899
+  },
+  {
+   "series": "F2",
+   "folder": "2024_02",
+   "place": "Jeddah",
+   "season": 2024,
+   "pole": 102.217,
+   "predicted": 107.54,
+   "error_pct": 5.208
+  },
+  {
+   "series": "F2",
+   "folder": "2025_05",
+   "place": "Jeddah",
+   "season": 2025,
+   "pole": 103.579,
+   "predicted": 106.95,
+   "error_pct": 3.255
+  },
+  {
+   "series": "F2",
+   "folder": "2023_04",
+   "place": "Baku",
+   "season": 2023,
+   "pole": 112.652,
+   "predicted": 113.009,
+   "error_pct": 0.317
+  },
+  {
+   "series": "F2",
+   "folder": "2024_17",
+   "place": "Baku",
+   "season": 2024,
+   "pole": 114.857,
+   "predicted": 115.335,
+   "error_pct": 0.416
+  },
+  {
+   "series": "F2",
+   "folder": "2025_17",
+   "place": "Baku",
+   "season": 2025,
+   "pole": 114.791,
+   "predicted": 113.749,
+   "error_pct": -0.908
+  },
+  {
+   "series": "F2",
+   "folder": "2026_15",
+   "place": "Baku",
+   "season": 2026,
+   "pole": 115.383,
+   "predicted": 114.75,
+   "error_pct": -0.549
+  },
+  {
+   "series": "F2",
+   "folder": "2023_06",
+   "place": "Monte Carlo",
+   "season": 2023,
+   "pole": 81.231,
+   "predicted": 77.428,
+   "error_pct": -4.682
+  },
+  {
+   "series": "F2",
+   "folder": "2024_08",
+   "place": "Monte Carlo",
+   "season": 2024,
+   "pole": 81.283,
+   "predicted": 77.412,
+   "error_pct": -4.762
+  },
+  {
+   "series": "F2",
+   "folder": "2025_08",
+   "place": "Monte Carlo",
+   "season": 2025,
+   "pole": 81.145,
+   "predicted": 76.787,
+   "error_pct": -5.371
+  },
+  {
+   "series": "F2",
+   "folder": "2023_07",
+   "place": "Barcelona",
+   "season": 2023,
+   "pole": 83.546,
+   "predicted": 85.964,
+   "error_pct": 2.894
+  },
+  {
+   "series": "F2",
+   "folder": "2024_10",
+   "place": "Barcelona",
+   "season": 2024,
+   "pole": 84.766,
+   "predicted": 85.266,
+   "error_pct": 0.59
+  },
+  {
+   "series": "F2",
+   "folder": "2025_09",
+   "place": "Barcelona",
+   "season": 2025,
+   "pole": 85.18,
+   "predicted": 85.113,
+   "error_pct": -0.079
+  },
+  {
+   "series": "F2",
+   "folder": "2026_07",
+   "place": "Barcelona",
+   "season": 2026,
+   "pole": 84.81,
+   "predicted": 86.998,
+   "error_pct": 2.58
+  },
+  {
+   "series": "F2",
+   "folder": "2023_09",
+   "place": "Spielberg",
+   "season": 2023,
+   "pole": 74.643,
+   "predicted": 74.782,
+   "error_pct": 0.186
+  },
+  {
+   "series": "F2",
+   "folder": "2024_11",
+   "place": "Spielberg",
+   "season": 2024,
+   "pole": 75.487,
+   "predicted": 74.363,
+   "error_pct": -1.489
+  },
+  {
+   "series": "F2",
+   "folder": "2025_11",
+   "place": "Spielberg",
+   "season": 2025,
+   "pole": 75.229,
+   "predicted": 74.054,
+   "error_pct": -1.562
+  },
+  {
+   "series": "F2",
+   "folder": "2026_08",
+   "place": "Spielberg",
+   "season": 2026,
+   "pole": 75.544,
+   "predicted": 74.564,
+   "error_pct": -1.297
+  },
+  {
+   "series": "F2",
+   "folder": "2023_10",
+   "place": "Silverstone",
+   "season": 2023,
+   "pole": 99.832,
+   "predicted": 98.993,
+   "error_pct": -0.84
+  },
+  {
+   "series": "F2",
+   "folder": "2024_12",
+   "place": "Silverstone",
+   "season": 2024,
+   "pole": 99.368,
+   "predicted": 99.245,
+   "error_pct": -0.124
+  },
+  {
+   "series": "F2",
+   "folder": "2025_12",
+   "place": "Silverstone",
+   "season": 2025,
+   "pole": 99.731,
+   "predicted": 98.594,
+   "error_pct": -1.14
+  },
+  {
+   "series": "F2",
+   "folder": "2026_09",
+   "place": "Silverstone",
+   "season": 2026,
+   "pole": 99.69,
+   "predicted": 99.034,
+   "error_pct": -0.658
+  },
+  {
+   "series": "F2",
+   "folder": "2023_11",
+   "place": "Budapest",
+   "season": 2023,
+   "pole": 87.676,
+   "predicted": 86.04,
+   "error_pct": -1.866
+  },
+  {
+   "series": "F2",
+   "folder": "2024_13",
+   "place": "Budapest",
+   "season": 2024,
+   "pole": 90.028,
+   "predicted": 85.337,
+   "error_pct": -5.211
+  },
+  {
+   "series": "F2",
+   "folder": "2025_14",
+   "place": "Budapest",
+   "season": 2025,
+   "pole": 88.779,
+   "predicted": 85.608,
+   "error_pct": -3.572
+  },
+  {
+   "series": "F2",
+   "folder": "2023_12",
+   "place": "Spa-Francorchamps",
+   "season": 2023,
+   "pole": 125.736,
+   "predicted": 117.065,
+   "error_pct": -6.896
+  },
+  {
+   "series": "F2",
+   "folder": "2024_14",
+   "place": "Spa-Francorchamps",
+   "season": 2024,
+   "pole": 116.959,
+   "predicted": 118.087,
+   "error_pct": 0.964
+  },
+  {
+   "series": "F2",
+   "folder": "2025_13",
+   "place": "Spa-Francorchamps",
+   "season": 2025,
+   "pole": 117.151,
+   "predicted": 118.375,
+   "error_pct": 1.045
+  },
+  {
+   "series": "F2",
+   "folder": "2026_10",
+   "place": "Spa-Francorchamps",
+   "season": 2026,
+   "pole": 116.306,
+   "predicted": 117.408,
+   "error_pct": 0.948
+  },
+  {
+   "series": "F2",
+   "folder": "2023_13",
+   "place": "Zandvoort",
+   "season": 2023,
+   "pole": 81.21,
+   "predicted": 85.144,
+   "error_pct": 4.844
+  },
+  {
+   "series": "F2",
+   "folder": "2023_14",
+   "place": "Monza",
+   "season": 2023,
+   "pole": 92.328,
+   "predicted": 89.52,
+   "error_pct": -3.041
+  },
+  {
+   "series": "F2",
+   "folder": "2024_16",
+   "place": "Monza",
+   "season": 2024,
+   "pole": 92.16,
+   "predicted": 89.652,
+   "error_pct": -2.721
+  },
+  {
+   "series": "F2",
+   "folder": "2025_16",
+   "place": "Monza",
+   "season": 2025,
+   "pole": 92.39,
+   "predicted": 89.865,
+   "error_pct": -2.733
+  },
+  {
+   "series": "F2",
+   "folder": "2026_13",
+   "place": "Monza",
+   "season": 2026,
+   "pole": 91.326,
+   "predicted": 90.738,
+   "error_pct": -0.644
+  },
+  {
+   "series": "F2",
+   "folder": "2023_22",
+   "place": "Yas Island",
+   "season": 2023,
+   "pole": 95.567,
+   "predicted": 97.648,
+   "error_pct": 2.178
+  },
+  {
+   "series": "F2",
+   "folder": "2024_24",
+   "place": "Yas Island",
+   "season": 2024,
+   "pole": 95.745,
+   "predicted": 97.428,
+   "error_pct": 1.758
+  },
+  {
+   "series": "F2",
+   "folder": "2025_24",
+   "place": "Yas Island",
+   "season": 2025,
+   "pole": 96.836,
+   "predicted": 97.55,
+   "error_pct": 0.737
+  },
+  {
+   "series": "F2",
+   "folder": "2024_03",
+   "place": "Melbourne",
+   "season": 2024,
+   "pole": 88.694,
+   "predicted": 90.499,
+   "error_pct": 2.035
+  },
+  {
+   "series": "F2",
+   "folder": "2025_01",
+   "place": "Melbourne",
+   "season": 2025,
+   "pole": 89.286,
+   "predicted": 91.223,
+   "error_pct": 2.169
+  },
+  {
+   "series": "F2",
+   "folder": "2026_01",
+   "place": "Melbourne",
+   "season": 2026,
+   "pole": 88.695,
+   "predicted": 90.459,
+   "error_pct": 1.989
+  },
+  {
+   "series": "F2",
+   "folder": "2024_07",
+   "place": "Imola",
+   "season": 2024,
+   "pole": 87.056,
+   "predicted": 88.761,
+   "error_pct": 1.959
+  },
+  {
+   "series": "F2",
+   "folder": "2025_07",
+   "place": "Imola",
+   "season": 2025,
+   "pole": 87.418,
+   "predicted": 88.914,
+   "error_pct": 1.711
+  },
+  {
+   "series": "F2",
+   "folder": "2024_23",
+   "place": "Lusail",
+   "season": 2024,
+   "pole": 95.115,
+   "predicted": 100.902,
+   "error_pct": 6.084
+  },
+  {
+   "series": "F2",
+   "folder": "2025_23",
+   "place": "Lusail",
+   "season": 2025,
+   "pole": 96.115,
+   "predicted": 99.836,
+   "error_pct": 3.871
+  },
+  {
+   "series": "F2",
+   "folder": "2026_14",
+   "place": "Madrid",
+   "season": 2026,
+   "pole": 104.331,
+   "predicted": 108.883,
+   "error_pct": 4.363
+  },
+  {
+   "series": "F3",
+   "folder": "2023_01",
+   "place": "Sakhir",
+   "season": 2023,
+   "pole": 107.055,
+   "predicted": 103.453,
+   "error_pct": -3.365
+  },
+  {
+   "series": "F3",
+   "folder": "2024_01",
+   "place": "Sakhir",
+   "season": 2024,
+   "pole": 106.431,
+   "predicted": 103.296,
+   "error_pct": -2.946
+  },
+  {
+   "series": "F3",
+   "folder": "2025_04",
+   "place": "Sakhir",
+   "season": 2025,
+   "pole": 109.214,
+   "predicted": 103.648,
+   "error_pct": -5.096
+  },
+  {
+   "series": "F3",
+   "folder": "2023_03",
+   "place": "Melbourne",
+   "season": 2023,
+   "pole": 93.025,
+   "predicted": 96.626,
+   "error_pct": 3.871
+  },
+  {
+   "series": "F3",
+   "folder": "2024_03",
+   "place": "Melbourne",
+   "season": 2024,
+   "pole": 93.044,
+   "predicted": 96.866,
+   "error_pct": 4.108
+  },
+  {
+   "series": "F3",
+   "folder": "2025_01",
+   "place": "Melbourne",
+   "season": 2025,
+   "pole": 94.999,
+   "predicted": 98.257,
+   "error_pct": 3.43
+  },
+  {
+   "series": "F3",
+   "folder": "2026_01",
+   "place": "Melbourne",
+   "season": 2026,
+   "pole": 94.187,
+   "predicted": 97.213,
+   "error_pct": 3.213
+  },
+  {
+   "series": "F3",
+   "folder": "2023_06",
+   "place": "Monte Carlo",
+   "season": 2023,
+   "pole": 83.88,
+   "predicted": 80.917,
+   "error_pct": -3.532
+  },
+  {
+   "series": "F3",
+   "folder": "2024_08",
+   "place": "Monte Carlo",
+   "season": 2024,
+   "pole": 83.942,
+   "predicted": 81.036,
+   "error_pct": -3.462
+  },
+  {
+   "series": "F3",
+   "folder": "2025_08",
+   "place": "Monte Carlo",
+   "season": 2025,
+   "pole": 84.882,
+   "predicted": 80.397,
+   "error_pct": -5.284
+  },
+  {
+   "series": "F3",
+   "folder": "2023_07",
+   "place": "Barcelona",
+   "season": 2023,
+   "pole": 87.587,
+   "predicted": 91.714,
+   "error_pct": 4.712
+  },
+  {
+   "series": "F3",
+   "folder": "2024_10",
+   "place": "Barcelona",
+   "season": 2024,
+   "pole": 88.463,
+   "predicted": 90.333,
+   "error_pct": 2.114
+  },
+  {
+   "series": "F3",
+   "folder": "2025_09",
+   "place": "Barcelona",
+   "season": 2025,
+   "pole": 88.761,
+   "predicted": 90.752,
+   "error_pct": 2.243
+  },
+  {
+   "series": "F3",
+   "folder": "2023_09",
+   "place": "Spielberg",
+   "season": 2023,
+   "pole": 80.457,
+   "predicted": 79.778,
+   "error_pct": -0.844
+  },
+  {
+   "series": "F3",
+   "folder": "2024_11",
+   "place": "Spielberg",
+   "season": 2024,
+   "pole": 80.222,
+   "predicted": 79.437,
+   "error_pct": -0.979
+  },
+  {
+   "series": "F3",
+   "folder": "2025_11",
+   "place": "Spielberg",
+   "season": 2025,
+   "pole": 80.743,
+   "predicted": 79.012,
+   "error_pct": -2.144
+  },
+  {
+   "series": "F3",
+   "folder": "2023_10",
+   "place": "Silverstone",
+   "season": 2023,
+   "pole": 105.52,
+   "predicted": 106.895,
+   "error_pct": 1.303
+  },
+  {
+   "series": "F3",
+   "folder": "2024_12",
+   "place": "Silverstone",
+   "season": 2024,
+   "pole": 104.992,
+   "predicted": 107.143,
+   "error_pct": 2.049
+  },
+  {
+   "series": "F3",
+   "folder": "2025_12",
+   "place": "Silverstone",
+   "season": 2025,
+   "pole": 105.043,
+   "predicted": 106.011,
+   "error_pct": 0.922
+  },
+  {
+   "series": "F3",
+   "folder": "2023_11",
+   "place": "Budapest",
+   "season": 2023,
+   "pole": 91.091,
+   "predicted": 91.202,
+   "error_pct": 0.122
+  },
+  {
+   "series": "F3",
+   "folder": "2024_13",
+   "place": "Budapest",
+   "season": 2024,
+   "pole": 93.935,
+   "predicted": 90.175,
+   "error_pct": -4.003
+  },
+  {
+   "series": "F3",
+   "folder": "2025_14",
+   "place": "Budapest",
+   "season": 2025,
+   "pole": 92.51,
+   "predicted": 90.746,
+   "error_pct": -1.907
+  },
+  {
+   "series": "F3",
+   "folder": "2023_14",
+   "place": "Monza",
+   "season": 2023,
+   "pole": 98.909,
+   "predicted": 96.575,
+   "error_pct": -2.36
+  },
+  {
+   "series": "F3",
+   "folder": "2024_16",
+   "place": "Monza",
+   "season": 2024,
+   "pole": 98.287,
+   "predicted": 96.582,
+   "error_pct": -1.735
+  },
+  {
+   "series": "F3",
+   "folder": "2025_16",
+   "place": "Monza",
+   "season": 2025,
+   "pole": 98.613,
+   "predicted": 96.792,
+   "error_pct": -1.847
+  },
+  {
+   "series": "F3",
+   "folder": "2024_07",
+   "place": "Imola",
+   "season": 2024,
+   "pole": 91.767,
+   "predicted": 94.678,
+   "error_pct": 3.172
+  },
+  {
+   "series": "F3",
+   "folder": "2025_07",
+   "place": "Imola",
+   "season": 2025,
+   "pole": 92.206,
+   "predicted": 94.982,
+   "error_pct": 3.011
+  },
+  {
+   "series": "F3",
+   "folder": "2024_14",
+   "place": "Spa-Francorchamps",
+   "season": 2024,
+   "pole": 124.321,
+   "predicted": 127.12,
+   "error_pct": 2.251
+  },
+  {
+   "series": "F3",
+   "folder": "2025_13",
+   "place": "Spa-Francorchamps",
+   "season": 2025,
+   "pole": 124.253,
+   "predicted": 127.111,
+   "error_pct": 2.3
+  }
+ ],
+ "wet": [
+  {
+   "series": "F2",
+   "folder": "2023_03",
+   "place": "Melbourne",
+   "season": 2023,
+   "pole": 105.118
+  },
+  {
+   "series": "F3",
+   "folder": "2023_12",
+   "place": "Spa-Francorchamps",
+   "season": 2023,
+   "pole": 142.16
+  }
+ ],
+ "built": "2026-11-23"
+}

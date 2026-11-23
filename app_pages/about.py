@@ -90,6 +90,8 @@ with tabs[0]:
         {"Page": "Superlicence Calculator", "What it shows": "The FIA Super Licence points, a path planner, and who on the ladder has them."},
         {"Page": "Scouting Report", "What it shows": "Which feeder records turned into F1 careers, tested honestly, and who looks next."},
         {"Page": "Career Mode", "What it shows": "From F4 at 15 to Formula 1, one season at a time, every year drawn from a real one."},
+        {"Page": "Other Series", "What it shows": "Formula E and IndyCar championships, and which of their drivers raced in F1."},
+        {"Page": "Series Compare", "What it shows": "One circuit lapped by an F1, F2, F3, Formula E and IndyCar-style car, and where the time goes."},
         {"Page": "Circuit Designer", "What it shows": "Draw your own circuit and the lap simulator drives it as you draw."},
         {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},
         {"Page": "Tyre Lab", "What it shows": "How fast each tyre compound wears, measured from real laps."},

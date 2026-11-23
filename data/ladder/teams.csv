@@ -432,3 +432,130 @@ F1A,2026,3,Rodin Motorsport,187.0
 F1A,2026,4,Prema Racing,178.0
 F1A,2026,5,ART Grand Prix,81.0
 F1A,2026,6,Hitech,74.0
+FE,2015,1,e.dams Renault,232.0
+FE,2015,2,Dragon Racing,171.0
+FE,2015,3,Audi Sport ABT,165.0
+FE,2015,4,NEXTEV TCR,152.0
+FE,2015,5,Virgin Racing,133.0
+FE,2015,6,Andretti,119.0
+FE,2015,7,Amlin Aguri,66.0
+FE,2015,8,Mahindra Racing,58.0
+FE,2015,9,Venturi,53.0
+FE,2015,10,Trulli,17.0
+FE,2016,1,Renault e.Dams,270.0
+FE,2016,2,ABT Schaeffler Audi Sport,221.0
+FE,2016,3,DS Virgin Racing,144.0
+FE,2016,4,Dragon Racing,143.0
+FE,2016,5,Mahindra Racing,105.0
+FE,2016,6,Venturi,77.0
+FE,2016,7,Amlin Andretti,49.0
+FE,2016,9,NEXTEV TCR,19.0
+FE,2017,1,Renault e.Dams,268.0
+FE,2017,2,ABT Schaeffler Audi Sport,248.0
+FE,2017,3,Mahindra Racing,215.0
+FE,2017,4,DS Virgin Racing,190.0
+FE,2017,5,Techeetah,156.0
+FE,2017,6,NextEV NIO,59.0
+FE,2017,7,Andretti Formula E,34.0
+FE,2017,8,Faraday Future Dragon Racing,33.0
+FE,2017,9,Venturi Formula E,30.0
+FE,2017,10,Panasonic Jaguar Racing,27.0
+FE,2018,1,Audi Sport ABT Schaeffler,264.0
+FE,2018,2,Techeetah,262.0
+FE,2018,3,DS Virgin Racing,160.0
+FE,2018,4,Mahindra Racing,138.0
+FE,2018,5,Renault e.dams,133.0
+FE,2018,6,Panasonic Jaguar Racing,119.0
+FE,2018,7,Venturi Formula E Team,72.0
+FE,2018,8,Nio Formula E Team,47.0
+FE,2018,9,Dragon Racing,41.0
+FE,2018,10,MS&AD Andretti Formula E,24.0
+FE,2019,1,DS Techeetah,222.0
+FE,2019,2,Audi Sport ABT Schaeffler Formula E Team,203.0
+FE,2019,3,Envision Virgin Racing,191.0
+FE,2019,4,Nissan e.dams,190.0
+FE,2019,5,BMW i Andretti Motorsport,156.0
+FE,2019,6,Mahindra Racing,125.0
+FE,2019,7,Panasonic Jaguar Racing,116.0
+FE,2019,8,Venturi Formula E Team,88.0
+FE,2019,9,HWA Racelab,44.0
+FE,2019,10,GEOX Dragon,23.0
+FE,2019,11,Nio Formula E Team,7.0
+FE,2020,1,DS Techeetah,244.0
+FE,2020,2,Nissan e.dams,167.0
+FE,2020,3,Mercedes-Benz EQ Formula E Team,147.0
+FE,2020,4,Envision Virgin Racing,121.0
+FE,2020,5,BMW i Andretti Motorsport,118.0
+FE,2020,6,Audi Sport ABT Schaeffler,114.0
+FE,2020,7,Panasonic Jaguar Racing,81.0
+FE,2020,8,TAG Heuer Porsche Formula E Team,79.0
+FE,2020,9,Mahindra Racing,49.0
+FE,2020,10,ROKiT Venturi Racing,44.0
+FE,2020,11,GEOX Dragon,2.0
+FE,2020,12,Nio 333 FE Team,0.0
+FE,2021,1,Mercedes-EQ Formula E Team,181.0
+FE,2021,2,Jaguar Racing,177.0
+FE,2021,3,DS Techeetah,166.0
+FE,2021,4,Audi Sport ABT Schaeffler Formula E Team,165.0
+FE,2021,5,Envision Virgin Racing,165.0
+FE,2021,6,BMW i Andretti Motorsport,157.0
+FE,2021,7,ROKiT Venturi Racing,146.0
+FE,2021,8,TAG Heuer Porsche Formula E Team,137.0
+FE,2021,9,Mahindra Racing,132.0
+FE,2021,10,Nissan e.dams,97.0
+FE,2021,11,Dragon / Penske Autosport,47.0
+FE,2021,12,Nio 333 FE Team,19.0
+FE,2022,1,Mercedes-EQ Formula E Team,319.0
+FE,2022,2,ROKiT Venturi Racing,295.0
+FE,2022,3,DS Techeetah,266.0
+FE,2022,4,Jaguar TCS Racing,231.0
+FE,2022,5,Envision Racing,194.0
+FE,2022,6,Avalanche Andretti Formula E,150.0
+FE,2022,7,TAG Heuer Porsche Formula E Team,134.0
+FE,2022,8,Mahindra Racing,46.0
+FE,2022,9,Nissan e.dams,36.0
+FE,2022,10,NIO 333 Formula E Team,7.0
+FE,2022,11,Dragon / Penske Autosport,2.0
+FE,2023,1,Envision Racing,304.0
+FE,2023,2,Jaguar TCS Racing,292.0
+FE,2023,3,Avalanche Andretti Formula E,252.0
+FE,2023,4,TAG Heuer Porsche Formula E Team,242.0
+FE,2023,5,DS Penske,163.0
+FE,2023,6,Maserati MSG Racing,140.0
+FE,2023,7,Nissan Formula E Team,95.0
+FE,2023,8,NEOM McLaren Formula E Team,88.0
+FE,2023,9,NIO 333 Racing,42.0
+FE,2023,10,Mahindra Racing,41.0
+FE,2023,11,ABT CUPRA Formula E Team,21.0
+FE,2024,1,Jaguar TCS Racing,368.0
+FE,2024,2,TAG Heuer Porsche Formula E Team,332.0
+FE,2024,3,DS Penske,200.0
+FE,2024,4,Nissan Formula E Team,182.0
+FE,2024,5,Andretti Formula E,169.0
+FE,2024,6,Envision Racing,121.0
+FE,2024,7,NEOM McLaren Formula E Team,101.0
+FE,2024,8,Maserati MSG Racing,81.0
+FE,2024,9,ABT CUPRA Formula E Team,56.0
+FE,2024,10,Mahindra Racing,47.0
+FE,2024,11,ERT Formula E Team,23.0
+FE,2025,1,TAG Heuer Porsche Formula E Team,256.0
+FE,2025,2,Jaguar TCS Racing,227.0
+FE,2025,3,Nissan Formula E Team,207.0
+FE,2025,4,Mahindra Racing,186.0
+FE,2025,5,DS Penske,184.0
+FE,2025,6,NEOM McLaren Formula E Team,143.0
+FE,2025,7,Andretti Formula E,141.0
+FE,2025,8,Envision Racing,107.0
+FE,2025,9,Maserati MSG Racing,102.0
+FE,2025,10,Cupra Kiro,86.0
+FE,2025,11,Lola Yamaha ABT Formula E Team,32.0
+FE,2026,1,Jaguar TCS Racing,288.0
+FE,2026,2,Porsche Formula E Team,271.0
+FE,2026,3,Mahindra Racing,252.0
+FE,2026,4,Andretti Formula E,229.0
+FE,2026,5,Citroën Racing,182.0
+FE,2026,6,Nissan Formula E Team,157.0
+FE,2026,7,Envision Racing,152.0
+FE,2026,8,Cupra Kiro,128.0
+FE,2026,9,DS Penske,91.0
+FE,2026,10,Lola Yamaha ABT Formula E Team,35.0

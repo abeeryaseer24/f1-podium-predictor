@@ -46,7 +46,7 @@ st.caption("Points alone aren't everything: the FIA also sets an age limit, a dr
 
 # ---------- who has them ----------
 last = int(standings["season"].max())
-section(f"Who on the ladder has the points for {last + 1}", f"F2, F3 and F1 Academy results from {last - 2} to {last}, "
+section(f"Who on the ladder has the points for {last + 1}", f"F2, F3, F1 Academy, Formula E and IndyCar results from {last - 2} to {last}, "
         "scored with today's table. Drivers already racing in Formula 1 are left out.")
 recent = standings[standings["season"].between(last - 2, last)].copy()
 recent["sl"] = [L.sl_points(sl, s, p) for s, p in zip(recent["series"], recent["pos"])]
@@ -61,7 +61,7 @@ summary = summary.join(f1)
 summary = summary[summary["starts"].isna() & (summary["points"] > 0)].sort_values("points", ascending=False)
 eligible = summary[summary["points"] >= L.SL_NEEDED]
 stat_strip([
-    ("Eligible on points", f"{len(eligible)}", f"drivers with {L.SL_NEEDED}+ from these series", True),
+    ("Eligible on points", f"{len(eligible)}", f"drivers with {L.SL_NEEDED}+ from these five series", True),
     ("Close", f"{int(summary['points'].between(30, L.SL_NEEDED - 0.5).sum())}", "on 30 to 39 points", False),
 ])
 rows = [{"colour": GOOD if r["points"] >= L.SL_NEEDED else (GOLD if r["points"] >= 30 else POOR),
@@ -69,7 +69,7 @@ rows = [{"colour": GOOD if r["points"] >= L.SL_NEEDED else (GOLD if r["points"] 
                    "eligible" if r["points"] >= L.SL_NEEDED else f"{L.SL_NEEDED - r['points']:g} short"]}
         for _, r in summary.head(30).iterrows()]
 board([("Driver", "label"), ("Super Licence points", "bar"), ("Status", "text")], rows, ranked=True)
-st.caption("Only F2, F3 and F1 Academy are in our archive, so points from other series (Formula Regional, IndyCar, "
-           "Super Formula and more) are missing: some drivers will have more than shown. Where someone raced two of "
+st.caption("Only F2, F3, F1 Academy, Formula E and IndyCar are in our archive, so points from other series (Formula "
+           "Regional, Super Formula, endurance racing and more) are missing: some drivers will have more than shown. Where someone raced two of "
            "these series in one season, only the better result is counted here. GP2 and GP3 count as F2 and F3. "
            "Results from Wikipedia's season articles (CC BY-SA 4.0).")
