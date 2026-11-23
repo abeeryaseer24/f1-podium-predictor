@@ -38,6 +38,7 @@ A Formula 1 machine learning app that runs itself. It predicts the **whole finis
 | **Calendar Planner** | How far F1 travels in any season since 1950 and an estimate of its freight carbon, with a shorter order for the same races found by simulated annealing, keeping chosen races on their dates and limiting how far the rest may move. |
 | **Pit Crew** | Run a pit stop yourself (the jack, four wheel guns, a safe release into the lane) and see where your stationary time ranks among every stop OpenF1 timed. |
 | **Qualifying Game** | Q1, Q2 and Q3 against the real laps of a real session: choose when to run, whether to chase a tow and how hard to push, with the track getting faster at the rate measured in that session and the real cut lines deciding who goes through. |
+| **Energy Challenge** | The game half of the Energy Lab: set a deploy window on every straight of a 2026 lap, beat deploying everywhere and then the engineer's plan (found by a search over the windows), and post the lap to that circuit's leaderboard. |
 | **Circuit Designer** | Draw your own circuit by dragging points; the lap simulator, running in the browser, drives it as you draw with a typical calibrated car of the season: lap time, top speed, braking zones and overtaking spots. |
 | **Wind Tunnel · Engine Penalty Planner** | A live 2D airflow simulation (lattice-Boltzmann) running in the browser, and where to fit new power units for the cheapest grid penalties, from how much a grid place costs at each circuit. |
 | **Energy Lab · Porpoising Lab · Dirty Air Lab · Engine Room** | The battery round a lap (harvest, deploy, clipping) with your own deployment plan; why ground-effect cars bounced; what following another car costs; and F1 engines through the eras with their sound synthesised live. |
@@ -134,4 +135,13 @@ Beat the AI works without a database (picks are saved locally). To use Supabase,
 [supabase]
 url = "https://your-project.supabase.co"
 key = "your-secret-key"
+```
+
+The Energy Challenge leaderboard needs one more table, created once in the Supabase SQL editor:
+
+```sql
+create table energy_scores (player text not null, folder text not null, mode text not null,
+  lap_time double precision not null, plan jsonb not null, nickname text, updated_at timestamptz,
+  primary key (player, folder, mode));
+alter table energy_scores enable row level security;
 ```

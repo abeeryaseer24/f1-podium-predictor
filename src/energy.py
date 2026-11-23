@@ -79,7 +79,8 @@ def straights(car, track):
 
 
 def simulate(car, track, pu, deploy_on=None, mode="race", iterations=4):
-    """One lap with the battery. deploy_on = one True/False per straight (None = deploy everywhere)."""
+    """One lap with the battery. deploy_on = one entry per straight (None = deploy everywhere): True/False,
+    or a window (from, to) as fractions of the straight, e.g. (0.5, 1.0) deploys on its second half."""
     n = len(track.s)
     ds = track.length / n
     zones = straights(car, track)
@@ -87,7 +88,12 @@ def simulate(car, track, pu, deploy_on=None, mode="race", iterations=4):
     straight_mask = np.zeros(n, dtype=bool)
     for k, (i, j, _, _) in enumerate(zones):
         straight_mask[i:j + 1] = True
-        if deploy_on is None or (k < len(deploy_on) and deploy_on[k]):
+        on = True if deploy_on is None else (deploy_on[k] if k < len(deploy_on) else False)
+        if isinstance(on, (tuple, list)):          # a window: (from, to) as fractions of the straight
+            a, b = sorted(float(x) for x in on)
+            lo, hi = i + int(round(a * (j - i + 1))), i + int(round(b * (j - i + 1)))
+            deploy[lo:hi] = True
+        elif on:
             deploy[i:j + 1] = True
 
     m, rho = car.mass, track.rho
