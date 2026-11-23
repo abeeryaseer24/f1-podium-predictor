@@ -201,7 +201,7 @@ TAGLINES = {
     "Great Seasons": "The closest title fights, and the ones that went to the final race.",
     "Driver Profiles": "Any driver who has started a Grand Prix since 1950.",
     "Circuit Profiles": "Every track that has held a Grand Prix, and who has won there.",
-    "Historic Circuits": "The Nordschleife rebuilt in 3D with real elevation, and a 1975, a 2001 and a 2026 car racing round.",
+    "Historic Circuits": "The Nordschleife and the old Hockenheim rebuilt in 3D, with a 1975, a 2001 and a 2026 car racing round.",
     "On This Day": "The Grands Prix that were run on today's date, in any year.",
     "Head to Head": "Any two drivers from any era, side by side.",
     "F1 Quiz": "Ten questions, straight from the record books. No two quizzes are the same.",

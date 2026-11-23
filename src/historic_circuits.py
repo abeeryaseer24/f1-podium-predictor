@@ -41,7 +41,7 @@ CIRCUITS = {
     "nordschleife": {"query": "[out:json][timeout:120];relation(38566);out geom;", "kind": "relation"},
     "hockenheim": {"query": '[out:json][timeout:120];(way(49.30,8.52,49.37,8.67)["highway"="raceway"];'
                             'way(49.30,8.52,49.37,8.67)["abandoned:highway"="raceway"];);out geom;',
-                   "kind": "ways",
+                   "kind": "ways", "snap": 40.0, "link": 200.0,
                    # pieces that were never part of the 1994-2001 Grand Prix lap
                    "skip": ["Boxengasse", "Rallycross", "Quartermile", "Kleiner Kurs", "Schikanenvariante",
                             "1932-1968", "ohne Schikane", "pitlane"]},
@@ -101,9 +101,26 @@ def stitch_cycle(elements, cfg):
         return any(k in text for k in cfg.get("skip", []))
     ways = [w for w in elements if w["type"] == "way" and w.get("geometry") and not skipped(w)]
 
-    def end(w, i):                              # ways meet at the same node, so the same coordinates
-        g = w["geometry"][i]
-        return (round(g["lat"], 7), round(g["lon"], 7))
+    # Ways usually meet at a shared node, but old, abandoned pieces are often mapped with small gaps
+    # between them: endpoints closer than cfg["snap"] metres are treated as the same junction.
+    tol = cfg.get("snap", 0.5)
+    raw_ends = [(g["lat"], g["lon"]) for w in ways for g in (w["geometry"][0], w["geometry"][-1])]
+    junction = list(range(len(raw_ends)))
+
+    def find(i):
+        while junction[i] != i:
+            junction[i] = junction[junction[i]]
+            i = junction[i]
+        return i
+    for i, a in enumerate(raw_ends):
+        for j in range(i):
+            b = raw_ends[j]
+            if math.hypot((a[0] - b[0]) * 111_320, (a[1] - b[1]) * 111_320 * math.cos(math.radians(a[0]))) < tol:
+                junction[find(i)] = find(j)
+    index = {id(w): k for k, w in enumerate(ways)}
+
+    def end(w, i):
+        return find(2 * index[id(w)] + (0 if i == 0 else 1))
     length = {}
     adj = {}
     for k, w in enumerate(ways):
@@ -132,6 +149,88 @@ def stitch_cycle(elements, cfg):
         if end(ways[k], 0) != frm:
             p.reverse()
         loop.extend(p if not loop else p[1:])
+    return loop
+
+
+def stitch_via_old_section(elements, cfg):
+    """A lap that leaves the current track for an abandoned section and comes back.
+
+    Every point of every way becomes a node of a graph. The abandoned section (the forest loop at
+    Hockenheim) is found as the longest chain of abandoned raceway; its two loose ends are linked to
+    the nearest point of the current track (up to cfg["link"] metres away: the bit of track that joined
+    them was rebuilt and is no longer mapped). The lap is then the shortest path on the current track
+    from the start line to one end, the abandoned section, and the shortest path back to the line."""
+    import heapq
+
+    def skipped(w):
+        text = " ".join(str(v) for v in w.get("tags", {}).values())
+        return any(k in text for k in cfg.get("skip", []))
+    ways = [w for w in elements if w["type"] == "way" and w.get("geometry")]
+    key = lambda g: (round(g["lat"], 7), round(g["lon"], 7))
+    lat0 = ways[0]["geometry"][0]["lat"]
+    metres = lambda a, b: math.hypot((a[0] - b[0]) * 111_320, (a[1] - b[1]) * 111_320 * math.cos(math.radians(lat0)))
+    edges = {"old": {}, "new": {}}
+    for w in ways:
+        if skipped(w):
+            continue
+        kind = "old" if "abandoned:highway" in w.get("tags", {}) else "new"
+        pts = [key(g) for g in w["geometry"]]
+        for a, b in zip(pts, pts[1:]):
+            d = metres(a, b)
+            edges[kind].setdefault(a, []).append((b, d))
+            edges[kind].setdefault(b, []).append((a, d))
+
+    def dijkstra(graph, src, dst):
+        dist, prev, todo = {src: 0.0}, {}, [(0.0, src)]
+        while todo:
+            d, u = heapq.heappop(todo)
+            if u == dst:
+                break
+            if d > dist[u]:
+                continue
+            for v, w in graph.get(u, []):
+                if d + w < dist.get(v, 1e18):
+                    dist[v], prev[v] = d + w, u
+                    heapq.heappush(todo, (d + w, v))
+        path = [dst]
+        while path[-1] != src:
+            path.append(prev[path[-1]])
+        return path[::-1], dist[dst]
+
+    old, new = edges["old"], edges["new"]
+    # join old pieces whose ends nearly touch, so the section is one chain
+    ends = [n for n, nb in old.items() if len(nb) == 1]
+    for i, a in enumerate(ends):
+        for b in ends[:i]:
+            if metres(a, b) < cfg.get("snap", 40.0):
+                old[a].append((b, metres(a, b)))
+                old[b].append((a, metres(a, b)))
+    loose = [n for n, nb in old.items() if len(nb) == 1]
+    best = None
+    for i, a in enumerate(loose):                       # the two loose ends furthest apart along the old track
+        for b in loose[:i]:
+            try:
+                path, d = dijkstra(old, a, b)
+            except KeyError:
+                continue
+            if best is None or d > best[1]:
+                best = (path, d)
+    section = best[0]
+    nearest = lambda p: min(new, key=lambda n: metres(n, p))
+    a_link, b_link = nearest(section[0]), nearest(section[-1])
+    if max(metres(a_link, section[0]), metres(b_link, section[-1])) > cfg.get("link", 200.0):
+        raise ValueError("the old section doesn't come close enough to the current track")
+    pit = [w for w in ways if "Boxengasse" in w.get("tags", {}).get("name", "")]
+    mid = pit[0]["geometry"][len(pit[0]["geometry"]) // 2]
+    line = nearest(key(mid))
+    # the old lap ran from the line to the first corner and out into the forest: start with the end
+    # that the line reaches first along the current track
+    to_a, da = dijkstra(new, line, a_link)
+    to_b, db = dijkstra(new, line, b_link)
+    if db < da:
+        section, a_link, b_link, to_a = section[::-1], b_link, a_link, to_b
+    back, _ = dijkstra(new, b_link, line)
+    loop = to_a + section + back[:-1]
     return loop
 
 
@@ -190,7 +289,7 @@ def heights(xe, ye, latlon_of, every=25.0):
 def build(key):
     raw = json.loads((HIST / f"osm_{key}.json").read_text(encoding="utf-8"))
     loop = (stitch_in_order([m for m in raw["elements"][0]["members"] if m["type"] == "way"])
-            if CIRCUITS[key]["kind"] == "relation" else stitch_cycle(raw["elements"], CIRCUITS[key]))
+            if CIRCUITS[key]["kind"] == "relation" else stitch_via_old_section(raw["elements"], CIRCUITS[key]))
     lat0 = float(np.mean([p[0] for p in loop]))
     lon0 = float(np.mean([p[1] for p in loop]))
     x, y, _ = to_metres(loop)

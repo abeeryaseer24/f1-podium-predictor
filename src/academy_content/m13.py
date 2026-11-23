@@ -144,7 +144,7 @@ abused for time, which is why track-limits rules appeared.
 """,
        """
 **Rebuilding them.** There's no telemetry from the old days, but the roads are still mapped. The Historic
-Circuits page rebuilds the Nordschleife from OpenStreetMap with real elevation, and the
+Circuits page rebuilds the Nordschleife and the old Hockenheim from OpenStreetMap with real elevation, and the
 lap simulator drives a 1975, a 2001 and a 2026 car round them. Each older car has one tuned number (its tyre
 grip), set so it matches a real pole lap of its era; everything else is the same physics as today's circuits.
 
@@ -159,7 +159,7 @@ also made mistakes cheaper. Circuit designers now mix gravel back in at key corn
          "Cuts speed, adds a braking zone."),
         ("A downside of asphalt run-off is…", ["it's expensive", "mistakes cost less time", "it's slippery", "nothing"], 1,
          "Track limits.")],
-       data=[("Historic Circuits", "The Nordschleife in 3D, with three eras of car racing round."),
+       data=[("Historic Circuits", "The Nordschleife and the old Hockenheim in 3D, with three eras of car racing round."),
              ("Circuit Profiles", "Every track that has held a Grand Prix, and who has won there."),
              ("Eras", "How the sport changed decade by decade.")],
        terms=["lap simulator"], sources=SOURCES),

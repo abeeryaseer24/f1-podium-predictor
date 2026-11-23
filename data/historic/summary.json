@@ -33,14 +33,14 @@
     "mass": 650,
     "power_kw": 610,
     "wing": 0.0,
-    "grip": 1.7,
+    "grip": 2.019,
     "load_sensitivity": 0.12,
     "rear_share": 0.56,
     "rolling": 0.012,
     "downforce_scale": 0.95,
     "drag_scale": 0.95
    },
-   "fitted": false
+   "fitted": true
   },
   "2026": {
    "label": "2026 car",
@@ -77,15 +77,43 @@
      "wing": 0.0
     },
     "2001": {
-     "lap": 325.29,
-     "avg_kmh": 229.0,
-     "top_kmh": 371,
+     "lap": 300.8,
+     "avg_kmh": 247.7,
+     "top_kmh": 372,
      "wing": 0.0
     },
     "2026": {
      "lap": 310.19,
      "avg_kmh": 240.2,
      "top_kmh": 349,
+     "wing": 0.4
+    }
+   }
+  },
+  "hockenheim": {
+   "name": "Hockenheimring, old layout",
+   "years": "Grand Prix layout 1970s\u20132001",
+   "note": "The long forest straights with three chicanes, replaced in 2002 by today's shorter track. The forest section is now woodland again.",
+   "record": "",
+   "length_km": 6.892,
+   "climb_m": 17,
+   "laps": {
+    "1975": {
+     "lap": 123.67,
+     "avg_kmh": 200.6,
+     "top_kmh": 284,
+     "wing": 0.0
+    },
+    "2001": {
+     "lap": 99.09,
+     "avg_kmh": 250.4,
+     "top_kmh": 359,
+     "wing": 0.0
+    },
+    "2026": {
+     "lap": 102.6,
+     "avg_kmh": 241.8,
+     "top_kmh": 335,
      "wing": 0.4
     }
    }

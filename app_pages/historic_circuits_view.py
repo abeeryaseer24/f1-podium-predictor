@@ -70,4 +70,6 @@ st.caption(f"How it's built: the track shape comes from OpenStreetMap (© OpenSt
            f"heights from the EU-DEM elevation model through OpenTopoData. The lap simulator drives a line that may "
            f"stray 2 m from the road's centre, roughly a racing line. Each older car has one tuned number, its tyre "
            f"grip: {fits}. The 2026 car is the middle of every 2026 car calibrated to a real circuit, so its laps here "
-           f"are a what-if, never raced. The Engineering Academy's Module 13 tells these circuits' stories.")
+           f"are a what-if, never raced. Not like for like: the older cars are matched to qualifying laps (little fuel, "
+           f"new tyres), the 2026 car to the fastest laps of races (race fuel, used tyres), which is why the 2001 car "
+           f"can beat it. The Engineering Academy's Module 13 tells these circuits' stories.")

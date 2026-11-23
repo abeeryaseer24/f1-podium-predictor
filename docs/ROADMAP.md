@@ -182,7 +182,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 - P1 ✅ **Onboard camera** in every 3D page: a camera that follows the racing line and the real elevation, at real speed.
 - P2 ✅ **Night races, rain and time of day** in `sim3d.py` and the Pit Wall (night races start at night, and the replay rains when the real race did).
 - P3 ✅ **Illustrative 3D car** (the 3D Part Explorer) (our own design, no team livery or branding). It's used across the Academy with an exploded view, x-ray, airflow particles and component highlighting.
-- P4 (started: the Nordschleife is live; old Hockenheim, old Spa and Kyalami to come) **Historic circuits in 3D** (old Hockenheim, the Nordschleife, Kyalami, the old Spa) from OpenStreetMap raceway geometry plus open elevation data.
+- P4 (started: the Nordschleife and the old Hockenheim are live; old Spa and Kyalami to come) **Historic circuits in 3D** (old Hockenheim, the Nordschleife, Kyalami, the old Spa) from OpenStreetMap raceway geometry plus open elevation data.
 - P5 **Technical report** (`docs/report.md` + PDF): every model, assumption, limitation and validation.
 
 ---
