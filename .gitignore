@@ -9,4 +9,5 @@ data/picks_local.json
 data/team_picks_local.json
 data/energy_scores_local.json
 data/market_trades_local.json
+data/duel_moves_local.json
 PROJECT_NOTES.md

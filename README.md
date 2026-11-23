@@ -42,6 +42,7 @@ A Formula 1 machine learning app that runs itself. It predicts the **whole finis
 | **Fantasy Optimizer** | The best five drivers and two constructors within a budget for the next race, chosen by an integer program from expected points (the predictor's race replayed 20,000 times, retirements included), with our own form-based prices. Replayed over whole seasons out of sample it scores about 2 to 3 times an average affordable team. |
 | **Driver Market** | Each driver's chance of keeping their seat, changing team or leaving F1 next season, with the reasons: a multinomial logistic regression on every driver-season since 1980 (age, experience, form, the teammate battle, the team's results; renamed teams count as the same team), tested season by season out of sample. |
 | **Prediction Market** | Trade who wins the next race with play money against an automated market maker (the logarithmic market scoring rule) that opens at our model's win chances, so the board shows where the crowd disagrees with the model; a season table adds up profit. |
+| **Strategy Duel** | Two players (on two devices, or one against our strategist) engineer the same car in the same real race: every five laps each locks a call, and when both are in the race moves on and the gap shows. Same lap maths as Be the Race Engineer, with the two-compound rule. |
 | **Circuit Designer** | Draw your own circuit by dragging points; the lap simulator, running in the browser, drives it as you draw with a typical calibrated car of the season: lap time, top speed, braking zones and overtaking spots. |
 | **Wind Tunnel · Engine Penalty Planner** | A live 2D airflow simulation (lattice-Boltzmann) running in the browser, and where to fit new power units for the cheapest grid penalties, from how much a grid place costs at each circuit. |
 | **Energy Lab · Porpoising Lab · Dirty Air Lab · Engine Room** | The battery round a lap (harvest, deploy, clipping) with your own deployment plan; why ground-effect cars bounced; what following another car costs; and F1 engines through the eras with their sound synthesised live. |
@@ -156,4 +157,12 @@ create table market_trades (id bigint generated always as identity primary key, 
   season int not null, round int not null, driver text not null, shares double precision not null,
   cost double precision not null, nickname text, created_at timestamptz default now());
 alter table market_trades enable row level security;
+```
+
+And the Strategy Duel's rooms:
+
+```sql
+create table duel_moves (id bigint generated always as identity primary key, room text not null,
+  player text not null, kind text not null, data jsonb not null, created_at timestamptz default now());
+alter table duel_moves enable row level security;
 ```

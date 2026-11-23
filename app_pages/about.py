@@ -99,6 +99,7 @@ with tabs[0]:
         {"Page": "Fantasy Optimizer", "What it shows": "The best budget-capped fantasy team from the model's predictions, and how it does over a season."},
         {"Page": "Driver Market", "What it shows": "Who is likely to stay, move team or leave F1 next season, and why."},
         {"Page": "Prediction Market", "What it shows": "Trade the race winner with play money; crowd prices against the model."},
+        {"Page": "Strategy Duel", "What it shows": "Two players run the same car's strategy in the same real race."},
         {"Page": "Circuit Designer", "What it shows": "Draw your own circuit and the lap simulator drives it as you draw."},
         {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},
         {"Page": "Tyre Lab", "What it shows": "How fast each tyre compound wears, measured from real laps."},
