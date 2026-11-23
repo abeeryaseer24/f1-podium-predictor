@@ -237,13 +237,13 @@ engineering degree module.
 **Module 7: Brakes**
 7.1 Carbon-carbon brakes and their temperature window · 7.2 Brake-by-wire and rear energy recovery · 7.3 Brake bias and migration · 7.4 Brake cooling and ducts · 7.5 Braking in the data: deceleration of 5–6 g
 
-**Module 8: Chassis, materials and safety**
+**Module 8: Chassis, materials and safety ✅**
 8.1 The carbon-fibre monocoque: layup, autoclave, stiffness · 8.2 Weight, ballast and the minimum mass · 8.3 Crash structures and FIA tests · 8.4 The halo, HANS and the survival cell · 8.5 Fire, medical car and circuit safety · 8.6 Great crashes and what engineering learned (Grosjean 2020)
 
-**Module 9: Cooling and thermal management**
+**Module 9: Cooling and thermal management ✅**
 9.1 The heat budget: where the energy goes · 9.2 Radiators, louvres and sidepod design · 9.3 Hot races and cooling compromises · 9.4 Driver cooling
 
-**Module 10: Electronics, data and simulation**
+**Module 10: Electronics, data and simulation ✅**
 10.1 The standard ECU and around 300 sensors · 10.2 Telemetry and the garage · 10.3 The steering wheel · 10.4 Data analysis like an engineer: overlays, deltas, mini-sectors *(Ghost Lap Duel)* · 10.5 Driver-in-the-loop simulators · 10.6 Correlation: simulation vs track
 
 **Module 11: Race engineering**
@@ -255,13 +255,13 @@ engineering degree module.
 **Module 13: Circuits (with 3D tours)**
 13.1 How circuits differ: power, downforce, braking, tyre energy · 13.2 **A tour of every circuit with data**: a 3D flyover (camera along the racing line with real elevation), then a corner-by-corner guide with speed, gear, braking point, g-load and overtaking spots, then setup demands and tyre wear, then what the lap simulator says matters most here · 13.3 Historic circuits in 3D (P4) · 13.4 Designing a circuit *(widget: S5)*
 
-**Module 14: Rules, money and the business**
+**Module 14: Rules, money and the business ✅**
 14.1 Technical vs sporting regulations · 14.2 The cost cap and what it limits · 14.3 How teams are organised: aero, vehicle performance, race team · 14.4 Testing limits and the ATR · 14.5 Protests, appeals and grey areas
 
-**Module 15: History of F1 engineering**
+**Module 15: History of F1 engineering ✅**
 15.1 Front-engine to mid-engine · 15.2 Wings arrive (1968) · 15.3 Ground effect (1978) and why it was banned · 15.4 The turbo era · 15.5 Active suspension and driver aids (1992–93) · 15.6 The V10 years · 15.7 Blown diffusers, the double diffuser, the F-duct · 15.8 DAS and clever loopholes · 15.9 The hybrid era · 15.10 2022 ground effect returns · 15.11 2026 and after
 
-**Module 16: Capstone, design your car**
+**Module 16: Capstone, design your car ✅**
 Choose a circuit, set the car's aero, mass, power and setup within the regulations, then E1 laps it, E2 races it against the real grid, and you get a debrief explaining your result with everything from the course.
 
 ---
@@ -281,7 +281,7 @@ Each phase ships something visible and finishes in a working app.
 | **7. AI showcase** ✅ | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** (in progress: P1, P2, S5 and Academy Module 13 done; P4 historic circuits left) | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** ✅ (L1–L5, M14 and S13, from Wikipedia's season and round articles) | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
-| **10. Games and polish** (in progress: G1 Team Principal, A11 Driver Market, A12 Calendar Planner, G2 Strategy Duel, G3 Prediction Market, G5 Pit Crew, G6 Qualifying Game, G7 Fantasy Optimizer, G8 Energy Challenge and C4 Replay Commentary done) | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
+| **10. Games and polish** (in progress: G1 Team Principal, A11 Driver Market, A12 Calendar Planner, G2 Strategy Duel, G3 Prediction Market, G5 Pit Crew, G6 Qualifying Game, G7 Fantasy Optimizer, G8 Energy Challenge and C4 Replay Commentary and Academy Modules 8–10 and 14–16 done; the technical report is left) | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
 
 ## 11. Risks to watch
 
