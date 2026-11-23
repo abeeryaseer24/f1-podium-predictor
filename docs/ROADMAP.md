@@ -157,7 +157,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | C1 ✅ | **Classic Races** | Famous races since 1996 (Jolpica lap times; pit stops from about 2011), each with a case file, a 3D replay and **take control**: run one car's strategy on E2 and try to beat history. Starter set: Abu Dhabi 2021, Hungary 2021, Brazil 2008, Japan 2005, Germany 2019, Silverstone 2022, Monaco 2024. |
 | C2 ✅ | **Race Director** | Replay real incidents. You call the safety car, VSC, red flag and penalties, and get compared with the real decisions (race control feed + Penalties Log). |
 | C3 ✅ | **Race Films** | A script built from the same story beats as the A13 race reports, a timeline, the 3D replay and a voice-over from the browser's free Web Speech API (or Piper TTS audio made in Actions). |
-| C4 | **Replay Commentary** | Event-driven commentary over the Pit Wall replay, with no AI service: each event in the replay (overtake, pit stop, safety car, fastest lap, retirement, gap closing under 1 s) triggers a line from a phrase bank, with variety and a cooldown so it doesn't repeat itself. Spoken with Web Speech. |
+| C4 ✅ | **Replay Commentary** | Event-driven commentary over the Pit Wall replay, with no AI service: each event in the replay (overtake, pit stop, safety car, fastest lap, retirement, gap closing under 1 s) triggers a line from a phrase bank, with variety and a cooldown so it doesn't repeat itself. Spoken with Web Speech. |
 
 ---
 
@@ -281,7 +281,7 @@ Each phase ships something visible and finishes in a working app.
 | **7. AI showcase** ✅ | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** (in progress: P1, P2, S5 and Academy Module 13 done; P4 historic circuits left) | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** ✅ (L1–L5, M14 and S13, from Wikipedia's season and round articles) | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
-| **10. Games and polish** (in progress: A12 Calendar Planner and G5 Pit Crew done) | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
+| **10. Games and polish** (in progress: A12 Calendar Planner, G5 Pit Crew and C4 Replay Commentary done) | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
 
 ## 11. Risks to watch
 

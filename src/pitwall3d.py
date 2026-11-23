@@ -5,6 +5,7 @@ import json
 
 import streamlit.components.v1 as components
 
+from commentary import COMMENTARY_BUTTON, COMMENTARY_CSS, COMMENTARY_DIV, COMMENTARY_JS
 from scene_env import ENV_BUTTONS, ENV_JS
 
 from track3d import THREE_URL
@@ -14,7 +15,9 @@ def pit_wall_view(data, track, strategy=None, dark=True, height=720, game=None):
     payload = dict(data, dark=dark, strategy=strategy, game=game,
                    points=track[["x", "y", "z"]].round(1).values.tolist())
     page = (TEMPLATE.replace("__DATA__", json.dumps(payload)).replace("__THREE__", THREE_URL)
-            .replace("__ENV_JS__", ENV_JS).replace("__ENV_BUTTONS__", ENV_BUTTONS))
+            .replace("__ENV_JS__", ENV_JS).replace("__ENV_BUTTONS__", ENV_BUTTONS)
+            .replace("__COMM_JS__", COMMENTARY_JS).replace("__COMM_CSS__", COMMENTARY_CSS)
+            .replace("__COMM_BUTTON__", COMMENTARY_BUTTON).replace("__COMM_DIV__", COMMENTARY_DIV))
     components.html(page, height=height)
 
 
@@ -34,6 +37,7 @@ TEMPLATE = r"""<!doctype html>
   #lap { font: 800 24px 'Saira Condensed', Inter, sans-serif; }
   #status { position: absolute; left: 50%; top: 12px; transform: translateX(-50%); padding: 6px 14px; border-radius: 999px;
             font: 800 13px 'Saira Condensed', Inter, sans-serif; letter-spacing: 1px; display: none; z-index: 3; }
+__COMM_CSS__
   #ticker { position: absolute; left: 12px; bottom: 12px; padding: 8px 12px; border-radius: 10px; font-size: 12px;
             background: var(--panel); border: 1px solid var(--border); color: var(--text); display: none; }
   #views { position: absolute; top: 12px; right: 12px; display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
@@ -177,11 +181,11 @@ TEMPLATE = r"""<!doctype html>
       <div id="hud"><div id="lap">Lap 1</div><div id="clock">0:00</div></div>
       <div id="status"></div>
       <div id="views">
-        <button id="overview" class="on">Overview</button><button id="follow">Follow</button><button id="onboard">Onboard</button>
+        <button id="overview" class="on">Overview</button><button id="follow">Follow</button><button id="onboard">Onboard</button>__COMM_BUTTON__
         __ENV_BUTTONS__<button id="verdictBtn">Strategist verdict</button>
       </div>
       <div id="radio"><div id="hint">Tap a driver to hear their team radio</div></div>
-      <div id="ticker"></div>
+      <div id="ticker"></div>__COMM_DIV__
       <div id="strat"></div>
       <div id="verdict"></div>
       <div id="intro"></div>
@@ -968,6 +972,7 @@ todSel.value = D.tod || "day"; weather.setTod(todSel.value);
 todSel.onchange = () => weather.setTod(todSel.value);
 rainBtn.onclick = () => { rainManual = !weather.raining; };
 if (RAIN.length) rainBtn.title = "Follows the real race weather until you press it";
+__COMM_JS__
 (function frame() {
   const now = performance.now(), dt = (now - lastFrame) / 1000;
   lastFrame = now;
@@ -994,7 +999,7 @@ if (RAIN.length) rainBtn.title = "Follows the real race weather until you press 
     else { c.halo.scale.setScalar(1); c.halo.material.opacity = c === selected ? 0.3 : 0; }
     c.mesh.visible = (!isOut(c, time) || time - c.out < 30) && !c.hidden;
   }
-  if (now - lastBoard > 200) { updateBoard(); updateHud(); updateStrat(); lastBoard = now; }
+  if (now - lastBoard > 200) { updateBoard(); updateHud(); updateStrat(); commentate(); lastBoard = now; }
   if (onboard.on) {
     onboardStep(focusCar().mesh.position);
   } else if (follow) {

@@ -15,6 +15,7 @@ A Formula 1 machine learning app that runs itself. It predicts the **whole finis
 | **Scoreboard** | Every live prediction, locked in before the race and scored after it, against the starting grid. Each race opens up to the full predicted order with a verdict for every driver. |
 | **Season Rewind** | A whole season race by race, as the model would have called it. |
 | **Pit Wall** | Any race since 2023 replayed on the real 3D track, with every car, and our strategist calling pit stops on team radio. |
+| **Replay Commentary** | A 🎙 button on the Pit Wall replay: overtakes, lead changes, stops, retirements, safety cars and the finish turned into varied commentary lines, shown on screen and read out by the browser's own voice. No AI service. |
 | **Ghost Lap Duel · Circuit Explorer · Tyre Lab** | Two drivers' fastest laps head to head, every circuit in 3D with real elevation, and tyre wear measured from real laps. |
 | **Where the Race Was Won · Lap One · Team Radio** | Any two drivers' gap split into the start, pit stops, safety cars and racing laps; places gained on lap one, measured fairly; and every published radio message transcribed (open-source Whisper) and sorted by topic. |
 | **Model Report Card · Rules Sandbox** | How trustworthy the model's percentages are (calibration, Brier score against a grid baseline, finish ranges), and every title since 1950 recomputed under any points system. |
