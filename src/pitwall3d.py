@@ -942,9 +942,6 @@ if (D.game) {
       `${card("Our strategist", "", ok.strat ? pos.strat : null, vsReal(T.real - T.strat), GD.strategist)}</div>` +
       (rows ? `<table><tr><th>Your stop</th><th>Tyres</th><th>Verdict</th><th>Why</th></tr>${rows}</table>`
             : `<p>You didn't make a pit stop.</p>`) +
-      `<p class="note">How it works: your car does the real driver's lap times with the tyre effect taken out, ` +
-      `plus what your tyres cost and your pit stops. Everyone else races exactly as they did, so traffic and ` +
-      `battles aren't simulated. If you copy the real team's stops, you get exactly the real result.</p>` +
       `<button id="againBtn">Play again</button>`;
     verdictEl.style.display = "block";
     document.getElementById("closeVerdict").onclick = () => { verdictEl.style.display = "none"; };

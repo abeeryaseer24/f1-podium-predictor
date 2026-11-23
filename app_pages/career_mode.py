@@ -99,8 +99,3 @@ if c["history"]:
         del st.session_state[KEY]
         st.rerun()
 
-st.caption("How it works: every season is a real driver-season from F3, F2 or F1 (GP3 and GP2 included) at the same "
-           "kind of team, picked at a percentile set by your hidden talent, your experience and luck, against a field "
-           "that gets better at every step. There is no free F4 archive, so F4 seasons are drawn from F3's. Super "
-           "Licence points use the FIA's table; F1 teams judge you with the Scouting Report's model. Feeder results "
-           "from Wikipedia (CC BY-SA 4.0), F1 results from our archive. Costs and salaries are rough illustrations.")

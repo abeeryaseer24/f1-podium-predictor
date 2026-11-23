@@ -177,5 +177,4 @@ if totals:
 else:
     st.caption("No settled races with trades yet this season.")
 
-st.caption("Play money only: nothing is bought or sold. The market maker is the logarithmic market scoring rule, "
-           "opening at the model's win chances; how it works is explained in the code's notes.")
+st.caption("Play money only: nothing is bought or sold. How the prices work is in About.")

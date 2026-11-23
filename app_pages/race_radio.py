@@ -104,15 +104,3 @@ if items:
 else:
     st.caption("Nothing matches those filters.")
 
-with st.expander("How this works"):
-    st.markdown("""
-- **The clips** are the ones Formula 1 published from the race, listed by OpenF1. Teams talk far
-  more than this; the broadcast picks the moments it wants.
-- **Transcripts** come from faster-whisper, an open-source speech-to-text model run on our own
-  robot, free. Radio is noisy and full of slang, so read them as a rough guide and use
-  *Listen* to hear the real thing.
-- **Topics** come from simple keyword rules, so a message mentioning both rain and tyres goes
-  under whichever rule comes first.
-- **Laps** are worked out from the time of each clip and that driver's lap times.
-- The audio is never copied: *Listen* opens Formula 1's own file.
-""")

@@ -37,7 +37,7 @@ def table(rows):
 
 
 tabs = st.tabs(["The project", "The prediction model", "Accuracy and fairness",
-                "Strategist and game", "Simulator and Academy", "The live system"])
+                "Strategist and game", "Simulator and Academy", "The live system", "How each page works"])
 
 
 # ---------- 1. the project ----------
@@ -386,3 +386,65 @@ with tabs[5]:
              "from OpenF1. Coverage begins in 2023 and a season appears only once its races have "
              "been prepared, so these pages open on the most recent season that has data rather "
              "than on the current one.")
+
+# ---------- 7. how each page works ----------
+with tabs[6]:
+    st.write("The method and the limits behind the pages, kept here so the pages themselves stay short.")
+
+    st.subheader("Championship Odds")
+    st.write("Every remaining race is drawn from the same model that makes our podium predictions: each driver "
+             "has a strength, and the finishing order is drawn from those strengths with the right amount of luck "
+             "mixed in. Drivers retire at roughly the rate they have this season. Points are awarded the normal "
+             "way, sprints included, and the rest of the season is run 5,000 times. The percentage is how often "
+             "each driver or team came out on top.")
+    st.markdown("- **What it cannot know.** It assumes the rest of the season looks like the next race, so an "
+                "upgrade that hasn't landed yet, a wet weekend, a driver swap or a penalty are all missing.\n"
+                "- **Who can still win** is different: pure arithmetic, comparing the gap with the points still "
+                "available, so it is always right even when the simulated chance rounds to zero.")
+
+    st.subheader("Guess the Driver")
+    st.write("OpenF1's car data (speed, throttle, brake, gear, rpm, about four samples a second) for up to 12 clean "
+             "racing laps per driver per race. Sixteen habits are measured on each lap, then compared with the "
+             "team's own average for that race, so the car, the circuit and the weather cancel out. A logistic "
+             "regression learns each driver's pattern and is tested on races it never saw.")
+    st.markdown("- **What it can't do.** Four samples a second blurs braking points by about 20 m, steering isn't "
+                "in the public data, and some habits are really pace: the faster teammate carries more speed. "
+                "A driver with few laps, or one who changed team, is harder to read.")
+
+    st.subheader("Scouting Report")
+    st.write("Each driver's F2/GP2 and F3/GP3 record (best championship places, share of the champion's points, "
+             "wins, podiums, beating the teammate, Super Licence points) goes into a logistic regression, trained "
+             "only on careers that ended long enough ago to know how they turned out, and tested by leaving out "
+             "whole groups of seasons. Results come from Wikipedia's season articles (CC BY-SA 4.0).")
+    st.markdown("- **What it can't see.** Money, junior programmes, age, other series (Formula Regional, IndyCar, "
+                "Japan) and the seats available each year.")
+
+    st.subheader("Career Mode")
+    st.write("Every season is a real driver-season from F3, F2 or F1 (GP3 and GP2 included) at the same kind of "
+             "team, picked at a percentile set by your hidden talent, your experience and luck, against a field "
+             "that gets better at every step. There's no free F4 archive, so F4 seasons are drawn from F3's. Super "
+             "Licence points use the FIA's table, and F1 teams judge you with the Scouting Report's model. Feeder "
+             "results come from Wikipedia (CC BY-SA 4.0), F1 results from our archive. Costs and salaries are "
+             "rough illustrations.")
+
+    st.subheader("Team Radio")
+    st.markdown("- **The clips** are the ones Formula 1 published from the race, listed by OpenF1. Teams talk far "
+                "more than this; the broadcast picks the moments it wants.\n"
+                "- **Transcripts** come from faster-whisper, an open-source speech-to-text model run on our own "
+                "robot, free. Radio is noisy and full of slang, so read them as a rough guide and use *Listen* to "
+                "hear the real thing.\n"
+                "- **Topics** come from simple keyword rules, so a message mentioning both rain and tyres goes "
+                "under whichever rule comes first.\n"
+                "- **Laps** are worked out from the time of each clip and that driver's lap times.\n"
+                "- **The audio is never copied:** *Listen* opens Formula 1's own file.")
+
+    st.subheader("Prediction Market")
+    st.write("Play money only: nothing is bought or sold. Prices come from an automated market maker, Hanson's "
+             "logarithmic market scoring rule. There is one share per driver, paying 100 coins if that driver "
+             "wins. Buying a driver pushes their price up and selling brings it down, so nobody needs someone on "
+             "the other side of a trade. The market opens at our model's win chances, so the gap between the "
+             "crowd price and the model is exactly where visitors disagree with it.")
+    st.markdown("- **Coins.** Everyone gets 1,000 coins for each race; trading closes at lights out, and after the "
+                "race the winner's shares pay out. The season table adds up profit across settled races.\n"
+                "- **Fair pricing.** Every trade is priced on our server from the full order book, never in the "
+                "browser.")

@@ -196,18 +196,3 @@ league([{
 } for place, row in enumerate(teams.sort_values("points_now", ascending=False)
                               .itertuples(), start=1)])
 
-# ---------- how it works ----------
-
-section("How these numbers are made",
-        "Worth reading once, so you know which of the two numbers to trust.")
-note("Every remaining race is drawn from the same model that makes our podium predictions: "
-     "each driver has a strength, and the finishing order is drawn from those strengths with "
-     "the right amount of luck mixed in. Drivers retire at roughly the rate they have this "
-     "season. Points are awarded the normal way, sprints included, and the season is run "
-     f'{result["simulations"]:,} times. The percentage is simply how often each driver or '
-     "team came out on top.")
-note("<b>What it cannot know.</b> It assumes the rest of the season looks like the next "
-     "race, so an upgrade that has not landed yet, a wet weekend, a driver swap or a "
-     "penalty are all missing. <b>Who can still win</b> is different: that is pure "
-     "arithmetic, comparing the gap with the points still available, and it is always "
-     "right even when the simulated chance rounds to zero.")

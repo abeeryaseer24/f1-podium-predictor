@@ -96,8 +96,3 @@ board([("Model said", "label"), ("Really reached F1", "bar"), ("Drivers", "num")
         "cells": [(f"{v['said']:.0%} on average", f"{max(iv.left, 0):.0%}–{iv.right:.0%}"), (v["real"], f"{v['real']:.0%}"), f"{int(v['n'])}"]}
        for iv, v in cal.iterrows()])
 
-st.caption(f"How it works: each driver's F2/GP2 and F3/GP3 record (best championship places, share of the champion's "
-           f"points, wins, podiums, beating the team-mate, Super Licence points) goes into a logistic regression, "
-           f"trained only on careers that ended at least {r['window']} seasons ago and tested by leaving out whole groups "
-           f"of seasons. What it can't see: money, junior programmes, age, other series (Formula Regional, IndyCar, "
-           f"Japan) and the seats available each year. Results from Wikipedia's season articles (CC BY-SA 4.0).")

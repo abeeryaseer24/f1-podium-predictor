@@ -214,9 +214,3 @@ for code, sig in sorted(model["signatures"].items(), key=lambda kv: model["teams
         (abs(top["z"]), f"{abs(top['z']):.1f} σ"), f"{sig['laps']:,}"]})
 board([("Driver", "label"), ("Compared with their teammates", "text"), ("Strongest tell", "bar"), ("Laps", "num")], rows)
 
-st.caption("How it works: OpenF1's car data (speed, throttle, brake, gear, rpm, about four samples a second) for up to "
-           "12 clean racing laps per driver per race. Sixteen habits are measured on each lap, then compared with the "
-           "team's own average for that race, so the car, the circuit and the weather cancel out. A logistic regression "
-           "learns each driver's pattern. What it can't do: four samples a second blurs braking points by about 20 m, "
-           "steering isn't in the public data, and some 'habits' are really pace: the faster teammate carries more speed. "
-           "A driver with few laps, or one who changed team, is harder to read.")
