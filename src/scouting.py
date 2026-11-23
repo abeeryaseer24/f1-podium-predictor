@@ -21,7 +21,7 @@ for "reached", eight for "established"). It is tested by leaving out whole group
 time, so it never sees a driver's own era-mates while being scored on them. Scores: the area under the ROC
 curve (how well it ranks: 0.5 is guessing, 1 is perfect) and the Brier score.
 
-Saves data/ladder/scouting.json.
+Saves data/ladder/scouting.json (with the fitted model, so Career Mode can score a made-up record).
   python src/scouting.py
 """
 import json
@@ -114,6 +114,12 @@ def cross_validate(df, outcome, groups=5):
     return p, float(roc_auc_score(y[ok], p[ok])), float(brier_score_loss(y[ok], p[ok])), float(y[ok].mean())
 
 
+def chance(model, record):
+    """P(reaching F1) for one record (a dict of FEATURES), from the saved model."""
+    z = sum(model["coef"][f] * (record[f] - model["mean"][f]) / model["scale"][f] for f in model["coef"])
+    return 1 / (1 + np.exp(-(z + model["intercept"])))
+
+
 def main():
     df = records()
     last = int(df["last"].max())
@@ -165,6 +171,11 @@ def main():
         "established": {"auc": round(auc_e, 3), "brier": round(brier_e, 3), "base": round(base_e, 3),
                         "drivers": int(len(est_train)), "starts": ESTABLISHED},
         "weights": {f: round(float(v), 3) for f, v in sorted(coef.items(), key=lambda kv: -abs(kv[1]))},
+        # the fitted model itself, so other pages (Career Mode) can score a record of their own
+        "model": {"mean": dict(zip(FEATURES, m_reach[0].mean_.round(5).tolist())),
+                  "scale": dict(zip(FEATURES, m_reach[0].scale_.round(5).tolist())),
+                  "coef": dict(zip(FEATURES, m_reach[-1].coef_[0].round(5).tolist())),
+                  "intercept": round(float(m_reach[-1].intercept_[0]), 5)},
         "candidates": [row_out(k, r, {"similar": similar(r)}) for k, r in candidates.head(40).iterrows()],
         "history": history,
     }

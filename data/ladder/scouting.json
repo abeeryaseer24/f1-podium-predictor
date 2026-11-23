@@ -37,6 +37,42 @@
   "f2_wins": -0.102,
   "f2_rookie": -0.009
  },
+ "model": {
+  "mean": {
+   "f3_best": 25.65508,
+   "f2_best": 24.99733,
+   "f2_rookie": 27.74599,
+   "f3_share": 0.1577,
+   "f2_share": 0.18431,
+   "f2_wins": 0.95989,
+   "f2_podiums": 2.8984,
+   "beat_teammate": 0.27864,
+   "sl_peak": 11.8877
+  },
+  "scale": {
+   "f3_best": 14.038,
+   "f2_best": 14.71975,
+   "f2_rookie": 12.34778,
+   "f3_share": 0.28183,
+   "f2_share": 0.30333,
+   "f2_wins": 1.99223,
+   "f2_podiums": 5.46553,
+   "beat_teammate": 0.36546,
+   "sl_peak": 21.29141
+  },
+  "coef": {
+   "f3_best": 0.33363,
+   "f2_best": -0.25326,
+   "f2_rookie": -0.00899,
+   "f3_share": 0.23986,
+   "f2_share": 1.11315,
+   "f2_wins": -0.10163,
+   "f2_podiums": -0.45117,
+   "beat_teammate": 0.59939,
+   "sl_peak": 0.69285
+  },
+  "intercept": -3.07538
+ },
  "candidates": [
   {
    "key": "fornaroli leonardo",

@@ -145,7 +145,7 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 | L1 ✅ | **F2 / F3 / F1 Academy** | Standings, results, driver cards and team cards in the same card style as F1. **Data caveat:** there is no public API like Jolpica, so results come from FIA timing PDFs or the series sites. Check their terms first, and cache everything. |
 | L2 ✅ | **Superlicence Calculator** | Points by series and position, as in the FIA rules. Who on the ladder qualifies. |
 | L3 ✅ | **Scouting Report** | M14: which feeder records turned into good F1 careers, and who looks next. |
-| L4 | **Career Mode** | Start in karting, then F4, F3, F2 and F1. Make decisions (team, budget, risk), with results drawn from real distributions for each series. |
+| L4 ✅ | **Career Mode** | Start in karting, then F4, F3, F2 and F1. Make decisions (team, budget, risk), with results drawn from real distributions for each series. |
 | L5 | **Other Series** | Formula E (reuses E4 energy), WEC/Le Mans (multi-class traffic, driver stints) and IndyCar (ovals, fuel saving), each as a ruleset on E1/E2 plus results data where a free source exists. |
 
 ---
@@ -280,7 +280,7 @@ Each phase ships something visible and finishes in a working app.
 | **6. History playable** ✅ (M5 pre-1996 pace not built: the archive has finishing orders but no time gaps before 1996, so the era ratings cover those years from finishing order instead) | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
 | **7. AI showcase** ✅ | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
 | **8. Circuits and 3D** (in progress: P1, P2, S5 and Academy Module 13 done; P4 historic circuits left) | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
-| **9. Ladder** (in progress: L1 Feeder Series, L2 Superlicence Calculator and L3 Scouting Report with M14 done, from Wikipedia's season articles) | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
+| **9. Ladder** (in progress: L1 Feeder Series, L2 Superlicence Calculator and L3 Scouting Report with M14, and L4 Career Mode done, from Wikipedia's season articles) | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
 | **10. Games and polish** | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
 
 ## 11. Risks to watch
