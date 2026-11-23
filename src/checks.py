@@ -264,6 +264,15 @@ def check_ai_driver():
     check(abs(r["ai_gap"]) < 3, f"its lap times are within 3 s of the real ones ({r['ai_gap']:+.2f} s)")
 
 
+def check_scouting():
+    """Scouting Report: the model ranks unseen eras' careers far better than guessing."""
+    import json
+    print("Checking the scouting model")
+    s = json.loads((ROOT / "data" / "ladder" / "scouting.json").read_text(encoding="utf-8"))
+    check(s["reach"]["auc"] > 0.75, f"it ranks who reaches F1 well on eras it never saw (AUC {s['reach']['auc']:.2f})")
+    check(len(s["candidates"]) > 0, "it has current drivers to rate")
+
+
 def check_pages():
     """Every page in the menu has its one-line subtitle."""
     import re
@@ -293,7 +302,7 @@ def run_all(min_rows=0):
     check_strategy_no_future()
     # Checks for the extra pages (simulator, race breakdowns, report card, page files). These only
     # WARN: a problem on those pages must never stop the robot pushing a locked-in prediction.
-    for extra in (check_lapsim, check_race_story, check_race_engine, check_driving_style, check_ai_driver, check_pages):
+    for extra in (check_lapsim, check_race_story, check_race_engine, check_driving_style, check_ai_driver, check_scouting, check_pages):
         warn_only(extra)
     print("All checks passed.")
 

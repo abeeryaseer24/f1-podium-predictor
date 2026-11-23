@@ -88,6 +88,7 @@ with tabs[0]:
         {"Page": "Historic Circuits", "What it shows": "The Nordschleife and the old Hockenheim in 3D from OpenStreetMap, with three eras of car racing round."},
         {"Page": "Feeder Series", "What it shows": "F2, F3 and F1 Academy since 2005: every championship, and who reached F1."},
         {"Page": "Superlicence Calculator", "What it shows": "The FIA Super Licence points, a path planner, and who on the ladder has them."},
+        {"Page": "Scouting Report", "What it shows": "Which feeder records turned into F1 careers, tested honestly, and who looks next."},
         {"Page": "Circuit Designer", "What it shows": "Draw your own circuit and the lap simulator drives it as you draw."},
         {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},
         {"Page": "Tyre Lab", "What it shows": "How fast each tyre compound wears, measured from real laps."},

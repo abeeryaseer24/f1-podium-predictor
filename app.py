@@ -132,6 +132,7 @@ PAGES = {
     "Ladder": [
         st.Page("app_pages/ladder_series.py", title="Feeder Series"),
         st.Page("app_pages/superlicence.py", title="Superlicence Calculator"),
+        st.Page("app_pages/scouting_report.py", title="Scouting Report"),
     ],
     "History": [
         st.Page("app_pages/history_champions.py", title="Champions"),
@@ -208,6 +209,7 @@ TAGLINES = {
     "Historic Circuits": "The Nordschleife and the old Hockenheim rebuilt in 3D, with a 1975, a 2001 and a 2026 car racing round.",
     "Feeder Series": "Formula 2, Formula 3 and F1 Academy since 2005: every championship, and who made it to F1.",
     "Superlicence Calculator": "The points a driver needs for Formula 1, a path of your own, and who on the ladder has them.",
+    "Scouting Report": "Which feeder-series records turned into Formula 1 careers, tested honestly, and who looks next.",
     "On This Day": "The Grands Prix that were run on today's date, in any year.",
     "Head to Head": "Any two drivers from any era, side by side.",
     "F1 Quiz": "Ten questions, straight from the record books. No two quizzes are the same.",
