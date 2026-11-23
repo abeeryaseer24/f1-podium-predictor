@@ -3,7 +3,7 @@
 Both rounds of ideas merged into one list, de-duplicated and put in build order. Every page
 lives in the existing Streamlit app and looks like it was always there.
 
-Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) Phase 3 (tyre physics, Tyre Physics, Car DNA, Academy Modules 2–3) and Phase 4 (energy model, Energy Lab, Wind Tunnel, Porpoising and Dirty Air Labs, Engine Room, Engine Penalty Planner, Academy Modules 4–7) Phase 5 (race engine, Race Simulator, Win Probability, Rain Crossover, Academy Modules 11–12) and Phase 6 (All-Time Ratings, Driver Swap, Classic Races, Race Director, Race Films) and Phase 7 (AI Strategist, Failure Watch, Ask the Pit Wall, Guess the Driver, Race the AI Driver) are done, plus the 3D Part Explorer.
+Status: ✅ marks what is live. Phase 1 (lap simulator, 3D kit, Lap Simulator, Setup Garage, Academy shell and Modules 0–1) Phase 2 (Where the Race Was Won, Lap One, Team Radio, Model Report Card, Rules Sandbox) Phase 3 (tyre physics, Tyre Physics, Car DNA, Academy Modules 2–3) and Phase 4 (energy model, Energy Lab, Wind Tunnel, Porpoising and Dirty Air Labs, Engine Room, Engine Penalty Planner, Academy Modules 4–7) Phase 5 (race engine, Race Simulator, Win Probability, Rain Crossover, Academy Modules 11–12) and Phase 6 (All-Time Ratings, Driver Swap, Classic Races, Race Director, Race Films) and Phase 7 (AI Strategist, Failure Watch, Ask the Pit Wall, Guess the Driver, Race the AI Driver), Phase 8 (onboard camera, night and rain, Circuit Designer, Academy Module 13, historic circuits), Phase 9 (the Ladder) and Phase 10 (every game, the Driver Market, the Calendar Planner, Replay Commentary, the rest of the Academy and the technical report) are done, plus the 3D Part Explorer. Every phase is complete.
 
 ---
 
@@ -182,8 +182,8 @@ Home · Predictor · Teams · Drivers · Race · Simulator · Ladder · History 
 - P1 ✅ **Onboard camera** in every 3D page: a camera that follows the racing line and the real elevation, at real speed.
 - P2 ✅ **Night races, rain and time of day** in `sim3d.py` and the Pit Wall (night races start at night, and the replay rains when the real race did).
 - P3 ✅ **Illustrative 3D car** (the 3D Part Explorer) (our own design, no team livery or branding). It's used across the Academy with an exploded view, x-ray, airflow particles and component highlighting.
-- P4 (started: the Nordschleife and the old Hockenheim are live; old Spa and Kyalami to come) **Historic circuits in 3D** (old Hockenheim, the Nordschleife, Kyalami, the old Spa) from OpenStreetMap raceway geometry plus open elevation data.
-- P5 **Technical report** (`docs/report.md` + PDF): every model, assumption, limitation and validation.
+- P4 ✅ (the Nordschleife, the old Hockenheim and the old Spa; Kyalami left out: its 1967–85 layout isn't in OpenStreetMap, much of it is now built over) **Historic circuits in 3D** (old Hockenheim, the Nordschleife, Kyalami, the old Spa) from OpenStreetMap raceway geometry plus open elevation data.
+- P5 ✅ **Technical report** (`docs/report.md` + PDF): every model, assumption, limitation and validation.
 
 ---
 
@@ -279,9 +279,9 @@ Each phase ships something visible and finishes in a working app.
 | **5. Race engine** ✅ (safety cars and overtaking use data-derived rates; fuller ML versions of M1/M2 are still open) | M1, M2, E2, S4, S11, A6 · Academy Modules 11–12 | Unlocks every race-level feature |
 | **6. History playable** ✅ (M5 pre-1996 pace not built: the archive has finishing orders but no time gaps before 1996, so the era ratings cover those years from finishing order instead) | M4, M5, A7, A8, C1, C2, C3 | Built on E2 and M4 |
 | **7. AI showcase** ✅ | M6 RL strategist, M7, M8, M9, G4, G9, A10, A13 | Needs E1, E2 and the data pipeline |
-| **8. Circuits and 3D** (in progress: P1, P2, S5 and Academy Module 13 done; P4 historic circuits left) | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
+| **8. Circuits and 3D** ✅ (Kyalami left out, see P4) | P1, P2, P3, P4, S5 · Academy Module 13 (tours) | Uses everything in `sim3d.py` |
 | **9. Ladder** ✅ (L1–L5, M14 and S13, from Wikipedia's season and round articles) | L1–L5, M14, S13 | Biggest data-sourcing risk, so it waits until the core is solid |
-| **10. Games and polish** (in progress: G1 Team Principal, A11 Driver Market, A12 Calendar Planner, G2 Strategy Duel, G3 Prediction Market, G5 Pit Crew, G6 Qualifying Game, G7 Fantasy Optimizer, G8 Energy Challenge and C4 Replay Commentary and Academy Modules 8–10 and 14–16 done; the technical report is left) | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
+| **10. Games and polish** ✅ (G1 Team Principal, A11 Driver Market, A12 Calendar Planner, G2 Strategy Duel, G3 Prediction Market, G5 Pit Crew, G6 Qualifying Game, G7 Fantasy Optimizer, G8 Energy Challenge and C4 Replay Commentary and Academy Modules 8–10 and 14–16, P5 technical report) | G1–G3, G5–G8, A11, A12, C4 · Academy Modules 8–10, 14–16 · P5 technical report | Full set, then the write-up |
 
 ## 11. Risks to watch
 
