@@ -17,7 +17,7 @@ from charts import season_line, season_positions
 from predictor import clean_name
 from style import empty_note, team_info
 from teaminfo import family, photo_credits, team_meta
-from ui_kit import kit_css, league, section, sheet
+from ui_kit import kit_css, league, section, board
 
 
 
@@ -234,10 +234,10 @@ def show(team_id, season):
                 section(f"{season}, race by race",
                         "What the team scored at each round, and where that left them "
                         "in the championship.")
-                sheet([("Round", "num"), ("Race", "text"), ("Points", "num"),
-                       ("Running total", "num"), ("Place", "num")],
-                      [[int(r.round), r.race_name, f"{r.points:g}",
-                        f"{r.cum_points:g}", f"P{int(r.position)}"]
+                board([("Race", "label"), ("Points", "bar"), ("Running total", "num"), ("Place", "scale_low")],
+                      [{"colour": colour, "cells": [(r.race_name.replace(" Grand Prix", ""), f"Round {int(r.round)}"),
+                                                    (float(r.points), f"{r.points:g}"), f"{r.cum_points:g}",
+                                                    (int(r.position), f"P{int(r.position)}")]}
                        for r in mine.itertuples()])
 
     # ---------- 5. facilities ----------

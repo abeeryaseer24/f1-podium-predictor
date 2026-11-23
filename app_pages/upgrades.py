@@ -6,7 +6,7 @@ import streamlit as st
 from app_garage import default_season, get_seasons, get_team_pace, get_upgrades, pace_available
 from cards import cards_css, note
 from style import empty_note, stat_strip, team_info
-from ui_kit import kit_css, league, section, sheet
+from ui_kit import kit_css, league, section, board
 
 JUMP = 0.25        # a gain this big (in per cent of lap time) counts as a step change
 LOOKBACK = 3       # races averaged before and after the step
@@ -103,7 +103,7 @@ if not notes.empty:
             "What each team actually brought, written down by hand from the "
             "technical reports.")
     show = notes.copy().sort_values("round", ascending=False)
-    sheet([("Round", "num"), ("Team", "tag"), ("Area", "text"),
-           ("What it was", "wrap"), ("Source", "text")],
-          [[int(r.round), (team_info(r.constructor)[1], team_info(r.constructor)[0]),
-            r.area, r.description, r.source] for r in show.itertuples()])
+    board([("Team", "label"), ("Area", "text"), ("What it was", "text"), ("Source", "text")],
+          [{"colour": team_info(r.constructor)[1],
+            "cells": [(team_info(r.constructor)[0], f"Round {int(r.round)}"), r.area, r.description, r.source]}
+           for r in show.itertuples()])

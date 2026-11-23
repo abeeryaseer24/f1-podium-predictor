@@ -10,7 +10,7 @@ from app_data import (get_model_history, get_model_info, get_model_weights, get_
 from predictor import clean_name, season_summary
 from ranker import LABELS
 from style import empty_note, race_card, show_cards, stat_tiles
-from ui_kit import kit_css, sheet
+from ui_kit import kit_css, board
 
 GITHUB = "https://github.com/abeeryaseer24/f1-podium-predictor"
 LINKEDIN = ""          # paste your LinkedIn profile link here to show it on the page
@@ -28,8 +28,12 @@ def table(rows):
     headings = list(rows[0])
     numeric = {h for h in headings
                if all(isinstance(r.get(h), (int, float)) for r in rows)}
-    sheet([(h, "num" if h in numeric else "text") for h in headings],
-          [[r.get(h, "") for h in headings] for r in rows])
+    first, rest = headings[0], headings[1:]
+    board([(first, "label")] + [(h, "bar" if h in numeric else "text") for h in rest],
+          [{"colour": "#e10600" if i % 2 == 0 else "#27f4d2",
+            "cells": [(str(r.get(first, "")), "")] + [((r.get(h) or 0), f"{r.get(h):,}") if h in numeric else str(r.get(h, ""))
+                                                     for h in rest]}
+           for i, r in enumerate(rows)])
 
 
 tabs = st.tabs(["The project", "The prediction model", "Accuracy and fairness",

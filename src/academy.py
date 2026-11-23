@@ -221,6 +221,15 @@ def render_quiz(chapter):
 
 def academy_css():
     st.markdown("""<style>
+[data-testid="stMarkdownContainer"] table { width:100%; border-collapse:separate; border-spacing:0; margin:10px 0 16px;
+  border:1px solid var(--pp-border); border-radius:12px; overflow:hidden; font-size:.9rem; }
+[data-testid="stMarkdownContainer"] thead th { background:var(--pp-panel2); color:var(--pp-text); font-weight:800;
+  text-transform:uppercase; letter-spacing:.5px; font-size:.75rem; padding:10px 14px; border:0;
+  border-bottom:2px solid var(--pp-red); text-align:left; }
+[data-testid="stMarkdownContainer"] tbody td { padding:9px 14px; border:0; border-top:1px solid var(--pp-border);
+  color:var(--pp-text); }
+[data-testid="stMarkdownContainer"] tbody tr:nth-child(even) td { background:var(--pp-panel); }
+[data-testid="stMarkdownContainer"] tbody td:first-child { font-weight:700; border-left:4px solid var(--pp-red); }
 .ac-head { display:flex; gap:16px; align-items:flex-start; margin: 10px 0 6px; }
 .ac-num { font-family:'Saira Condensed',sans-serif; font-weight:800; font-size:1.05rem; color:#fff;
   background:var(--pp-red); padding:6px 10px; border-radius:8px; transform:skewX(-8deg); white-space:nowrap; }

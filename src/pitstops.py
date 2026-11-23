@@ -51,10 +51,14 @@ def race_stops(folder, info):
         pits = pd.read_parquet(path)
     except Exception:                      # a half-written file must not break the page
         return pd.DataFrame()
-    if pits.empty or "pit_duration" not in pits.columns:
+    # OpenF1's pit_duration is the whole time in the pit lane (about 20 s); the stationary time, the number
+    # this page is about, is stop_duration, which OpenF1 publishes from 2024. Use that as pit_duration.
+    if pits.empty or "stop_duration" not in pits.columns:
         return pd.DataFrame()
     entries = entry_map(info)
     pits = pits.copy()
+    pits["lane_time"] = pits.get("pit_duration")
+    pits["pit_duration"] = pits["stop_duration"].where(pits["stop_duration"] >= 1.5)
     pits["driver_name"] = pits["driver_number"].map(lambda n: entries.get(int(n), ("", None, ""))[0])
     pits["constructor"] = pits["driver_number"].map(lambda n: entries.get(int(n), ("", None, ""))[1])
     pits["season"] = info["season"]

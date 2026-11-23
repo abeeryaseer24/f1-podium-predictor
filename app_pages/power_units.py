@@ -10,7 +10,7 @@ from app_garage import PU_ALLOWANCE, default_season, get_power_units, get_season
 from cards import cards_css, note
 from predictor import clean_name
 from style import empty_note, stat_strip, team_info
-from ui_kit import chip, heat, kit_css, section, sheet
+from ui_kit import chip, heat, kit_css, section, board
 
 cards_css()
 kit_css()
@@ -78,11 +78,11 @@ if not over.empty:
             "of that part costs them grid places.")
     warn = over.copy()
     warn["Driver"] = warn["driver"].map(clean_name)
-    sheet([("Driver", "text"), ("Team", "tag"), ("Part", "text"), ("Used", "num"),
-           ("Allowed", "num"), ("Next one costs", "text")],
-          [[r.Driver, (team_info(r.constructor)[1], team_info(r.constructor)[0]),
-            r.component, int(r.used), int(r.allowance),
-            f"{int(r.next_penalty)} places"] for r in warn.itertuples()])
+    board([("Driver", "label"), ("Part", "text"), ("Used of allowed", "scale_low"), ("Next one costs", "scale_low")],
+          [{"colour": team_info(r.constructor)[1],
+            "cells": [(r.Driver, team_info(r.constructor)[0]), r.component,
+                      (int(r.used) / max(int(r.allowance), 1), f"{int(r.used)} of {int(r.allowance)}"),
+                      (int(r.next_penalty), f"{int(r.next_penalty)} places")]} for r in warn.itertuples()])
 
 if not log.empty:
     section("Every change logged this season",
@@ -90,8 +90,9 @@ if not log.empty:
             "data/power_units.csv.")
     show_log = log.copy()
     show_log["Driver"] = show_log["driver"].map(clean_name)
-    sheet([("Round", "num"), ("Driver", "text"), ("Part", "text"), ("Note", "wrap")],
-          [[int(r.round), r.Driver, r.component, r.note]
+    board([("Driver", "label"), ("Part", "text"), ("Note", "text")],
+          [{"colour": team_info(r.constructor)[1] if hasattr(r, "constructor") else None,
+            "cells": [(r.Driver, f"Round {int(r.round)}"), r.component, str(r.note)]}
            for r in show_log.sort_values("round", ascending=False).itertuples()])
 
 # The instructions for keeping data/power_units.csv up to date used to sit here, in

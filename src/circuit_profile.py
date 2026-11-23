@@ -14,7 +14,7 @@ import backdrop
 from app_archive import get_circuit_history, get_circuit_index, get_circuit_winners
 from cards import cards_css, crest, figures, glass, key_values, note
 from style import team_info
-from ui_kit import GOLD, kit_css, league, section, sheet
+from ui_kit import GOLD, kit_css, league, section, board
 
 
 @st.cache_data(ttl=3600)
@@ -195,7 +195,6 @@ def show(circuit_id):
                 if not by_team.empty else None
             if match is not None and not match.empty:
                 colour = team_info(match.iloc[0]["constructor"])[1]
-            rows.append([int(r.season), r.race_name, r.driver_name,
-                         (colour, r.constructor_name), r.date])
-        sheet([("Season", "num"), ("Race", "text"), ("Winner", "text"),
-               ("Team", "tag"), ("Date", "text")], rows)
+            rows.append({"colour": colour, "cells": [(r.driver_name, r.constructor_name), f"{int(r.season)}",
+                                                     r.race_name, str(r.date)]})
+        board([("Winner", "label"), ("Season", "num"), ("Race", "text"), ("Date", "text")], rows)

@@ -8,7 +8,7 @@ from app_garage import (first_prepared, get_compound_use, get_prepared_rounds,
 from cards import cards_css, note
 from charts import dress, simple_bars
 from style import empty_note, stat_strip, team_info
-from ui_kit import kit_css, league, section, sheet
+from ui_kit import kit_css, league, section, board
 
 COMPOUND_COLOURS = {"SOFT": "#e10600", "MEDIUM": "#f2c21b", "HARD": "#dcdcdc",
                     "INTERMEDIATE": "#39b54a", "WET": "#1e6fd9", "UNKNOWN": "#8a8a96"}
@@ -26,8 +26,8 @@ if stops.empty:
     empty_note(f"No pit stop data for {season} yet.")
     ready = [s for s in get_prepared_seasons() if s in seasons]
     if ready:
-        note("Pit stops are measured from the lap data, which is available for "
-             f"<b>{', '.join(str(s) for s in ready)}</b>. Pick one of those above.")
+        note("Stationary times come from OpenF1, which publishes them from 2024. Try "
+             f"<b>{', '.join(str(s) for s in ready if s >= 2024)}</b>.")
     else:
         note("Pit stops are measured from the lap data, and none of it has been "
              "prepared yet. It appears on its own once the robot has run.")
@@ -106,9 +106,11 @@ if rounds:
         st.markdown(f'**Fastest stop of the race:** {best["driver_name"]} '
                     f'({team_info(best["constructor"])[0]}) in '
                     f'{best["pit_duration"]:.2f}s on lap {int(best["lap_number"])}.')
-        sheet([("Driver", "text"), ("Lap", "num"), ("Stationary", "num")],
-              [[r.driver_name, int(r.lap_number), f"{r.pit_duration:.2f}s"]
-               for r in race_stops.sort_values("pit_duration").itertuples()])
+        board([("Driver", "label"), ("Lap", "num"), ("Stationary", "scale_low")],
+              [{"colour": team_info(r.constructor)[1],
+                "cells": [(r.driver_name, team_info(r.constructor)[0]), f"{int(r.lap_number)}",
+                          (float(r.pit_duration), f"{r.pit_duration:.2f}s")]}
+               for r in race_stops.sort_values("pit_duration").itertuples()], ranked=True)
 
     stints = get_race_stints(folder)
     if not stints.empty:
