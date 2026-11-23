@@ -86,6 +86,8 @@ with tabs[0]:
         {"Page": "Lap Simulator", "What it shows": "Our physics model drives a real circuit in 3D, next to the real fastest lap."},
         {"Page": "Setup Garage", "What it shows": "Change the wing, power, weight or tyres and see the lap time, corner by corner."},
         {"Page": "Historic Circuits", "What it shows": "The Nordschleife and the old Hockenheim in 3D from OpenStreetMap, with three eras of car racing round."},
+        {"Page": "Feeder Series", "What it shows": "F2, F3 and F1 Academy since 2005: every championship, and who reached F1."},
+        {"Page": "Superlicence Calculator", "What it shows": "The FIA Super Licence points, a path planner, and who on the ladder has them."},
         {"Page": "Circuit Designer", "What it shows": "Draw your own circuit and the lap simulator drives it as you draw."},
         {"Page": "Engineering Academy", "What it shows": "A course on how an F1 car works, in three depths, with live demos on the simulator."},
         {"Page": "Tyre Lab", "What it shows": "How fast each tyre compound wears, measured from real laps."},
@@ -111,6 +113,8 @@ with tabs[0]:
     st.subheader("Where the data comes from")
     table([
         {"Source": "Jolpica-F1 (the Ergast successor)", "Used for": "Results, grids and qualifying since 2016, and the race calendar"},
+        {"Source": "Wikipedia (CC BY-SA 4.0)", "Used for": "Feeder-series results and the Super Licence points table"},
+        {"Source": "OpenStreetMap (ODbL) and OpenTopoData", "Used for": "Historic circuit shapes and their elevation"},
         {"Source": "OpenF1", "Used for": "Laps, tyres, pit stops, race control and car positions, 2023 onwards"},
         {"Source": "MultiViewer circuit data", "Used for": "Official corner numbers for the tracks"},
     ])

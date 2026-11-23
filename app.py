@@ -129,6 +129,10 @@ PAGES = {
         st.Page("app_pages/dirty_air_lab.py", title="Dirty Air Lab"),
         st.Page("app_pages/engine_room.py", title="Engine Room"),
     ],
+    "Ladder": [
+        st.Page("app_pages/ladder_series.py", title="Feeder Series"),
+        st.Page("app_pages/superlicence.py", title="Superlicence Calculator"),
+    ],
     "History": [
         st.Page("app_pages/history_champions.py", title="Champions"),
         st.Page("app_pages/history_eras.py", title="Eras"),
@@ -202,6 +206,8 @@ TAGLINES = {
     "Driver Profiles": "Any driver who has started a Grand Prix since 1950.",
     "Circuit Profiles": "Every track that has held a Grand Prix, and who has won there.",
     "Historic Circuits": "The Nordschleife and the old Hockenheim rebuilt in 3D, with a 1975, a 2001 and a 2026 car racing round.",
+    "Feeder Series": "Formula 2, Formula 3 and F1 Academy since 2005: every championship, and who made it to F1.",
+    "Superlicence Calculator": "The points a driver needs for Formula 1, a path of your own, and who on the ladder has them.",
     "On This Day": "The Grands Prix that were run on today's date, in any year.",
     "Head to Head": "Any two drivers from any era, side by side.",
     "F1 Quiz": "Ten questions, straight from the record books. No two quizzes are the same.",

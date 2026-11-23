@@ -1,0 +1,1304 @@
+series,season,pos,driver,team,points,races,wins,podiums,name
+F2,2005,1,Nico Rosberg,ART Grand Prix,120.0,23,5,12,GP2
+F2,2005,2,Heikki Kovalainen,Arden International,105.0,23,5,12,GP2
+F2,2005,3,Scott Speed,iSport International,67.5,23,0,5,GP2
+F2,2005,4,Alexandre Prémat,ART Grand Prix,67.0,23,2,7,GP2
+F2,2005,5,Adam Carroll,Super Nova International,53.0,23,3,5,GP2
+F2,2005,6,Giorgio Pantano,Super Nova International,49.0,23,0,6,GP2
+F2,2005,7,Neel Jani,Racing Engineering,48.0,23,2,2,GP2
+F2,2005,8,Nelson Piquet Jr.,Hitech Piquet Sports,46.0,23,1,5,GP2
+F2,2005,9,José María López,DAMS,36.0,23,1,3,GP2
+F2,2005,10,Gianmaria Bruni,Durango,35.0,21,1,2,GP2
+F2,2005,11,Ernesto Viso,BCN Competición,21.0,23,0,3,GP2
+F2,2005,12,Nicolas Lapierre,Arden International,21.0,23,0,1,GP2
+F2,2005,13,Olivier Pla,DPR,20.0,23,2,2,GP2
+F2,2005,14,Borja García,Racing Engineering,17.5,23,0,2,GP2
+F2,2005,15,Clivio Piccione,Durango,14.0,23,1,1,GP2
+F2,2005,16,Hiroki Yoshimoto,BCN Competición,14.0,23,0,1,GP2
+F2,2005,17,Ferdinando Monfardini,Durango,5.0,21,0,0,GP2
+F2,2005,18,Juan Cruz Álvarez,Campos Racing,4.5,23,0,0,GP2
+F2,2005,19,Alexandre Negrão,Hitech Piquet Sports,4.0,23,0,0,GP2
+F2,2005,20,Sergio Hernández,Campos Racing,3.0,23,0,0,GP2
+F2,2005,21,Mathias Lauda,Coloni Motorsport,3.0,23,0,0,GP2
+F2,2005,22,Can Artam,iSport International,2.0,23,0,0,GP2
+F2,2005,23,Ryan Sharp,DPR,2.0,13,0,0,GP2
+F2,2005,24,Fairuz Fauzy,DAMS,0.0,23,0,0,GP2
+F2,2005,25,Toni Vilander,Coloni Motorsport,0.0,4,0,0,GP2
+F2,2005,26,Giorgio Mondini,DPR,0.0,10,0,0,GP2
+F2,2006,1,Lewis Hamilton,ART Grand Prix,114.0,21,5,14,GP2
+F2,2006,2,Nelson Piquet Jr.,Piquet Sports,102.0,21,4,8,GP2
+F2,2006,3,Alexandre Prémat,ART Grand Prix,66.0,21,1,8,GP2
+F2,2006,4,Timo Glock,BCN Competición,58.0,21,2,5,GP2
+F2,2006,5,Giorgio Pantano,FMS International (1–2) Petrol Ofisi FMS International (3–11),44.0,15,3,4,GP2
+F2,2006,6,Ernesto Viso,iSport International,42.0,21,2,3,GP2
+F2,2006,7,Gianmaria Bruni,Trident Racing,33.0,21,2,2,GP2
+F2,2006,8,Adam Carroll,Racing Engineering,33.0,21,0,4,GP2
+F2,2006,9,Nicolas Lapierre,Arden International Ltd,32.0,17,0,3,GP2
+F2,2006,10,José María López,Super Nova International,30.0,21,0,3,GP2
+F2,2006,11,Michael Ammermüller,Arden International Ltd,25.0,21,1,3,GP2
+F2,2006,12,Clivio Piccione,"DPR (1–2, 8–11) DPR Direxiv (3–7)",18.0,21,0,2,GP2
+F2,2006,13,Alexandre Negrão,Piquet Sports,13.0,21,0,0,GP2
+F2,2006,14,Andreas Zuber,Trident Racing,12.0,21,1,1,GP2
+F2,2006,15,Hiroki Yoshimoto,BCN Competición,12.0,21,0,1,GP2
+F2,2006,16,Franck Perera,DAMS,8.0,21,0,1,GP2
+F2,2006,17,Lucas di Grassi,Durango,8.0,21,0,0,GP2
+F2,2006,18,Adrián Vallés,Campos Racing,7.0,21,0,1,GP2
+F2,2006,19,Luca Filippi,BCN Competición,7.0,18,0,0,GP2
+F2,2006,20,Tristan Gommendy,iSport International,6.0,9,0,0,GP2
+F2,2006,21,Ferdinando Monfardini,DAMS,6.0,21,0,0,GP2
+F2,2006,22,Félix Porteiro,Campos Racing,5.0,21,0,0,GP2
+F2,2006,23,Sergio Hernández,Durango,1.0,21,0,0,GP2
+F2,2006,24,Fairuz Fauzy,Super Nova International,0.0,21,0,0,GP2
+F2,2006,25,Neel Jani,Arden International Ltd,0.0,4,0,0,GP2
+F2,2006,26,Javier Villa,Racing Engineering,0.0,21,0,0,GP2
+F2,2006,27,Olivier Pla,"DPR (1–2, 8–11) DPR Direxiv (3–7)",0.0,11,0,0,GP2
+F2,2006,28,Vitaly Petrov,"DPR (1–2, 8–11) DPR Direxiv (3–7)",0.0,8,0,0,GP2
+F2,2006,29,Mike Conway,"DPR (1–2, 8–11) DPR Direxiv (3–7)",0.0,2,0,0,GP2
+F2,2006,30,Jason Tahinci,FMS International (1–2) Petrol Ofisi FMS International (3–11),0.0,21,0,0,GP2
+F2,2007,1,Timo Glock,iSport International,88.0,21,5,10,GP2
+F2,2007,2,Lucas di Grassi,ART Grand Prix,77.0,21,1,7,GP2
+F2,2007,3,Giorgio Pantano,Campos Grand Prix,59.0,21,2,6,GP2
+F2,2007,4,Luca Filippi,Super Nova International,59.0,21,1,6,GP2
+F2,2007,5,Kazuki Nakajima,DAMS,44.0,21,0,6,GP2
+F2,2007,6,Javier Villa,Racing Engineering,42.0,21,3,5,GP2
+F2,2007,7,Adam Carroll,Petrol Ofisi FMS International,36.0,16,2,5,GP2
+F2,2007,8,Bruno Senna,Arden International,34.0,21,1,3,GP2
+F2,2007,9,Andreas Zuber,iSport International,30.0,21,1,3,GP2
+F2,2007,10,Borja García,Durango,28.0,21,0,0,GP2
+F2,2007,11,Pastor Maldonado,Trident Racing,25.0,13,1,2,GP2
+F2,2007,12,Nicolas Lapierre,DAMS,23.0,21,2,2,GP2
+F2,2007,13,Vitaly Petrov,Campos Grand Prix,21.0,21,1,1,GP2
+F2,2007,14,Mike Conway,Super Nova International,19.0,21,0,1,GP2
+F2,2007,15,Karun Chandhok,Durango,16.0,21,1,1,GP2
+F2,2007,16,Andy Soucek,DPR,15.0,21,0,2,GP2
+F2,2007,17,Roldán Rodríguez,Minardi Piquet Sports,14.0,21,0,1,GP2
+F2,2007,18,Adrian Zaugg,Arden International,10.0,19,0,0,GP2
+F2,2007,19,Kohei Hirate,Trident Racing,9.0,21,0,1,GP2
+F2,2007,20,Alexandre Negrão,Minardi Piquet Sports,8.0,21,0,1,GP2
+F2,2007,21,Sébastien Buemi,ART Grand Prix,6.0,11,0,0,GP2
+F2,2007,22,Marcos Martínez,Racing Engineering,5.0,10,0,0,GP2
+F2,2007,23,Ho-Pin Tung,BCN Competición,4.0,21,0,0,GP2
+F2,2007,24,Sérgio Jimenez,Racing Engineering,4.0,5,0,0,GP2
+F2,2007,25,Mikhail Aleshin,ART Grand Prix,3.0,4,0,0,GP2
+F2,2007,26,Michael Ammermüller,ART Grand Prix,1.0,6,0,0,GP2
+F2,2007,27,Antônio Pizzonia,Petrol Ofisi FMS International,1.0,5,0,0,GP2
+F2,2007,28,Ricardo Risatti,Trident Racing,1.0,6,0,0,GP2
+F2,2007,29,Ernesto Viso,Racing Engineering,0.0,4,0,0,GP2
+F2,2007,30,Sakon Yamamoto,BCN Competición,0.0,11,0,0,GP2
+F2,2007,31,Markus Niemelä,BCN Competición,0.0,8,0,0,GP2
+F2,2007,32,Filipe Albuquerque,Racing Engineering,0.0,4,0,0,GP2
+F2,2007,33,Jason Tahinci,Petrol Ofisi FMS International,0.0,21,0,0,GP2
+F2,2007,34,Christian Bakkerud,DPR,0.0,19,0,0,GP2
+F2,2007,35,Olivier Pla,DPR,0.0,2,0,0,GP2
+F2,2007,36,Sergio Hernández,Trident Racing,0.0,2,0,0,GP2
+F2,2008,1,Giorgio Pantano,Racing Engineering,76.0,20,4,7,GP2
+F2,2008,2,Bruno Senna,iSport International,64.0,20,2,6,GP2
+F2,2008,3,Lucas di Grassi,Barwa International Campos Team,63.0,14,3,6,GP2
+F2,2008,4,Romain Grosjean,ART Grand Prix,62.0,20,2,6,GP2
+F2,2008,5,Pastor Maldonado,Piquet Sports,60.0,20,1,6,GP2
+F2,2008,6,Sébastien Buemi,Trust Team Arden,50.0,20,2,5,GP2
+F2,2008,7,Vitaly Petrov,Barwa International Campos Team,39.0,20,1,3,GP2
+F2,2008,8,Álvaro Parente,Super Nova Racing,34.0,20,1,4,GP2
+F2,2008,9,Andreas Zuber,Piquet Sports,32.0,20,0,4,GP2
+F2,2008,10,Karun Chandhok,iSport International,31.0,20,1,3,GP2
+F2,2008,11,Jérôme d'Ambrosio,DAMS,21.0,20,0,2,GP2
+F2,2008,12,Mike Conway,Trident Racing,20.0,20,1,1,GP2
+F2,2008,13,Roldán Rodríguez,Fisichella Motor Sport International,14.0,20,0,1,GP2
+F2,2008,14,Andy Soucek,DPR,14.0,18,0,1,GP2
+F2,2008,15,Davide Valsecchi,Durango,11.0,16,1,1,GP2
+F2,2008,16,Kamui Kobayashi,DAMS,10.0,20,1,1,GP2
+F2,2008,17,Javier Villa,Racing Engineering,8.0,20,0,0,GP2
+F2,2008,18,Ho-Pin Tung,Trident Racing,7.0,20,0,1,GP2
+F2,2008,19,Luca Filippi,Trust Team Arden,6.0,20,0,1,GP2
+F2,2008,20,Yelmer Buurman,Trust Team Arden,5.0,10,0,1,GP2
+F2,2008,21,Adrián Vallés,BCN Competición,5.0,20,0,0,GP2
+F2,2008,22,Diego Nunes,DPR,3.0,20,0,0,GP2
+F2,2008,23,Sakon Yamamoto,ART Grand Prix,3.0,10,0,0,GP2
+F2,2008,24,Ben Hanley,Durango,1.0,8,0,0,GP2
+F2,2008,25,Adam Carroll,Fisichella Motor Sport International,1.0,4,0,0,GP2
+F2,2008,26,Alberto Valério,Durango,0.0,20,0,0,GP2
+F2,2008,27,Christian Bakkerud,Super Nova Racing,0.0,4,0,0,GP2
+F2,2008,28,Carlos Iaconelli,BCN Competición,0.0,14,0,0,GP2
+F2,2008,29,Marko Asmer,Fisichella Motor Sport International,0.0,14,0,0,GP2
+F2,2008,30,Michael Herck,DPR,0.0,14,0,0,GP2
+F2,2008,31,Giacomo Ricci,DPR,0.0,4,0,0,GP2
+F2,2008,32,Miloš Pavlović,BCN Competición,0.0,6,0,0,GP2
+F2,2008,33,Paolo Maria Nocera,BCN Competición,0.0,2,0,0,GP2
+F2,2008,34,Marcello Puglisi,Durango,0.0,2,0,0,GP2
+F2,2009,1,Nico Hülkenberg,ART Grand Prix,100.0,20,5,10,GP2
+F2,2009,2,Vitaly Petrov,Barwa Campos Team (1) Barwa Addax Team (2–10),75.0,20,2,7,GP2
+F2,2009,3,Lucas di Grassi,Fat Burner Racing Engineering,63.0,20,1,8,GP2
+F2,2009,4,Romain Grosjean,Barwa Campos Team (1) Barwa Addax Team (2–10),45.0,12,2,3,GP2
+F2,2009,5,Luca Filippi,Super Nova Racing,40.0,20,1,4,GP2
+F2,2009,6,Pastor Maldonado,ART Grand Prix,36.0,20,2,2,GP2
+F2,2009,7,Giedo van der Garde,iSport International,34.0,20,3,3,GP2
+F2,2009,8,Álvaro Parente,Ocean Racing Technology,30.0,20,1,2,GP2
+F2,2009,9,Jérôme d'Ambrosio,DAMS,29.0,20,0,3,GP2
+F2,2009,10,Javier Villa,Super Nova Racing,27.0,20,0,3,GP2
+F2,2009,11,Roldán Rodríguez,Piquet GP,25.0,20,0,2,GP2
+F2,2009,12,Sergio Pérez,Telmex Arden International,22.0,20,0,2,GP2
+F2,2009,13,Andreas Zuber,FMSI (1–6) Party Poker Racing.com SC (7–10),21.0,18,0,3,GP2
+F2,2009,14,Edoardo Mortara,Telmex Arden International,19.0,20,1,1,GP2
+F2,2009,15,Alberto Valerio,Piquet GP,16.0,20,1,1,GP2
+F2,2009,16,Kamui Kobayashi,DAMS,13.0,20,0,1,GP2
+F2,2009,17,Davide Valsecchi,Durango,12.0,20,0,1,GP2
+F2,2009,18,Karun Chandhok,Ocean Racing Technology,10.0,20,0,1,GP2
+F2,2009,19,Luiz Razia,FMSI (1–6) Party Poker Racing.com SC (7–10),8.0,18,1,1,GP2
+F2,2009,20,Diego Nunes,iSport International,8.0,20,0,1,GP2
+F2,2009,21,Dani Clos,Fat Burner Racing Engineering,4.0,20,0,1,GP2
+F2,2009,22,Davide Rigon,Trident Racing,3.0,18,0,0,GP2
+F2,2009,23,Michael Herck,DPR,0.0,20,0,0,GP2
+F2,2009,24,Nelson Panciatici,Durango,0.0,16,0,0,GP2
+F2,2009,25,Stefano Coletti,Durango,0.0,4,0,0,GP2
+F2,2009,26,Ricardo Teixeira,Trident Racing,0.0,20,0,0,GP2
+F2,2009,27,Giacomo Ricci,DPR,0.0,8,0,0,GP2
+F2,2009,28,Franck Perera,DPR,0.0,8,0,0,GP2
+F2,2009,29,Rodolfo González,Trident Racing,0.0,2,0,0,GP2
+F2,2009,30,Johnny Cecotto Jr.,DPR,0.0,4,0,0,GP2
+F2,2010,1,Pastor Maldonado,Rapax,87.0,20,6,8,GP2
+F2,2010,2,Sergio Pérez,Barwa Addax Team,71.0,20,5,7,GP2
+F2,2010,3,Jules Bianchi,ART Grand Prix,52.0,20,0,4,GP2
+F2,2010,4,Dani Clos,Racing Engineering,51.0,20,1,5,GP2
+F2,2010,5,Sam Bird,ART Grand Prix,48.0,20,1,5,GP2
+F2,2010,6,Oliver Turvey,iSport International,47.0,20,0,4,GP2
+F2,2010,7,Giedo van der Garde,Barwa Addax Team,39.0,20,0,4,GP2
+F2,2010,8,Davide Valsecchi,iSport International,31.0,20,1,3,GP2
+F2,2010,9,Christian Vietoris,Racing Engineering,29.0,18,1,3,GP2
+F2,2010,10,Charles Pic,Arden International,28.0,20,1,2,GP2
+F2,2010,11,Luiz Razia,Rapax,28.0,20,0,3,GP2
+F2,2010,12,Jérôme d'Ambrosio,DAMS,21.0,18,1,2,GP2
+F2,2010,13,Giacomo Ricci,DPR,16.0,14,1,2,GP2
+F2,2010,14,Romain Grosjean,DAMS,14.0,8,0,2,GP2
+F2,2010,15,Álvaro Parente,Scuderia Coloni,13.0,4,0,2,GP2
+F2,2010,16,Michael Herck,DPR,12.0,20,0,1,GP2
+F2,2010,17,Marcus Ericsson,Super Nova Racing,11.0,20,1,1,GP2
+F2,2010,18,Adrian Zaugg,Trident Racing,9.0,20,0,1,GP2
+F2,2010,19,Fabio Leimer,Ocean Racing Technology,8.0,20,1,1,GP2
+F2,2010,20,Luca Filippi,Super Nova Racing,5.0,10,0,0,GP2
+F2,2010,21,Rodolfo González,Arden International,4.0,20,0,0,GP2
+F2,2010,22,Alberto Valerio,Scuderia Coloni,4.0,14,0,0,GP2
+F2,2010,23,Johnny Cecotto Jr.,Trident Racing,3.0,16,0,0,GP2
+F2,2010,24,Josef Král,Super Nova Racing,3.0,10,0,0,GP2
+F2,2010,25,Max Chilton,Ocean Racing Technology,3.0,20,0,0,GP2
+F2,2010,26,Edoardo Piscopo,Trident Racing,2.0,2,0,0,GP2
+F2,2010,27,Brendon Hartley,Scuderia Coloni,1.0,4,0,0,GP2
+F2,2010,28,Ho-Pin Tung,DAMS,0.0,16,0,0,GP2
+F2,2010,29,Vladimir Arabadzhiev,Scuderia Coloni,0.0,16,0,0,GP2
+F2,2010,30,Fabrizio Crestani,DPR,0.0,6,0,0,GP2
+F2,2010,31,James Jakes,Scuderia Coloni,0.0,2,0,0,GP2
+F2,2010,32,Federico Leo,Trident Racing,0.0,2,0,0,GP2
+F2,2011,1,Romain Grosjean,DAMS,89.0,18,5,10,GP2
+F2,2011,2,Luca Filippi,Scuderia Coloni,54.0,18,3,5,GP2
+F2,2011,3,Jules Bianchi,Lotus ART,53.0,18,1,6,GP2
+F2,2011,4,Charles Pic,Barwa Addax Team,52.0,18,2,5,GP2
+F2,2011,5,Giedo van der Garde,Barwa Addax Team,49.0,18,0,5,GP2
+F2,2011,6,Sam Bird,iSport International,45.0,18,0,3,GP2
+F2,2011,7,Christian Vietoris,Racing Engineering,35.0,14,2,3,GP2
+F2,2011,8,Davide Valsecchi,Team AirAsia (1–3) Caterham Team AirAsia (4–9),30.0,18,1,2,GP2
+F2,2011,9,Dani Clos,Racing Engineering,30.0,18,0,2,GP2
+F2,2011,10,Marcus Ericsson,iSport International,25.0,18,0,2,GP2
+F2,2011,11,Stefano Coletti,Trident Racing,22.0,16,2,2,GP2
+F2,2011,12,Luiz Razia,Team AirAsia (1–3) Caterham Team AirAsia (4–9),19.0,18,0,2,GP2
+F2,2011,13,Esteban Gutiérrez,Lotus ART,15.0,18,1,2,GP2
+F2,2011,14,Fabio Leimer,Rapax,15.0,18,1,2,GP2
+F2,2011,15,Josef Král,Arden International,15.0,18,0,2,GP2
+F2,2011,16,Álvaro Parente,Carlin,8.0,12,0,1,GP2
+F2,2011,17,Adam Carroll,Super Nova Racing,6.0,8,0,0,GP2
+F2,2011,18,Fairuz Fauzy,Super Nova Racing,5.0,18,0,0,GP2
+F2,2011,19,Brendon Hartley,Ocean Racing Technology,4.0,4,0,0,GP2
+F2,2011,20,Max Chilton,Carlin,4.0,18,0,0,GP2
+F2,2011,21,Michael Herck,Scuderia Coloni,1.0,18,0,0,GP2
+F2,2011,22,Kevin Mirocha,Ocean Racing Technology,0.0,14,0,0,GP2
+F2,2011,23,Pål Varhaug,DAMS,0.0,18,0,0,GP2
+F2,2011,24,Johnny Cecotto Jr.,Ocean Racing Technology,0.0,18,0,0,GP2
+F2,2011,25,Oliver Turvey,Carlin,0.0,2,0,0,GP2
+F2,2011,26,Rodolfo González,Trident Racing,0.0,18,0,0,GP2
+F2,2011,27,Julián Leal,Rapax,0.0,18,0,0,GP2
+F2,2011,28,Jolyon Palmer,Arden International,0.0,18,0,0,GP2
+F2,2011,29,Davide Rigon,Scuderia Coloni,0.0,2,0,0,GP2
+F2,2011,30,Kevin Ceccon,Scuderia Coloni,0.0,8,0,0,GP2
+F2,2011,31,Stéphane Richelmi,Trident Racing,0.0,2,0,0,GP2
+F2,2011,32,Mikhail Aleshin,Carlin,0.0,8,0,0,GP2
+F2,2012,1,Davide Valsecchi,DAMS,247.0,24,4,10,GP2
+F2,2012,2,Luiz Razia,Arden International,222.0,24,4,9,GP2
+F2,2012,3,Esteban Gutiérrez,Lotus GP,176.0,24,3,7,GP2
+F2,2012,4,Max Chilton,Carlin,169.0,24,2,4,GP2
+F2,2012,5,James Calado,Lotus GP,160.0,24,2,7,GP2
+F2,2012,6,Giedo van der Garde,Caterham Racing,160.0,24,2,6,GP2
+F2,2012,7,Fabio Leimer,Racing Engineering,152.0,24,0,6,GP2
+F2,2012,8,Marcus Ericsson,iSport International,124.0,24,1,5,GP2
+F2,2012,9,Johnny Cecotto Jr.,Barwa Addax Team,104.0,24,2,4,GP2
+F2,2012,10,Felipe Nasr,DAMS,95.0,24,0,4,GP2
+F2,2012,11,Jolyon Palmer,iSport International,78.0,24,1,3,GP2
+F2,2012,12,Nathanaël Berthon,Racing Engineering,60.0,24,0,2,GP2
+F2,2012,13,Stefano Coletti,Rapax,50.0,24,0,1,GP2
+F2,2012,14,Rio Haryanto,Carlin,38.0,24,0,0,GP2
+F2,2012,15,Tom Dillmann,Rapax,29.0,14,1,1,GP2
+F2,2012,16,Luca Filippi,Scuderia Coloni,29.0,4,1,1,GP2
+F2,2012,17,Josef Král,Barwa Addax Team,27.0,16,1,1,GP2
+F2,2012,18,Stéphane Richelmi,Trident Racing,25.0,24,0,1,GP2
+F2,2012,19,Nigel Melker,Ocean Racing Technology,25.0,24,0,0,GP2
+F2,2012,20,Fabio Onidi,Scuderia Coloni,13.0,24,0,0,GP2
+F2,2012,21,Julián Leal,Trident Racing,9.0,24,0,0,GP2
+F2,2012,22,Rodolfo González,Caterham Racing,6.0,24,0,0,GP2
+F2,2012,23,Simon Trummer,Arden International,4.0,24,0,0,GP2
+F2,2012,24,Fabrizio Crestani,Venezuela GP Lazarus,1.0,14,0,0,GP2
+F2,2012,25,Brendon Hartley,Ocean Racing Technology,1.0,4,0,0,GP2
+F2,2012,26,Daniël de Jong,Rapax,0.0,8,0,0,GP2
+F2,2012,27,Sergio Canamasas,Venezuela GP Lazarus,0.0,10,0,0,GP2
+F2,2012,28,Dani Clos,Barwa Addax Team,0.0,4,0,0,GP2
+F2,2012,29,Ricardo Teixeira,Rapax,0.0,22,0,0,GP2
+F2,2012,30,Victor Guerin,Ocean Racing Technology,0.0,18,0,0,GP2
+F2,2012,31,René Binder,Venezuela GP Lazarus,0.0,6,0,0,GP2
+F2,2012,32,Jake Rosenzweig,Barwa Addax Team,0.0,4,0,0,GP2
+F2,2012,33,Giancarlo Serenelli,Venezuela GP Lazarus,0.0,18,0,0,GP2
+F2,2012,34,Jon Lancaster,Ocean Racing Technology,0.0,2,0,0,GP2
+F2,2013,1,Fabio Leimer,Racing Engineering,201.0,22,3,7,GP2
+F2,2013,2,Sam Bird,Russian Time,181.0,22,5,6,GP2
+F2,2013,3,James Calado,ART Grand Prix,157.0,22,2,7,GP2
+F2,2013,4,Felipe Nasr,Carlin,154.0,22,0,6,GP2
+F2,2013,5,Stefano Coletti,Rapax,135.0,22,3,7,GP2
+F2,2013,6,Marcus Ericsson,DAMS,121.0,22,1,5,GP2
+F2,2013,7,Jolyon Palmer,Carlin,119.0,22,2,3,GP2
+F2,2013,8,Stéphane Richelmi,DAMS,103.0,22,0,1,GP2
+F2,2013,9,Alexander Rossi,Caterham Racing (1–3) EQ8 Caterham Racing (4–11),92.0,20,1,4,GP2
+F2,2013,10,Tom Dillmann,Russian Time,92.0,22,0,2,GP2
+F2,2013,11,Jon Lancaster,Hilmer Motorsport,73.0,16,2,3,GP2
+F2,2013,12,Julián Leal,Racing Engineering,62.0,22,0,2,GP2
+F2,2013,13,Adrian Quaife-Hobbs,MP Motorsport,56.0,22,1,3,GP2
+F2,2013,14,Mitch Evans,Arden International,56.0,22,0,4,GP2
+F2,2013,15,Robin Frijns,Hilmer Motorsport,47.0,12,1,2,GP2
+F2,2013,16,Johnny Cecotto Jr.,Arden International,41.0,22,0,0,GP2
+F2,2013,17,Kevin Ceccon,Trident Racing,28.0,12,0,1,GP2
+F2,2013,18,Dani Clos,MP Motorsport,25.0,10,0,1,GP2
+F2,2013,19,Rio Haryanto,Barwa Addax Team,22.0,22,0,1,GP2
+F2,2013,20,Nathanaël Berthon,Trident Racing,21.0,22,1,1,GP2
+F2,2013,21,Simon Trummer,Rapax,20.0,22,0,0,GP2
+F2,2013,22,Daniel Abt,ART Grand Prix,11.0,22,0,0,GP2
+F2,2013,23,René Binder,Venezuela GP Lazarus,11.0,22,0,0,GP2
+F2,2013,24,Daniël de Jong,MP Motorsport,3.0,22,0,0,GP2
+F2,2013,25,Sergio Canamasas,Caterham Racing (1–3) EQ8 Caterham Racing (4–11),3.0,22,0,0,GP2
+F2,2013,26,Conor Daly,Hilmer Motorsport,2.0,2,0,0,GP2
+F2,2013,27,Vittorio Ghirelli,Venezuela GP Lazarus,1.0,10,0,0,GP2
+F2,2013,28,Jake Rosenzweig,Barwa Addax Team,0.0,22,0,0,GP2
+F2,2013,29,Kevin Giovesi,Venezuela GP Lazarus,0.0,8,0,0,GP2
+F2,2013,30,Gianmarco Raimondo,Trident Racing,0.0,4,0,0,GP2
+F2,2013,31,Pål Varhaug,Hilmer Motorsport,0.0,4,0,0,GP2
+F2,2013,32,Sergio Campana,Trident Racing,0.0,2,0,0,GP2
+F2,2013,33,Fabrizio Crestani,Venezuela GP Lazarus,0.0,4,0,0,GP2
+F2,2013,34,Ricardo Teixeira,Trident Racing,0.0,4,0,0,GP2
+F2,2013,35,Ma Qinghua,Caterham Racing (1–3) EQ8 Caterham Racing (4–11),0.0,2,0,0,GP2
+F2,2014,1,Jolyon Palmer,DAMS,276.0,22,4,12,GP2
+F2,2014,2,Stoffel Vandoorne,ART Grand Prix,229.0,22,4,10,GP2
+F2,2014,3,Felipe Nasr,Carlin,224.0,22,4,10,GP2
+F2,2014,4,Mitch Evans,RT Russian Time,174.0,22,2,6,GP2
+F2,2014,5,Johnny Cecotto Jr.,Trident,140.0,22,2,5,GP2
+F2,2014,6,Stefano Coletti,Racing Engineering,136.0,22,2,5,GP2
+F2,2014,7,Arthur Pic,Campos Racing,124.0,22,1,3,GP2
+F2,2014,8,Raffaele Marciello,Racing Engineering,74.0,22,1,4,GP2
+F2,2014,9,Stéphane Richelmi,DAMS,73.0,22,1,2,GP2
+F2,2014,10,Julián Leal,Carlin,68.0,22,0,2,GP2
+F2,2014,11,Marco Sørensen,MP Motorsport,47.0,14,1,1,GP2
+F2,2014,12,André Negrão,Arden International,31.0,20,0,0,GP2
+F2,2014,13,Adrian Quaife-Hobbs,Rapax,30.0,18,0,1,GP2
+F2,2014,14,Sergio Canamasas,Trident,29.0,20,0,1,GP2
+F2,2014,15,Rio Haryanto,EQ8 Caterham Racing (1–8) Caterham Racing (9–11),28.0,22,0,1,GP2
+F2,2014,16,Daniel Abt,Hilmer Motorsport,27.0,20,0,0,GP2
+F2,2014,17,Simon Trummer,Rapax,26.0,22,0,1,GP2
+F2,2014,18,Takuya Izawa,ART Grand Prix,26.0,22,0,1,GP2
+F2,2014,19,Tom Dillmann,EQ8 Caterham Racing (1–8) Caterham Racing (9–11),18.0,8,0,1,GP2
+F2,2014,20,Nathanaël Berthon,Venezuela GP Lazarus,17.0,22,0,0,GP2
+F2,2014,21,Alexander Rossi,Campos Racing,12.0,12,0,0,GP2
+F2,2014,22,Tio Ellinas,MP Motorsport,7.0,8,0,0,GP2
+F2,2014,23,Jon Lancaster,MP Motorsport,6.0,16,0,0,GP2
+F2,2014,24,Artem Markelov,RT Russian Time,6.0,22,0,0,GP2
+F2,2014,25,René Binder,Arden International,3.0,22,0,0,GP2
+F2,2014,26,Conor Daly,Venezuela GP Lazarus,2.0,18,0,0,GP2
+F2,2014,27,Kimiya Sato,Campos Racing,2.0,20,0,0,GP2
+F2,2014,28,Daniël de Jong,MP Motorsport,2.0,22,0,0,GP2
+F2,2014,29,Pierre Gasly,EQ8 Caterham Racing (1–8) Caterham Racing (9–11),0.0,6,0,0,GP2
+F2,2014,30,Sergio Campana,Venezuela GP Lazarus,0.0,4,0,0,GP2
+F2,2014,31,Facu Regalia,Hilmer Motorsport,0.0,8,0,0,GP2
+F2,2014,32,Nicholas Latifi,Hilmer Motorsport,0.0,2,0,0,GP2
+F2,2014,33,Kevin Giovesi,Rapax,0.0,2,0,0,GP2
+F2,2014,34,Axcil Jefferies,Trident,0.0,2,0,0,GP2
+F2,2015,1,Stoffel Vandoorne,ART Grand Prix,341.5,22,7,16,GP2
+F2,2015,2,Alexander Rossi,Racing Engineering,181.5,22,3,7,GP2
+F2,2015,3,Sergey Sirotkin,Rapax,139.0,22,1,5,GP2
+F2,2015,4,Rio Haryanto,Campos Racing,138.0,22,3,5,GP2
+F2,2015,5,Mitch Evans,Russian Time,135.0,22,2,7,GP2
+F2,2015,6,Alex Lynn,DAMS,110.0,22,2,4,GP2
+F2,2015,7,Raffaele Marciello,Trident,110.0,22,0,4,GP2
+F2,2015,8,Pierre Gasly,DAMS,110.0,22,0,4,GP2
+F2,2015,9,Nobuharu Matsushita,ART Grand Prix,68.5,22,1,3,GP2
+F2,2015,10,Richie Stanaway,Status Grand Prix,60.0,18,2,2,GP2
+F2,2015,11,Arthur Pic,Campos Racing,60.0,22,0,2,GP2
+F2,2015,12,Jordan King,Racing Engineering,60.0,22,0,1,GP2
+F2,2015,13,Artem Markelov,Russian Time,48.0,22,0,1,GP2
+F2,2015,14,Julián Leal,Carlin,38.0,16,0,0,GP2
+F2,2015,15,Sergio Canamasas,Lazarus (1–3) Daiko Team Lazarus (4–11),27.0,20,0,1,GP2
+F2,2015,16,Nathanaël Berthon,Lazarus (1–3) Daiko Team Lazarus (4–11),27.0,20,0,1,GP2
+F2,2015,17,Robert Vișoiu,Rapax,20.0,18,0,0,GP2
+F2,2015,18,Norman Nato,Arden International,20.0,22,0,0,GP2
+F2,2015,19,Nick Yelloly,Hilmer Motorsport,19.0,12,0,0,GP2
+F2,2015,20,André Negrão,Arden International,5.0,22,0,0,GP2
+F2,2015,21,Oliver Rowland,Status Grand Prix,3.0,8,0,0,GP2
+F2,2015,22,René Binder,MP Motorsport,2.0,20,0,0,GP2
+F2,2015,23,Daniël de Jong,MP Motorsport,1.0,18,0,0,GP2
+F2,2015,24,Dean Stoneman,Carlin,1.0,6,0,0,GP2
+F2,2015,25,Gustav Malja,Rapax,1.0,6,0,0,GP2
+F2,2015,26,Marlon Stöckinger,Status Grand Prix,0.0,22,0,0,GP2
+F2,2015,27,Nicholas Latifi,MP Motorsport,0.0,8,0,0,GP2
+F2,2015,28,Johnny Cecotto Jr.,Hilmer Motorsport,0.0,10,0,0,GP2
+F2,2015,29,Zoël Amberg,Lazarus (1–3) Daiko Team Lazarus (4–11),0.0,10,0,0,GP2
+F2,2015,30,Sean Gelael,Carlin,0.0,10,0,0,GP2
+F2,2015,31,Simon Trummer,Hilmer Motorsport,0.0,4,0,0,GP2
+F2,2015,32,Jon Lancaster,Hilmer Motorsport,0.0,2,0,0,GP2
+F2,2015,33,Marco Sørensen,Carlin,0.0,8,0,0,GP2
+F2,2015,34,Patric Niederhauser,Lazarus (1–3) Daiko Team Lazarus (4–11),0.0,2,0,0,GP2
+F2,2015,35,Jann Mardenborough,Carlin,0.0,2,0,0,GP2
+F2,2016,1,Pierre Gasly,Prema Racing,219.0,22,4,9,GP2
+F2,2016,2,Antonio Giovinazzi,Prema Racing,211.0,22,5,8,GP2
+F2,2016,3,Sergey Sirotkin,ART Grand Prix,159.0,22,2,8,GP2
+F2,2016,4,Raffaele Marciello,Russian Time,159.0,22,0,6,GP2
+F2,2016,5,Norman Nato,Racing Engineering,136.0,22,2,5,GP2
+F2,2016,6,Alex Lynn,DAMS,124.0,22,3,5,GP2
+F2,2016,7,Jordan King,Racing Engineering,122.0,22,2,5,GP2
+F2,2016,8,Luca Ghiotto,Trident,111.0,22,1,4,GP2
+F2,2016,9,Oliver Rowland,MP Motorsport,107.0,22,0,4,GP2
+F2,2016,10,Artem Markelov,Russian Time,97.0,22,1,2,GP2
+F2,2016,11,Nobuharu Matsushita,ART Grand Prix,92.0,22,1,2,GP2
+F2,2016,12,Mitch Evans,Pertamina Campos Racing,90.0,22,1,1,GP2
+F2,2016,13,Gustav Malja,Rapax,53.0,22,0,2,GP2
+F2,2016,14,Arthur Pic,Rapax,36.0,18,0,1,GP2
+F2,2016,15,Sean Gelael,Pertamina Campos Racing,24.0,22,0,1,GP2
+F2,2016,16,Nicholas Latifi,DAMS,23.0,22,0,1,GP2
+F2,2016,17,Marvin Kirchhöfer,Carlin,21.0,20,0,1,GP2
+F2,2016,18,Johnny Cecotto Jr.,Rapax,18.0,4,0,1,GP2
+F2,2016,19,Sergio Canamasas,Carlin,17.0,20,0,0,GP2
+F2,2016,20,Jimmy Eriksson,Arden International,10.0,18,0,0,GP2
+F2,2016,21,Daniël de Jong,MP Motorsport,6.0,22,0,0,GP2
+F2,2016,22,Nabil Jeffri,Arden International,2.0,22,0,0,GP2
+F2,2016,23,René Binder,Carlin,0.0,4,0,0,GP2
+F2,2016,24,Philo Paz Armand,Trident,0.0,22,0,0,GP2
+F2,2016,25,Emil Bernstorff,Arden International,0.0,2,0,0,GP2
+F2,2016,26,Louis Delétraz,Carlin,0.0,2,0,0,GP2
+F2,2017,1,Charles Leclerc,Prema Racing,282.0,22,7,10,F2
+F2,2017,2,Artem Markelov,Russian Time,210.0,22,5,7,F2
+F2,2017,3,Oliver Rowland,DAMS,191.0,22,2,10,F2
+F2,2017,4,Luca Ghiotto,Russian Time,185.0,22,1,7,F2
+F2,2017,5,Nicholas Latifi,DAMS,178.0,22,1,9,F2
+F2,2017,6,Nobuharu Matsushita,ART Grand Prix,131.0,22,2,4,F2
+F2,2017,7,Nyck de Vries,Rapax,114.0,22,1,5,F2
+F2,2017,8,Antonio Fuoco,Prema Racing,98.0,22,1,5,F2
+F2,2017,9,Norman Nato,Pertamina Arden,91.0,22,1,3,F2
+F2,2017,10,Alexander Albon,ART Grand Prix,86.0,20,0,2,F2
+F2,2017,11,Jordan King,MP Motorsport,62.0,22,0,0,F2
+F2,2017,12,Sérgio Sette Câmara,MP Motorsport,47.0,22,1,2,F2
+F2,2017,13,Gustav Malja,Racing Engineering,44.0,22,0,1,F2
+F2,2017,14,Sergio Canamasas,Rapax,21.0,14,0,0,F2
+F2,2017,15,Sean Gelael,Pertamina Arden,17.0,22,0,0,F2
+F2,2017,16,Johnny Cecotto Jr.,Rapax,16.0,8,0,1,F2
+F2,2017,17,Louis Delétraz,Rapax,16.0,22,0,0,F2
+F2,2017,18,Roberto Merhi,Rapax,16.0,8,0,0,F2
+F2,2017,19,Ralph Boschung,Campos Racing,11.0,20,0,0,F2
+F2,2017,20,Sergey Sirotkin,ART Grand Prix,9.0,2,0,0,F2
+F2,2017,21,Álex Palou,Campos Racing,5.0,4,0,0,F2
+F2,2017,22,Santino Ferrucci,Trident,4.0,10,0,0,F2
+F2,2017,23,Nabil Jeffri,Trident,2.0,22,0,0,F2
+F2,2017,24,Robert Vișoiu,Campos Racing,1.0,14,0,0,F2
+F2,2017,25,Lando Norris,Campos Racing,0.0,2,0,0,F2
+F2,2017,26,Callum Ilott,Trident,0.0,2,0,0,F2
+F2,2017,27,Stefano Coletti,Campos Racing,0.0,2,0,0,F2
+F2,2017,28,René Binder,Rapax,0.0,2,0,0,F2
+F2,2017,29,Raffaele Marciello,Trident,0.0,2,0,0,F2
+F2,2018,1,George Russell,ART Grand Prix,287.0,24,7,11,F2
+F2,2018,2,Lando Norris,Carlin,219.0,24,1,9,F2
+F2,2018,3,Alexander Albon,DAMS,212.0,24,4,8,F2
+F2,2018,4,Nyck de Vries,Pertamina Prema Theodore Racing (1–7) Pertamina Prema Racing (8–12),202.0,24,3,6,F2
+F2,2018,5,Artem Markelov,Russian Time,186.0,24,3,7,F2
+F2,2018,6,Sérgio Sette Câmara,Carlin,164.0,24,0,8,F2
+F2,2018,7,Antonio Fuoco,Charouz Racing System,141.0,24,2,6,F2
+F2,2018,8,Luca Ghiotto,Campos Vexatec Racing,111.0,24,0,4,F2
+F2,2018,9,Nicholas Latifi,DAMS,91.0,24,1,3,F2
+F2,2018,10,Louis Delétraz,Charouz Racing System,74.0,24,0,2,F2
+F2,2018,11,Jack Aitken,ART Grand Prix,63.0,24,1,2,F2
+F2,2018,12,Roberto Merhi,Campos Vexatec Racing,61.0,20,0,2,F2
+F2,2018,13,Tadasuke Makino,Russian Time,48.0,24,1,1,F2
+F2,2018,14,Maximilian Günther,BWT Arden,41.0,22,1,2,F2
+F2,2018,15,Sean Gelael,Pertamina Prema Theodore Racing (1–7) Pertamina Prema Racing (8–12),29.0,24,0,1,F2
+F2,2018,16,Arjun Maini,Trident,24.0,24,0,0,F2
+F2,2018,17,Nirei Fukuzumi,BWT Arden,17.0,24,0,0,F2
+F2,2018,18,Ralph Boschung,MP Motorsport,17.0,20,0,0,F2
+F2,2018,19,Santino Ferrucci,Trident,7.0,14,0,0,F2
+F2,2018,20,Alessio Lorandi,Trident,6.0,10,0,0,F2
+F2,2018,21,Dorian Boccolacci,MP Motorsport,3.0,8,0,0,F2
+F2,2018,22,Roy Nissany,Campos Vexatec Racing,1.0,20,0,0,F2
+F2,2018,23,Dan Ticktum,BWT Arden,0.0,2,0,0,F2
+F2,2018,24,Niko Kari,MP Motorsport,0.0,4,0,0,F2
+F2,2019,1,Nyck de Vries,ART Grand Prix,266.0,24,4,12,F2
+F2,2019,2,Nicholas Latifi,DAMS,214.0,24,4,8,F2
+F2,2019,3,Luca Ghiotto,UNI-Virtuosi Racing,207.0,24,4,9,F2
+F2,2019,4,Sérgio Sette Câmara,DAMS,204.0,24,2,8,F2
+F2,2019,5,Jack Aitken,Campos Racing,159.0,24,3,7,F2
+F2,2019,6,Nobuharu Matsushita,Carlin,144.0,24,2,5,F2
+F2,2019,7,Guanyu Zhou,UNI-Virtuosi Racing,140.0,24,0,5,F2
+F2,2019,8,Louis Delétraz,Carlin,92.0,24,0,3,F2
+F2,2019,9,Jordan King,MP Motorsport,79.0,22,0,2,F2
+F2,2019,10,Anthoine Hubert,BWT Arden,77.0,18,2,2,F2
+F2,2019,11,Callum Ilott,Sauber Junior Team by Charouz,74.0,24,0,2,F2
+F2,2019,12,Mick Schumacher,Prema Racing,53.0,24,1,1,F2
+F2,2019,13,Juan Manuel Correa,Sauber Junior Team by Charouz,36.0,18,0,2,F2
+F2,2019,14,Dorian Boccolacci,Trident,30.0,12,0,0,F2
+F2,2019,15,Giuliano Alesi,Trident,20.0,24,0,0,F2
+F2,2019,16,Artem Markelov,BWT Arden,16.0,6,0,0,F2
+F2,2019,17,Sean Gelael,Prema Racing,15.0,24,0,0,F2
+F2,2019,18,Nikita Mazepin,ART Grand Prix,11.0,24,0,0,F2
+F2,2019,19,Ralph Boschung,Trident,3.0,16,0,0,F2
+F2,2019,20,Mahaveer Raghunathan,MP Motorsport,1.0,22,0,0,F2
+F2,2019,21,Marino Sato,Campos Racing,0.0,8,0,0,F2
+F2,2019,22,Tatiana Calderón,BWT Arden,0.0,24,0,0,F2
+F2,2019,23,Christian Lundgaard,Trident,0.0,2,0,0,F2
+F2,2019,24,Arjun Maini,Campos Racing,0.0,6,0,0,F2
+F2,2019,25,Matevos Isaakyan,Sauber Junior Team by Charouz,0.0,4,0,0,F2
+F2,2019,26,Pato O'Ward,MP Motorsport,0.0,2,0,0,F2
+F2,2019,27,Ryan Tveter,Trident,0.0,2,0,0,F2
+F2,2020,1,Mick Schumacher,Prema Racing,215.0,24,2,10,F2
+F2,2020,2,Callum Ilott,UNI-Virtuosi Racing,201.0,24,3,6,F2
+F2,2020,3,Yuki Tsunoda,Carlin,200.0,24,3,7,F2
+F2,2020,4,Robert Shwartzman,Prema Racing,177.0,24,4,6,F2
+F2,2020,5,Nikita Mazepin,Hitech Grand Prix,164.0,24,2,6,F2
+F2,2020,6,Guanyu Zhou,UNI-Virtuosi Racing,151.5,24,1,6,F2
+F2,2020,7,Christian Lundgaard,ART Grand Prix,149.0,24,2,6,F2
+F2,2020,8,Louis Delétraz,Charouz Racing System,134.0,24,0,5,F2
+F2,2020,9,Felipe Drugovich,MP Motorsport,121.0,24,3,4,F2
+F2,2020,10,Luca Ghiotto,Hitech Grand Prix,106.0,24,1,4,F2
+F2,2020,11,Dan Ticktum,DAMS,96.5,24,1,4,F2
+F2,2020,12,Jehan Daruvala,Carlin,72.0,24,1,2,F2
+F2,2020,13,Marcus Armstrong,ART Grand Prix,52.0,24,0,2,F2
+F2,2020,14,Jack Aitken,Campos Racing,48.0,22,0,2,F2
+F2,2020,15,Nobuharu Matsushita,MP Motorsport,42.0,18,1,1,F2
+F2,2020,16,Jüri Vips,DAMS,16.0,8,0,1,F2
+F2,2020,17,Giuliano Alesi,BWT HWA Racelab,12.0,24,0,0,F2
+F2,2020,18,Artem Markelov,BWT HWA Racelab,5.0,24,0,0,F2
+F2,2020,19,Roy Nissany,Trident,5.0,24,0,0,F2
+F2,2020,20,Pedro Piquet,Charouz Racing System,3.0,24,0,0,F2
+F2,2020,21,Sean Gelael,DAMS,3.0,16,0,0,F2
+F2,2020,22,Marino Sato,Trident,1.0,24,0,0,F2
+F2,2020,23,Jake Hughes,BWT HWA Racelab,0.0,2,0,0,F2
+F2,2020,24,Guilherme Samaia,Campos Racing,0.0,24,0,0,F2
+F2,2020,25,Ralph Boschung,Campos Racing,0.0,2,0,0,F2
+F2,2020,26,Théo Pourchaire,BWT HWA Racelab,0.0,4,0,0,F2
+F2,2021,1,Oscar Piastri,Prema Racing,252.5,24,6,11,F2
+F2,2021,2,Robert Shwartzman,Prema Racing,192.0,24,2,8,F2
+F2,2021,3,Zhou Guanyu,UNI-Virtuosi Racing,183.0,24,4,9,F2
+F2,2021,4,Dan Ticktum,Carlin,159.5,24,2,7,F2
+F2,2021,5,Théo Pourchaire,ART Grand Prix,140.0,24,2,3,F2
+F2,2021,6,Jüri Vips,Hitech Grand Prix,120.0,24,2,6,F2
+F2,2021,7,Jehan Daruvala,Carlin,113.0,24,2,5,F2
+F2,2021,8,Felipe Drugovich,UNI-Virtuosi Racing,105.0,24,0,4,F2
+F2,2021,9,Liam Lawson,Hitech Grand Prix,103.0,24,1,3,F2
+F2,2021,10,Ralph Boschung,Campos Racing,59.5,24,0,2,F2
+F2,2021,11,Richard Verschoor,Charouz Racing System,56.0,21,1,1,F2
+F2,2021,12,Christian Lundgaard,ART Grand Prix,50.0,24,0,3,F2
+F2,2021,13,Marcus Armstrong,DAMS,49.0,24,1,2,F2
+F2,2021,14,Bent Viscaal,Trident,34.0,24,0,2,F2
+F2,2021,15,David Beckmann,Campos Racing,32.0,18,0,2,F2
+F2,2021,16,Roy Nissany,DAMS,16.0,24,0,1,F2
+F2,2021,17,Lirim Zendeli,MP Motorsport,13.0,18,0,0,F2
+F2,2021,18,Jake Hughes,HWA Racelab,8.0,9,0,0,F2
+F2,2021,19,Jack Doohan,MP Motorsport,7.0,6,0,0,F2
+F2,2021,20,Enzo Fittipaldi,Charouz Racing System,2.0,9,0,0,F2
+F2,2021,21,Marino Sato,Trident,1.0,24,0,0,F2
+F2,2021,22,Matteo Nannini,HWA Racelab,1.0,9,0,0,F2
+F2,2021,23,Jack Aitken,HWA Racelab,0.0,9,0,0,F2
+F2,2021,24,Guilherme Samaia,Charouz Racing System,0.0,24,0,0,F2
+F2,2021,25,Alessio Deledda,HWA Racelab,0.0,24,0,0,F2
+F2,2021,26,Olli Caldwell,Campos Racing,0.0,6,0,0,F2
+F2,2021,27,Gianluca Petecof,Campos Racing,0.0,6,0,0,F2
+F2,2021,28,Clément Novalak,MP Motorsport,0.0,6,0,0,F2
+F2,2021,29,Logan Sargeant,HWA Racelab,0.0,3,0,0,F2
+F2,2022,1,Felipe Drugovich,MP Motorsport,265.0,28,5,11,F2
+F2,2022,2,Théo Pourchaire,ART Grand Prix,164.0,28,3,7,F2
+F2,2022,3,Liam Lawson,Carlin,149.0,28,4,10,F2
+F2,2022,4,Logan Sargeant,Carlin,148.0,28,2,4,F2
+F2,2022,5,Ayumu Iwasa,DAMS,141.0,28,2,6,F2
+F2,2022,6,Jack Doohan,Virtuosi Racing,128.0,28,3,6,F2
+F2,2022,7,Jehan Daruvala,Prema Racing,126.0,28,1,8,F2
+F2,2022,8,Enzo Fittipaldi,Charouz Racing System,126.0,28,0,6,F2
+F2,2022,9,Frederik Vesti,ART Grand Prix,117.0,28,1,5,F2
+F2,2022,10,Dennis Hauger,Prema Racing,115.0,28,2,4,F2
+F2,2022,11,Jüri Vips,Hitech Grand Prix,114.0,28,1,5,F2
+F2,2022,12,Richard Verschoor,Trident,103.0,28,1,4,F2
+F2,2022,13,Marcus Armstrong,Hitech Grand Prix,93.0,28,3,4,F2
+F2,2022,14,Clément Novalak,MP Motorsport,40.0,28,0,1,F2
+F2,2022,15,Ralph Boschung,Campos Racing,40.0,22,0,2,F2
+F2,2022,16,Jake Hughes,Van Amersfoort Racing,26.0,16,0,0,F2
+F2,2022,17,Amaury Cordeel,Van Amersfoort Racing,26.0,26,0,0,F2
+F2,2022,18,David Beckmann,Van Amersfoort Racing,25.0,14,0,0,F2
+F2,2022,19,Roy Nissany,DAMS,20.0,26,0,0,F2
+F2,2022,20,Roberto Merhi,Campos Racing,15.0,6,0,1,F2
+F2,2022,21,Olli Caldwell,Campos Racing,12.0,26,0,0,F2
+F2,2022,22,Marino Sato,Virtuosi Racing,6.0,28,0,0,F2
+F2,2022,23,Calan Williams,Trident,5.0,26,0,0,F2
+F2,2022,24,Cem Bölükbaşı,Charouz Racing System,0.0,18,0,0,F2
+F2,2022,25,Luca Ghiotto,DAMS,0.0,2,0,0,F2
+F2,2022,26,Zane Maloney,Trident,0.0,2,0,0,F2
+F2,2022,27,Juan Manuel Correa,Van Amersfoort Racing,0.0,2,0,0,F2
+F2,2022,28,Tatiana Calderón,Charouz Racing System,0.0,8,0,0,F2
+F2,2022,29,Lirim Zendeli,Campos Racing,0.0,2,0,0,F2
+F2,2023,1,Théo Pourchaire,ART Grand Prix,203.0,26,1,10,F2
+F2,2023,2,Frederik Vesti,Prema Racing,192.0,26,6,10,F2
+F2,2023,3,Jack Doohan,Invicta Virtuosi Racing,168.0,26,3,5,F2
+F2,2023,4,Ayumu Iwasa,DAMS,165.0,26,3,6,F2
+F2,2023,5,Victor Martins,ART Grand Prix,150.0,26,1,10,F2
+F2,2023,6,Oliver Bearman,Prema Racing,130.0,26,4,6,F2
+F2,2023,7,Enzo Fittipaldi,Rodin Carlin,124.0,26,1,5,F2
+F2,2023,8,Dennis Hauger,MP Motorsport,113.0,26,2,4,F2
+F2,2023,9,Richard Verschoor,Van Amersfoort Racing,108.0,26,1,3,F2
+F2,2023,10,Zane Maloney,Rodin Carlin,96.0,26,0,4,F2
+F2,2023,11,Kush Maini,Campos Racing,62.0,26,0,1,F2
+F2,2023,12,Jehan Daruvala,MP Motorsport,59.0,24,0,3,F2
+F2,2023,13,Jak Crawford,Hitech Pulse-Eight,57.0,26,1,5,F2
+F2,2023,14,Isack Hadjar,Hitech Pulse-Eight,55.0,26,1,2,F2
+F2,2023,15,Arthur Leclerc,DAMS,49.0,26,0,1,F2
+F2,2023,16,Ralph Boschung,Campos Racing,37.0,26,1,2,F2
+F2,2023,17,Clément Novalak,Trident,28.0,24,1,1,F2
+F2,2023,18,Roman Staněk,Trident,15.0,26,0,0,F2
+F2,2023,19,Juan Manuel Correa,Van Amersfoort Racing,13.0,26,0,0,F2
+F2,2023,20,Amaury Cordeel,Invicta Virtuosi Racing,8.0,26,0,0,F2
+F2,2023,21,Roy Nissany,PHM Racing by Charouz (1–12) PHM Racing (13),0.0,26,0,0,F2
+F2,2023,22,Brad Benavides,PHM Racing by Charouz (1–12) PHM Racing (13),0.0,18,0,0,F2
+F2,2023,23,Josh Mason,PHM Racing by Charouz (1–12) PHM Racing (13),0.0,8,0,0,F2
+F2,2023,24,Paul Aron,Trident,0.0,2,0,0,F2
+F2,2023,25,Franco Colapinto,MP Motorsport,0.0,2,0,0,F2
+F2,2024,1,Gabriel Bortoleto,Invicta Racing,214.5,28,2,8,F2
+F2,2024,2,Isack Hadjar,Campos Racing,192.0,28,4,8,F2
+F2,2024,3,Paul Aron,Hitech Pulse-Eight,163.0,28,1,8,F2
+F2,2024,4,Zane Maloney,Rodin Motorsport,140.0,26,2,7,F2
+F2,2024,5,Jak Crawford,DAMS Lucas Oil,125.0,28,1,6,F2
+F2,2024,6,Andrea Kimi Antonelli,Prema Racing,113.0,28,2,3,F2
+F2,2024,7,Victor Martins,ART Grand Prix,107.0,28,1,5,F2
+F2,2024,8,Richard Verschoor,Trident,106.0,28,1,6,F2
+F2,2024,9,Franco Colapinto,MP Motorsport,96.0,20,1,3,F2
+F2,2024,10,Joshua Dürksen,PHM AIX Racing (1–3) AIX Racing (4–14),87.0,28,2,4,F2
+F2,2024,11,Dennis Hauger,MP Motorsport,85.5,24,1,5,F2
+F2,2024,12,Oliver Bearman,Prema Racing,75.0,26,3,3,F2
+F2,2024,13,Kush Maini,Invicta Racing,74.0,28,1,5,F2
+F2,2024,14,Pepe Martí,Campos Racing,62.0,28,1,4,F2
+F2,2024,15,Enzo Fittipaldi,Van Amersfoort Racing,61.0,24,1,2,F2
+F2,2024,16,Zak O'Sullivan,ART Grand Prix,59.0,22,2,2,F2
+F2,2024,17,Amaury Cordeel,Hitech Pulse-Eight,39.0,28,0,0,F2
+F2,2024,18,Juan Manuel Correa,DAMS Lucas Oil,31.0,24,0,1,F2
+F2,2024,19,Ritomo Miyata,Rodin Motorsport,31.0,28,0,0,F2
+F2,2024,20,Dino Beganovic,DAMS Lucas Oil,22.0,4,0,1,F2
+F2,2024,21,Taylor Barnard,PHM AIX Racing (1–3) AIX Racing (4–14),18.0,20,1,1,F2
+F2,2024,22,Roman Staněk,Trident,14.0,22,1,1,F2
+F2,2024,23,Oliver Goethe,MP Motorsport,14.0,8,0,0,F2
+F2,2024,24,Rafael Villagómez,Van Amersfoort Racing,13.0,28,0,0,F2
+F2,2024,25,Christian Mansell,Trident,10.0,6,0,0,F2
+F2,2024,26,Luke Browning,ART Grand Prix,7.0,6,0,0,F2
+F2,2024,27,Gabriele Minì,Prema Racing,6.0,2,0,1,F2
+F2,2024,28,John Bennett,Van Amersfoort Racing,4.0,4,0,0,F2
+F2,2024,29,Leonardo Fornaroli,Rodin Motorsport,0.0,2,0,0,F2
+F2,2024,30,Cian Shields,PHM AIX Racing (1–3) AIX Racing (4–14),0.0,4,0,0,F2
+F2,2024,31,Max Esterson,Trident,0.0,4,0,0,F2
+F2,2024,32,Niels Koolen,PHM AIX Racing (1–3) AIX Racing (4–14),0.0,4,0,0,F2
+F2,2025,1,Leonardo Fornaroli,Invicta Racing,211.0,28,4,9,F2
+F2,2025,2,Jak Crawford,DAMS Lucas Oil,175.0,28,4,8,F2
+F2,2025,3,Richard Verschoor,MP Motorsport,170.0,28,4,6,F2
+F2,2025,4,Luke Browning,Hitech TGR,162.0,28,1,9,F2
+F2,2025,5,Alex Dunne,Rodin Motorsport,150.0,28,2,8,F2
+F2,2025,6,Arvid Lindblad,Campos Racing,134.0,28,3,5,F2
+F2,2025,7,Dino Beganovic,Hitech TGR,116.0,28,1,4,F2
+F2,2025,8,Pepe Martí,Campos Racing,112.0,24,3,5,F2
+F2,2025,9,Joshua Dürksen,AIX Racing,107.0,28,2,8,F2
+F2,2025,10,Roman Staněk,Invicta Racing,105.0,28,1,5,F2
+F2,2025,11,Victor Martins,ART Grand Prix,97.0,28,1,3,F2
+F2,2025,12,Sebastián Montoya,Prema Racing,91.0,28,0,3,F2
+F2,2025,13,Gabriele Minì,Prema Racing,72.0,28,0,3,F2
+F2,2025,14,Rafael Villagómez,Van Amersfoort Racing,43.0,28,0,2,F2
+F2,2025,15,Oliver Goethe,MP Motorsport,37.0,28,0,0,F2
+F2,2025,16,Kush Maini,DAMS Lucas Oil,32.0,28,1,1,F2
+F2,2025,17,Ritomo Miyata,ART Grand Prix,30.0,28,0,1,F2
+F2,2025,18,Nikola Tsolov,Campos Racing,12.0,4,0,1,F2
+F2,2025,19,Amaury Cordeel,Rodin Motorsport,3.0,24,0,0,F2
+F2,2025,20,Martinius Stenshorne,Trident,2.0,6,0,0,F2
+F2,2025,21,Sami Meguetounif,Trident,2.0,22,0,0,F2
+F2,2025,22,John Bennett,Van Amersfoort Racing,1.0,28,0,0,F2
+F2,2025,23,Max Esterson,Trident,0.0,22,0,0,F2
+F2,2025,24,Cian Shields,AIX Racing,0.0,28,0,0,F2
+F2,2025,25,Laurens van Hoepen,Trident,0.0,6,0,0,F2
+F2,2025,26,Tasanapol Inthraphuvasak,Trident,0.0,2,0,0,F2
+F2,2025,27,James Wharton,Trident,0.0,2,0,0,F2
+F2,2026,1,Rafael Câmara,Invicta Racing,207.0,25,3,7,F2
+F2,2026,2,Nikola Tsolov,Campos Racing,200.0,25,6,9,F2
+F2,2026,3,Alex Dunne,Rodin Motorsport,189.0,25,1,9,F2
+F2,2026,4,Gabriele Minì,MP Motorsport,163.0,25,2,9,F2
+F2,2026,5,Dino Beganovic,DAMS Lucas Oil,137.0,25,2,7,F2
+F2,2026,6,Noel León,Campos Racing,133.0,25,3,5,F2
+F2,2026,7,Martinius Stenshorne,Rodin Motorsport,107.0,25,1,4,F2
+F2,2026,8,Joshua Dürksen,Invicta Racing,90.0,25,4,4,F2
+F2,2026,9,Kush Maini,ART Grand Prix,90.0,25,1,3,F2
+F2,2026,10,Laurens van Hoepen,Trident,90.0,25,0,5,F2
+F2,2026,11,Tasanapol Inthraphuvasak,ART Grand Prix,71.0,25,0,1,F2
+F2,2026,12,Ritomo Miyata,Hitech,70.0,25,1,2,F2
+F2,2026,13,Rafael Villagómez,Van Amersfoort Racing,42.0,25,0,3,F2
+F2,2026,14,John Bennett,Trident,38.0,25,1,2,F2
+F2,2026,15,Oliver Goethe,MP Motorsport,37.0,25,0,2,F2
+F2,2026,16,Roman Bilinski,DAMS Lucas Oil,36.0,25,0,1,F2
+F2,2026,17,Sebastián Montoya,Prema Racing,30.0,25,0,1,F2
+F2,2026,18,Emerson Fittipaldi Jr.,AIX Racing,28.0,25,0,1,F2
+F2,2026,19,Colton Herta,Hitech,26.0,25,0,0,F2
+F2,2026,20,Mari Boya,Prema Racing,21.0,25,0,0,F2
+F2,2026,21,Nico Varrone,Van Amersfoort Racing,15.0,22,0,0,F2
+F2,2026,22,Cian Shields,AIX Racing,10.0,25,0,0,F2
+F2,2026,23,Hiyu Yamakoshi,Van Amersfoort Racing,2.0,3,0,0,F2
+F3,2010,1,Esteban Gutiérrez,ART Grand Prix,88.0,16,5,9,GP3
+F3,2010,2,Robert Wickens,Status Grand Prix,71.0,16,3,7,GP3
+F3,2010,3,Nico Müller,Jenzer Motorsport,53.0,16,2,4,GP3
+F3,2010,4,Alexander Rossi,ART Grand Prix,38.0,16,2,5,GP3
+F3,2010,5,Rio Haryanto,Manor Racing,27.0,16,1,3,GP3
+F3,2010,6,Roberto Merhi,Atech CRS GP,26.0,12,0,3,GP3
+F3,2010,7,Dean Smith,Carlin,24.0,16,0,1,GP3
+F3,2010,8,James Jakes,Manor Racing,21.0,12,0,3,GP3
+F3,2010,9,Stefano Coletti,Tech 1 Racing,18.0,14,0,2,GP3
+F3,2010,10,Miki Monrás,MW Arden,17.0,16,0,2,GP3
+F3,2010,11,Mirko Bortolotti,Addax Team,16.0,16,0,1,GP3
+F3,2010,12,Daniel Morad,Status Grand Prix,15.0,16,1,1,GP3
+F3,2010,13,Pål Varhaug,Jenzer Motorsport,10.0,16,1,1,GP3
+F3,2010,14,Daniel Juncadella,Tech 1 Racing,10.0,10,0,1,GP3
+F3,2010,15,Adrian Quaife-Hobbs,Manor Racing,10.0,16,0,1,GP3
+F3,2010,16,Felipe Guimarães,Addax Team,9.0,16,0,1,GP3
+F3,2010,17,Jean-Éric Vergne,Tech 1 Racing,9.0,4,0,0,GP3
+F3,2010,18,Josef Newgarden,Carlin,8.0,16,0,0,GP3
+F3,2010,19,Lucas Foresti,Carlin,7.0,10,0,1,GP3
+F3,2010,20,Adrien Tambay,Manor Racing,6.0,4,1,1,GP3
+F3,2010,21,Renger van der Zande,RSC Mücke Motorsport,6.0,16,0,1,GP3
+F3,2010,22,Tobias Hegewald,RSC Mücke Motorsport,6.0,16,0,0,GP3
+F3,2010,23,Nigel Melker,RSC Mücke Motorsport,5.0,16,0,0,GP3
+F3,2010,24,Pedro Nunes,ART Grand Prix,4.0,16,0,0,GP3
+F3,2010,25,Simon Trummer,Jenzer Motorsport,4.0,14,0,0,GP3
+F3,2010,26,António Félix da Costa,Carlin,3.0,4,0,0,GP3
+F3,2010,27,Leonardo Cordeiro,MW Arden,1.0,16,0,0,GP3
+F3,2010,28,Oliver Oakes,Atech CRS GP,0.0,16,0,0,GP3
+F3,2010,29,Doru Sechelariu,Tech 1 Racing,0.0,16,0,0,GP3
+F3,2010,30,Pablo Sánchez López,Addax Team,0.0,16,0,0,GP3
+F3,2010,31,Michael Christensen,MW Arden,0.0,16,0,0,GP3
+F3,2010,32,Ivan Lukashevich,Status Grand Prix,0.0,16,0,0,GP3
+F3,2010,33,Patrick Reiterer,Atech CRS GP,0.0,4,0,0,GP3
+F3,2010,34,Vittorio Ghirelli,Atech CRS GP,0.0,16,0,0,GP3
+F3,2010,35,Marco Barba,Jenzer Motorsport,0.0,2,0,0,GP3
+F3,2010,36,Jim Pla,Tech 1 Racing,0.0,2,0,0,GP3
+F3,2010,37,Mikhail Aleshin,Carlin,0.0,2,0,0,GP3
+F3,2011,1,Valtteri Bottas,Lotus ART,62.0,16,4,7,GP3
+F3,2011,2,James Calado,Lotus ART,55.0,16,1,6,GP3
+F3,2011,3,Nigel Melker,RSC Mücke Motorsport,38.0,16,1,5,GP3
+F3,2011,4,Nico Müller,Jenzer Motorsport,36.0,16,1,3,GP3
+F3,2011,5,Adrian Quaife-Hobbs,Marussia Manor Racing,36.0,16,1,2,GP3
+F3,2011,6,Alexander Sims,Status Grand Prix,34.0,16,1,5,GP3
+F3,2011,7,Rio Haryanto,Marussia Manor Racing,31.0,16,2,4,GP3
+F3,2011,8,Lewis Williamson,MW Arden,31.0,16,1,3,GP3
+F3,2011,9,Mitch Evans,MW Arden,29.0,16,1,2,GP3
+F3,2011,10,Andrea Caldarelli,Tech 1 Racing,20.0,4,0,1,GP3
+F3,2011,11,Michael Christensen,RSC Mücke Motorsport,19.0,16,0,2,GP3
+F3,2011,12,Dean Smith,Addax Team,18.0,14,0,2,GP3
+F3,2011,13,António Félix da Costa,Status Grand Prix,16.0,16,1,1,GP3
+F3,2011,14,Tom Dillmann,Addax Team,15.0,14,0,1,GP3
+F3,2011,15,Aaro Vainio,Tech 1 Racing,12.0,16,0,1,GP3
+F3,2011,16,Tamás Pál Kiss,Tech 1 Racing,11.0,16,1,1,GP3
+F3,2011,17,Conor Daly,Carlin,10.0,16,0,0,GP3
+F3,2011,18,Simon Trummer,MW Arden,9.0,16,0,0,GP3
+F3,2011,19,Gabriel Chaves,Addax Team,8.0,16,0,0,GP3
+F3,2011,20,Richie Stanaway,Lotus ART,7.0,4,1,1,GP3
+F3,2011,21,Nick Yelloly,Atech CRS GP,7.0,16,0,1,GP3
+F3,2011,22,Luciano Bacheta,RSC Mücke Motorsport,4.0,12,0,0,GP3
+F3,2011,23,Callum MacLeod,Carlin,3.0,8,0,0,GP3
+F3,2011,24,Alex Fontana,Jenzer Motorsport,1.0,2,0,0,GP3
+F3,2011,25,Vittorio Ghirelli,Addax Team,0.0,14,0,0,GP3
+F3,2011,26,Ivan Lukashevich,Status Grand Prix,0.0,16,0,0,GP3
+F3,2011,27,Maxim Zimin,Jenzer Motorsport,0.0,16,0,0,GP3
+F3,2011,28,Zoël Amberg,Atech CRS GP,0.0,16,0,0,GP3
+F3,2011,29,Marlon Stöckinger,Atech CRS GP,0.0,16,0,0,GP3
+F3,2011,30,Leonardo Cordeiro,Carlin,0.0,16,0,0,GP3
+F3,2011,31,Matias Laine,Marussia Manor Racing,0.0,16,0,0,GP3
+F3,2011,32,Pedro Nunes,Lotus ART,0.0,12,0,0,GP3
+F3,2011,33,Daniel Morad,Carlin,0.0,6,0,0,GP3
+F3,2011,34,Thomas Hylkema,Tech 1 Racing,0.0,12,0,0,GP3
+F3,2011,35,Daniel Mancinelli,RSC Mücke Motorsport,0.0,4,0,0,GP3
+F3,2011,36,Christophe Hurni,Jenzer Motorsport,0.0,2,0,0,GP3
+F3,2011,37,Dominic Storey,Addax Team,0.0,4,0,0,GP3
+F3,2012,1,Mitch Evans,MW Arden,151.5,16,3,6,GP3
+F3,2012,2,Daniel Abt,Lotus GP,149.5,16,2,7,GP3
+F3,2012,3,António Félix da Costa,Carlin,132.0,16,3,6,GP3
+F3,2012,4,Aaro Vainio,Lotus GP,123.0,16,1,4,GP3
+F3,2012,5,Matias Laine,MW Arden,111.0,16,1,4,GP3
+F3,2012,6,Conor Daly,Lotus GP,106.0,16,1,5,GP3
+F3,2012,7,Patric Niederhauser,Jenzer Motorsport,101.0,16,2,4,GP3
+F3,2012,8,Tio Ellinas,Marussia Manor Racing,99.0,16,1,2,GP3
+F3,2012,9,Kevin Ceccon,Ocean Racing Technology,56.0,16,0,1,GP3
+F3,2012,10,Marlon Stöckinger,Status Grand Prix,55.0,16,1,2,GP3
+F3,2012,11,David Fumanelli,MW Arden,47.0,16,0,1,GP3
+F3,2012,12,Tamás Pál Kiss,Atech CRS GP,38.0,16,0,1,GP3
+F3,2012,13,Giovanni Venturini,Trident Racing,31.0,10,0,2,GP3
+F3,2012,14,Robert Vișoiu,Jenzer Motorsport,24.0,16,0,1,GP3
+F3,2012,15,William Buller,Carlin,20.0,16,1,1,GP3
+F3,2012,16,Alex Brundle,Carlin,19.0,16,0,1,GP3
+F3,2012,17,Lewis Williamson,Status Grand Prix,11.0,8,0,0,GP3
+F3,2012,18,Alex Fontana,Jenzer Motorsport,8.5,4,0,0,GP3
+F3,2012,19,Alice Powell,Status Grand Prix,1.0,16,0,0,GP3
+F3,2012,20,Fabio Gamberini,Atech CRS GP,1.0,2,0,0,GP3
+F3,2012,21,Fabiano Machado,Marussia Manor Racing,0.0,16,0,0,GP3
+F3,2012,22,Robert Cregan,Ocean Racing Technology,0.0,16,0,0,GP3
+F3,2012,23,Dmitry Suranovich,Marussia Manor Racing,0.0,16,0,0,GP3
+F3,2012,24,Kotaro Sakurai,Status Grand Prix,0.0,6,0,0,GP3
+F3,2012,25,John Wartique,Atech CRS GP,0.0,10,0,0,GP3
+F3,2012,26,Vicky Piria,Trident Racing,0.0,16,0,0,GP3
+F3,2012,27,Facu Regalia,Atech CRS GP,0.0,4,0,0,GP3
+F3,2012,28,Carmen Jordá,Ocean Racing Technology,0.0,16,0,0,GP3
+F3,2012,29,Ethan Ringel,Atech CRS GP,0.0,16,0,0,GP3
+F3,2012,30,Antonio Spavone,Trident Racing,0.0,8,0,0,GP3
+F3,2012,31,Jakub Klášterka,Jenzer Motorsport,0.0,4,0,0,GP3
+F3,2013,1,Daniil Kvyat,MW Arden,168.0,16,3,5,GP3
+F3,2013,2,Facu Regalia,ART Grand Prix,138.0,16,1,6,GP3
+F3,2013,3,Conor Daly,ART Grand Prix,126.0,16,1,6,GP3
+F3,2013,4,Tio Ellinas,Marussia Manor Racing,116.0,16,2,3,GP3
+F3,2013,5,Jack Harvey,ART Grand Prix,114.0,16,2,3,GP3
+F3,2013,6,Nick Yelloly,Carlin,107.0,16,0,4,GP3
+F3,2013,7,Kevin Korjus,Koiranen GP,107.0,16,0,4,GP3
+F3,2013,8,Alexander Sims,Status Grand Prix,77.0,8,1,3,GP3
+F3,2013,9,Aaro Vainio,Koiranen GP,75.0,14,2,3,GP3
+F3,2013,10,Carlos Sainz Jr.,MW Arden,66.0,16,0,2,GP3
+F3,2013,11,Robert Vișoiu,MW Arden,44.0,16,2,2,GP3
+F3,2013,12,Lewis Williamson,Bamboo Engineering,44.0,14,0,1,GP3
+F3,2013,13,Patric Niederhauser,Jenzer Motorsport,33.0,16,0,2,GP3
+F3,2013,14,Melville McKee,Bamboo Engineering,31.0,14,1,1,GP3
+F3,2013,15,Giovanni Venturini,Trident,26.0,16,1,1,GP3
+F3,2013,16,Dean Stoneman,Koiranen GP,20.0,2,0,1,GP3
+F3,2013,17,Alex Fontana,Jenzer Motorsport,18.0,16,0,1,GP3
+F3,2013,18,Dino Zamparelli,Marussia Manor Racing,13.0,16,0,0,GP3
+F3,2013,19,David Fumanelli,Trident,6.0,14,0,0,GP3
+F3,2013,20,Patrick Kujala,Koiranen GP,5.0,16,0,0,GP3
+F3,2013,21,Adderly Fong,Status Grand Prix,2.0,14,0,0,GP3
+F3,2013,22,Eric Lichtenstein,Carlin,0.0,10,0,0,GP3
+F3,2013,23,Luís Sá Silva,Carlin,0.0,16,0,0,GP3
+F3,2013,24,Jimmy Eriksson,Status Grand Prix,0.0,16,0,0,GP3
+F3,2013,25,Emanuele Zonzini,Trident,0.0,16,0,0,GP3
+F3,2013,26,Samin Gómez,Jenzer Motorsport,0.0,16,0,0,GP3
+F3,2013,27,Robert Cregan,Trident,0.0,2,0,0,GP3
+F3,2013,28,Josh Webster,Status Grand Prix,0.0,16,0,0,GP3
+F3,2013,29,Ryan Cullen,Marussia Manor Racing,0.0,16,0,0,GP3
+F3,2013,30,Carmen Jordá,Bamboo Engineering,0.0,16,0,0,GP3
+F3,2013,31,Alice Powell,Bamboo Engineering,0.0,2,0,0,GP3
+F3,2014,1,Alex Lynn,Carlin,207.0,18,3,8,GP3
+F3,2014,2,Dean Stoneman,Marussia Manor Racing,163.0,18,5,6,GP3
+F3,2014,3,Marvin Kirchhöfer,ART Grand Prix,161.0,18,1,7,GP3
+F3,2014,4,Jimmy Eriksson,Koiranen GP,134.0,18,2,5,GP3
+F3,2014,5,Emil Bernstorff,Carlin,134.0,18,1,5,GP3
+F3,2014,6,Nick Yelloly,Status Grand Prix,127.0,18,1,4,GP3
+F3,2014,7,Dino Zamparelli,ART Grand Prix,126.0,18,0,6,GP3
+F3,2014,8,Richie Stanaway,Status Grand Prix,125.0,18,2,5,GP3
+F3,2014,9,Jann Mardenborough,Arden International,77.0,18,1,2,GP3
+F3,2014,10,Patric Niederhauser,Arden International,62.0,18,2,2,GP3
+F3,2014,11,Alex Fontana,ART Grand Prix,43.0,18,0,2,GP3
+F3,2014,12,Mathéo Tuscher,Jenzer Motorsport,29.0,18,0,1,GP3
+F3,2014,13,Robert Vișoiu,Arden International,23.0,18,0,1,GP3
+F3,2014,14,Patrick Kujala,Trident,22.0,18,0,0,GP3
+F3,2014,15,Kevin Ceccon,Jenzer Motorsport,20.0,8,0,0,GP3
+F3,2014,16,Riccardo Agostini,Hilmer Motorsport,18.0,16,0,0,GP3
+F3,2014,17,Pål Varhaug,Jenzer Motorsport,12.0,18,0,0,GP3
+F3,2014,18,Roman de Beer,Trident,8.0,10,0,0,GP3
+F3,2014,19,Luís Sá Silva,Carlin,6.0,18,0,0,GP3
+F3,2014,20,Luca Ghiotto,Trident,4.0,4,0,0,GP3
+F3,2014,21,Alfonso Celis Jr.,Status Grand Prix,2.0,18,0,0,GP3
+F3,2014,22,Nelson Mason,Hilmer Motorsport,0.0,18,0,0,GP3
+F3,2014,23,Santiago Urrutia,Koiranen GP,0.0,18,0,0,GP3
+F3,2014,24,Adderly Fong,Jenzer Motorsport,0.0,8,0,0,GP3
+F3,2014,25,Ryan Cullen,Trident,0.0,16,0,0,GP3
+F3,2014,26,Mitchell Gilbert,Trident,0.0,10,0,0,GP3
+F3,2014,27,Beitske Visser,Hilmer Motorsport,0.0,2,0,0,GP3
+F3,2014,28,Kang Ling,Trident,0.0,2,0,0,GP3
+F3,2014,29,Carmen Jordá,Koiranen GP,0.0,14,0,0,GP3
+F3,2014,30,John Bryant-Meisner,Trident,0.0,4,0,0,GP3
+F3,2014,31,Victor Carbone,Trident,0.0,8,0,0,GP3
+F3,2014,32,Sebastian Balthasar,Hilmer Motorsport,0.0,10,0,0,GP3
+F3,2014,33,Nikolay Martsenko,Hilmer Motorsport,0.0,4,0,0,GP3
+F3,2014,34,Ivan Taranov,Hilmer Motorsport,0.0,2,0,0,GP3
+F3,2014,35,Denis Nagulin,Trident,0.0,2,0,0,GP3
+F3,2014,36,Christopher Höher,Jenzer Motorsport,0.0,2,0,0,GP3
+F3,2015,1,Esteban Ocon,ART Grand Prix,253.0,18,1,14,GP3
+F3,2015,2,Luca Ghiotto,Trident,245.0,18,5,8,GP3
+F3,2015,3,Marvin Kirchhöfer,ART Grand Prix,200.0,18,5,8,GP3
+F3,2015,4,Emil Bernstorff,Arden International,194.0,18,2,7,GP3
+F3,2015,5,Jimmy Eriksson,Koiranen GP,118.0,18,1,3,GP3
+F3,2015,6,Antonio Fuoco,Carlin,88.0,18,0,2,GP3
+F3,2015,7,Kevin Ceccon,Arden International,77.0,18,2,3,GP3
+F3,2015,8,Matt Parry,Koiranen GP,67.0,18,0,3,GP3
+F3,2015,9,Jann Mardenborough,Carlin,58.0,14,0,2,GP3
+F3,2015,10,Álex Palou,Campos Racing,51.0,18,1,1,GP3
+F3,2015,11,Ralph Boschung,Jenzer Motorsport,28.0,18,0,1,GP3
+F3,2015,12,Alfonso Celis Jr.,ART Grand Prix,24.0,16,0,1,GP3
+F3,2015,13,Mathéo Tuscher,Jenzer Motorsport,22.0,18,0,0,GP3
+F3,2015,14,Artur Janosz,Trident,20.0,18,0,0,GP3
+F3,2015,15,Óscar Tunjo,Trident,17.0,6,1,1,GP3
+F3,2015,16,Alex Fontana,Status Grand Prix,16.0,18,0,0,GP3
+F3,2015,17,Sandy Stuvik,Status Grand Prix,7.0,18,0,0,GP3
+F3,2015,18,Seb Morris,Status Grand Prix,6.0,18,0,0,GP3
+F3,2015,19,Pål Varhaug,Jenzer Motorsport,5.0,18,0,0,GP3
+F3,2015,20,Aleksander Bosak,Arden International,4.0,18,0,0,GP3
+F3,2015,21,Matevos Isaakyan,Koiranen GP,2.0,4,0,0,GP3
+F3,2015,22,Mitchell Gilbert,Carlin,1.0,18,0,0,GP3
+F3,2015,23,Adderly Fong,Koiranen GP,0.0,14,0,0,GP3
+F3,2015,24,Zaid Ashkanani,Campos Racing,0.0,18,0,0,GP3
+F3,2015,25,Brandon Maïsano,Campos Racing,0.0,2,0,0,GP3
+F3,2015,26,Amaury Bonduel,Trident,0.0,2,0,0,GP3
+F3,2015,27,Michele Beretta,Trident,0.0,6,0,0,GP3
+F3,2015,28,Beitske Visser,Trident,0.0,2,0,0,GP3
+F3,2015,29,Konstantin Tereshchenko,Campos Racing,0.0,6,0,0,GP3
+F3,2015,30,Samin Gómez,Campos Racing,0.0,6,0,0,GP3
+F3,2015,31,Christopher Höher,Campos Racing,0.0,2,0,0,GP3
+F3,2016,1,Charles Leclerc,ART Grand Prix,202.0,18,3,8,GP3
+F3,2016,2,Alexander Albon,ART Grand Prix,177.0,18,4,7,GP3
+F3,2016,3,Antonio Fuoco,Trident,157.0,18,2,8,GP3
+F3,2016,4,Jake Dennis,Arden International,149.0,18,2,5,GP3
+F3,2016,5,Jack Aitken,Arden International,148.0,18,1,7,GP3
+F3,2016,6,Nyck de Vries,ART Grand Prix,133.0,18,2,5,GP3
+F3,2016,7,Nirei Fukuzumi,ART Grand Prix,91.0,18,0,3,GP3
+F3,2016,8,Jake Hughes,DAMS,90.0,18,2,4,GP3
+F3,2016,9,Matt Parry,Koiranen GP,82.0,18,1,2,GP3
+F3,2016,10,Arjun Maini,Jenzer Motorsport,50.0,14,0,1,GP3
+F3,2016,11,Ralph Boschung,Koiranen GP,48.0,12,1,1,GP3
+F3,2016,12,Santino Ferrucci,DAMS,36.0,18,0,1,GP3
+F3,2016,13,Steijn Schothorst,Campos Racing,36.0,18,0,0,GP3
+F3,2016,14,Kevin Jörg,DAMS,26.0,18,0,0,GP3
+F3,2016,15,Álex Palou,Campos Racing,22.0,18,0,1,GP3
+F3,2016,16,Óscar Tunjo,Jenzer Motorsport,18.0,6,0,1,GP3
+F3,2016,17,Matevos Isaakyan,Koiranen GP,17.0,18,0,0,GP3
+F3,2016,18,Sandy Stuvik,Trident,9.0,18,0,0,GP3
+F3,2016,19,Konstantin Tereshchenko,Campos Racing,8.0,18,0,0,GP3
+F3,2016,20,Artur Janosz,Trident,3.0,18,0,0,GP3
+F3,2016,21,Tatiana Calderón,Arden International,2.0,18,0,0,GP3
+F3,2016,22,Giuliano Alesi,Trident,1.0,18,0,0,GP3
+F3,2016,23,Alessio Lorandi,Jenzer Motorsport,0.0,4,0,0,GP3
+F3,2016,24,Akash Nandy,Jenzer Motorsport,0.0,18,0,0,GP3
+F3,2016,25,Richard Gonda,Jenzer Motorsport,0.0,6,0,0,GP3
+F3,2016,26,Niko Kari,Koiranen GP,0.0,2,0,0,GP3
+F3,2016,27,Mahaveer Raghunathan,Koiranen GP,0.0,2,0,0,GP3
+F3,2017,1,George Russell,ART Grand Prix,220.0,16,4,7,GP3
+F3,2017,2,Jack Aitken,ART Grand Prix,141.0,16,1,6,GP3
+F3,2017,3,Nirei Fukuzumi,ART Grand Prix,134.0,16,2,6,GP3
+F3,2017,4,Anthoine Hubert,ART Grand Prix,123.0,16,0,4,GP3
+F3,2017,5,Giuliano Alesi,Trident,99.0,16,3,4,GP3
+F3,2017,6,Dorian Boccolacci,Trident,93.0,16,1,3,GP3
+F3,2017,7,Alessio Lorandi,Jenzer Motorsport,92.0,16,1,4,GP3
+F3,2017,8,Ryan Tveter,Trident,78.0,16,0,3,GP3
+F3,2017,9,Arjun Maini,Jenzer Motorsport,72.0,16,1,2,GP3
+F3,2017,10,Niko Kari,Arden International,63.0,16,1,2,GP3
+F3,2017,11,Dan Ticktum,DAMS,36.0,6,0,1,GP3
+F3,2017,12,Kevin Jörg,Trident,28.0,16,0,1,GP3
+F3,2017,13,Raoul Hyman,Campos Racing,27.0,16,1,1,GP3
+F3,2017,14,Leonardo Pulcini,Arden International,20.0,16,0,1,GP3
+F3,2017,15,Julien Falchero,Campos Racing,16.0,16,0,0,GP3
+F3,2017,16,Marcos Siebert,Campos Racing,13.0,16,0,0,GP3
+F3,2017,17,Steijn Schothorst,Arden International,8.0,16,0,0,GP3
+F3,2017,18,Tatiana Calderón,DAMS,7.0,16,0,0,GP3
+F3,2017,19,Santino Ferrucci,DAMS,3.0,6,0,0,GP3
+F3,2017,20,Bruno Baptista,DAMS,3.0,16,0,0,GP3
+F3,2017,21,Juan Manuel Correa,Jenzer Motorsport,0.0,8,0,0,GP3
+F3,2017,22,Matthieu Vaxivière,DAMS,0.0,4,0,0,GP3
+F3,2018,1,Anthoine Hubert,ART Grand Prix,214.0,18,2,11,GP3
+F3,2018,2,Nikita Mazepin,ART Grand Prix,198.0,18,4,8,GP3
+F3,2018,3,Callum Ilott,ART Grand Prix,167.0,18,2,7,GP3
+F3,2018,4,Leonardo Pulcini,Campos Racing,156.0,18,2,5,GP3
+F3,2018,5,David Beckmann,Jenzer Motorsport,137.0,18,3,4,GP3
+F3,2018,6,Pedro Piquet,Trident,106.0,18,2,4,GP3
+F3,2018,7,Giuliano Alesi,Trident,100.0,18,1,4,GP3
+F3,2018,8,Jake Hughes,ART Grand Prix,85.0,18,1,3,GP3
+F3,2018,9,Ryan Tveter,Trident,69.0,18,0,2,GP3
+F3,2018,10,Dorian Boccolacci,MP Motorsport,58.0,10,1,1,GP3
+F3,2018,11,Alessio Lorandi,Trident,42.0,8,0,1,GP3
+F3,2018,12,Juan Manuel Correa,Jenzer Motorsport,42.0,18,0,0,GP3
+F3,2018,13,Joey Mawson,Arden International,38.0,18,0,2,GP3
+F3,2018,14,Simo Laaksonen,Campos Racing,36.0,18,0,1,GP3
+F3,2018,15,Richard Verschoor,MP Motorsport,30.0,8,0,1,GP3
+F3,2018,16,Tatiana Calderón,Jenzer Motorsport,11.0,18,0,0,GP3
+F3,2018,17,Niko Kari,MP Motorsport,6.0,14,0,0,GP3
+F3,2018,18,Gabriel Aubry,Arden International,5.0,18,0,0,GP3
+F3,2018,19,Diego Menchaca,Campos Racing,3.0,18,0,0,GP3
+F3,2018,20,Jannes Fittje,Jenzer Motorsport,0.0,10,0,0,GP3
+F3,2018,21,Devlin DeFrancesco,MP Motorsport,0.0,14,0,0,GP3
+F3,2018,22,Julien Falchero,Arden International,0.0,14,0,0,GP3
+F3,2018,23,Christian Lundgaard,MP Motorsport,0.0,2,0,0,GP3
+F3,2018,24,Sacha Fenestraz,Arden International,0.0,4,0,0,GP3
+F3,2018,25,Will Palmer,MP Motorsport,0.0,2,0,0,GP3
+F3,2018,26,Jehan Daruvala,MP Motorsport,0.0,2,0,0,GP3
+F3,2019,1,Robert Shwartzman,Prema Racing,212.0,16,3,10,F3
+F3,2019,2,Marcus Armstrong,Prema Racing,158.0,16,3,7,F3
+F3,2019,3,Jehan Daruvala,Prema Racing,157.0,16,2,7,F3
+F3,2019,4,Jüri Vips,Hitech Grand Prix,141.0,16,3,4,F3
+F3,2019,5,Pedro Piquet,Trident,98.0,16,1,3,F3
+F3,2019,6,Christian Lundgaard,ART Grand Prix,97.0,16,1,2,F3
+F3,2019,7,Jake Hughes,HWA Racelab,90.0,16,1,4,F3
+F3,2019,8,Leonardo Pulcini,Hitech Grand Prix,78.0,16,1,2,F3
+F3,2019,9,Yuki Tsunoda,Jenzer Motorsport,67.0,16,1,3,F3
+F3,2019,10,Max Fewtrell,ART Grand Prix,57.0,16,0,2,F3
+F3,2019,11,Liam Lawson,MP Motorsport,41.0,16,0,2,F3
+F3,2019,12,Niko Kari,Trident,36.0,16,0,2,F3
+F3,2019,13,Richard Verschoor,MP Motorsport,34.0,16,0,0,F3
+F3,2019,14,David Beckmann,ART Grand Prix,20.0,16,0,0,F3
+F3,2019,15,Bent Viscaal,HWA Racelab,10.0,16,0,0,F3
+F3,2019,16,Felipe Drugovich,Carlin Buzz Racing,8.0,16,0,0,F3
+F3,2019,17,Fabio Scherer,Sauber Junior Team by Charouz,7.0,16,0,0,F3
+F3,2019,18,Lirim Zendeli,Sauber Junior Team by Charouz,6.0,16,0,0,F3
+F3,2019,19,Logan Sargeant,Carlin Buzz Racing,5.0,16,0,0,F3
+F3,2019,20,Alex Peroni,Campos Racing,5.0,14,0,0,F3
+F3,2019,21,Yifei Ye,Hitech Grand Prix,4.0,16,0,0,F3
+F3,2019,22,Raoul Hyman,Sauber Junior Team by Charouz,2.0,16,0,0,F3
+F3,2019,23,Simo Laaksonen,MP Motorsport,2.0,16,0,0,F3
+F3,2019,24,Teppei Natori,Carlin Buzz Racing,1.0,16,0,0,F3
+F3,2019,25,Devlin DeFrancesco,Trident,0.0,16,0,0,F3
+F3,2019,26,Andreas Estner,Jenzer Motorsport,0.0,16,0,0,F3
+F3,2019,27,Sebastián Fernández,Campos Racing,0.0,16,0,0,F3
+F3,2019,28,Keyvan Andres,HWA Racelab,0.0,16,0,0,F3
+F3,2019,29,Alessio Deledda,Campos Racing,0.0,16,0,0,F3
+F3,2019,30,Giorgio Carrara,Jenzer Motorsport,0.0,8,0,0,F3
+F3,2019,31,Artem Petrov,Jenzer Motorsport,0.0,2,0,0,F3
+F3,2019,32,David Schumacher,Campos Racing,0.0,2,0,0,F3
+F3,2019,33,Charles Leong,Jenzer Motorsport,0.0,2,0,0,F3
+F3,2019,34,Federico Malvestiti,Jenzer Motorsport,0.0,2,0,0,F3
+F3,2020,1,Oscar Piastri,Prema Racing,164.0,18,2,6,F3
+F3,2020,2,Théo Pourchaire,ART Grand Prix,161.0,18,2,8,F3
+F3,2020,3,Logan Sargeant,Prema Racing,160.0,18,2,6,F3
+F3,2020,4,Frederik Vesti,Prema Racing,146.5,18,3,4,F3
+F3,2020,5,Liam Lawson,Hitech Grand Prix,143.0,18,3,6,F3
+F3,2020,6,David Beckmann,Trident,139.5,18,2,6,F3
+F3,2020,7,Jake Hughes,HWA Racelab,111.5,18,2,4,F3
+F3,2020,8,Lirim Zendeli,Trident,104.0,18,1,3,F3
+F3,2020,9,Richard Verschoor,MP Motorsport,69.0,18,0,1,F3
+F3,2020,10,Alex Peroni,Campos Racing,64.0,18,0,3,F3
+F3,2020,11,Alexander Smolyar,ART Grand Prix,59.0,18,0,1,F3
+F3,2020,12,Clément Novalak,Carlin Buzz Racing,45.0,18,0,2,F3
+F3,2020,13,Bent Viscaal,MP Motorsport,40.0,18,1,2,F3
+F3,2020,14,Sebastián Fernández,ART Grand Prix,31.0,18,0,0,F3
+F3,2020,15,Enzo Fittipaldi,HWA Racelab,27.0,18,0,0,F3
+F3,2020,16,Olli Caldwell,Trident,18.0,18,0,0,F3
+F3,2020,17,Dennis Hauger,Hitech Grand Prix,14.0,18,0,1,F3
+F3,2020,18,Matteo Nannini,Jenzer Motorsport,11.0,18,0,1,F3
+F3,2020,19,Pierre-Louis Chovet,Hitech Grand Prix,5.0,4,0,0,F3
+F3,2020,20,Max Fewtrell,Hitech Grand Prix,5.0,12,0,0,F3
+F3,2020,21,Roman Staněk,Charouz Racing System,3.0,18,0,0,F3
+F3,2020,22,Ben Barnicoat,Carlin Buzz Racing,1.0,4,0,0,F3
+F3,2020,23,Michael Belov,Charouz Racing System,1.0,6,0,0,F3
+F3,2020,24,Igor Fraga,Charouz Racing System,1.0,16,0,0,F3
+F3,2020,25,Cameron Das,Carlin Buzz Racing,0.0,18,0,0,F3
+F3,2020,26,Jack Doohan,HWA Racelab,0.0,18,0,0,F3
+F3,2020,27,Lukas Dunner,MP Motorsport,0.0,18,0,0,F3
+F3,2020,28,David Schumacher,Carlin Buzz Racing,0.0,18,0,0,F3
+F3,2020,29,Sophia Flörsch,Campos Racing,0.0,16,0,0,F3
+F3,2020,30,Federico Malvestiti,Jenzer Motorsport,0.0,18,0,0,F3
+F3,2020,31,Calan Williams,Jenzer Motorsport,0.0,18,0,0,F3
+F3,2020,32,Enaam Ahmed,Carlin Buzz Racing,0.0,6,0,0,F3
+F3,2020,33,Leonardo Pulcini,Carlin Buzz Racing,0.0,2,0,0,F3
+F3,2020,34,Alessio Deledda,Campos Racing,0.0,18,0,0,F3
+F3,2020,35,Andreas Estner,Campos Racing,0.0,2,0,0,F3
+F3,2021,1,Dennis Hauger,Prema Racing,205.0,21,4,9,F3
+F3,2021,2,Jack Doohan,Trident,179.0,21,4,7,F3
+F3,2021,3,Clément Novalak,Trident,147.0,21,0,4,F3
+F3,2021,4,Frederik Vesti,ART Grand Prix,138.0,21,1,5,F3
+F3,2021,5,Victor Martins,MP Motorsport,131.0,21,1,6,F3
+F3,2021,6,Alexander Smolyar,ART Grand Prix,107.0,21,2,4,F3
+F3,2021,7,Logan Sargeant,Charouz Racing System,102.0,21,1,4,F3
+F3,2021,8,Olli Caldwell,Prema Racing,93.0,21,1,4,F3
+F3,2021,9,Caio Collet,MP Motorsport,93.0,21,0,2,F3
+F3,2021,10,Arthur Leclerc,Prema Racing,79.0,21,2,3,F3
+F3,2021,11,David Schumacher,Trident,55.0,21,1,2,F3
+F3,2021,12,Ayumu Iwasa,Hitech Grand Prix,52.0,21,1,2,F3
+F3,2021,13,Jak Crawford,Hitech Grand Prix,45.0,21,0,1,F3
+F3,2021,14,Matteo Nannini,HWA Racelab,44.0,21,1,2,F3
+F3,2021,15,Lorenzo Colombo,Campos Racing,32.0,21,1,1,F3
+F3,2021,16,Roman Staněk,Hitech Grand Prix,29.0,21,0,2,F3
+F3,2021,17,Enzo Fittipaldi,Charouz Racing System,25.0,12,0,1,F3
+F3,2021,18,Jonny Edgar,Carlin Buzz Racing,23.0,21,0,0,F3
+F3,2021,19,Calan Williams,Jenzer Motorsport,15.0,21,0,1,F3
+F3,2021,20,Johnathan Hoggard,Jenzer Motorsport,14.0,18,0,0,F3
+F3,2021,21,Juan Manuel Correa,ART Grand Prix,11.0,21,0,0,F3
+F3,2021,22,Kaylen Frederick,Carlin Buzz Racing,2.0,15,0,0,F3
+F3,2021,23,Amaury Cordeel,Campos Racing,0.0,21,0,0,F3
+F3,2021,24,Ido Cohen,Carlin Buzz Racing,0.0,21,0,0,F3
+F3,2021,25,Oliver Rasmussen,HWA Racelab,0.0,21,0,0,F3
+F3,2021,26,Tijmen van der Helm,MP Motorsport,0.0,21,0,0,F3
+F3,2021,27,Jake Hughes,Carlin Buzz Racing,0.0,3,0,0,F3
+F3,2021,28,Reshad de Gerus,Charouz Racing System,0.0,12,0,0,F3
+F3,2021,29,Rafael Villagómez,HWA Racelab,0.0,21,0,0,F3
+F3,2021,30,Pierre-Louis Chovet,Jenzer Motorsport,0.0,6,0,0,F3
+F3,2021,31,Filip Ugran,Jenzer Motorsport,0.0,21,0,0,F3
+F3,2021,32,László Tóth,Campos Racing,0.0,18,0,0,F3
+F3,2021,33,Hunter Yeany,Charouz Racing System,0.0,6,0,0,F3
+F3,2021,34,Zdeněk Chovanec,Charouz Racing System,0.0,9,0,0,F3
+F3,2021,35,Ayrton Simmons,Charouz Racing System,0.0,3,0,0,F3
+F3,2022,1,Victor Martins,ART Grand Prix,139.0,18,2,6,F3
+F3,2022,2,Zane Maloney,Trident,134.0,18,3,4,F3
+F3,2022,3,Oliver Bearman,Prema Racing,132.0,18,1,8,F3
+F3,2022,4,Isack Hadjar,Hitech Grand Prix,123.0,18,3,5,F3
+F3,2022,5,Roman Staněk,Trident,117.0,18,1,4,F3
+F3,2022,6,Arthur Leclerc,Prema Racing,114.0,18,1,2,F3
+F3,2022,7,Jak Crawford,Prema Racing,109.0,18,1,5,F3
+F3,2022,8,Caio Collet,MP Motorsport,88.0,18,2,5,F3
+F3,2022,9,Franco Colapinto,Van Amersfoort Racing,76.0,18,2,5,F3
+F3,2022,10,Alexander Smolyar,MP Motorsport,76.0,16,1,3,F3
+F3,2022,11,Zak O'Sullivan,Carlin,54.0,18,0,2,F3
+F3,2022,12,Jonny Edgar,Trident,46.0,14,0,0,F3
+F3,2022,13,Juan Manuel Correa,ART Grand Prix,39.0,16,0,1,F3
+F3,2022,14,Kush Maini,MP Motorsport,31.0,18,0,1,F3
+F3,2022,15,Grégoire Saucy,ART Grand Prix,30.0,18,0,1,F3
+F3,2022,16,David Vidales,Campos Racing,29.0,18,1,1,F3
+F3,2022,17,Kaylen Frederick,Hitech Grand Prix,27.0,18,0,0,F3
+F3,2022,18,William Alatalo,Jenzer Motorsport,24.0,18,0,0,F3
+F3,2022,19,Oliver Goethe,Campos Racing,15.0,4,0,0,F3
+F3,2022,20,Reece Ushijima,Van Amersfoort Racing,13.0,18,0,1,F3
+F3,2022,21,Sebastián Montoya,Campos Racing,7.0,2,0,0,F3
+F3,2022,22,Oliver Rasmussen,Trident,4.0,4,0,0,F3
+F3,2022,23,Brad Benavides,Carlin,3.0,18,0,0,F3
+F3,2022,24,Ido Cohen,Jenzer Motorsport,2.0,18,0,0,F3
+F3,2022,25,Rafael Villagómez,Van Amersfoort Racing,2.0,18,0,0,F3
+F3,2022,26,Pepe Martí,Campos Racing,2.0,18,0,0,F3
+F3,2022,27,Francesco Pizzi,Charouz Racing System,1.0,18,0,0,F3
+F3,2022,28,David Schumacher,Charouz Racing System,0.0,4,0,0,F3
+F3,2022,29,Federico Malvestiti,Jenzer Motorsport,0.0,16,0,0,F3
+F3,2022,30,Niko Kari,Jenzer Motorsport,0.0,2,0,0,F3
+F3,2022,31,Lirim Zendeli,Charouz Racing System,0.0,2,0,0,F3
+F3,2022,32,Nazim Azman,Hitech Grand Prix,0.0,18,0,0,F3
+F3,2022,33,Hunter Yeany,Campos Racing,0.0,12,0,0,F3
+F3,2022,34,Enzo Trulli,Carlin,0.0,18,0,0,F3
+F3,2022,35,Ayrton Simmons,Charouz Racing System,0.0,2,0,0,F3
+F3,2022,36,Filip Ugran,MP Motorsport,0.0,2,0,0,F3
+F3,2022,37,László Tóth,Charouz Racing System,0.0,18,0,0,F3
+F3,2022,38,Christian Mansell,Charouz Racing System,0.0,4,0,0,F3
+F3,2022,39,Alessandro Famularo,Charouz Racing System,0.0,2,0,0,F3
+F3,2022,40,Zdeněk Chovanec,Charouz Racing System,0.0,4,0,0,F3
+F3,2023,1,Gabriel Bortoleto,Trident,164.0,18,2,6,F3
+F3,2023,2,Zak O'Sullivan,Prema Racing,119.0,18,4,5,F3
+F3,2023,3,Paul Aron,Prema Racing,112.0,18,1,4,F3
+F3,2023,4,Franco Colapinto,MP Motorsport,110.0,18,2,5,F3
+F3,2023,5,Pepe Martí,Campos Racing,105.0,18,3,4,F3
+F3,2023,6,Dino Beganovic,Prema Racing,96.0,18,0,4,F3
+F3,2023,7,Gabriele Minì,Hitech Pulse-Eight,92.0,18,2,4,F3
+F3,2023,8,Oliver Goethe,Trident,75.0,18,1,2,F3
+F3,2023,9,Caio Collet,Van Amersfoort Racing,73.0,18,1,4,F3
+F3,2023,10,Taylor Barnard,Jenzer Motorsport,72.0,18,1,3,F3
+F3,2023,11,Leonardo Fornaroli,Trident,69.0,18,0,3,F3
+F3,2023,12,Christian Mansell,Campos Racing,60.0,18,0,2,F3
+F3,2023,13,Jonny Edgar,MP Motorsport,55.0,18,1,1,F3
+F3,2023,14,Grégoire Saucy,ART Grand Prix,54.0,18,0,2,F3
+F3,2023,15,Luke Browning,Hitech Pulse-Eight,41.0,18,0,1,F3
+F3,2023,16,Sebastián Montoya,Hitech Pulse-Eight,37.0,18,0,1,F3
+F3,2023,17,Mari Boya,MP Motorsport,29.0,18,0,1,F3
+F3,2023,18,Nikita Bedrin,Jenzer Motorsport,24.0,18,0,2,F3
+F3,2023,19,Hugh Barter,Campos Racing,14.0,16,0,0,F3
+F3,2023,20,Alex García,Jenzer Motorsport,12.0,18,0,0,F3
+F3,2023,21,Kaylen Frederick,ART Grand Prix,11.0,18,0,0,F3
+F3,2023,22,Nikola Tsolov,ART Grand Prix,6.0,18,0,0,F3
+F3,2023,23,Sophia Flörsch,PHM Racing by Charouz,6.0,18,0,0,F3
+F3,2023,24,Ido Cohen,Rodin Carlin,2.0,18,0,0,F3
+F3,2023,25,Rafael Villagómez,Van Amersfoort Racing,2.0,18,0,0,F3
+F3,2023,26,Francesco Simonazzi,Rodin Carlin,0.0,4,0,0,F3
+F3,2023,27,Tommy Smith,Van Amersfoort Racing,0.0,18,0,0,F3
+F3,2023,28,Oliver Gray,Rodin Carlin,0.0,18,0,0,F3
+F3,2023,29,Joshua Dufek,Campos Racing,0.0,2,0,0,F3
+F3,2023,30,Hunter Yeany,Rodin Carlin,0.0,10,0,0,F3
+F3,2023,31,Roberto Faria,PHM Racing by Charouz,0.0,18,0,0,F3
+F3,2023,32,Michael Shin,PHM Racing by Charouz,0.0,6,0,0,F3
+F3,2023,33,McKenzy Cresswell,PHM Racing by Charouz,0.0,4,0,0,F3
+F3,2023,34,Piotr Wiśnicki,PHM Racing by Charouz,0.0,8,0,0,F3
+F3,2023,35,Max Esterson,Rodin Carlin,0.0,4,0,0,F3
+F3,2024,1,Leonardo Fornaroli,Trident,153.0,20,0,7,F3
+F3,2024,2,Gabriele Minì,Prema Racing,130.0,20,1,5,F3
+F3,2024,3,Luke Browning,Hitech Pulse-Eight,128.0,20,2,3,F3
+F3,2024,4,Arvid Lindblad,Prema Racing,113.0,20,4,5,F3
+F3,2024,5,Christian Mansell,ART Grand Prix,112.0,20,0,5,F3
+F3,2024,6,Dino Beganovic,Prema Racing,109.0,20,2,4,F3
+F3,2024,7,Oliver Goethe,Campos Racing,94.0,18,1,3,F3
+F3,2024,8,Sami Meguetounif,Trident,84.0,20,2,2,F3
+F3,2024,9,Tim Tramnitz,MP Motorsport,81.0,20,1,4,F3
+F3,2024,10,Noel León,Van Amersfoort Racing,79.0,20,0,4,F3
+F3,2024,11,Nikola Tsolov,ART Grand Prix,75.0,18,3,3,F3
+F3,2024,12,Callum Voisin,Rodin Motorsport,67.0,20,1,2,F3
+F3,2024,13,Laurens van Hoepen,ART Grand Prix,58.0,20,0,3,F3
+F3,2024,14,Alex Dunne,MP Motorsport,50.0,20,0,2,F3
+F3,2024,15,Mari Boya,Campos Racing,45.0,20,1,1,F3
+F3,2024,16,Santiago Ramos,Trident,44.0,20,0,1,F3
+F3,2024,17,Sebastián Montoya,Campos Racing,40.0,20,0,1,F3
+F3,2024,18,Martinius Stenshorne,Hitech Pulse-Eight,38.0,18,1,2,F3
+F3,2024,19,Nikita Bedrin,PHM AIX Racing (1–2) AIX Racing (3–10),25.0,20,1,1,F3
+F3,2024,20,Tommy Smith,Van Amersfoort Racing,12.0,20,0,0,F3
+F3,2024,21,Max Esterson,Jenzer Motorsport,11.0,20,0,0,F3
+F3,2024,22,Charlie Wurz,Jenzer Motorsport,10.0,20,0,0,F3
+F3,2024,23,Piotr Wiśnicki,Rodin Motorsport,10.0,20,0,0,F3
+F3,2024,24,Tasanapol Inthraphuvasak,PHM AIX Racing (1–2) AIX Racing (3–10),9.0,20,0,1,F3
+F3,2024,25,Matías Zagazeta,Jenzer Motorsport,8.0,18,0,1,F3
+F3,2024,26,Joseph Loake,Rodin Motorsport,8.0,20,0,0,F3
+F3,2024,27,Kacper Sztuka,MP Motorsport,6.0,20,0,0,F3
+F3,2024,28,Joshua Dufek,PHM AIX Racing (1–2) AIX Racing (3–10),1.0,20,0,0,F3
+F3,2024,29,Sophia Flörsch,Van Amersfoort Racing,0.0,20,0,0,F3
+F3,2024,30,Cian Shields,Hitech Pulse-Eight,0.0,20,0,0,F3
+F3,2024,31,Tuukka Taponen,ART Grand Prix,0.0,2,0,0,F3
+F3,2024,32,Noah Strømsted,Campos Racing,0.0,2,0,0,F3
+F3,2024,33,James Wharton,Hitech Pulse-Eight,0.0,2,0,0,F3
+F3,2024,34,James Hedley,Jenzer Motorsport,0.0,2,0,0,F3
+F3,2025,1,Rafael Câmara,Trident,166.0,20,4,5,F3
+F3,2025,2,Nikola Tsolov,Campos Racing,124.0,20,2,6,F3
+F3,2025,3,Mari Boya,Campos Racing,116.0,20,1,5,F3
+F3,2025,4,Tim Tramnitz,MP Motorsport,94.0,20,1,3,F3
+F3,2025,5,Martinius Stenshorne,Hitech TGR,89.0,20,2,5,F3
+F3,2025,6,Noah Strømsted,Trident,84.0,20,1,3,F3
+F3,2025,7,Tasanapol Inthraphuvasak,Campos Racing,74.0,20,3,3,F3
+F3,2025,8,Théophile Naël,Van Amersfoort Racing,72.0,20,0,3,F3
+F3,2025,9,Tuukka Taponen,ART Grand Prix,67.0,20,0,3,F3
+F3,2025,10,Alessandro Giusti,MP Motorsport,67.0,20,0,2,F3
+F3,2025,11,Roman Bilinski,Rodin Motorsport,65.0,20,1,3,F3
+F3,2025,12,Laurens van Hoepen,ART Grand Prix,60.0,20,0,2,F3
+F3,2025,13,Charlie Wurz,Trident,53.0,20,0,2,F3
+F3,2025,14,Callum Voisin,Rodin Motorsport,52.0,20,0,1,F3
+F3,2025,15,Santiago Ramos,Van Amersfoort Racing,48.0,18,2,3,F3
+F3,2025,16,Ugo Ugochukwu,Prema Racing,43.0,20,0,2,F3
+F3,2025,17,Noel León,Prema Racing,36.0,20,0,2,F3
+F3,2025,18,James Wharton,ART Grand Prix,25.0,20,1,1,F3
+F3,2025,19,Ivan Domingues,Van Amersfoort Racing,18.0,20,1,1,F3
+F3,2025,20,Brad Benavides,AIX Racing,18.0,16,0,0,F3
+F3,2025,21,Nikita Bedrin,AIX Racing,17.0,2,0,0,F3
+F3,2025,22,Christian Ho,DAMS Lucas Oil,17.0,20,0,0,F3
+F3,2025,23,Bruno del Pino,MP Motorsport,16.0,20,0,1,F3
+F3,2025,24,Matías Zagazeta,DAMS Lucas Oil,13.0,20,0,0,F3
+F3,2025,25,Brando Badoer,Prema Racing,13.0,20,0,0,F3
+F3,2025,26,Louis Sharp,Rodin Motorsport,11.0,20,0,0,F3
+F3,2025,27,Freddie Slater,AIX Racing,10.0,4,0,1,F3
+F3,2025,28,James Hedley,AIX Racing,7.0,14,0,0,F3
+F3,2025,29,Gerrard Xie,Hitech TGR,1.0,20,0,0,F3
+F3,2025,30,Joshua Dufek,Hitech TGR,0.0,8,0,0,F3
+F3,2025,31,Jesse Carrasquedo Jr.,Hitech TGR,0.0,4,0,0,F3
+F3,2025,32,Nikita Johnson,DAMS Lucas Oil,0.0,8,0,0,F3
+F3,2025,33,Nicola Lacorte,DAMS Lucas Oil,0.0,18,0,0,F3
+F3,2025,34,Javier Sagrera,AIX Racing,0.0,4,0,0,F3
+F3,2025,35,Fernando Barrichello,AIX Racing,0.0,2,0,0,F3
+F3,2025,36,Nicola Marinangeli,AIX Racing,0.0,20,0,0,F3
+F3,2025,37,José Garfias,AIX Racing,0.0,2,0,0,F3
+F3,2026,1,Ugo Ugochukwu,Campos Racing,159.0,19,2,7,F3
+F3,2026,2,Freddie Slater,Trident,145.0,19,1,8,F3
+F3,2026,3,Tuukka Taponen,MP Motorsport,109.0,19,1,3,F3
+F3,2026,4,Taito Kato,ART Grand Prix,105.0,19,1,4,F3
+F3,2026,5,Théophile Naël,Campos Racing,88.0,19,3,5,F3
+F3,2026,6,Pedro Clerot,Rodin Motorsport,88.0,19,1,5,F3
+F3,2026,7,Ernesto Rivera,Campos Racing,87.0,17,2,3,F3
+F3,2026,8,Brando Badoer,Rodin Motorsport,71.0,19,1,4,F3
+F3,2026,9,Hiyu Yamakoshi,Van Amersfoort Racing,71.0,19,0,3,F3
+F3,2026,10,Noah Strømsted,Trident,65.0,19,1,1,F3
+F3,2026,11,Bruno del Pino,Van Amersfoort Racing,57.0,19,1,2,F3
+F3,2026,12,Maciej Gładysz,ART Grand Prix,54.0,19,1,1,F3
+F3,2026,13,Mattia Colnaghi,MP Motorsport,54.0,19,0,0,F3
+F3,2026,14,Jin Nakamura,Hitech,53.0,19,1,2,F3
+F3,2026,15,Alessandro Giusti,MP Motorsport,45.0,19,0,0,F3
+F3,2026,16,Enzo Deligny,Van Amersfoort Racing,40.0,19,0,1,F3
+F3,2026,17,James Wharton,Prema Racing,39.0,19,1,2,F3
+F3,2026,18,Yevan David,AIX Racing,35.0,19,0,1,F3
+F3,2026,19,Nicola Lacorte,DAMS Lucas Oil,33.0,19,1,1,F3
+F3,2026,20,Kanato Le,ART Grand Prix,30.0,19,0,1,F3
+F3,2026,21,Louis Sharp,Prema Racing,21.0,14,0,0,F3
+F3,2026,22,Gerrard Xie,DAMS Lucas Oil,20.0,16,1,2,F3
+F3,2026,23,Alex Powell,Prema Racing,14.0,5,0,1,F3
+F3,2026,24,Matteo De Palo,Trident,7.0,19,0,0,F3
+F3,2026,25,Brad Benavides,AIX Racing,6.0,4,0,0,F3
+F3,2026,26,Christian Ho,Rodin Motorsport,2.0,16,0,0,F3
+F3,2026,27,Fionn McLaughlin,Hitech,2.0,19,0,0,F3
+F3,2026,28,Fernando Barrichello,AIX Racing,2.0,19,0,0,F3
+F3,2026,29,José Garfias,Prema Racing,1.0,19,0,0,F3
+F3,2026,30,Nandhavud Bhirombhakdi,DAMS Lucas Oil,0.0,19,0,0,F3
+F3,2026,31,Ricardo Escotto,AIX Racing,0.0,8,0,0,F3
+F3,2026,32,Patrick Heuzenroeder,Campos Racing,0.0,2,0,0,F3
+F3,2026,33,Michael Shin,Hitech,0.0,19,0,0,F3
+F3,2026,34,Niccolò Maccagnani,Rodin Motorsport,0.0,3,0,0,F3
+F3,2026,35,Salim Hanna,AIX Racing,0.0,4,0,0,F3
+F1A,2023,1,Marta García,Prema Racing,278.0,21,7,12,F1 Academy
+F1A,2023,2,Léna Bühler,ART Grand Prix,222.0,21,2,13,F1 Academy
+F1A,2023,3,Hamda Al Qubaisi,MP Motorsport,207.0,21,4,7,F1 Academy
+F1A,2023,4,Nerea Martí,Campos Racing Mercantile Campos Racing,181.0,21,1,6,F1 Academy
+F1A,2023,5,Abbi Pulling,Rodin Carlin,175.0,21,0,7,F1 Academy
+F1A,2023,6,Amna Al Qubaisi,MP Motorsport,117.0,21,2,4,F1 Academy
+F1A,2023,7,Bianca Bustamante,Prema Racing,116.0,21,2,4,F1 Academy
+F1A,2023,8,Jessica Edgar,Rodin Carlin,114.0,21,1,4,F1 Academy
+F1A,2023,9,Emely de Heus,MP Motorsport,87.0,21,1,2,F1 Academy
+F1A,2023,10,Lola Lovinfosse,Campos Racing Mercantile Campos Racing,65.0,21,0,3,F1 Academy
+F1A,2023,11,Carrie Schreiner,ART Grand Prix,56.0,21,1,1,F1 Academy
+F1A,2023,12,Chloe Grant,ART Grand Prix,34.0,21,0,0,F1 Academy
+F1A,2023,13,Megan Gilkes,Rodin Carlin,31.0,21,0,0,F1 Academy
+F1A,2023,14,Chloe Chong,Prema Racing,25.0,21,0,0,F1 Academy
+F1A,2023,15,Maite Cáceres,Campos Racing Mercantile Campos Racing,6.0,21,0,0,F1 Academy
+F1A,2024,1,Abbi Pulling,,338.0,15,9,14,F1 Academy
+F1A,2024,2,Doriane Pin,,217.0,15,3,8,F1 Academy
+F1A,2024,3,Maya Weug,,177.0,15,1,8,F1 Academy
+F1A,2024,4,Nerea Martí,,136.0,15,0,4,F1 Academy
+F1A,2024,5,Hamda Al Qubaisi,,133.0,15,0,3,F1 Academy
+F1A,2024,6,Chloe Chambers,,122.0,15,1,4,F1 Academy
+F1A,2024,7,Bianca Bustamante,,73.0,15,0,1,F1 Academy
+F1A,2024,8,Lia Block,,44.0,15,0,0,F1 Academy
+F1A,2024,9,Carrie Schreiner,,34.0,15,0,0,F1 Academy
+F1A,2024,10,Tina Hausmann,,31.0,15,0,0,F1 Academy
+F1A,2024,11,Emely de Heus,,29.0,15,0,0,F1 Academy
+F1A,2024,12,Aurelia Nobels,,29.0,15,0,0,F1 Academy
+F1A,2024,13,Jessica Edgar,,28.0,15,0,0,F1 Academy
+F1A,2024,14,Lola Lovinfosse,,19.0,15,0,0,F1 Academy
+F1A,2024,15,Amna Al Qubaisi,,16.0,15,0,0,F1 Academy
+F1A,2024,16,Nina Gademan,,13.0,2,0,0,F1 Academy
+F1A,2024,17,Alisha Palmowski,,10.0,2,0,0,F1 Academy
+F1A,2024,18,Ella Lloyd,,8.0,2,0,0,F1 Academy
+F1A,2024,19,Logan Hannah,,1.0,3,0,0,F1 Academy
+F1A,2024,20,Courtney Crone,,0.0,2,0,0,F1 Academy
+F1A,2024,21,Reema Juffali,,0.0,2,0,0,F1 Academy
+F1A,2025,1,Doriane Pin,,172.0,15,4,8,F1 Academy
+F1A,2025,2,Maya Weug,,157.0,15,3,9,F1 Academy
+F1A,2025,3,Chloe Chambers,,127.0,15,2,7,F1 Academy
+F1A,2025,4,Ella Lloyd,,109.0,15,1,5,F1 Academy
+F1A,2025,5,Alisha Palmowski,,91.0,15,1,5,F1 Academy
+F1A,2025,6,Nina Gademan,,74.0,15,1,4,F1 Academy
+F1A,2025,7,Alba Hurup Larsen,,70.0,15,0,0,F1 Academy
+F1A,2025,8,Tina Hausmann,,50.0,15,0,0,F1 Academy
+F1A,2025,9,Lia Block,,37.0,15,1,2,F1 Academy
+F1A,2025,10,Emma Felbermayr,,37.0,15,1,1,F1 Academy
+F1A,2025,11,Chloe Chong,,18.0,15,0,0,F1 Academy
+F1A,2025,12,Rafaela Ferreira,,18.0,15,0,0,F1 Academy
+F1A,2025,13,Aurelia Nobels,,17.0,15,0,1,F1 Academy
+F1A,2025,14,Joanne Ciconte,,8.0,15,0,0,F1 Academy
+F1A,2025,15,Esmee Kosterman,,6.0,2,0,0,F1 Academy
+F1A,2025,16,Rachel Robertson,,5.0,2,0,0,F1 Academy
+F1A,2025,17,Aiva Anagnostiadis,,5.0,11,0,0,F1 Academy
+F1A,2025,18,Payton Westcott,,3.0,2,0,0,F1 Academy
+F1A,2025,19,Courtney Crone,,3.0,15,0,0,F1 Academy
+F1A,2025,20,Nicole Havrda,,1.0,15,0,0,F1 Academy
+F1A,2025,21,Mathilda Paatz,,0.0,3,0,0,F1 Academy
+F1A,2025,22,Megan Bruce,,0.0,2,0,0,F1 Academy
+F1A,2025,23,Ava Dobson,,0.0,2,0,0,F1 Academy
+F1A,2025,24,Shi Wei,,0.0,2,0,0,F1 Academy
+F1A,2025,25,Farah Al Yousef,,0.0,2,0,0,F1 Academy
+F1A,2025,26,Lisa Billard,,0.0,2,0,0,F1 Academy
+F1A,2026,1,Alisha Palmowski,,209.0,14,6,9,F1 Academy
+F1A,2026,2,Nina Gademan,,134.0,14,2,7,F1 Academy
+F1A,2026,3,Emma Felbermayr,,125.0,14,2,5,F1 Academy
+F1A,2026,4,Alba Hurup Larsen,,104.0,14,2,6,F1 Academy
+F1A,2026,5,Payton Westcott,,82.0,14,1,4,F1 Academy
+F1A,2026,6,Megan Bruce,,59.0,14,0,3,F1 Academy
+F1A,2026,7,Natalia Granada,,59.0,14,0,2,F1 Academy
+F1A,2026,8,Ella Lloyd,,52.0,14,0,1,F1 Academy
+F1A,2026,9,Lisa Billard,,41.0,14,0,1,F1 Academy
+F1A,2026,10,Mathilda Paatz,,37.0,14,1,2,F1 Academy
+F1A,2026,11,Rafaela Ferreira,,30.0,14,0,0,F1 Academy
+F1A,2026,12,Rachel Robertson,,28.0,14,0,0,F1 Academy
+F1A,2026,13,Jade Jacquet,,26.0,14,0,0,F1 Academy
+F1A,2026,14,Chiara Bättig,,22.0,2,0,1,F1 Academy
+F1A,2026,15,Kaylee Countryman,,14.0,14,0,1,F1 Academy
+F1A,2026,16,Ava Dobson,,14.0,14,0,0,F1 Academy
+F1A,2026,17,Esmee Kosterman,,12.0,14,0,0,F1 Academy
+F1A,2026,18,Ella Stevens,,10.0,14,0,0,F1 Academy
+F1A,2026,19,Luna Fluxá,,10.0,2,0,0,F1 Academy
+F1A,2026,20,Autumn Fisher,,0.0,3,0,0,F1 Academy
+F1A,2026,21,Zoe Florescu,,0.0,2,0,0,F1 Academy
+F1A,2026,22,Alexia Danielsson,,0.0,3,0,0,F1 Academy
+F1A,2026,23,Shi Wei,,0.0,2,0,0,F1 Academy

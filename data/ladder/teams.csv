@@ -1,0 +1,434 @@
+series,season,pos,team,points
+F2,2005,1,ART Grand Prix,187.0
+F2,2005,2,Arden International,126.0
+F2,2005,3,Super Nova International,102.0
+F2,2005,4,iSport International,69.5
+F2,2005,5,Racing Engineering,65.5
+F2,2005,6,Hitech Piquet Sports,50.0
+F2,2005,7,DAMS,36.0
+F2,2005,8,Coloni Motorsport,36.0
+F2,2005,9,BCN Competición,35.0
+F2,2005,10,DPR,22.0
+F2,2005,11,Durango,21.0
+F2,2005,12,Campos Racing,7.5
+F2,2006,1,ART Grand Prix,180.0
+F2,2006,2,Piquet Sports,115.0
+F2,2006,3,iSport International,101.0
+F2,2006,4,Arden International Ltd,57.0
+F2,2006,5,FMS International (1–2) Petrol Ofisi FMS International (3–11),46.0
+F2,2006,6,Trident Racing,45.0
+F2,2006,7,Racing Engineering,33.0
+F2,2006,8,Super Nova International,30.0
+F2,2006,9,BCN Competición,22.0
+F2,2006,10,"DPR (1–2, 8–11) DPR Direxiv (3–7)",18.0
+F2,2006,11,DAMS,14.0
+F2,2006,12,Campos Racing,12.0
+F2,2006,13,Durango,9.0
+F2,2007,1,iSport International,118.0
+F2,2007,2,ART Grand Prix,87.0
+F2,2007,3,Campos Grand Prix,80.0
+F2,2007,4,Super Nova International,78.0
+F2,2007,5,DAMS,67.0
+F2,2007,6,Racing Engineering,51.0
+F2,2007,7,Arden International,44.0
+F2,2007,8,Durango,44.0
+F2,2007,9,Petrol Ofisi FMS International,37.0
+F2,2007,10,Trident Racing,35.0
+F2,2007,11,Minardi Piquet Sports,22.0
+F2,2007,12,DPR,15.0
+F2,2007,13,BCN Competición,4.0
+F2,2008,1,Barwa International Campos Team,103.0
+F2,2008,2,iSport International,95.0
+F2,2008,3,Piquet Sports,92.0
+F2,2008,4,Racing Engineering,84.0
+F2,2008,5,ART Grand Prix,70.0
+F2,2008,6,Trust Team Arden,56.0
+F2,2008,7,Super Nova Racing,47.0
+F2,2008,8,DAMS,31.0
+F2,2008,9,Trident Racing,27.0
+F2,2008,10,Fisichella Motor Sport International,15.0
+F2,2008,11,Durango,11.0
+F2,2008,12,BCN Competición,5.0
+F2,2008,13,DPR,4.0
+F2,2009,1,ART Grand Prix,136.0
+F2,2009,2,Barwa Campos Team (1) Barwa Addax Team (2–10),122.0
+F2,2009,3,Super Nova Racing,67.0
+F2,2009,4,Fat Burner Racing Engineering,67.0
+F2,2009,5,iSport International,42.0
+F2,2009,6,DAMS,42.0
+F2,2009,7,Piquet GP,41.0
+F2,2009,8,Telmex Arden International,41.0
+F2,2009,9,Ocean Racing Technology,40.0
+F2,2009,10,FMSI (1–6) Party Poker Racing.com SC (7–10),29.0
+F2,2009,11,Durango,10.0
+F2,2009,12,Trident Racing,3.0
+F2,2009,13,DPR,0.0
+F2,2010,1,Rapax,115.0
+F2,2010,2,Barwa Addax Team,110.0
+F2,2010,3,ART Grand Prix,100.0
+F2,2010,4,Racing Engineering,80.0
+F2,2010,5,iSport International,78.0
+F2,2010,6,DAMS,35.0
+F2,2010,7,Arden International,32.0
+F2,2010,8,DPR,28.0
+F2,2010,9,Super Nova Racing,19.0
+F2,2010,10,Scuderia Coloni,18.0
+F2,2010,11,Trident Racing,14.0
+F2,2010,12,Ocean Racing Technology,11.0
+F2,2011,1,Barwa Addax Team,101.0
+F2,2011,2,DAMS,89.0
+F2,2011,3,Racing Engineering,73.0
+F2,2011,4,iSport International,70.0
+F2,2011,5,Lotus ART,68.0
+F2,2011,7,Scuderia Coloni,46.0
+F2,2011,8,Trident Racing,22.0
+F2,2011,9,Super Nova Racing,20.0
+F2,2011,10,Rapax,15.0
+F2,2011,11,Arden International,15.0
+F2,2011,12,Ocean Racing Technology,4.0
+F2,2011,13,Carlin,4.0
+F2,2012,1,DAMS,342.0
+F2,2012,2,Lotus GP,336.0
+F2,2012,3,Arden International,226.0
+F2,2012,4,Racing Engineering,212.0
+F2,2012,5,Carlin,207.0
+F2,2012,6,iSport International,202.0
+F2,2012,7,Caterham Racing,166.0
+F2,2012,8,Barwa Addax Team,131.0
+F2,2012,9,Rapax,44.0
+F2,2012,10,Trident Racing,34.0
+F2,2012,11,Ocean Racing Technology,26.0
+F2,2012,12,Venezuela GP Lazarus,1.0
+F2,2013,1,Russian Time,273.0
+F2,2013,2,Carlin,273.0
+F2,2013,3,Racing Engineering,263.0
+F2,2013,4,DAMS,224.0
+F2,2013,5,ART Grand Prix,168.0
+F2,2013,6,Hilmer Motorsport,155.0
+F2,2013,7,Rapax,155.0
+F2,2013,8,Arden International,97.0
+F2,2013,9,Caterham Racing (1–3) EQ8 Caterham Racing (4–11),95.0
+F2,2013,10,MP Motorsport,51.0
+F2,2013,11,Trident Racing,49.0
+F2,2013,12,Barwa Addax Team,22.0
+F2,2013,13,Venezuela GP Lazarus,12.0
+F2,2014,1,DAMS,349.0
+F2,2014,2,Carlin,292.0
+F2,2014,3,ART Grand Prix,255.0
+F2,2014,4,Racing Engineering,210.0
+F2,2014,5,RT Russian Time,180.0
+F2,2014,6,Trident,169.0
+F2,2014,7,Campos Racing,128.0
+F2,2014,8,MP Motorsport,56.0
+F2,2014,9,Rapax,56.0
+F2,2014,10,Arden International,48.0
+F2,2014,11,EQ8 Caterham Racing (1–8) Caterham Racing (9–11),42.0
+F2,2014,12,Hilmer Motorsport,33.0
+F2,2014,13,Venezuela GP Lazarus,19.0
+F2,2015,1,ART Grand Prix,410.0
+F2,2015,2,Racing Engineering,241.5
+F2,2015,3,DAMS,220.0
+F2,2015,4,Campos Racing,198.0
+F2,2015,5,Russian Time,183.0
+F2,2015,6,Rapax,159.0
+F2,2015,7,Trident,111.0
+F2,2015,8,Status Grand Prix,60.0
+F2,2015,9,Carlin,39.0
+F2,2015,10,Lazarus (1–3) Daiko Team Lazarus (4–11),31.0
+F2,2015,11,MP Motorsport,29.0
+F2,2015,12,Arden International,25.0
+F2,2015,13,Hilmer Motorsport,19.0
+F2,2016,1,Prema Racing,430.0
+F2,2016,2,Racing Engineering,258.0
+F2,2016,3,Russian Time,256.0
+F2,2016,4,ART Grand Prix,251.0
+F2,2016,5,DAMS,147.0
+F2,2016,6,Pertamina Campos Racing,114.0
+F2,2016,7,MP Motorsport,113.0
+F2,2016,8,Trident,111.0
+F2,2016,9,Rapax,107.0
+F2,2016,10,Carlin,38.0
+F2,2016,11,Arden International,12.0
+F2,2017,1,Russian Time,395.0
+F2,2017,2,Prema Racing,380.0
+F2,2017,3,DAMS,369.0
+F2,2017,4,ART Grand Prix,222.0
+F2,2017,5,Rapax,137.0
+F2,2017,6,MP Motorsport,109.0
+F2,2017,7,Pertamina Arden,108.0
+F2,2017,8,Racing Engineering,87.0
+F2,2017,9,Campos Racing,17.0
+F2,2017,10,Trident,9.0
+F2,2018,1,Carlin,383.0
+F2,2018,2,ART Grand Prix,350.0
+F2,2018,3,DAMS,303.0
+F2,2018,4,Russian Time,234.0
+F2,2018,5,Pertamina Prema Theodore Racing (1–7) Pertamina Prema Racing (8–12),231.0
+F2,2018,6,Charouz Racing System,215.0
+F2,2018,7,Campos Vexatec Racing,132.0
+F2,2018,8,MP Motorsport,61.0
+F2,2018,9,BWT Arden,58.0
+F2,2018,10,Trident,37.0
+F2,2019,1,DAMS,418.0
+F2,2019,2,UNI-Virtuosi Racing,347.0
+F2,2019,3,ART Grand Prix,277.0
+F2,2019,4,Carlin,236.0
+F2,2019,5,Campos Racing,189.0
+F2,2019,6,Sauber Junior Team by Charouz,110.0
+F2,2019,7,MP Motorsport,96.0
+F2,2019,8,BWT Arden,77.0
+F2,2019,9,Prema Racing,68.0
+F2,2019,10,Trident,23.0
+F2,2020,1,Prema Racing,392.0
+F2,2020,2,UNI-Virtuosi Racing,352.5
+F2,2020,3,Carlin,272.0
+F2,2020,4,Hitech Grand Prix,270.0
+F2,2020,5,ART Grand Prix,201.0
+F2,2020,6,MP Motorsport,167.0
+F2,2020,7,Charouz Racing System,137.0
+F2,2020,8,DAMS,115.5
+F2,2020,9,Campos Racing,48.0
+F2,2020,10,BWT HWA Racelab,13.0
+F2,2020,11,Trident,6.0
+F2,2021,1,Prema Powerteam,444.5
+F2,2021,2,UNI-Virtuosi Racing,288.0
+F2,2021,3,Carlin,272.5
+F2,2021,4,Hitech Grand Prix,223.0
+F2,2021,5,ART Grand Prix,190.0
+F2,2021,6,MP Motorsport,75.0
+F2,2021,7,Campos Racing,66.5
+F2,2021,8,DAMS,65.0
+F2,2021,9,Trident,35.0
+F2,2021,10,Charouz Racing System,28.0
+F2,2021,11,HWA Racelab,9.0
+F2,2022,1,MP Motorsport,305.0
+F2,2022,2,Carlin,297.0
+F2,2022,3,ART Grand Prix,281.0
+F2,2022,4,Prema Racing,241.0
+F2,2022,5,Hitech Grand Prix,207.0
+F2,2022,6,DAMS,161.0
+F2,2022,7,Virtuosi Racing,134.0
+F2,2022,8,Charouz Racing System,130.0
+F2,2022,9,Trident,108.0
+F2,2022,10,Van Amersfoort Racing,73.0
+F2,2022,11,Campos Racing,67.0
+F2,2023,1,ART Grand Prix,353.0
+F2,2023,2,Prema Racing,322.0
+F2,2023,3,Rodin Carlin,220.0
+F2,2023,4,DAMS,214.0
+F2,2023,5,Invicta Virtuosi Racing,176.0
+F2,2023,6,MP Motorsport,172.0
+F2,2023,7,Van Amersfoort Racing,121.0
+F2,2023,8,Hitech Pulse-Eight,112.0
+F2,2023,9,Campos Racing,99.0
+F2,2023,10,Trident,43.0
+F2,2023,11,PHM Racing by Charouz (1–12) PHM Racing (13),0.0
+F2,2024,1,Invicta Racing,288.5
+F2,2024,2,Campos Racing,254.0
+F2,2024,3,MP Motorsport,220.5
+F2,2024,4,Hitech Pulse-Eight,202.0
+F2,2024,5,Prema Racing,194.0
+F2,2024,6,DAMS Lucas Oil,178.0
+F2,2024,7,ART Grand Prix,173.0
+F2,2024,8,Rodin Motorsport,171.0
+F2,2024,9,PHM AIX Racing (1–3) AIX Racing (4–14),105.0
+F2,2024,10,Trident,105.0
+F2,2024,11,Van Amersfoort Racing,78.0
+F2,2025,1,Invicta Racing,316.0
+F2,2025,2,Hitech TGR,278.0
+F2,2025,3,Campos Racing,258.0
+F2,2025,4,DAMS Lucas Oil,207.0
+F2,2025,5,MP Motorsport,207.0
+F2,2025,6,Prema Racing,163.0
+F2,2025,7,Rodin Motorsport,155.0
+F2,2025,8,ART Grand Prix,127.0
+F2,2025,9,AIX Racing,107.0
+F2,2025,10,Van Amersfoort Racing,44.0
+F2,2025,11,Trident,2.0
+F2,2026,1,Campos Racing,333.0
+F2,2026,2,Invicta Racing,297.0
+F2,2026,3,Rodin Motorsport,296.0
+F2,2026,4,MP Motorsport,200.0
+F2,2026,5,DAMS Lucas Oil,173.0
+F2,2026,6,ART Grand Prix,161.0
+F2,2026,7,Trident,128.0
+F2,2026,8,Hitech,96.0
+F2,2026,9,Van Amersfoort Racing,59.0
+F2,2026,10,Prema Racing,51.0
+F2,2026,11,AIX Racing,38.0
+F3,2010,1,ART Grand Prix,130.0
+F3,2010,2,Status Grand Prix,86.0
+F3,2010,3,Jenzer Motorsport,67.0
+F3,2010,4,Manor Racing,64.0
+F3,2010,5,Carlin,42.0
+F3,2010,6,Tech 1 Racing,37.0
+F3,2010,7,Atech CRS GP,26.0
+F3,2010,8,Addax Team,25.0
+F3,2010,9,MW Arden,18.0
+F3,2010,10,RSC Mücke Motorsport,17.0
+F3,2011,1,Lotus ART,124.0
+F3,2011,2,MW Arden,69.0
+F3,2011,3,Marussia Manor Racing,67.0
+F3,2011,4,RSC Mücke Motorsport,61.0
+F3,2011,5,Status Grand Prix,50.0
+F3,2011,6,Tech 1 Racing,43.0
+F3,2011,7,Jenzer Motorsport,37.0
+F3,2011,8,Addax Team,33.0
+F3,2011,9,Carlin,21.0
+F3,2011,10,Atech CRS GP,7.0
+F3,2012,1,Lotus GP,378.5
+F3,2012,2,MW Arden,309.5
+F3,2012,3,Carlin,171.0
+F3,2012,4,Jenzer Motorsport,133.5
+F3,2012,5,Marussia Manor Racing,99.0
+F3,2012,6,Status Grand Prix,67.0
+F3,2012,7,Ocean Racing Technology,56.0
+F3,2012,8,Atech CRS GP,39.0
+F3,2012,9,Trident Racing,31.0
+F3,2013,1,ART Grand Prix,378.0
+F3,2013,2,MW Arden,278.0
+F3,2013,3,Koiranen GP,207.0
+F3,2013,4,Carlin,168.0
+F3,2013,5,Marussia Manor Racing,129.0
+F3,2013,6,Bamboo Engineering,75.0
+F3,2013,7,Jenzer Motorsport,51.0
+F3,2013,8,Trident,32.0
+F3,2013,9,Status Grand Prix,18.0
+F3,2014,1,Carlin,347.0
+F3,2014,2,ART Grand Prix,330.0
+F3,2014,3,Status Grand Prix,254.0
+F3,2014,4,Koiranen GP,202.0
+F3,2014,5,Arden International,162.0
+F3,2014,6,Marussia Manor Racing,117.0
+F3,2014,7,Jenzer Motorsport,61.0
+F3,2014,8,Hilmer Motorsport,18.0
+F3,2014,9,Trident,12.0
+F3,2015,1,ART Grand Prix,477.0
+F3,2015,2,Trident,282.0
+F3,2015,3,Arden International,275.0
+F3,2015,4,Koiranen GP,187.0
+F3,2015,5,Carlin,147.0
+F3,2015,6,Jenzer Motorsport,55.0
+F3,2015,7,Campos Racing,51.0
+F3,2015,8,Status Grand Prix,29.0
+F3,2016,1,ART Grand Prix,588.0
+F3,2016,2,Arden International,297.0
+F3,2016,3,Trident,170.0
+F3,2016,4,DAMS,152.0
+F3,2016,5,Koiranen GP,147.0
+F3,2016,6,Jenzer Motorsport,68.0
+F3,2016,7,Campos Racing,66.0
+F3,2017,1,ART Grand Prix,578.0
+F3,2017,2,Trident,286.0
+F3,2017,3,Jenzer Motorsport,164.0
+F3,2017,4,Arden International,91.0
+F3,2017,5,Campos Racing,56.0
+F3,2017,6,DAMS,48.0
+F3,2018,1,ART Grand Prix,640.0
+F3,2018,2,Trident,433.0
+F3,2018,3,Campos Racing,195.0
+F3,2018,4,MP Motorsport,94.0
+F3,2018,5,Jenzer Motorsport,65.0
+F3,2018,6,Arden International,43.0
+F3,2019,1,Prema Racing,527.0
+F3,2019,2,Hitech Grand Prix,223.0
+F3,2019,3,ART Grand Prix,174.0
+F3,2019,4,Trident,134.0
+F3,2019,5,HWA Racelab,100.0
+F3,2019,6,MP Motorsport,77.0
+F3,2019,7,Jenzer Motorsport,67.0
+F3,2019,8,Sauber Junior Team by Charouz,15.0
+F3,2019,9,Carlin Buzz Racing,14.0
+F3,2019,10,Campos Racing,5.0
+F3,2020,1,Prema Racing,470.5
+F3,2020,2,Trident,261.5
+F3,2020,3,ART Grand Prix,251.0
+F3,2020,4,Hitech Grand Prix,167.0
+F3,2020,5,HWA Racelab,138.5
+F3,2020,6,MP Motorsport,109.0
+F3,2020,7,Campos Racing,64.0
+F3,2020,8,Carlin Buzz Racing,46.0
+F3,2020,9,Jenzer Motorsport,11.0
+F3,2020,10,Charouz Racing System,5.0
+F3,2021,1,Trident,381.0
+F3,2021,2,Prema Racing,377.0
+F3,2021,3,ART Grand Prix,256.0
+F3,2021,4,MP Motorsport,224.0
+F3,2021,5,Charouz Racing System,127.0
+F3,2021,6,Hitech Grand Prix,126.0
+F3,2021,7,HWA Racelab,44.0
+F3,2021,8,Campos Racing,32.0
+F3,2021,9,Jenzer Motorsport,29.0
+F3,2021,10,Carlin Buzz Racing,25.0
+F3,2022,1,Prema Racing,355.0
+F3,2022,2,Trident,301.0
+F3,2022,3,ART Grand Prix,208.0
+F3,2022,4,MP Motorsport,195.0
+F3,2022,5,Hitech Grand Prix,150.0
+F3,2022,6,Van Amersfoort Racing,91.0
+F3,2022,7,Carlin,57.0
+F3,2022,8,Campos Racing,53.0
+F3,2022,9,Jenzer Motorsport,26.0
+F3,2022,10,Charouz Racing System,1.0
+F3,2023,1,Prema Racing,327.0
+F3,2023,2,Trident,308.0
+F3,2023,3,MP Motorsport,194.0
+F3,2023,4,Campos Racing,179.0
+F3,2023,5,Hitech Pulse-Eight,170.0
+F3,2023,6,Jenzer Motorsport,108.0
+F3,2023,7,Van Amersfoort Racing,75.0
+F3,2023,8,ART Grand Prix,71.0
+F3,2023,9,PHM Racing by Charouz,6.0
+F3,2023,10,Rodin Carlin,2.0
+F3,2024,1,Prema Racing,352.0
+F3,2024,2,Trident,281.0
+F3,2024,3,ART Grand Prix,245.0
+F3,2024,4,Campos Racing,179.0
+F3,2024,5,Hitech Pulse-Eight,166.0
+F3,2024,6,MP Motorsport,137.0
+F3,2024,7,Van Amersfoort Racing,91.0
+F3,2024,8,Rodin Motorsport,85.0
+F3,2024,9,PHM AIX Racing (1–2) AIX Racing (3–10),35.0
+F3,2024,10,Jenzer Motorsport,29.0
+F3,2025,1,Campos Racing,314.0
+F3,2025,2,Trident,303.0
+F3,2025,3,MP Motorsport,177.0
+F3,2025,4,ART Grand Prix,152.0
+F3,2025,5,Van Amersfoort Racing,138.0
+F3,2025,6,Rodin Motorsport,128.0
+F3,2025,7,Prema Racing,92.0
+F3,2025,8,Hitech TGR,90.0
+F3,2025,9,AIX Racing,52.0
+F3,2025,10,DAMS Lucas Oil,30.0
+F3,2026,1,Campos Racing,334.0
+F3,2026,2,Trident,217.0
+F3,2026,3,MP Motorsport,208.0
+F3,2026,4,ART Grand Prix,189.0
+F3,2026,5,Van Amersfoort Racing,168.0
+F3,2026,6,Rodin Motorsport,161.0
+F3,2026,7,Prema Racing,75.0
+F3,2026,8,Hitech,55.0
+F3,2026,9,DAMS Lucas Oil,53.0
+F3,2026,10,AIX Racing,43.0
+F1A,2023,1,Prema Racing,419.0
+F1A,2023,2,MP Motorsport,411.0
+F1A,2023,3,Rodin Carlin,320.0
+F1A,2023,4,ART Grand Prix,312.0
+F1A,2023,5,Campos Racing Mercantile Campos Racing,252.0
+F1A,2024,1,Prema Racing,423.0
+F1A,2024,2,Rodin Motorsport,393.0
+F1A,2024,3,Campos Racing,290.0
+F1A,2024,4,MP Motorsport,176.0
+F1A,2024,5,ART Grand Prix,144.0
+F1A,2025,1,Prema Racing,296.0
+F1A,2025,2,Campos Racing,236.0
+F1A,2025,3,MP Motorsport,235.0
+F1A,2025,4,Rodin Motorsport,164.0
+F1A,2025,5,ART Grand Prix,57.0
+F1A,2025,6,Hitech TGR,20.0
+F1A,2026,1,Campos Racing,298.0
+F1A,2026,2,MP Motorsport,250.0
+F1A,2026,3,Rodin Motorsport,187.0
+F1A,2026,4,Prema Racing,178.0
+F1A,2026,5,ART Grand Prix,81.0
+F1A,2026,6,Hitech,74.0
