@@ -151,13 +151,18 @@ def render_module(module_id, chapters):
     i = ids.index(chosen)
     st.divider()
     prev_col, mid, next_col = st.columns([1, 2, 1])
-    if i > 0 and prev_col.button(f"← {chapters[i - 1]['title']}", key=f"{key}_prev", use_container_width=True):
-        st.session_state[key] = ids[i - 1]
-        st.rerun()
-    if i < len(ids) - 1 and next_col.button(f"{chapters[i + 1]['title']} →", key=f"{key}_next",
-                                            type="primary", use_container_width=True):
-        st.session_state[key] = ids[i + 1]
-        st.rerun()
+    # The chapter selectbox has already been drawn by now, and Streamlit refuses a change to
+    # a drawn widget's value. A click callback runs before the next run draws it, so the
+    # buttons change the chapter there instead.
+    def go_to(chapter_id):
+        st.session_state[key] = chapter_id
+
+    if i > 0:
+        prev_col.button(f"← {chapters[i - 1]['title']}", key=f"{key}_prev", use_container_width=True,
+                        on_click=go_to, args=(ids[i - 1],))
+    if i < len(ids) - 1:
+        next_col.button(f"{chapters[i + 1]['title']} →", key=f"{key}_next", type="primary",
+                        use_container_width=True, on_click=go_to, args=(ids[i + 1],))
     done = progress()["read"]
     mid.caption(f"Chapter {i + 1} of {len(ids)} · {sum(c in done for c in ids)} read in this module")
 
