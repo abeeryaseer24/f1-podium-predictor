@@ -26,6 +26,11 @@ def forget_changed_modules():
         path = getattr(module, "__file__", None)
         if not path or Path(path).resolve().parent != SRC:
             continue
+        # A module still being imported has no stamp yet. Switching pages can start a new
+        # run while the last one is halfway through an import; dropping that module then
+        # makes the import fail with a KeyError, so leave it alone.
+        if getattr(getattr(module, "__spec__", None), "_initializing", False):
+            continue
         try:
             mtime = Path(path).stat().st_mtime
         except OSError:
